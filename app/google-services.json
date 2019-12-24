@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "545129543810",
+    "firebase_url": "https://caredirection-37fc8.firebaseio.com",
+    "project_id": "caredirection-37fc8",
+    "storage_bucket": "caredirection-37fc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545129543810:android:ddc31081ff1416f48b9c9b",
+        "android_client_info": {
+          "package_name": "com.example.caredirection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545129543810-g9hcu15pi4qf1gpckt88v50g6cbhd6sm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.caredirection",
+            "certificate_hash": "e3437bfc853e78216776e43c1b6525e379077493"
+          }
+        },
+        {
+          "client_id": "545129543810-m47avm1b7a9bhv2r14ahu373cprmomi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5Tmk9J04ndiK5uGaclsXRrhruCpLcC3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545129543810-m47avm1b7a9bhv2r14ahu373cprmomi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
