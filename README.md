@@ -4,11 +4,15 @@ careDirection_Android파트 git 장소입니다.
 Naming Rule
 * ## View id값
 	* 버튼 : btn_
-	* RecyclerView item.xml : rv_list_item~
-	* RecyclerView : rv_~_
 	* 텍스트뷰 : txt_~
 	* 이미지뷰 : img_~
 	* 에디트텍스트 : edit
+	* RecyclerView : rv_~_
+	* RecyclerView item.xml : rv_item_feature.xml
+	* View in RecyclerView item.xml: view_rv_item_feature_component
+					 ex)txt_rv_item_shopping_product_name
+	
+	
   	
 * # Border 
 	* ### radius
