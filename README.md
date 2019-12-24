@@ -11,8 +11,8 @@ Naming Rule
 	* 에디트텍스트 : edit
   	
 * # Border 
-	* ## radius
-    * 기본 틀 : color_border_form
+	* ### radius
+    		* 기본 틀 : color_border_form
 		* 6dp  -> color_border_square / gray_boder_line
 		* 10dp -> color_border_long
 		* 18dp -> white_border_fill / white_border_line
