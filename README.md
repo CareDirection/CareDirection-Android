@@ -9,8 +9,7 @@ Naming Rule
 	* 에디트텍스트 : edit
 	* RecyclerView : rv_~_
 	* RecyclerView item.xml : rv_item_feature.xml
-	* View in RecyclerView item.xml: view_rv_item_feature_component
-					 ex)txt_rv_item_shopping_product_name
+	* View in RecyclerView item.xml: view_rv_item_feature_component <br> ex)txt_rv_item_shopping_product_name
 	
 	
   	
