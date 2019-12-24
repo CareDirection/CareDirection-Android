@@ -1,5 +1,5 @@
 # Care-Direction
-Crecker_Android파트 git 장소입니다.
+careDirection_Android파트 git 장소입니다.
 
 Naming Rule
 * ## View id값
