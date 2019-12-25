@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".research.ResearchGenderActivity"
+    android:background="@drawable/bg_research_gradient">
+
+    <TextView
+        android:id="@+id/txt_gender_nametitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:lineSpacingExtra="11sp"
+        android:text="박진오님,"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_gender_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:lineSpacingExtra="11sp"
+        android:text="케디에 오신 것을 환영합니다:)"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_gender_namesubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:lineSpacingExtra="24sp"
+        android:text="박진오님만의"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender_title" />
+
+    <TextView
+        android:id="@+id/txt_gender_subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="영양소 섭취 기준"
+        android:fontFamily="@font/notosanskr_medium"
+        android:lineSpacingExtra="24sp"
+        android:textColor="@color/colorYellow"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_gender_namesubtitle"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender_namesubtitle" />
+
+    <TextView
+        android:id="@+id/txt_gender_subtitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="을 만들어볼게요!"
+        android:fontFamily="@font/notosanskr_medium"
+        android:lineSpacingExtra="24sp"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txt_gender_subtitle1"
+        app:layout_constraintTop_toTopOf="@+id/txt_gender_subtitle1" />
+
+    <TextView
+        android:id="@+id/txt_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:text="성별"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="18sp"
+        android:lineSpacingExtra="9sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/txt_gender_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender_subtitle1" />
+
+    <TextView
+        android:id="@+id/txt_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="114dp"
+        android:text="출생연도"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="18sp"
+        android:lineSpacingExtra="9sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/txt_gender"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender" />
+
+    <TextView
+        android:id="@+id/txt_year_picker"
+        android:layout_width="238dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        android:gravity="center_vertical"
+        android:background="@drawable/white_border_square"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_year" />
+
+    <Button
+        android:id="@+id/btn_gender_next"
+        android:layout_width="116dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/white_border"
+        android:fontFamily="@font/notosanskr_medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="다음"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_year_picker" />
+</androidx.constraintlayout.widget.ConstraintLayout>
