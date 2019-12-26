@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".StudyFragment">
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="으아아아될아ㅏㅇ아"/>
 
 
 </FrameLayout>

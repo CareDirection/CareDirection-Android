@@ -1,21 +1,29 @@
 package com.example.caredirection.home
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductData
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class CareProductAdapter(private val context: Context) : RecyclerView.Adapter<CareProductHolder>(){
+
+    //adapter는 viewoHolder로 변경할 data를 가지고 있는다.
+    var data = listOf<RvCareProductData>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CareProductHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val view =LayoutInflater.from(context).inflate(R.layout.rv_item_care_home,parent,false)
+        return CareProductHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return data.size
     }
 
     override fun onBindViewHolder(holder: CareProductHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        holder.bind(data[position])
     }
 
 
