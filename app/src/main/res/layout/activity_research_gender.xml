@@ -2,61 +2,59 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gender"
+    android:id="@+id/cl_gender"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_research_gradient"
-    tools:context=".research.ResearchGenderActivity">
+    tools:context=".research.userInfo.ResearchGenderActivity">
 
     <TextView
         android:id="@+id/txt_gender_nametitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="84dp"
         android:fontFamily="@font/notosanskr_medium"
         android:text="박진오님,"
         android:textColor="@color/colorWhite"
-        android:lineSpacingExtra="11sp"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txt_gender_title"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_gender_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="116dp"
+        android:layout_marginEnd="52dp"
         android:fontFamily="@font/notosanskr_medium"
-        android:includeFontPadding="false"
         android:lineSpacingExtra="11sp"
         android:text="케디에 오신 것을 환영합니다:)"
         android:textColor="@color/colorWhite"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/txt_gender_nametitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_gender_namesubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="8sp"
         android:text="박진오님만의"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txt_gender_title"
         app:layout_constraintTop_toBottomOf="@+id/txt_gender_title" />
 
     <TextView
-        android:id="@+id/txt_gender_subtitle1"
+        android:id="@+id/txt_gender_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/notosanskr_medium"
-        android:includeFontPadding="false"
         android:lineSpacingExtra="8sp"
         android:text="영양소 섭취 기준을 만들어볼게요!"
         android:textColor="@color/colorWhite"
@@ -87,26 +85,28 @@
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/txt_gender_title"
-        app:layout_constraintTop_toBottomOf="@+id/txt_gender_subtitle1" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender_subtitle" />
 
-    <ImageView
-        android:id="@+id/img_gender_women"
+    <CheckedTextView
+        android:id="@+id/chtxt_gender_women"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="16dp"
+        android:checked="false"
+        android:background="@drawable/selector_btn_women"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_gender"
-        app:srcCompat="@drawable/white_border_square" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender"/>
 
-    <ImageView
-        android:id="@+id/img_gender_man"
+    <CheckedTextView
+        android:id="@+id/chtxt_gender_man"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintStart_toEndOf="@+id/img_gender_women"
-        app:layout_constraintTop_toTopOf="@+id/img_gender_women"
-        app:srcCompat="@drawable/white_border_square" />
+        android:layout_marginEnd="84dp"
+        android:background="@drawable/selector_btn_women"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chtxt_gender_women" />
 
     <TextView
         android:id="@+id/txt_year"
@@ -119,23 +119,25 @@
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/txt_gender"
-        app:layout_constraintTop_toBottomOf="@+id/img_gender_women" />
+        app:layout_constraintTop_toBottomOf="@+id/chtxt_gender_women" />
 
     <TextView
         android:id="@+id/txt_year_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="283dp"
+        android:layout_height="39dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="39dp"
         android:background="@drawable/white_border_square"
+        android:drawableRight="@drawable/btn_dropdown"
+        android:drawablePadding="50dp"
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center_vertical"
-        android:lineSpacingExtra="10sp"
         android:includeFontPadding="false"
+        android:lineSpacingExtra="9sp"
         android:paddingStart="16dp"
         android:text="TextView"
-        android:textSize="21sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_year" />
@@ -150,7 +152,7 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="다음"
         android:includeFontPadding="false"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,22 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_symptom"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_research_gradient"
-    tools:context=".research.researchSymptomActivity">
+    tools:context=".research.userInfo.ResearchSymptomActivity">
 
     <TextView
         android:id="@+id/txt_symptom_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="128dp"
-        android:text="증상"
+        android:layout_marginTop="104dp"
         android:fontFamily="@font/notosanskr_medium"
-        android:textSize="18sp"
         android:lineSpacingExtra="9sp"
+        android:text="증상"
         android:textColor="@color/colorWhite"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/notosanskr_medium"
         android:lineSpacingExtra="11sp"
         android:text="박진오님께서는"
@@ -36,54 +37,200 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_symptom_subtitle1"
+        android:id="@+id/txt_symptom_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="166dp"
         android:fontFamily="@font/notosanskr_medium"
         android:lineSpacingExtra="11sp"
-        android:text="어떤"
+        android:text="어떤 증상들에 관심이 많으신가요?"
         android:textColor="@color/colorWhite"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/txt_symptom_nametitle"
-        app:layout_constraintTop_toBottomOf="@+id/txt_symptom_nametitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_symptom_subtitle2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="11sp"
-        android:text="증상들"
-        android:textColor="@color/colorYellow"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/txt_symptom_subtitle1"
-        app:layout_constraintTop_toTopOf="@+id/txt_symptom_subtitle1" />
+<!--    <TextView-->
+<!--        android:id="@+id/txt_symptom_subtitle2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/notosanskr_medium"-->
+<!--        android:lineSpacingExtra="11sp"-->
+<!--        android:text="증상들"-->
+<!--        android:textColor="@color/colorYellow"-->
+<!--        android:textSize="22sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/txt_symptom_subtitle1"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/txt_symptom_subtitle1" />-->
 
-    <TextView
-        android:id="@+id/txt_symptom_subtitle3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+<!--    <TextView-->
+<!--        android:id="@+id/txt_symptom_subtitle3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/notosanskr_medium"-->
+<!--        android:lineSpacingExtra="11sp"-->
+<!--        android:text="에 관심이 많으신가요?"-->
+<!--        android:textColor="@color/colorWhite"-->
+<!--        android:textSize="22sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/txt_symptom_subtitle2"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/txt_symptom_subtitle2" />-->
+    <Button
+        android:id="@+id/btn_disease_1"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="49dp"
+        android:background="@drawable/white_border_line"
+        android:text="혈액순환"
+        android:includeFontPadding="false"
         android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="11sp"
-        android:text="에 관심이 많으신가요?"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
         android:textColor="@color/colorWhite"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/txt_symptom_subtitle2"
-        app:layout_constraintTop_toTopOf="@+id/txt_symptom_subtitle2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_symptom_subtitle" />
 
+    <Button
+        android:id="@+id/btn_disease_2"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="79dp"
+        android:background="@drawable/white_border_line"
+        android:text="간건강"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_disease_1" />
+
+    <Button
+        android:id="@+id/btn_disease_3"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/white_border_line"
+        android:text="체지방 감소"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/btn_disease_1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_disease_1" />
+
+    <Button
+        android:id="@+id/btn_disease_4"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:background="@drawable/white_border_line"
+        android:text="면연력·항산화"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="12sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_disease_2"
+        app:layout_constraintTop_toTopOf="@+id/btn_disease_3" />
+
+    <Button
+        android:id="@+id/btn_disease_5"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/white_border_line"
+        android:text="피로회복"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/btn_disease_1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_disease_3" />
+
+    <Button
+        android:id="@+id/btn_disease_6"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:background="@drawable/white_border_line"
+        android:text="피부"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_disease_2"
+        app:layout_constraintTop_toTopOf="@+id/btn_disease_5" />
+
+    <Button
+        android:id="@+id/btn_disease_7"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/white_border_line"
+        android:text="갱년기"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/btn_disease_1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_disease_5" />
+
+    <Button
+        android:id="@+id/btn_disease_8"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:background="@drawable/white_border_line"
+        android:text="전립선 건강"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_disease_2"
+        app:layout_constraintTop_toTopOf="@+id/btn_disease_7" />
+
+    <Button
+        android:id="@+id/btn_disease_9"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/white_border_line"
+        android:text="눈건강"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="@+id/btn_disease_1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_disease_7" />
+
+    <Button
+        android:id="@+id/btn_disease_10"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:background="@drawable/white_border_line"
+        android:text="없음"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_disease_2"
+        app:layout_constraintTop_toTopOf="@+id/btn_disease_9" />
 
     <Button
         android:id="@+id/btn_disease_next"
         android:layout_width="116dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="83dp"
         android:background="@drawable/white_border"
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center_horizontal|center_vertical"
         android:text="다음"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,11 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".research.researchSymptomActivity"></activity>
-        <activity android:name=".research.researchDiseaseActivity" />
-        <activity android:name=".research.ResearchGenderActivity" />
+        <activity android:name=".research.ResearchChange"></activity>
+        <activity android:name=".research.userInfo.ResearchSymptomActivity" />
+        <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
+        <activity android:name=".research.userInfo.ResearchGenderActivity" />
         <activity android:name=".home.HomeActivity" />
-        <activity android:name=".research.ResearchNameActivity">
+        <activity android:name=".research.userInfo.ResearchNameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

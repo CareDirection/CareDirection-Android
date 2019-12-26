@@ -1,11 +1,9 @@
-package com.example.caredirection.research
+package com.example.caredirection.research.userInfo
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -60,10 +58,10 @@ class ResearchNameActivity : AppCompatActivity() {
                 //btn_name_next.
                 //btn_name_next.setBackgroundResource(R.drawable.yellow_border)
 
-                val intent = Intent(this,ResearchGenderActivity::class.java)
-                intent.putExtra("name",name)
+                val gender_intent = Intent(this,ResearchGenderActivity::class.java)
+                gender_intent.putExtra("username",name)
 
-                startActivity(intent)
+                startActivity(gender_intent)
             }
         }
     }
