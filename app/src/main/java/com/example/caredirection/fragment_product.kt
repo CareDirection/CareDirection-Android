@@ -1,7 +1,5 @@
 package com.example.caredirection
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,7 +26,7 @@ class fragment_product : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_fragment_product, container, false)
+        val view = inflater.inflate(R.layout.fragment_product, container, false)
 
         return view
     }
