@@ -1,10 +1,15 @@
-package com.example.caredirection
+package com.example.caredirection.product.main
+import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.caredirection.R
+import kotlinx.android.synthetic.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -14,6 +19,9 @@ class ProductFragment : Fragment(){
         private var param1: String? = null
         private var param2: String? = null
         private var listener: OnFragmentInteractionListener? = null
+
+        private lateinit var rv_main_product: RecyclerView
+        private lateinit var rv_main_product_adapter:MainProductAdapter
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -27,8 +35,34 @@ class ProductFragment : Fragment(){
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.fragment_home, container, false)
+            val view = inflater.inflate(R.layout.fragment_product, container, false)
+
+
+            initList(view)
+            return view
+        }
+
+        private fun initList(view: View){
+            //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
+            rv_main_product_adapter = MainProductAdapter(context!!)
+            //리사이클러뷰 가져오기
+            rv_main_product = view.findViewById(R.id.fragment_product_rv)
+            //리사이클러뷰에 리니얼로 넣기
+            rv_main_product.layoutManager = LinearLayoutManager(requireContext())
+            rv_main_product_adapter.data = listOf(
+                main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+                main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+                main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+                main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+                main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+                main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price")
+            )
+
+            //리사이클러뷰 가져오기
+
+            //리사이클러뷰에 어뎁더 써서 연결하기
+            rv_main_product.adapter = rv_main_product_adapter
+
         }
 
         // TODO: Rename method, update argument and hook method into UI event

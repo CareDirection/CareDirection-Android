@@ -3,12 +3,20 @@ package com.example.caredirection.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.example.caredirection.ProductFragment
+import android.view.View
+import com.example.caredirection.product.main.ProductFragment
 import com.example.caredirection.R
 import com.example.caredirection.StudyFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home_activity)
+
+        val bottomNavigationView = findViewById<View>(R.id.bottom_navigation_view)as BottomNavigationView
+        bottomNavigationView.setOnNavigationItemSelectedListener(this)
+    }
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when(p0.itemId){
             R.id.navigation_home  ->{
@@ -27,9 +35,5 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return true
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_activity)
 
-    }
 }

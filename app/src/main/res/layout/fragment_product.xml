@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductFragment">
+    tools:context=".product.main.ProductFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,13 @@
             android:layout_height="56dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:text="오메가3 들어가유~"
+    />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.cardview.widget.CardView
             android:id="@+id/fragment_product_cardview"
@@ -130,6 +136,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragment_product_rv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="474dp"
             android:layout_marginTop="11dp"
