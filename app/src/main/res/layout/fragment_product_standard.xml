@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".product.main.ProductFragment">
+    tools:context=".product.standard.StandardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,7 +30,10 @@
             android:layout_height="82dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/action_bar_test">
+            app:layout_constraintTop_toBottomOf="@id/action_bar_test"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="16dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,5 +146,4 @@
             android:layout_marginTop="11dp"
             app:layout_constraintTop_toBottomOf="@id/fragment_product_cardview" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

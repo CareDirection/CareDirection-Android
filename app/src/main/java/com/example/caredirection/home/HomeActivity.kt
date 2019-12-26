@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import com.example.caredirection.product.main.ProductFragment
+import com.example.caredirection.product.standard.StandardFragment
 import com.example.caredirection.R
 import com.example.caredirection.StudyFragment
+import com.example.caredirection.product.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -24,7 +25,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 supportFragmentManager.beginTransaction().replace(R.id.frame_layout,fragmentHome).commit()
             }
             R.id.navigation_product -> {
-                val fragmentProduct = ProductFragment()
+                val fragmentProduct = SearchFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.frame_layout,fragmentProduct).commit()
             }
             R.id.navigation_study -> {

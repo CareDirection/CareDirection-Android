@@ -1,11 +1,10 @@
-package com.example.caredirection.product.main
+package com.example.caredirection.product.standard
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import kotlinx.android.synthetic.main.rv_item_product.view.*
 
 class MainProductHolder(view: View): RecyclerView.ViewHolder(view) {
 
