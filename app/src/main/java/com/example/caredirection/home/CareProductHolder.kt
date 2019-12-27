@@ -16,7 +16,7 @@ class CareProductHolder(view:View) : RecyclerView.ViewHolder(view){
 
     fun bind(data:RvCareProductData){
         imgCareProduct.setBackgroundResource(R.color.colorRed)
-        isCheckedCareProduct.setImageResource(R.drawable.ic_product_selected)
+        isCheckedCareProduct.setImageResource(R.drawable.selector_home_care_product)
         nameProduct.text=data.nameProduct
 
     }

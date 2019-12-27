@@ -54,7 +54,7 @@ class HomeFragment : Fragment() {
         val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
 
         homeFragmentView.spinner_home_essential.adapter = spinnerHomeEssentialArrayAdapter
-        homeFragmentView.spinner_home_essential.dropDownVerticalOffset = 4
+        homeFragmentView.spinner_home_essential.dropDownVerticalOffset = 4 //스피너 드롭다운 위치 설정
         homeFragmentView.spinner_home_essential.setSelection(0)
         homeFragmentView.spinner_home_essential.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -93,16 +93,16 @@ class HomeFragment : Fragment() {
         //카드뷰에 어댑터 연결
         rvCareView.adapter = rvCareProductAdapter
 
+        //더미 데이터 넣어주기
         rvCareProductAdapter.data = listOf(
             RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-
             RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-
             RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-
             RvCareProductData(R.color.colorRed,true,"ddddddddd")
         )
     }
+
+
     // TODO: Rename method, update argument and hook method into UI event
     //bottom navigation 설정 시작
         fun onButtonPressed(uri: Uri) {

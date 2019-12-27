@@ -76,7 +76,7 @@
                         android:lineSpacingExtra="6dp"
                         android:text="상세보기"
                         android:textColor="@color/colorWhite"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/imageView5"
@@ -98,7 +98,7 @@
                     android:lineSpacingExtra="6dp"
                     android:text="나만의 기준을 바탕으로 한 섭취량이에요."
                     android:textColor="@color/colorBlack"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_line" />
 
@@ -146,14 +146,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/notosanskr_medium"
                     android:includeFontPadding="false"
                     android:text="기능성 원료"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_line3" />
 
                 <ImageView
                     android:id="@+id/img_line2"
@@ -165,6 +165,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_functional_title" />
 
+                <ImageView
+                    android:id="@+id/img_line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@color/colorGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+                <ImageView
+                    android:id="@+id/img_line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="27dp"
+                    android:src="@color/colorGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/functional" />
+
                 <TextView
                     android:id="@+id/txt_functional_desc"
                     android:layout_width="wrap_content"
@@ -173,10 +194,10 @@
                     android:layout_marginTop="13dp"
                     android:fontFamily="@font/notosanskr_light"
                     android:includeFontPadding="false"
-                    android:lineSpacingExtra="6dp"
+                    android:lineSpacingExtra="6sp"
                     android:text="나만의 기준을 바탕으로 한 섭취량이에요."
                     android:textColor="@color/colorBlack"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_line2" />
 
@@ -184,12 +205,12 @@
                     android:id="@+id/functional_details"
                     android:layout_width="wrap_content"
                     android:layout_height="27dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/primary_border_text"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView">
+                    app:layout_constraintTop_toBottomOf="@+id/img_line3">
 
                     <TextView
                         android:id="@+id/textView6"
@@ -200,10 +221,10 @@
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/notosanskr_medium"
                         android:includeFontPadding="false"
-                        android:lineSpacingExtra="6dp"
+                        android:lineSpacingExtra="6sp"
                         android:text="상세보기"
                         android:textColor="@color/colorWhite"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/imageView6"
@@ -214,20 +235,8 @@
 
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_care_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
-                    android:scrollbars="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <ImageView
-                    android:id="@+id/imageView3"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/functional"
                     android:layout_width="match_parent"
                     android:layout_height="211dp"
                     android:layout_marginStart="16dp"
@@ -237,6 +246,70 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_functional_desc" />
+
+                <TextView
+                    android:id="@+id/txt_care_product_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="복용 관리"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_line4" />
+
+                <LinearLayout
+                    android:id="@+id/care_product_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="27dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/gray_border_text"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_line4">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="6sp"
+                        android:text="복용 기록"
+                        android:textColor="@color/colorDarkGrey"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/btn_arrow_forward_gray"
+                        tools:srcCompat="@drawable/btn_arrow_forward_gray" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_care_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="60dp"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_care_product_title">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
