@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_bold"
             android:lineSpacingExtra="9sp"
-            android:text="박진오"
+            android:text="안ㄴㅇ려넒나릔므리읻우"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

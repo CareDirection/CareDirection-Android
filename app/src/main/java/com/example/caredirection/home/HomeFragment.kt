@@ -54,6 +54,8 @@ class HomeFragment : Fragment() {
         val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
 
         homeFragmentView.spinner_home_essential.adapter = spinnerHomeEssentialArrayAdapter
+        homeFragmentView.spinner_home_essential.dropDownVerticalOffset = 4
+        homeFragmentView.spinner_home_essential.setSelection(0)
         homeFragmentView.spinner_home_essential.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
