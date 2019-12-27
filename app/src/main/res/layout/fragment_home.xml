@@ -304,6 +304,7 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/gray_border_view_18"
+                    android:elevation="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_care_product_title">

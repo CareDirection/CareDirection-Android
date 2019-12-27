@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="328dp"
+            android:layout_height="116dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/gray_border_view_18"
+            android:elevation="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/txt_rv_item_care_product_amount">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="18dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack"
+                android:lineSpacingExtra="6sp"
+                android:text="뉴트리디데이 프리미엄 오메가 3골드 1100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="98dp"
+                android:layout_height="98dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@color/colorYellow" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Vita Naturals Inc"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkGrey"
+                android:lineSpacingExtra="10sp"
+                android:fontFamily="@font/notosanskr_regular"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:text="해외직구"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkGrey"
+                android:lineSpacingExtra="10sp"
+                android:fontFamily="@font/notosanskr_regular"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/notosanskr_regular"
+                android:lineSpacingExtra="6sp"
+                android:text="36,800 원"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkGrey"
+                android:fontFamily="@font/notosanskr_regular"
+                android:lineSpacingExtra="6sp"
+                android:text="(1일 750원)"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="16dp"
+                android:text="30정 기준"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkGrey"
+                android:fontFamily="@font/notosanskr_regular"
+                android:lineSpacingExtra="6sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView12"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txt_rv_item_care_product_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_border_square"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="6sp"
+            android:paddingHorizontal="16dp"
+            android:layout_marginStart="5dp"
+            android:text="10회 남음"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp" />
+
+    </FrameLayout>
