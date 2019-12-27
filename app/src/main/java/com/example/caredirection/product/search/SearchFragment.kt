@@ -1,5 +1,6 @@
 package com.example.caredirection.product.search
 
+import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +10,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.product.standard.main_product_rv_item
 import kotlinx.android.synthetic.main.fragment_product_search.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,6 +34,9 @@ class SearchFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+
+    private lateinit var rv_search_nutrient: RecyclerView
+    private lateinit var rv_search__adapter : SearchNutrientAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +80,22 @@ class SearchFragment : Fragment() {
                 }
             }
         }
+
+        //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
+        rv_search__adapter = SearchNutrientAdapter(context!!)
+        rv_search_nutrient = view.findViewById(R.id.txt_rv_search_nutrient)
+
+        rv_search_nutrient.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+        rv_search__adapter.data = listOf(
+          search_rv_nutrient_item("오메가3"),
+            search_rv_nutrient_item("종합비타민"),
+            search_rv_nutrient_item("홍삼"),
+            search_rv_nutrient_item("로얄젤리"),
+            search_rv_nutrient_item("비타민A"),
+            search_rv_nutrient_item("비타민D")
+        )
+        //리사이클러뷰에 어뎁더 써서 연결하기
+        rv_search_nutrient.adapter = rv_search__adapter
         return view
     }
 
