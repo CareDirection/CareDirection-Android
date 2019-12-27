@@ -1,6 +1,5 @@
 package com.example.caredirection.product.search
 
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -36,8 +35,10 @@ class SearchFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 
     private lateinit var rv_search_nutrient: RecyclerView
-    private lateinit var rv_search__adapter : SearchNutrientAdapter
+    private lateinit var rv_search_nutirient_adapter : SearchNutrientAdapter
 
+    private lateinit var rv_search_product: RecyclerView
+    private lateinit var rv_search_product_adapter : SearchProductAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -82,11 +83,11 @@ class SearchFragment : Fragment() {
         }
 
         //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
-        rv_search__adapter = SearchNutrientAdapter(context!!)
-        rv_search_nutrient = view.findViewById(R.id.txt_rv_search_nutrient)
+        rv_search_nutirient_adapter = SearchNutrientAdapter(context!!)
+        rv_search_nutrient = view.findViewById(R.id.rv_search_nutrient_txt)//
 
         rv_search_nutrient.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
-        rv_search__adapter.data = listOf(
+        rv_search_nutirient_adapter.data = listOf(
           search_rv_nutrient_item("오메가3"),
             search_rv_nutrient_item("종합비타민"),
             search_rv_nutrient_item("홍삼"),
@@ -95,7 +96,23 @@ class SearchFragment : Fragment() {
             search_rv_nutrient_item("비타민D")
         )
         //리사이클러뷰에 어뎁더 써서 연결하기
-        rv_search_nutrient.adapter = rv_search__adapter
+        rv_search_nutrient.adapter = rv_search_nutirient_adapter
+
+
+        rv_search_product_adapter = SearchProductAdapter(context!!)
+        rv_search_product = view.findViewById(R.id.rv_search_item_product)
+
+        rv_search_product.layoutManager = LinearLayoutManager(requireContext())
+        rv_search_product_adapter.data = listOf(
+            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
+            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price")
+        )
+        rv_search_product.adapter = rv_search_product_adapter
+
         return view
     }
 

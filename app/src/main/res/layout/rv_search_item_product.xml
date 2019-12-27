@@ -94,15 +94,6 @@
         android:lineSpacingExtra="10sp"
         tools:text="30정 기준"
         />
-    <CheckedTextView
-    android:id="@+id/img_rv_item_standard"
-    android:background="@drawable/selector_btn_rv_item_product"
-    app:layout_constraintStart_toEndOf="@id/txt_rv_search_item_perstandard"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="87dp"
-    android:layout_marginLeft="27dp"
-    android:checked="true"
-    android:layout_width="24dp"
-    android:layout_height="24dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
