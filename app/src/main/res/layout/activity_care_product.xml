@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".care_product.CareProductActivity">
+    tools:context=".care_product.CareProductActivity"
+    android:background="@color/colorDarkGrey">
 
     <LinearLayout
         android:id="@+id/top_bar_main"
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorBlack"
         app:layout_constraintTop_toTopOf="parent">
         <include layout="@layout/menu_top_plain_text" />
     </LinearLayout>
@@ -22,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
+        android:background="@color/colorRed"
         android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="9sp"
         android:text="복용하고 있는 제품"
         android:textColor="@color/colorBlack"
@@ -45,7 +49,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/rv_care_register_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -67,7 +71,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+                app:layout_constraintTop_toBottomOf="@+id/rv_care_register_view">
 
                 <ImageView
                     android:id="@+id/imageView3"
