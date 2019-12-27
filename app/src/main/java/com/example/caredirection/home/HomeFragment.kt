@@ -6,11 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductData
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -45,6 +49,34 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         homeFragmentView= inflater.inflate(R.layout.fragment_home, container, false)
 
+        //스피너 설정
+        val spinnerHomeEssentialArray = resources.getStringArray(R.array.spinner_home_essential_items)
+        val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
+
+        homeFragmentView.spinner_home_essential.adapter = spinnerHomeEssentialArrayAdapter
+        homeFragmentView.spinner_home_essential.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //TODO 내부 코드 완성하기
+                    when(position){
+                        0->{
+
+                        }
+                        1->{
+
+                        }
+                    }
+            }
+
+        }
         return homeFragmentView}
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -68,35 +100,32 @@ class HomeFragment : Fragment() {
 
             RvCareProductData(R.color.colorRed,true,"ddddddddd")
         )
-/*
-        rvCareProductAdapter.notifyDataSetChanged()*/
-
     }
     // TODO: Rename method, update argument and hook method into UI event
     //bottom navigation 설정 시작
-    fun onButtonPressed(uri: Uri) {
+        fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
-    }
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
+        }
+        override fun onDetach() {
+            super.onDetach()
+            listener = null
+        }
+        interface OnFragmentInteractionListener {
+            // TODO: Update argument type and name
+            fun onFragmentInteraction(uri: Uri)
+        }
 
-    companion object {
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        companion object {
+            // TODO: Rename and change types and number of parameters
+            @JvmStatic
+            fun newInstance(param1: String, param2: String) =
+                HomeFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
                 }
-            }
-    }
+        }
     //bottom navigation 설정 끝
 }
 

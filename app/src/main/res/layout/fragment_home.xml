@@ -8,9 +8,9 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/top_bar_main"
@@ -19,6 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <include layout="@layout/menu_top_home" />
         </LinearLayout>
 
@@ -79,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_essential_title" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="211dp"
                     android:layout_marginStart="16dp"
@@ -122,42 +123,18 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:src="@drawable/btn_arrow_forward" />
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/essential_filter"
+                <Spinner
+                    android:id="@+id/spinner_home_essential"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="18dp"
                     android:layout_marginEnd="16dp"
-                    android:orientation="horizontal"
+                    android:layout_weight="1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.387"
-                    app:layout_constraintStart_toEndOf="@+id/txt_essential_desc"
-                    app:layout_constraintTop_toBottomOf="@+id/essential_details">
-
-                    <TextView
-                        android:id="@+id/txt_essential_filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:includeFontPadding="false"
-                        android:lineSpacingExtra="6sp"
-                        android:text="낮은 순"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="11sp" />
-
-                    <ImageView
-                        android:id="@+id/img_essential_filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/btn_drop_down_black" />
-
-                </LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/essential_details" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -166,8 +143,10 @@
             android:id="@+id/rv_care_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="211dp"
+            android:layout_marginStart="16dp"
             android:scrollbars="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
 
