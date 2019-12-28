@@ -12,8 +12,9 @@
         android:id="@+id/txt_gender_nametitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         android:text="박진오님,"
         android:textColor="@color/colorWhite"
         android:textSize="22sp"
@@ -25,27 +26,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="116dp"
         android:layout_marginEnd="52dp"
         android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="11sp"
         android:text="케디에 오신 것을 환영합니다:)"
         android:textColor="@color/colorWhite"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender_nametitle" />
 
     <TextView
         android:id="@+id/txt_gender_namesubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         android:text="박진오님만의"
         android:textColor="@color/colorWhite"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/txt_gender_title"
         app:layout_constraintTop_toBottomOf="@+id/txt_gender_title" />
 
@@ -53,14 +54,14 @@
         android:id="@+id/txt_gender_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:fontFamily="@font/notosanskr_medium"
         android:lineSpacingExtra="8sp"
+        android:includeFontPadding="false"
         android:text="영양소 섭취 기준을 만들어볼게요!"
         android:textColor="@color/colorWhite"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/txt_gender_namesubtitle"
-        app:layout_constraintTop_toBottomOf="@+id/txt_gender_title" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender_namesubtitle" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/txt_gender_subtitle2"-->
@@ -84,7 +85,7 @@
         android:text="성별"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/txt_gender_title"
+        app:layout_constraintStart_toStartOf="@+id/txt_gender_subtitle"
         app:layout_constraintTop_toBottomOf="@+id/txt_gender_subtitle" />
 
     <CheckedTextView
@@ -93,10 +94,12 @@
         android:layout_height="80dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="16dp"
-        android:checked="false"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/selector_btn_women"
+        android:checked="false"
+        app:layout_constraintEnd_toStartOf="@+id/chtxt_gender_man"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_gender"/>
+        app:layout_constraintTop_toBottomOf="@+id/txt_gender" />
 
     <CheckedTextView
         android:id="@+id/chtxt_gender_man"
@@ -115,6 +118,7 @@
         android:layout_marginTop="18dp"
         android:fontFamily="@font/notosanskr_medium"
         android:lineSpacingExtra="9sp"
+        android:includeFontPadding="false"
         android:text="출생연도"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
@@ -146,16 +150,18 @@
         android:id="@+id/btn_gender_next"
         android:layout_width="116dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="35dp"
-        android:background="@drawable/white_border"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="83dp"
+        android:background="@drawable/selector_btn_next"
+        android:enabled="true"
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center_horizontal|center_vertical"
-        android:text="다음"
         android:includeFontPadding="false"
+        android:text="다음"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_year_picker" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

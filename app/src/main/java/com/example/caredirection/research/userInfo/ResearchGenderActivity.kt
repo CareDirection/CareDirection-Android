@@ -27,8 +27,7 @@ class ResearchGenderActivity : AppCompatActivity() {
     private var chtxt_gender_man: CheckedTextView? = null
     private var txt_year_picker: TextView? = null
 
-    private var women_selec: Boolean = false
-    private var man_selec: Boolean = false
+    private var gender_selec: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +36,11 @@ class ResearchGenderActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_gender.setPadding(0, statusBarHeight(this), 0, 0)
 
-
-
         makeController()
         setColorInPartitial()
     }
+
+    // 상태바 배경투명 설정
     fun statusBarHeight(context: Context): Int {
         val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
 
@@ -66,31 +65,29 @@ class ResearchGenderActivity : AppCompatActivity() {
         txt_gender_namesubtitle?.text = name + "님만의"
 
         btn_gender_next?.setOnClickListener{
-//            val name = edt_username?.text.toString()
-//
-//            // 이름 빈칸일 경우,
-//            if(name.isEmpty()){
-//                toast("입력")
-//            }
-//            else{
-//                //btn_name_next.
-//                //btn_name_next.setBackgroundResource(R.drawable.yellow_border)
-//
-                val disease_intent = Intent(this,ResearchDiseaseActivity::class.java)
-                disease_intent.putExtra("username",name)
-                toast("되냐")
+            val year = txt_year_picker?.text
+
+            if(gender_selec == false || year?.isEmpty()!!){
+                toast("아직 체크하지 않은 사항이 있습니다.")
+            }
+            else {
+                val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
+                disease_intent.putExtra("username", name)
+
                 startActivity(disease_intent)
-//            }
+            }
         }
 
         chtxt_gender_women?.setOnClickListener{
             chtxt_gender_women?.isChecked = true
             chtxt_gender_man?.isChecked = false
+            gender_selec = true
         }
 
         chtxt_gender_man?.setOnClickListener{
             chtxt_gender_women?.isChecked = false
             chtxt_gender_man?.isChecked = true
+            gender_selec = true
         }
 
         txt_year_picker?.setOnClickListener{

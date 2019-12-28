@@ -41,7 +41,7 @@ class ResearchChange : AppCompatActivity() {
 
         builder.setSpan(
             ForegroundColorSpan(Color.parseColor("#ebf0b0")),
-            0,
+            5,
             11,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )

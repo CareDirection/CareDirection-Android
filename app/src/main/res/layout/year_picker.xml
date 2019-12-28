@@ -16,9 +16,7 @@
             android:id="@+id/picker_year"
             android:layout_width="200dp"
             android:layout_height="150dp"
-            android:layout_margin="10dp"
-            >
-        </NumberPicker>
+            android:layout_margin="10dp"></NumberPicker>
 
     </LinearLayout>
 </LinearLayout>

@@ -10,16 +10,18 @@
 
     <TextView
         android:id="@+id/txt_change_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="56dp"
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center"
         android:lineSpacingExtra="9sp"
         android:text="이제부터 라이프스타일에 관한 \n질문들을 드릴게요!"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,27 +31,30 @@
         android:layout_height="248dp"
         android:layout_marginStart="74dp"
         android:layout_marginTop="26dp"
+        android:layout_marginEnd="74dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_change_title"
-        app:srcCompat="@drawable/btn_women" />
+        android:background="@color/colorWhite"/>
 
     <Button
         android:id="@+id/btn_change_next"
         android:layout_width="116dp"
         android:layout_height="40dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="218dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="158dp"
+        android:layout_marginEnd="122dp"
         android:layout_marginBottom="83dp"
-        android:background="@drawable/yellow_border"
+        android:background="@drawable/selector_btn_next"
+        android:enabled="true"
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="다음"
         android:includeFontPadding="false"
+        android:text="다음"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

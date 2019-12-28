@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -29,6 +31,8 @@ class ResearchNameActivity : AppCompatActivity() {
 
         makeController()
     }
+
+    // 상태바 배경투명 설정
     fun statusBarHeight(context: Context): Int {
         val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
 
@@ -41,12 +45,31 @@ class ResearchNameActivity : AppCompatActivity() {
         edt_username = findViewById((R.id.edt_username))
         btn_name_next = findViewById(R.id.btn_gender_next)
 
-//        edt_username?.addTextChangedListener(object : TextWatcher{
-//            override fun afterTextChanged(p0: Editable?) {
-//                toast("입력")
-//            }
-//        })
+        // 이름 입력 검사
+        edt_username?.addTextChangedListener(object: TextWatcher {
+            var txt_length = 0
+            override fun afterTextChanged(p0: Editable?) {
+                txt_length = edt_username?.length()!!
+                if(txt_length > 0){
+                    btn_name_next?.isEnabled = true
+                    btn_name_next?.setTextColor(resources.getColor(R.color.colorPrimary))
+                }
+                else{
+                    btn_name_next?.isEnabled = false
+                    btn_name_next?.setTextColor(resources.getColor(R.color.colorTranslucenceLight))
+                }
+            }
 
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
+
+        // 버튼 활성화처리
         btn_name_next?.setOnClickListener{
             val name = edt_username?.text.toString()
 
@@ -55,9 +78,6 @@ class ResearchNameActivity : AppCompatActivity() {
                 toast("아직 이름이 정해지지 않았습니다.")
             }
             else{
-                //btn_name_next.
-                //btn_name_next.setBackgroundResource(R.drawable.yellow_border)
-
                 val gender_intent = Intent(this,ResearchGenderActivity::class.java)
                 gender_intent.putExtra("username",name)
 

@@ -9,16 +9,10 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.TextView
 import com.example.caredirection.R
 import kotlinx.android.synthetic.main.activity_research_disease.*
 
 class ResearchDiseaseActivity : AppCompatActivity() {
-
-    private var btn_disease_next: Button? = null
-    private var txt_disease_subtitle: TextView? = null
-    private var txt_disease_nametitle: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +23,11 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
         makeController()
         setColorInPartitial()
+
+
     }
 
+    // 상태바 배경투명 설정
     fun statusBarHeight(context: Context): Int {
         val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
 
@@ -40,13 +37,10 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
     // 사용자 입력받아서 초기화
     private fun makeController(){
-        btn_disease_next = findViewById(R.id.btn_disease_next)
-        txt_disease_subtitle = findViewById(R.id.txt_disease_subtitle)
-        txt_disease_nametitle = findViewById(R.id.txt_disease_nametitle)
 
         val name: String = intent.getStringExtra("username")
 
-        txt_disease_nametitle?.text = name + "님께서"
+        txt_disease_nametitle.text = name + "님께서"
 
 //        edt_username?.addTextChangedListener(object : TextWatcher{
 //            override fun afterTextChanged(p0: Editable?) {
@@ -54,7 +48,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 //            }
 //        })
 
-        btn_disease_next?.setOnClickListener{
+        btn_disease_next.setOnClickListener{
             //            val name = edt_username?.text.toString()
 //
 //            // 이름 빈칸일 경우,
@@ -70,6 +64,118 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
             startActivity(symptom_intent)
 //            }
+        }
+
+        btn_disease_1.setOnClickListener{
+            if(btn_disease_1.isSelected) {
+                btn_disease_1.isSelected = false
+                btn_disease_1.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_1.isSelected = true
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_1.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+        btn_disease_2.setOnClickListener{
+            if(btn_disease_2.isSelected) {
+                btn_disease_2.isSelected = false
+                btn_disease_2.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_2.isSelected = true
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_2.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+        btn_disease_3.setOnClickListener{
+            if(btn_disease_3.isSelected) {
+                btn_disease_3.isSelected = false
+                btn_disease_3.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_3.isSelected = true
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_3.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+        btn_disease_4.setOnClickListener{
+            if(btn_disease_4.isSelected) {
+                btn_disease_4.isSelected = false
+                btn_disease_4.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_4.isSelected = true
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_4.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+        btn_disease_5.setOnClickListener{
+            if(btn_disease_5.isSelected) {
+                btn_disease_5.isSelected = false
+                btn_disease_5.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_5.isSelected = true
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_5.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+        btn_disease_6.setOnClickListener{
+            if(btn_disease_6.isSelected) {
+                btn_disease_6.isSelected = false
+                btn_disease_6.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_6.isSelected = true
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_6.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+        btn_disease_7.setOnClickListener{
+            if(btn_disease_7.isSelected) {
+                btn_disease_7.isSelected = false
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
+            }
+            else {
+                btn_disease_7.isSelected = true
+                btn_disease_1.isSelected = false
+                btn_disease_2.isSelected = false
+                btn_disease_3.isSelected = false
+                btn_disease_4.isSelected = false
+                btn_disease_5.isSelected = false
+                btn_disease_6.isSelected = false
+
+                btn_disease_1.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_2.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_3.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_4.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_5.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_6.setTextColor(resources.getColor(R.color.colorWhite))
+                btn_disease_7.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+            checkSelectButton()
+        }
+    }
+
+    private fun checkSelectButton(){
+        if(btn_disease_1.isSelected || btn_disease_2.isSelected || btn_disease_3.isSelected || btn_disease_4.isSelected ||btn_disease_5.isSelected || btn_disease_6.isSelected || btn_disease_7.isSelected ){
+            btn_disease_next.isEnabled = true
+        }
+        else{
+            btn_disease_next.isEnabled = false
         }
     }
 
