@@ -1,5 +1,6 @@
 package com.example.caredirection.product.search
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.product.standard.ActivityProductSearch
+import com.example.caredirection.product.standard.StandardFragment
 import com.example.caredirection.product.standard.main_product_rv_item
+import kotlinx.android.synthetic.main.fragment_product_search.*
 import kotlinx.android.synthetic.main.fragment_product_search.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,6 +42,7 @@ class SearchFragment : Fragment() {
     private lateinit var rv_search_nutrient: RecyclerView
     private lateinit var rv_search_nutirient_adapter : SearchNutrientAdapter
 
+    private lateinit var txt_search_fragment_intent: TextView
     private lateinit var rv_search_product: RecyclerView
     private lateinit var rv_search_product_adapter : SearchProductAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,19 +105,24 @@ class SearchFragment : Fragment() {
         rv_search_nutrient.adapter = rv_search_nutirient_adapter
 
 
+
+
         rv_search_product_adapter = SearchProductAdapter(context!!)
         rv_search_product = view.findViewById(R.id.rv_search_item_product)
 
         rv_search_product.layoutManager = LinearLayoutManager(requireContext())
         rv_search_product_adapter.data = listOf(
             rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
-            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
-            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
-            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
-            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
             rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price")
         )
         rv_search_product.adapter = rv_search_product_adapter
+
+        txt_search_fragment_intent = view.findViewById(R.id.txt_search_fragment_intent)
+        txt_search_fragment_intent.setOnClickListener{
+            val intent = Intent(context, ActivityProductSearch::class.java)
+
+            startActivityForResult(intent, 100)
+        }
 
         return view
     }

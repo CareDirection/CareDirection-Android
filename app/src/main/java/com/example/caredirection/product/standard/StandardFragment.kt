@@ -44,7 +44,7 @@ class StandardFragment : Fragment(){
             //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
             rv_main_product_adapter = MainProductAdapter(context!!)
             //리사이클러뷰 가져오기
-            rv_main_product = view.findViewById(R.id.fragment_product_rv)
+            rv_main_product = view.findViewById(R.id.activityt_product_rv)
             //리사이클러뷰에 리니얼로 넣기
             rv_main_product.layoutManager = LinearLayoutManager(requireContext())
             rv_main_product_adapter.data = listOf(
