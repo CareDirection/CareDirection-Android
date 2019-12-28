@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.caredirection">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".product.standard.ActivityProductSearch"></activity>
+        <activity android:name=".care_product.CareRegisterComplete"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".care_product.CareProductActivity"/>
         <activity android:name=".research.ResearchChange"></activity>
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
@@ -23,9 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
 
-        <service android:name=".common.fcm.CadiFirebaseMessagingService">
+        <service android:name=".common.fcm.CadiFirebaseMessagingService" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

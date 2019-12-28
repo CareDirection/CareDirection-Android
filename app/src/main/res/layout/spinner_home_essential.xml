@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/txt_home_spinner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="9dp"
+    android:includeFontPadding="false"
+    android:paddingVertical="5.5dp"
+    android:textColor="@color/colorPrimary"
+    android:fontFamily="@font/notosanskr_medium"
+    android:textSize="11dp" />
+
