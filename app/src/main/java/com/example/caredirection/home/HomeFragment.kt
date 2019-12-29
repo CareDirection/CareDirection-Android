@@ -1,5 +1,6 @@
 package com.example.caredirection.home
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
+import com.example.caredirection.home.functional.HomeFunctionalActivity
 import com.orhanobut.dialogplus.DialogPlus
 import com.orhanobut.dialogplus.DialogPlusBuilder
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -140,6 +142,11 @@ class HomeFragment : Fragment() {
                 .setPadding(0,0,0,34)
                 .setContentBackgroundResource(R.drawable.white_border_top_down)
                 .create().show()
+        }
+        homeFragmentView.functional_details.setOnClickListener{
+            val functional_intent = Intent(context,HomeFunctionalActivity::class.java)
+            //TODO
+            startActivity(functional_intent)
         }
     }
 
