@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/btn_home_top_down_child_add_user_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginEnd="47dp"
+        android:background="@drawable/primary_border"
+        app:layout_constraintDimensionRatio="5.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@color/colorRed"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_home_top_down_child_add_user_name"
+        app:layout_constraintEnd_toStartOf="@+id/txt_home_top_down_child_add_user_name"
+        app:layout_constraintTop_toTopOf="@+id/btn_home_top_down_child_add_user_name" />
+
+    <TextView
+        android:id="@+id/txt_home_top_down_child_add_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="8sp"
+        android:text="사용자 추가하기"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_home_top_down_child_add_user_name"
+        app:layout_constraintEnd_toEndOf="@id/btn_home_top_down_child_add_user_name"
+        app:layout_constraintStart_toStartOf="@id/btn_home_top_down_child_add_user_name"
+        app:layout_constraintTop_toTopOf="@id/btn_home_top_down_child_add_user_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="6sp"
+        android:text="사랑하는 가족의 데이터를 추가혹,\n케어 파트너와 함께 해보세요!"
+        android:textAlignment="center"
+        android:textColor="@color/colorDarkGrey"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_home_top_down_child_add_user_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>
