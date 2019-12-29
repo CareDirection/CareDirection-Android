@@ -43,15 +43,17 @@
 
 
     <ScrollView
-        app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_top"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="activity_product_detail_top">
+            >
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -273,6 +275,130 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/chart_product_detail"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_content_layout"
+                android:background="@color/colorDarkGrey"/>
+
+                <TextView
+                    android:id="@+id/line_product_detail_chart"
+                    android:layout_width="328dp"
+                    android:layout_height="0.5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chart_product_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/colorDarkGrey"
+                    />
+            //제품 효과
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_product_detail_effect"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_product_detail_chart">
+            <ImageView
+                android:id="@+id/img_product_detail_effect1"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/primary_border_square"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/img_product_detail_effect2"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                />
+
+                <ImageView
+                    android:id="@+id/img_product_detail_effect2"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/primary_border_square"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img_product_detail_effect3"
+                    app:layout_constraintStart_toEndOf="@+id/img_product_detail_effect1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_product_detail_effect3"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/primary_border_square"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/img_product_detail_effect4"
+                    app:layout_constraintStart_toEndOf="@+id/img_product_detail_effect2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_product_detail_effect4"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/primary_border_square"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/img_product_detail_effect3"
+                    />
+                <TextView
+                    android:id="@+id/txt_product_detail_effect1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/img_product_detail_effect1"
+                    app:layout_constraintTop_toBottomOf="@+id/img_product_detail_effect1"
+                    android:textSize="12sp"
+                    android:textColor="#727272"
+                    android:lineSpacingExtra="4sp"
+                    android:gravity="center_horizontal"
+                    android:text="혈행 개선"
+                    />
+                <TextView
+                    android:id="@+id/txt_product_detail_effect2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/img_product_detail_effect2"
+                    app:layout_constraintTop_toBottomOf="@+id/img_product_detail_effect1"
+                    android:textSize="12sp"
+                    android:textColor="#727272"
+                    android:lineSpacingExtra="4sp"
+                    android:gravity="center_horizontal"
+                    android:text="혈행 개선"
+                    />
+                <TextView
+                    android:id="@+id/txt_product_detail_effect3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/img_product_detail_effect3"
+                    app:layout_constraintTop_toBottomOf="@+id/img_product_detail_effect1"
+                    android:textSize="12sp"
+                    android:textColor="#727272"
+                    android:lineSpacingExtra="4sp"
+                    android:gravity="center_horizontal"
+                    android:text="혈행 개선"
+                    />
+                <TextView
+                    android:id="@+id/txt_product_detail_effect4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/img_product_detail_effect4"
+                    app:layout_constraintTop_toBottomOf="@+id/img_product_detail_effect1"
+                    android:textSize="12sp"
+                    android:textColor="#727272"
+                    android:lineSpacingExtra="4sp"
+                    android:gravity="center_horizontal"
+                    android:text="혈행 개선"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            
+
+
+
+
+            //여기 넘으면 안댐
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
