@@ -19,7 +19,7 @@ class ActivityProductStandard : AppCompatActivity() {
         setContentView(R.layout.activity_product_standard)
 
         initList()
-        activity_product_standard_item_standard1.setOnClickListener{
+        activity_product_detail_item_standard1.setOnClickListener{
             contentDialog()
         }
         img_activity_product_top_filter.setOnClickListener{

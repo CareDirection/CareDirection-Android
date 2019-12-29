@@ -55,7 +55,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/activity_product_cardview"
+        android:id="@+id/cardview_activity_product_standard"
         android:layout_width="match_parent"
         android:layout_height="82dp"
         app:cardCornerRadius="16dp"
@@ -71,14 +71,14 @@
             android:weightSum="3">
 
             <LinearLayout
-                android:id="@+id/activity_product_standard_item_standard1"
+                android:id="@+id/activity_product_detail_item_standard1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/activity_product_cardview_standard1"
+                    android:id="@+id/activity_product_detail_standard1"
                     android:layout_width="64dp"
                     android:layout_height="27dp"
                     android:layout_marginLeft="35dp"
@@ -91,7 +91,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/activity_product_cardview_standard1_txt"
+                    android:id="@+id/txt_activity_product_detail_standard1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -111,7 +111,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/activity_product_cardview_standard2"
+                    android:id="@+id/txt_activity_product_detail_standard2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -124,7 +124,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/activity_product_cardview_standard2_txt"
+                    android:id="@+id/txt_activity_product_detail_standard2_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -173,9 +173,8 @@
         android:id="@+id/activityt_product_rv"
         android:layout_width="match_parent"
         android:layout_height="474dp"
-        android:layout_marginTop="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_product_cardview" />
+        app:layout_constraintTop_toBottomOf="@+id/cardview_activity_product_standard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
