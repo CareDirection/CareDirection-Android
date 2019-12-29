@@ -20,7 +20,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <include layout="@layout/menu_top_home" />
+            <include
+                android:id="@+id/btn_home_user_select"
+                layout="@layout/menu_top_home" />
         </LinearLayout>
 
 

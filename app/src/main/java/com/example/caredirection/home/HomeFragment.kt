@@ -3,17 +3,21 @@ package com.example.caredirection.home
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
+import com.orhanobut.dialogplus.DialogPlus
+import com.orhanobut.dialogplus.DialogPlusBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
@@ -30,6 +34,8 @@ class HomeFragment : Fragment() {
     private lateinit var homeFragmentView :View
     private lateinit var rvCareView : RecyclerView
     private lateinit var rvCareProductAdapter: CareProductAdapter
+    private lateinit var topDownDialog:DialogPlusBuilder
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +86,8 @@ class HomeFragment : Fragment() {
             }
 
         }
-        return homeFragmentView}
+        return homeFragmentView
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -88,30 +95,60 @@ class HomeFragment : Fragment() {
         //리사이클러뷰 가져오기
         rvCareView = homeFragmentView.findViewById(R.id.rv_care_view) as RecyclerView
         //리사이클러뷰 레이아웃 설정
-        rvCareView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        rvCareView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         //어댑더 정의
-        rvCareProductAdapter=CareProductAdapter(context!!)
+        rvCareProductAdapter = CareProductAdapter(context!!)
         //카드뷰에 어댑터 연결
         rvCareView.adapter = rvCareProductAdapter
 
         //더미 데이터 넣어주기
         rvCareProductAdapter.data = listOf(
-            RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-            RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-            RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-            RvCareProductData(R.color.colorRed,true,"ddddddddd")
+            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
+            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
+            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
+            RvCareProductData(R.color.colorRed, true, "ddddddddd")
         )
 
         //프래그먼트 다이얼로그 생성
-        val fm=fragmentManager!!
-        val myfrag=CustomDialogFragment()
-        myfrag.show(fm,"demo")
+        val fm = fragmentManager!!
+        val myfrag = CustomDialogFragment()
+        myfrag.show(fm, "demo")
         //
 
+        //
+        homeFragmentView.btn_home_user_select.setOnClickListener {
+            //todo
+            // topDownDialog=DialogPlus.newDialog(context)//빌더 설정
+            // .setExpanded(true,100)
+            // .setAdapter()
 
 
+            val adapter = TopDownDialogHolder(context!!, false, 4)
+            val dialogBuilder = DialogPlus.newDialog(context).apply {
+                setContentHolder(holder)
+                setCancelable(true)
+                setGravity(Gravity.TOP)
+                setMargin(0,100,0,0)
+                setAdapter(adapter)
+                setOnClickListener { dialog, view ->
+                    if (view is TextView) {
+
+                    }
+                }
+                setOnItemClickListener { dialog, item, view, position ->
+                    val textView = view.findViewById<TextView>(R.id.text_view)
+
+                }
+                //        .setOnDismissListener(dismissListener)
+                setExpanded(true, 300)
+                setContentBackgroundResource(R.drawable.white_border_dialog_21)
+
+            }
+
+            dialogBuilder.create().show()
+        }
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     //bottom navigation 설정 시작
