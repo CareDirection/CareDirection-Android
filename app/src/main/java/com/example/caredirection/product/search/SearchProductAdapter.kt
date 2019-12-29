@@ -13,9 +13,8 @@ class SearchProductAdapter(private val context: Context): RecyclerView.Adapter<S
     var item = listOf<rv_search_item>()
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchProductHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_item_product_standard,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.rv_search_item_product,parent,false)
 
         return SearchProductHolder(view)
     }
@@ -25,19 +24,18 @@ class SearchProductAdapter(private val context: Context): RecyclerView.Adapter<S
     }
 
     override fun onBindViewHolder(holder: SearchProductHolder, position: Int) {
-        holder.bind(item[position], position)
+        holder.bind(item[position])
     }
 
     inner class SearchProductHolder(view: View):RecyclerView.ViewHolder(view) {
 
-        val txt_rv_search_item_ename : TextView = view.findViewById(R.id.txt_rv_search_item_product_ename)
-        val txt_rv_search_item_publisher: TextView = view.findViewById(R.id.txt_rv__search_item_product_publisher)
-        val txt_rv_search_item_kname: TextView = view.findViewById(R.id.txt_rv_search_item_product_kname)
-        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_search_item_product_price)
-        val rv_item_product_indicator: CheckedTextView = view.findViewById(R.id.rv_item_product_indicator)
-        val img_rv_item_standard: CheckedTextView = view.findViewById(R.id.img_rv_item_standard)
+        val txt_rv_search_item_ename : TextView = view.findViewById(R.id.txt_rv_standard_item_product_ename)
+        val txt_rv_search_item_publisher: TextView = view.findViewById(R.id.txt_rv_standard_item_product_publisher)
+        val txt_rv_search_item_kname: TextView = view.findViewById(R.id.txt_rv_standard_item_product_kname)
+        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_standard_item_product_price)
 
-        fun bind(data: rv_search_item, position: Int){
+
+        fun bind(data: rv_search_item){
             txt_rv_search_item_ename.text = data.EndName
             txt_rv_search_item_publisher.text = data.Publisher
             txt_rv_search_item_kname.text = data.KorName

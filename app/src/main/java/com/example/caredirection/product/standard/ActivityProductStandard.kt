@@ -33,7 +33,7 @@ class ActivityProductStandard : AppCompatActivity() {
         rv_main_product = findViewById(R.id.activityt_product_rv)
         //리사이클러뷰에 리니얼로 넣기
         rv_main_product.layoutManager = LinearLayoutManager(this@ActivityProductStandard)
-        rv_main_product_adapter.data = listOf(
+        rv_main_product_adapter.data = mutableListOf(
             main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
             main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
             main_product_rv_item("ENGliSH NAME","publisher","KOREA NAME","price"),
