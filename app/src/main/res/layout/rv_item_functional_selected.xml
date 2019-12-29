@@ -1,6 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rv_item_functional_selected_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="761dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/img_rv_item_functional_selected_1"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorYellow" />
+
+        <TextView
+            android:id="@+id/txt_rv_item_functional_selected_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/notosanskr_light"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:text="간건강"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_1" />
+
+        <ImageView
+            android:id="@+id/grayline"
+            android:layout_width="21dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="33dp"
+            app:layout_constraintStart_toEndOf="@+id/img_rv_item_functional_selected_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorDarkGrey" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rv_item_functional_selected_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-11dp"
+        android:layout_marginBottom="761dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/grayline2"
+            android:layout_width="21dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="33dp"
+            app:layout_constraintStart_toEndOf="@+id/img_rv_item_functional_selected_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorDarkGrey" />
+
+        <ImageView
+            android:id="@+id/img_rv_item_functional_selected_2"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toStartOf="@+id/grayline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorYellow" />
+
+        <TextView
+            android:id="@+id/txt_rv_item_functional_selected_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/notosanskr_light"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:text="간건강"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rv_item_functional_selected_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-11dp"
+        android:layout_marginBottom="761dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/grayline3"
+            android:layout_width="21dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="33dp"
+            app:layout_constraintStart_toEndOf="@+id/img_rv_item_functional_selected_3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorDarkGrey" />
+
+        <ImageView
+            android:id="@+id/img_rv_item_functional_selected_3"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toStartOf="@+id/grayline3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorYellow" />
+
+        <TextView
+            android:id="@+id/txt_rv_item_functional_selected_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/notosanskr_light"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:text="간건강"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rv_item_functional_selected_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_3"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/gray_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorGrey" />
+
+        <TextView
+            android:id="@+id/txt_rv_item_functional_selected_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/notosanskr_bold"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="3sp"
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView15"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

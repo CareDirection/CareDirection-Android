@@ -42,7 +42,7 @@
                 android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_functional_selected"
+                app:layout_constraintTop_toBottomOf="@+id/rv_functional_selected_view"
                 app:srcCompat="@color/colorDarkGrey" />
 
             <TextView
@@ -90,7 +90,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_functional_all" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_functional_selected"
+                android:id="@+id/rv_functional_selected_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
