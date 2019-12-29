@@ -1,8 +1,6 @@
 package com.example.caredirection.product.search
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import com.example.caredirection.product.standard.ActivityProductSearch
+import com.example.caredirection.product.standard.ActivityProductStandard
 import kotlinx.android.synthetic.main.fragment_product_search.view.*
 
 class SearchFragment : Fragment() {
@@ -48,12 +46,12 @@ class SearchFragment : Fragment() {
                 id: Long
             ) {
                 when (position) {
-                    0 -> {
+                   /* 0 -> {
                         Toast.makeText(context!!, "1번", Toast.LENGTH_LONG).show()
                     }
                     1 -> {
                         Toast.makeText(context!!, "1번", Toast.LENGTH_LONG).show()
-                    }
+                    }*/
                 }
             }
         }
@@ -78,15 +76,15 @@ class SearchFragment : Fragment() {
         rv_search_product = view.findViewById(R.id.rv_search_item_product)
 
         rv_search_product.layoutManager = LinearLayoutManager(requireContext())
-        rv_search_product_adapter.data = listOf(
-            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price"),
-            rv_search_item("ENGliSH NAME","publisher","KOREA NAME","price")
+        rv_search_product_adapter.item = listOf(
+            SearchProductAdapter.rv_search_item("ENGliSH NAME", "publisher", "KOREA NAME", "price", false),
+            SearchProductAdapter.rv_search_item("ENGliSH NAME", "publisher", "KOREA NAME", "price", false)
         )
         rv_search_product.adapter = rv_search_product_adapter
 
         txt_search_fragment_intent = view.findViewById(R.id.txt_search_fragment_intent)
         txt_search_fragment_intent.setOnClickListener{
-            val intent = Intent(context, ActivityProductSearch::class.java)
+            val intent = Intent(context, ActivityProductStandard::class.java)
 
             startActivityForResult(intent, 100)
         }

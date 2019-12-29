@@ -5,8 +5,7 @@
     android:layout_width="308dp"
     android:layout_height="381dp"
     android:layout_gravity="center"
-    android:background="@drawable/dialog_product_standard_explain"
-    >
+    android:background="@drawable/dialog_product_standard_explain">
 
    <TextView
        android:id="@+id/txt_dialog_product_standard_content"

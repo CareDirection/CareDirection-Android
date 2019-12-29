@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:orientation="vertical"
+    android:id="@+id/rv_item_product">
+
+    <CheckedTextView
+        android:id="@+id/rv_item_product_indicator"
+        android:layout_width="4dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimaryLight" />
+
+    <ImageView
+        android:id="@+id/img_rv_search_item_product"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="13dp"
+        android:src="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_rv_search_item_product_ename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="10sp"
+        android:lines="1"
+        android:textColor="@color/colorDarkGrey"
+        android:textSize="12sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/txt_rv__search_item_product_publisher"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/img_rv_search_item_product"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Vita Naturals Inc" />
+
+    <TextView
+        android:id="@+id/txt_rv__search_item_product_publisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#787878"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/txt_rv_search_item_product_ename"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="해외직구" />
+
+    <TextView
+        android:id="@+id/txt_rv_search_item_product_kname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="8sp"
+        android:lines="2"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_rv_search_item_product"
+        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_item_product_ename"
+        tools:text="더리얼 알티지 오메가 3 맥스 1400" />
+
+    <TextView
+        android:id="@+id/txt_rv_search_item_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:lineSpacingExtra="6sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_rv_search_item_product_kname"
+        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_item_product_kname"
+        tools:text="36,800 원" />
+
+    <TextView
+        android:id="@+id/txt_rv_search_item_perprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:lineSpacingExtra="6sp"
+        android:textColor="@color/colorDarkGrey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/txt_rv_search_item_product_price"
+        app:layout_constraintTop_toTopOf="@+id/txt_rv_search_item_product_price"
+        tools:text="(1일 750원)" />
+
+    <TextView
+        android:id="@+id/txt_rv_search_item_perstandard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:lineSpacingExtra="10sp"
+        android:textColor="@color/colorDarkGrey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/txt_rv_search_item_perprice"
+        app:layout_constraintTop_toTopOf="@+id/txt_rv_search_item_perprice"
+        tools:text="30정 기준" />
+
+    <CheckedTextView
+        android:id="@+id/img_rv_item_standard"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/selector_btn_rv_item_product"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_rv_search_item_perstandard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_rv_search_item_perstandard"
+        android:checked="true" />
+</androidx.constraintlayout.widget.ConstraintLayout>
