@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import kotlinx.android.synthetic.main.activity_product_search.*
+import kotlinx.android.synthetic.main.activity_product_standard.*
 import kotlinx.android.synthetic.main.dialog_product_standard_explation.view.*
 
 class ActivityProductStandard : AppCompatActivity() {
@@ -16,7 +16,7 @@ class ActivityProductStandard : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_search)
+        setContentView(R.layout.activity_product_standard)
 
         initList()
         activity_product_standard_item_standard1.setOnClickListener{
