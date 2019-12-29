@@ -14,7 +14,7 @@ class FunctionalSelectedFeatureHolder(view: View) : RecyclerView.ViewHolder(view
         val text: TextView,
         val image: ImageView
     )
-
+    val txt_rv_item_functional_selected_4:TextView=view.findViewById(R.id.txt_rv_item_functional_selected_4)
     val rvFunctionalDatas = listOf(
         ViewUnit(
             view.findViewById(R.id.rv_item_functional_selected_1),
@@ -42,5 +42,6 @@ class FunctionalSelectedFeatureHolder(view: View) : RecyclerView.ViewHolder(view
                 itemView.context.getDrawable(item.getDrawable(data))
             )
         }
+        txt_rv_item_functional_selected_4.text =item.featureName
     }
 }
