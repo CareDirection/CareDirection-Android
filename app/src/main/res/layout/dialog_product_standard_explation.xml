@@ -62,9 +62,11 @@
         android:text="닫기"
         android:textColor="#727272"
         android:textSize="14sp"
+        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_dialog_product_standard_explain"
         android:layout_marginTop="51dp"
+
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

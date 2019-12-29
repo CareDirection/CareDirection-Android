@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import kotlinx.android.synthetic.main.activity_product_search.*
+import kotlinx.android.synthetic.main.activity_product_search.view.*
 import kotlinx.android.synthetic.main.dialog_product_standard_explation.view.*
 
 class ActivityProductSearch : AppCompatActivity() {
@@ -23,6 +24,9 @@ class ActivityProductSearch : AppCompatActivity() {
         initList()
         activity_product_cardview_standard1_txt.setOnClickListener{
             contentDialog()
+        }
+        img_activity_product_top_filter.setOnClickListener{
+            filterDialog()
         }
     }
     private fun initList(){
@@ -59,4 +63,19 @@ class ActivityProductSearch : AppCompatActivity() {
             finish()
         }
     }
+    private fun filterDialog(){
+        val builder = AlertDialog.Builder(this)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_product_standard_filter, null)
+
+
+        builder.setView(dialogView)
+            .setPositiveButton("확인") { dialogInterface, i ->
+
+            }
+            .setNegativeButton("취소") { dialogInterface, i ->
+
+            }
+            .show()
+    }
+
 }
