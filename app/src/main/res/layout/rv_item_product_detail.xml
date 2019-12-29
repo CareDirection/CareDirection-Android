@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/img_product_detail_item"
-        app:layout_constraintTop_toTopOf="img_product_detail_item"
+        app:layout_constraintTop_toTopOf="@+id/img_product_detail_item"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="11dp"
         android:textSize="16sp"

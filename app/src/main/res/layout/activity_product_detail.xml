@@ -625,8 +625,8 @@
                     android:textSize="14sp"
                     android:textColor="#00a5a8"
                     android:lineSpacingExtra="2sp"
-                    app:layout_constraintStart_toEndOf="txt_product_detail_naver_title"
-                    app:layout_constraintTop_toTopOf="txt_product_detail_naver_title"
+                    app:layout_constraintStart_toEndOf="@+id/txt_product_detail_naver_title"
+                    app:layout_constraintTop_toTopOf="@+id/line_start_product_detail_naver_Intake"
                     android:text="3개"
                     />
                 <androidx.recyclerview.widget.RecyclerView

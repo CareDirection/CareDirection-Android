@@ -1,14 +1,17 @@
 package com.example.caredirection.product.standard
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckedTextView
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.product.detail.ActivityProductDetail
 
 class MainProductAdapter(private val context: Context): RecyclerView.Adapter<MainProductAdapter.MainProductHolder>() {
     var data = mutableListOf<main_product_rv_item>()
@@ -41,6 +44,7 @@ class MainProductAdapter(private val context: Context): RecyclerView.Adapter<Mai
         val rv_item_product_indicator:CheckedTextView = view.findViewById(R.id.rv_standard_item_product_indicator)
         val img_rv_item_standard: CheckedTextView = view.findViewById(R.id.img_rv_standard_item_filter)
 
+
         /*fun bind(position: Int){
             val item = data[position]
             txt_search_nutrient.text = item.nutrient
@@ -65,11 +69,12 @@ class MainProductAdapter(private val context: Context): RecyclerView.Adapter<Mai
 
 
             itemView.setOnClickListener{
-                (0 until data.size).forEach {
+             (0 until data.size).forEach {
                     data[it] = data[it].copy(Check = false)
                 }
                 data[position] = data[position].copy(Check = true)
                 notifyDataSetChanged()
+
             }
         }
     }
