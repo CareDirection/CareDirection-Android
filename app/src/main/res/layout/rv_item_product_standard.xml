@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorPrimaryLight" />
+        android:background="@drawable/selector_product_standard_bar"
+        android:checked="false"/>
 
     <ImageView
         android:id="@+id/img_rv_standard_item_product"
