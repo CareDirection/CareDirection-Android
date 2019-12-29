@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -100,6 +101,15 @@ class HomeFragment : Fragment() {
             RvCareProductData(R.color.colorRed,true,"ddddddddd"),
             RvCareProductData(R.color.colorRed,true,"ddddddddd")
         )
+
+        //프래그먼트 다이얼로그 생성
+        val fm=fragmentManager!!
+        val myfrag=CustomDialogFragment()
+        myfrag.show(fm,"demo")
+        //
+
+
+
     }
 
 

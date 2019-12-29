@@ -8,7 +8,9 @@ import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductRegisterData
 import org.w3c.dom.Text
 
-class CareProductRegisterHolder(view: View) : RecyclerView.ViewHolder(view){
+class CareProductRegisterHolder(view: View) : RecyclerView.ViewHolder(view),View.OnClickListener{
+
+
     val amount : TextView = view.findViewById(R.id.txt_rv_item_care_register_amount)
     val image:ImageView=view.findViewById(R.id.img_rv_item_care_register)
     val company:TextView=view.findViewById(R.id.txt_rv_item_care_register_company)
@@ -30,6 +32,10 @@ class CareProductRegisterHolder(view: View) : RecyclerView.ViewHolder(view){
         priceView.text=data.price.toString()+"원"
         priceADay.text="(1일 "+data.priceADay.toString()+"원)"
         amountStandardPillsVIew.text=data.amountStandardPills.toString()+"정 기준"
+
+    }
+    override fun onClick(v: View?) {
+       //todo 다이얼로그 띄우기
 
     }
 
