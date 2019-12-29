@@ -4,20 +4,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.caredirection.R
+import com.example.caredirection.common.logDebug
+import kotlin.math.min
 
-class TopDownDialogHolder(context: Context, private val isGrid: Boolean, private val count: Int) : BaseAdapter() {
+class TopDownDialogHolder(context: Context) : BaseAdapter() {
+
+    data class Child(
+        val index: String,
+        val name: String
+    )
+
+    var data = listOf<Child>()
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getCount(): Int {
-        return count
+        return min(data.size + 1, MAX_CHILD_NUM)
     }
 
     override fun getItem(position: Int): Any {
-        return position
+        return data[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -25,37 +35,49 @@ class TopDownDialogHolder(context: Context, private val isGrid: Boolean, private
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val viewHolder: ViewHolder
-        var view: View? = convertView
+        return when(getViewType(position)) {
+            ENTRY -> {
+                "${data.size} ${getViewType(position)}, $position ".logDebug()
 
-        view = layoutInflater.inflate(R.layout.dialog_top_down_home_list_item, parent, false)
+                val current = data[position]
 
+                val view = layoutInflater.inflate(R.layout.rv_item_home_top_down_user, parent, false)
 
-            viewHolder = ViewHolder(
-                view!!.findViewById(R.id.text_view),
-                view!!.findViewById(R.id.image_view)
-            )
-            view.tag = viewHolder
+                view.setOnClickListener {
+                    //TODO: 유저 변경하는 이벤트 연결 서버통신
+                    "$current is clicked".logDebug()
+                }
 
-        val context = parent.context
-        when (position) {
-            0 -> {
-                viewHolder.textView.text = "엄마"
-                viewHolder.imageView.setImageResource(R.color.colorRed)
-            }
-            1 -> {
-                viewHolder.textView.text = "엄마"
-                viewHolder.imageView.setImageResource(R.color.colorRed)
+                view.findViewById<TextView>(R.id.txt_home_top_down_child_user_name).text = current.name
+
+                view.findViewById<View>(R.id.btn_home_top_down_delete).setOnClickListener {
+                    //TODO: 유저 삭제하는 서버 통신 연결
+                    "$current is deleted".logDebug()
+                }
+
+                view
             }
             else -> {
-                viewHolder.textView.text = "엄마"
-                viewHolder.imageView.setImageResource(R.color.colorRed)
+                val view = layoutInflater.inflate(R.layout.rv_item_home_top_down_add_user, parent, false)
+
+                view.findViewById<View>(R.id.btn_home_top_down_child_add_user_name).setOnClickListener {
+                    //TODO: Child 추가하는 화면으로 이동하기
+                    "child 추가 하는 화면으로 이동하기".logDebug()
+                }
+
+                view
             }
         }
-
-        return view!!
     }
 
-    data class ViewHolder(val textView: TextView, val imageView: ImageView)
+    private fun getViewType(position: Int): Int {
+        return if (data.size < MAX_CHILD_NUM && position == data.size) FOOTER else ENTRY
+    }
 
+    companion object {
+        const val FOOTER = 0
+        const val ENTRY = 1
+
+        const val MAX_CHILD_NUM = 4
+    }
 }
