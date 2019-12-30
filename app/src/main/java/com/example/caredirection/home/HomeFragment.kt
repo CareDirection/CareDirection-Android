@@ -2,11 +2,13 @@ package com.example.caredirection.home
 
 import android.content.Intent
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -24,6 +26,7 @@ import com.orhanobut.dialogplus.DialogPlus
 import com.orhanobut.dialogplus.DialogPlusBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.menu_top_home.view.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -115,7 +118,7 @@ class HomeFragment : Fragment() {
         //TOdo 리싸이클러뷰가 있으면 보이게 바꾸고 card 사라지게 만들기
         btn_home_care_product_register.setOnClickListener{
             rv_care_view.isVisible=true
-            btn_home_care_product_register.isVisible=false
+            btn_home_care_product_register.visibility=GONE
         }
 
 
@@ -144,7 +147,7 @@ class HomeFragment : Fragment() {
         //
 
         //
-        homeFragmentView.btn_home_user_select.setOnClickListener {
+        homeFragmentView.btn_home_user_select.btn_change_user.setOnClickListener {
             //todo
             // topDownDialog=DialogPlus.newDialog(context)//빌더 설정
             // .setExpanded(true,100)
