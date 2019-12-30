@@ -173,7 +173,7 @@
 
         <TextView
             android:id="@+id/txt_rv_item_functional_selected_4"
-            android:layout_width="wrap_content"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="22dp"
