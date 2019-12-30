@@ -10,11 +10,15 @@ import android.text.SpannableStringBuilder
 import com.example.caredirection.R
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.WindowManager
 import android.widget.*
+import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_gender.*
+import kotlinx.android.synthetic.main.dialog_yearpicker.*
+import java.util.*
 
 
 class ResearchGenderActivity : AppCompatActivity() {
@@ -36,10 +40,12 @@ class ResearchGenderActivity : AppCompatActivity() {
                 ResearchKeeper.MALE -> {
                     chtxt_gender_women.isChecked = false
                     chtxt_gender_man.isChecked = true
+                    gender_selec = true
                 }
                 else -> {
                     chtxt_gender_women.isChecked = true
                     chtxt_gender_man.isChecked = false
+                    gender_selec = true
                 }
             }
         }
@@ -49,6 +55,7 @@ class ResearchGenderActivity : AppCompatActivity() {
             txt_year_picker.text = it.toString()
         }
 
+        checkSelectButton()
         makeController()
         setColorInPartitial()
     }
@@ -90,30 +97,46 @@ class ResearchGenderActivity : AppCompatActivity() {
             chtxt_gender_women?.isChecked = true
             chtxt_gender_man?.isChecked = false
             gender_selec = true
+            checkSelectButton()
         }
 
         chtxt_gender_man?.setOnClickListener{
             chtxt_gender_women?.isChecked = false
             chtxt_gender_man?.isChecked = true
             gender_selec = true
+            checkSelectButton()
         }
 
         txt_year_picker?.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.dialog_yearpicker, null)
-            val dialogText = dialogView.findViewById<NumberPicker>(R.id.picker_year)
+
+            //number_picker.formatter = String.format()
+//            number_picker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener() {
+//                override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
+//                    String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal).logDebug()
+//                }
+//            })
 
             builder.setView(dialogView)
                 .setPositiveButton("확인") { dialogInterface, i ->
-                    txt_year_picker?.text = dialogText.toString()
+                    //txt_year_picker?.text = number_picker.value.toString()
                     /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
-
                 }
                 .setNegativeButton("취소") { dialogInterface, i ->
-                    /* 취소일 때 아무 액션이 없으므로 빈칸 */
+                    txt_year_picker?.text = ""
                 }
                 .show()
+
+            checkSelectButton()
         }
+    }
+
+    private fun checkSelectButton(): Boolean{
+        if(gender_selec || txt_year_picker.text.isNotEmpty()){
+            return true
+        }
+        return false
     }
 
     // 강조타이틀 설정

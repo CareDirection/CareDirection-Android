@@ -38,7 +38,11 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         keeper.disease?.let { set ->
             disButtons
                 .filter { it.text in set }
-                .forEach { it.isChecked = true }
+                .forEach {
+                    it.isChecked = true
+                    it.setTextColor(resources.getColor(R.color.colorPrimary))
+                    checkSelectButton()
+                }
         }
 
         makeController()
@@ -61,16 +65,25 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         txt_disease_nametitle.text = name + "님께서"
 
         btn_disease_clear.setOnClickListener {
-            disButtons.forEach { it.isChecked = false }
+            disButtons.forEach {
+                it.isChecked = false
+                it.setTextColor(resources.getColor(R.color.colorWhite))
+                checkSelectButton()
+            }
         }
 
-
+        disButtons.forEach {
+            it.setOnClickListener{
+                toast("눌림")
+                checkSelectButton()
+            }
+        }
 
         btn_disease_next.setOnClickListener{
-            if (!checkSelectButton()){
-                toast("뭘 고르고 넘기셈")
-                return@setOnClickListener
-            }
+//            if (!checkSelectButton()){
+//                toast("뭘 고르고 넘기셈")
+//                return@setOnClickListener
+//            }
 
             val set = mutableSetOf<String>()
             disButtons
@@ -87,8 +100,16 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
     }
 
-    private fun checkSelectButton(): Boolean{
-        return disButtons.any { it.isChecked }
+//    private fun checkSelectButton(): Boolean{
+//        return disButtons.any { it.isChecked }
+//    }
+    private fun checkSelectButton(){
+        if(disButtons.any { it.isChecked }){
+            btn_disease_next.isEnabled = true
+        }
+        else{
+            btn_disease_next.isEnabled = false
+        }
     }
 
     // 강조타이틀 설정

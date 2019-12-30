@@ -30,6 +30,10 @@ class ResearchNameActivity : AppCompatActivity() {
         //TODO: 유효하지 않은 정보가 들어있는 화면까지 Intent list 를 만들어서
         //TODO: startActivities 를 호출해주면 됩니다.
         edt_username.setText(keeper.name)
+        if(edt_username.length()>0){
+            btn_name_next?.isEnabled = true
+            btn_name_next?.setTextColor(resources.getColor(R.color.colorPrimary))
+        }
 
         makeController()
     }

@@ -277,7 +277,7 @@
         android:layout_marginEnd="122dp"
         android:layout_marginBottom="83dp"
         android:background="@drawable/selector_btn_next"
-        android:enabled="true"
+        android:enabled="false"
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center_horizontal|center_vertical"
         android:includeFontPadding="false"

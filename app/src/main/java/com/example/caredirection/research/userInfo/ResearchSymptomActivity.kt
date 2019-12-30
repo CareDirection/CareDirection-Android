@@ -37,7 +37,11 @@ class ResearchSymptomActivity : AppCompatActivity() {
         keeper.disease?.let { set ->
             btnSymptoms
                 .filter { it.text in set }
-                .forEach { it.isChecked = true }
+                .forEach {
+                    it.isChecked = true
+                    it.setTextColor(resources.getColor(R.color.colorPrimary))
+                    checkSelectButton()
+                }
         }
 
         makeController()
@@ -61,14 +65,24 @@ class ResearchSymptomActivity : AppCompatActivity() {
 
         btn_symptom_clear.setOnClickListener {
             btnSymptoms
-                .forEach { it.isChecked = false }
+                .forEach {
+                    it.isChecked = false
+                    it.setTextColor(resources.getColor(R.color.colorWhite))
+                }
+        }
+
+        btnSymptoms.forEach {
+            it.setOnClickListener{
+                toast("눌림")
+                checkSelectButton()
+            }
         }
 
         btn_symptom_next?.setOnClickListener{
-                if (!checkSelectButton()) {
-                    toast("나가")
-                    return@setOnClickListener
-                }
+//                if (!checkSelectButton()) {
+//                    toast("나가")
+//                    return@setOnClickListener
+//                }
 
                 keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
 
@@ -80,8 +94,16 @@ class ResearchSymptomActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkSelectButton(): Boolean{
-        return btnSymptoms.any { it.isChecked }
+//    private fun checkSelectButton(): Boolean{
+//        return btnSymptoms.any { it.isChecked }
+//    }
+    private fun checkSelectButton(){
+        if(btnSymptoms.any { it.isChecked }){
+            btn_symptom_next.isEnabled = true
+        }
+        else{
+            btn_symptom_next.isEnabled = false
+        }
     }
 
     // 강조타이틀 설정

@@ -58,6 +58,47 @@ class ResearchKeeper (context: Context) {
             }
         }
 
+    var alcohol: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_ALCOHOL, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_ALCOHOL, value?:-1)
+            }
+        }
+    var cigarette: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_CIGARETTE, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_CIGARETTE, value?:-1)
+            }
+        }
+    var vegetable: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_VEGETABLE, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_VEGETABLE, value?:-1)
+            }
+        }
+    var activity: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_ACTIVITY, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_ACTIVITY, value?:-1)
+            }
+        }
+
     companion object {
         private const val KEEPER = "research-keeper"
 
@@ -66,6 +107,10 @@ class ResearchKeeper (context: Context) {
         private const val RESEARCH_YEAR = "3"
         private const val RESEARCH_DISEASE = "4"
         private const val RESEARCH_SYMPTOM = "5"
+        private const val RESEARCH_ALCOHOL = "6"
+        private const val RESEARCH_CIGARETTE = "7"
+        private const val RESEARCH_VEGETABLE = "8"
+        private const val RESEARCH_ACTIVITY = "9"
 
         const val MALE = 0
         const val FEMALE = 1
