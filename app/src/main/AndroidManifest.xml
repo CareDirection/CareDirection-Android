@@ -11,10 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".setting.MyPageActivity"></activity>
-        <activity android:name=".research.lifestyle.LifeStyleActivity" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".product.standard.ActivityProductSearch" />
         <activity android:name=".care_product.CareRegisterComplete" />
+        <activity android:name=".setting.MyPageActivity"></activity>
+        <activity android:name=".research.lifestyle.LifeStyleActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".care_product.CareProductActivity" />
         <activity android:name=".research.ResearchChange" />
@@ -23,19 +30,13 @@
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
         <activity android:name=".home.HomeActivity"></activity>
         <activity android:name=".research.userInfo.ResearchNameActivity"></activity>
-        <activity android:name=".research.ResearchActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".research.ResearchActivity">        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <service android:name=".common.fcm.CadiFirebaseMessagingService">
+        <service android:name=".common.fcm.CadiFirebaseMessagingService" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-    </application>
 
+    </application>
 </manifest>
