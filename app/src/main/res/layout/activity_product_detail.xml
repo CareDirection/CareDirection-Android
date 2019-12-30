@@ -117,11 +117,10 @@
 
                 <Spinner
                     android:id="@+id/spinner_activity_product_detail_per"
-                    android:layout_width="65dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="12dp"
-                    android:background="@color/colorBlack"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_activity_product_detail_content_kname" />
 
@@ -129,7 +128,6 @@
                     android:id="@+id/txt_activity_product_detail_content_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
                     android:lineSpacingExtra="8sp"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
@@ -628,8 +626,9 @@
                     android:textSize="14sp"
                     android:textColor="#00a5a8"
                     android:lineSpacingExtra="2sp"
+                    android:layout_marginLeft="8dp"
                     app:layout_constraintStart_toEndOf="@+id/txt_product_detail_naver_title"
-                    app:layout_constraintTop_toTopOf="@+id/line_start_product_detail_naver_Intake"
+                    app:layout_constraintTop_toTopOf="@+id/txt_product_detail_naver_title"
                     android:text="3개"
                     />
                 <androidx.recyclerview.widget.RecyclerView
@@ -641,12 +640,20 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_product_detail_naver_title"
                     />
 
-                
+                //맨밑에 하단바 떄문에 짤리는거 막는거
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_product_detail_item"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
             //여기 넘으면 안댐
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </ScrollView>
 

@@ -24,10 +24,8 @@ class ProductSearchResult : AppCompatActivity() {
         val category = arrayOf("제품","성분")
         val categoryAdapter = ArrayAdapter(this@ProductSearchResult,R.layout.spinner_product_search_item, category)
 
-
-
         //region 스피너
-        categoryAdapter.setDropDownViewResource(R.layout.fragment_product_search)
+        categoryAdapter.setDropDownViewResource(R.layout.spinner_product_search_item)
         spinner_activity_product_search_result.adapter = categoryAdapter
 
         spinner_activity_product_search_result.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

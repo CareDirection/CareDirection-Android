@@ -7,4 +7,5 @@
     android:textColor="@color/colorPrimaryDark"
     android:lineSpacingExtra="6sp"
     android:textSize="14sp"
+    android:textAlignment="center"
     />

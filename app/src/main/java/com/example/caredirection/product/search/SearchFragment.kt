@@ -89,7 +89,7 @@ class SearchFragment : Fragment() {
             startActivityForResult(intent, 100)
         }
 
-        view.edit_search_fragment.setOnClickListener{
+        view.txt_search_fragment.setOnClickListener{
             val intent = Intent(context, ProductSearchResult::class.java)
 
             startActivity(intent)
