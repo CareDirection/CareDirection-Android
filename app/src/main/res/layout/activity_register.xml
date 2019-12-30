@@ -29,11 +29,43 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/line_activity_register"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/colorDarkGrey"
-        app:layout_constraintTop_toBottomOf="@+id/layout_activity_register_top"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_activity_register_top" />
+
+    <TextView
+        android:id="@+id/txt_activity_register_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#2b2d2e"
+        android:lineSpacingExtra="7sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_activity_register"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="16dp"
+        android:text="아이디"
+        android:fontFamily="@font/notosanskr_medium"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_activity_register_id"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_activity_register_id"
+        app:layout_constraintTop_toBottomOf="@+id/txt_activity_register_id"
+        android:layout_marginTop="7dp"
+        app:met_helperText="Inteafadsdafsadfsdafsdager"
+        />
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@+id/edt_activity_register_id"
+        app:layout_constraintTop_toTopOf="@+id/edt_activity_register_id"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/"
         />
 
 
