@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".product.standard.DialogProductStandardFilter"></activity>
+        <activity android:name=".ActivityRegister"></activity>
+        <activity android:name=".ActivityLogin" />
+        <activity android:name=".product.standard.DialogProductStandardFilter" />
         <activity android:name=".product.result.ProductSearchResult" />
         <activity android:name=".product.detail.ActivityProductDetail" />
         <activity android:name=".product.standard.ActivityProductStandard" />

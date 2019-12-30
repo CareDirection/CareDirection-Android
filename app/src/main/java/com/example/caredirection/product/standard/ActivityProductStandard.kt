@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,7 +74,6 @@ class ActivityProductStandard : AppCompatActivity() {
     private fun contentDialog() {
         val builder = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_product_standard_explation, null)
-
 
         val dialog = builder.setView(dialogView).show()
 

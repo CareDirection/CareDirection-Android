@@ -65,6 +65,9 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //로그인 material
+    'com.rengwoxian.materialeditted:library:2.1.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
