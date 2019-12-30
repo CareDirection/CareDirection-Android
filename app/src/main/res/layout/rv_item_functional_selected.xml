@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rv_item_functional_selected_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="761dp"
+        android:layout_marginTop="12dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible">
@@ -29,8 +28,8 @@
             android:id="@+id/txt_rv_item_functional_selected_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/notosanskr_light"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
@@ -40,6 +39,7 @@
             android:textColor="@color/colorDarkGrey"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_1" />
 
@@ -59,9 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-11dp"
-        android:layout_marginBottom="761dp"
+        android:layout_marginTop="12dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_1"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible">
@@ -89,8 +88,8 @@
             android:id="@+id/txt_rv_item_functional_selected_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="21dp"
             android:fontFamily="@font/notosanskr_light"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
@@ -99,6 +98,7 @@
             android:text="간건강"
             android:textColor="@color/colorDarkGrey"
             android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_2" />
 
@@ -109,9 +109,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-11dp"
-        android:layout_marginBottom="761dp"
+        android:layout_marginTop="12dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_2"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible">
@@ -139,8 +138,8 @@
             android:id="@+id/txt_rv_item_functional_selected_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
             android:layout_marginTop="1dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/notosanskr_light"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
@@ -149,6 +148,7 @@
             android:text="간건강"
             android:textColor="@color/colorDarkGrey"
             android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_3" />
 
@@ -158,6 +158,7 @@
         android:id="@+id/rv_item_functional_selected_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_3"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -165,11 +166,10 @@
             android:id="@+id/imageView15"
             android:layout_width="10dp"
             android:layout_height="10dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/gray_circle"
+            android:layout_marginTop="28dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@color/colorGrey" />
+            app:srcCompat="@drawable/gray_circle" />
 
         <TextView
             android:id="@+id/txt_rv_item_functional_selected_4"
