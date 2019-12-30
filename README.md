@@ -9,8 +9,17 @@ careDirection_Android파트 git 장소입니다.
 * ### DialogPlus : dialog animate 적용하기 위해 사용
 * ### Google Material : google material design 적용을 위해 사용
 * ### Retrofit+Gson : Json 데이터를 이용한 rest 서버 통신을 위해 사용
-* ### Firebase : firebase cloud messaging
-
+* ### Firebase : firebase cloud messaging  
+  
+  
+## 핵심기능
+* ### 설문조사
+* ### 설문조사에 따른 그래프 
+* ### 제품 기준 확인 및 검색
+* ### 성분학습  
+  
+  
+  
 # Naming Rule
 * ## View id값
 	* 버튼 : btn_
