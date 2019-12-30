@@ -8,23 +8,41 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import android.view.WindowManager
+import android.widget.CheckBox
+import android.widget.Checkable
+import android.widget.CheckedTextView
 import com.example.caredirection.R
+import com.example.caredirection.common.toast
+import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_disease.*
 
 class ResearchDiseaseActivity : AppCompatActivity() {
 
+    private lateinit var disButtons : List<CheckBox>
+    private lateinit var keeper :ResearchKeeper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_research_disease)
+        keeper = ResearchKeeper(this)
 
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_disease.setPadding(0, statusBarHeight(this), 0, 0)
 
+        disButtons = listOf(
+            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6, btn_disease_clear
+        )
+
+        keeper.disease?.let { set ->
+            disButtons
+                .filter { it.text in set }
+                .forEach { it.isChecked = true }
+        }
+
         makeController()
         setColorInPartitial()
-
-
     }
 
     // 상태바 배경투명 설정
@@ -38,145 +56,39 @@ class ResearchDiseaseActivity : AppCompatActivity() {
     // 사용자 입력받아서 초기화
     private fun makeController(){
 
-        val name: String = intent.getStringExtra("username")
+        val name = keeper.name
 
         txt_disease_nametitle.text = name + "님께서"
 
-//        edt_username?.addTextChangedListener(object : TextWatcher{
-//            override fun afterTextChanged(p0: Editable?) {
-//                toast("입력")
-//            }
-//        })
+        btn_disease_clear.setOnClickListener {
+            disButtons.forEach { it.isChecked = false }
+        }
+
+
 
         btn_disease_next.setOnClickListener{
-            //            val name = edt_username?.text.toString()
-//
-//            // 이름 빈칸일 경우,
-//            if(name.isEmpty()){
-//                toast("입력")
-//            }
-//            else{
-//                //btn_name_next.
-//                //btn_name_next.setBackgroundResource(R.drawable.yellow_border)
-//
+            if (!checkSelectButton()){
+                toast("뭘 고르고 넘기셈")
+                return@setOnClickListener
+            }
+
+            val set = mutableSetOf<String>()
+            disButtons
+                .filter { it.isChecked }
+                .forEach { set.add(it.text.toString()) }
+            keeper.disease = set
+
             val symptom_intent = Intent(this,ResearchSymptomActivity::class.java)
             symptom_intent.putExtra("username",name)
 
             startActivity(symptom_intent)
-//            }
         }
 
-        btn_disease_1.setOnClickListener{
-            if(btn_disease_1.isSelected) {
-                btn_disease_1.isSelected = false
-                btn_disease_1.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_1.isSelected = true
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_1.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
-        btn_disease_2.setOnClickListener{
-            if(btn_disease_2.isSelected) {
-                btn_disease_2.isSelected = false
-                btn_disease_2.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_2.isSelected = true
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_2.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
-        btn_disease_3.setOnClickListener{
-            if(btn_disease_3.isSelected) {
-                btn_disease_3.isSelected = false
-                btn_disease_3.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_3.isSelected = true
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_3.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
-        btn_disease_4.setOnClickListener{
-            if(btn_disease_4.isSelected) {
-                btn_disease_4.isSelected = false
-                btn_disease_4.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_4.isSelected = true
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_4.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
-        btn_disease_5.setOnClickListener{
-            if(btn_disease_5.isSelected) {
-                btn_disease_5.isSelected = false
-                btn_disease_5.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_5.isSelected = true
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_5.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
-        btn_disease_6.setOnClickListener{
-            if(btn_disease_6.isSelected) {
-                btn_disease_6.isSelected = false
-                btn_disease_6.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_6.isSelected = true
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_6.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
-        btn_disease_7.setOnClickListener{
-            if(btn_disease_7.isSelected) {
-                btn_disease_7.isSelected = false
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorWhite))
-            }
-            else {
-                btn_disease_7.isSelected = true
-                btn_disease_1.isSelected = false
-                btn_disease_2.isSelected = false
-                btn_disease_3.isSelected = false
-                btn_disease_4.isSelected = false
-                btn_disease_5.isSelected = false
-                btn_disease_6.isSelected = false
 
-                btn_disease_1.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_2.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_3.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_4.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_5.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_6.setTextColor(resources.getColor(R.color.colorWhite))
-                btn_disease_7.setTextColor(resources.getColor(R.color.colorPrimary))
-            }
-            checkSelectButton()
-        }
     }
 
-    private fun checkSelectButton(){
-        if(btn_disease_1.isSelected || btn_disease_2.isSelected || btn_disease_3.isSelected || btn_disease_4.isSelected ||btn_disease_5.isSelected || btn_disease_6.isSelected || btn_disease_7.isSelected ){
-            btn_disease_next.isEnabled = true
-        }
-        else{
-            btn_disease_next.isEnabled = false
-        }
+    private fun checkSelectButton(): Boolean{
+        return disButtons.any { it.isChecked }
     }
 
     // 강조타이틀 설정

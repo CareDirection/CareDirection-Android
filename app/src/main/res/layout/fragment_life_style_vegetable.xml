@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".research.lifestyle.LifeStyleVegetableFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/txt_vegetable_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="33dp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="12sp"
+        android:text="박진오님은\n일주일에 몇 회 이상\n녹황색 채소를 섭취하시나요?"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rg_vegetable_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_vegetable_title">
+
+        <RadioButton
+            android:id="@+id/btn_vegetable_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_regular"
+            android:button="@drawable/selector_radio_btn"
+            android:textSize="20sp"
+            android:checked="false"
+            android:lineSpacingExtra="9sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
+            android:text="7회 이상" />
+
+        <RadioButton
+            android:id="@+id/btn_vegetable_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_regular"
+            android:button="@drawable/selector_radio_btn"
+            android:textSize="20sp"
+            android:checked="false"
+            android:lineSpacingExtra="9sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
+            android:text="5회 ~ 6회" />
+
+        <RadioButton
+            android:id="@+id/btn_vegetable_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_regular"
+            android:button="@drawable/selector_radio_btn"
+            android:textSize="20sp"
+            android:checked="false"
+            android:lineSpacingExtra="9sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
+            android:text="3회 ~ 4회" />
+
+        <RadioButton
+            android:id="@+id/btn_vegetable_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_regular"
+            android:button="@drawable/selector_radio_btn"
+            android:textSize="20sp"
+            android:checked="false"
+            android:lineSpacingExtra="9sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorWhite"
+            android:text="2회 이하" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_vegetable_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="122dp"
+        android:text="다음"
+        android:enabled="false"
+        android:background="@drawable/selector_btn_next"
+        android:textColor="@color/colorTranslucenceLight"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="20sp"
+        android:lineSpacingExtra="9sp"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_vegetable_1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
