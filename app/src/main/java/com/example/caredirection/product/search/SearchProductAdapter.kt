@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckedTextView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
@@ -29,10 +28,10 @@ class SearchProductAdapter(private val context: Context): RecyclerView.Adapter<S
 
     inner class SearchProductHolder(view: View):RecyclerView.ViewHolder(view) {
 
-        val txt_rv_search_item_ename : TextView = view.findViewById(R.id.txt_rv_standard_item_product_ename)
-        val txt_rv_search_item_publisher: TextView = view.findViewById(R.id.txt_rv_standard_item_product_publisher)
-        val txt_rv_search_item_kname: TextView = view.findViewById(R.id.txt_rv_standard_item_product_kname)
-        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_standard_item_product_price)
+        val txt_rv_search_item_ename : TextView = view.findViewById(R.id.txt_rv_search_result_item_ename)
+        val txt_rv_search_item_publisher: TextView = view.findViewById(R.id.txt_rv_search_result_item_publisher)
+        val txt_rv_search_item_kname: TextView = view.findViewById(R.id.txt_rv_search_result_item_kname)
+        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_search_result_item_price)
 
 
         fun bind(data: rv_search_item){

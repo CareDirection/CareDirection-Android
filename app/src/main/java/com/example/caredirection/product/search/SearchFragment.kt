@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.product.result.ProductSearchResult
 import com.example.caredirection.product.standard.ActivityProductStandard
 import kotlinx.android.synthetic.main.fragment_product_search.view.*
 
@@ -86,6 +87,12 @@ class SearchFragment : Fragment() {
             val intent = Intent(context, ActivityProductStandard::class.java)
 
             startActivityForResult(intent, 100)
+        }
+
+        view.edit_search_fragment.setOnClickListener{
+            val intent = Intent(context, ProductSearchResult::class.java)
+
+            startActivity(intent)
         }
 
         return view

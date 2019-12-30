@@ -1,17 +1,14 @@
 package com.example.caredirection.product.standard
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckedTextView
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import com.example.caredirection.product.detail.ActivityProductDetail
 
 class MainProductAdapter(private val context: Context): RecyclerView.Adapter<MainProductAdapter.MainProductHolder>() {
     var data = mutableListOf<main_product_rv_item>()
@@ -33,13 +30,13 @@ class MainProductAdapter(private val context: Context): RecyclerView.Adapter<Mai
     inner class MainProductHolder(view: View): RecyclerView.ViewHolder(view) {
         var item = listOf<MainProductAdapter>()
 
-        val img_rv_item_product: ImageView = view.findViewById(R.id.img_rv_standard_item_product)
-        val txt_rv_item_product_ename : TextView = view.findViewById(R.id.txt_rv_standard_item_product_ename)
-        val txt_rv_item_product_publisher: TextView = view.findViewById(R.id.txt_rv_standard_item_product_publisher)
-        val txt_rv_item_product_kname: TextView = view.findViewById(R.id.txt_rv_standard_item_product_kname)
-        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_standard_item_product_price)
-        val txt_rv_item_product_perprice: TextView = view.findViewById(R.id.txt_rv_standard_item_perprice)
-        val txt_rv_item_product_perstandard: TextView = view.findViewById(R.id.txt_rv_standard_item_perstandard)
+        val img_rv_item_product: ImageView = view.findViewById(R.id.img_rv_search_result_item_product)
+        val txt_rv_item_product_ename : TextView = view.findViewById(R.id.txt_rv_search_result_item_ename)
+        val txt_rv_item_product_publisher: TextView = view.findViewById(R.id.txt_rv_search_result_item_publisher)
+        val txt_rv_item_product_kname: TextView = view.findViewById(R.id.txt_rv_search_result_item_kname)
+        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_search_result_item_price)
+        val txt_rv_item_product_perprice: TextView = view.findViewById(R.id.txt_rv_search_result_item_perprice)
+        val txt_rv_item_product_perstandard: TextView = view.findViewById(R.id.txt_rv_search_result_item_perstandard)
 
         val rv_item_product_indicator:CheckedTextView = view.findViewById(R.id.rv_standard_item_product_indicator)
         val img_rv_item_standard: CheckedTextView = view.findViewById(R.id.img_rv_standard_item_filter)

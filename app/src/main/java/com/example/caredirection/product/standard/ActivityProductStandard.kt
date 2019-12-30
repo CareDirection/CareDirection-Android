@@ -12,11 +12,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import com.example.caredirection.common.toast
+import com.example.caredirection.product.result.ProductSearchResult
 import com.example.caredirection.product.detail.ActivityProductDetail
 import kotlinx.android.synthetic.main.activity_product_standard.*
 import kotlinx.android.synthetic.main.dialog_product_standard_explation.view.*
-import kotlinx.android.synthetic.main.dialog_product_standard_filter.*
 import kotlinx.android.synthetic.main.dialog_product_standard_filter.view.*
 
 class ActivityProductStandard : AppCompatActivity() {
@@ -40,9 +39,11 @@ class ActivityProductStandard : AppCompatActivity() {
         img_activity_product_top_filter.setOnClickListener {
             filterDialog()
         }
-        /*rv_main_product.setOnClickListener{
+        img_activity_product_top_search.setOnClickListener{
+            val intent = Intent(this@ActivityProductStandard, ProductSearchResult::class.java)
 
-        }*/
+            startActivity(intent)
+        }
     }
 
     private fun initList() {
@@ -172,13 +173,13 @@ class ActivityProductStandard : AppCompatActivity() {
             var item = listOf<MainProductAdapter>()
 
             val txt_rv_item_product_ename: TextView =
-                view.findViewById(R.id.txt_rv_standard_item_product_ename)
+                view.findViewById(R.id.txt_rv_search_result_item_ename)
             val txt_rv_item_product_publisher: TextView =
-                view.findViewById(R.id.txt_rv_standard_item_product_publisher)
+                view.findViewById(R.id.txt_rv_search_result_item_publisher)
             val txt_rv_item_product_kname: TextView =
-                view.findViewById(R.id.txt_rv_standard_item_product_kname)
+                view.findViewById(R.id.txt_rv_search_result_item_kname)
             val txt_rv_item_product_price: TextView =
-                view.findViewById(R.id.txt_rv_standard_item_product_price)
+                view.findViewById(R.id.txt_rv_search_result_item_price)
 
             val rv_item_product_indicator: CheckedTextView =
                 view.findViewById(R.id.rv_standard_item_product_indicator)

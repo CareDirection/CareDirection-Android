@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".product.standard.DialogProductStandardFilter"></activity>
-        <activity android:name=".product.ProductSearchResult" />
+        <activity android:name=".product.result.ProductSearchResult" />
         <activity android:name=".product.detail.ActivityProductDetail" />
         <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".care_product.CareRegisterComplete" />
