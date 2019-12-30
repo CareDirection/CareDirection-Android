@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +36,6 @@ class HomeFragment : Fragment() {
     //private lateinit var
     private var rvCareProductData = listOf<RvCareProductData>()
     private lateinit var homeFragmentView: View
-    private lateinit var rvCareView: RecyclerView
     private lateinit var rvCareProductAdapter: CareProductAdapter
     private lateinit var topDownDialog: DialogPlusBuilder
 
@@ -98,6 +98,7 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
         rv_home_functional_selected_view.layoutManager=LinearLayoutManager(context)
         val rvHomeFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(context!!)
         rv_home_functional_selected_view.adapter = rvHomeFunctionalSelectedFeatureAdapter
@@ -111,18 +112,22 @@ class HomeFragment : Fragment() {
         )
 
 
-
+        //TOdo 리싸이클러뷰가 있으면 보이게 바꾸고 card 사라지게 만들기
+        btn_home_care_product_register.setOnClickListener{
+            rv_care_view.isVisible=true
+            btn_home_care_product_register.isVisible=false
+        }
 
 
         //card-리사이클러뷰 가져오기
-        rvCareView = homeFragmentView.findViewById(R.id.rv_care_view) as RecyclerView
+
+        //rvCareView.isVisible=true
         //리사이클러뷰 레이아웃 설정
-        rvCareView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rv_care_view.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         //어댑더 정의
         rvCareProductAdapter = CareProductAdapter(context!!)
         //카드뷰에 어댑터 연결
-        rvCareView.adapter = rvCareProductAdapter
+        rv_care_view.adapter = rvCareProductAdapter
 
         //더미 데이터 넣어주기
         rvCareProductAdapter.data = listOf(

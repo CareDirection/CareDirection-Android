@@ -298,14 +298,13 @@
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout2"
+                    android:id="@+id/btn_home_care_product_register"
                     android:layout_width="328dp"
                     android:layout_height="116dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/gray_border_view_18"
-                    android:elevation="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_care_product_title">
@@ -345,11 +344,12 @@
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="60dp"
                     android:scrollbars="horizontal"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+                    app:layout_constraintTop_toBottomOf="@+id/btn_home_care_product_register">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
