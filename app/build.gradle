@@ -66,8 +66,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    //circle image
+
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.mikhaellopez:circularimageview:4.1.1'
 
 
 }
