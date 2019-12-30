@@ -1,6 +1,12 @@
 # Care-Direction
 careDirection_Android파트 git 장소입니다.
 
+<div>
+	<img width="200" src="[워크플로우_제품.pdf](https://github.com/CareDirection/CareDirection-Android/files/4009648/_.pdf)
+">
+</div>
+
+
 Naming Rule
 * ## View id값
 	* 버튼 : btn_
