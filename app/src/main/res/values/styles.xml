@@ -10,4 +10,8 @@
         <item name="colorControlActivated">@color/colorYellow</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground"></item>
+    </style>
+
 </resources>

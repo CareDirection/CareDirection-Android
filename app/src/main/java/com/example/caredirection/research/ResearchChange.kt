@@ -1,6 +1,7 @@
 package com.example.caredirection.research
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.caredirection.R
+import com.example.caredirection.research.lifestyle.LifeStyleActivity
 import kotlinx.android.synthetic.main.activity_research_change.*
 
 class ResearchChange : AppCompatActivity() {
@@ -23,7 +25,16 @@ class ResearchChange : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_change.setPadding(0, statusBarHeight(this), 0, 0)
 
+        val name: String = intent.getStringExtra("username")
+
         txt_change_title = findViewById(R.id.txt_change_title)
+
+        btn_change_next.setOnClickListener{
+            val intent = Intent(this,LifeStyleActivity::class.java)
+            intent.putExtra("username",name)
+
+            startActivity(intent)
+        }
 
         setColorInPartitial()
     }

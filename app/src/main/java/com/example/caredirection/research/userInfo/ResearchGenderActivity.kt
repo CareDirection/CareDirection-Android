@@ -10,32 +10,52 @@ import android.text.SpannableStringBuilder
 import com.example.caredirection.R
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.WindowManager
 import android.widget.*
+import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
+import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_gender.*
+import kotlinx.android.synthetic.main.dialog_yearpicker.*
+import java.util.*
 
 
 class ResearchGenderActivity : AppCompatActivity() {
 
-
-    private var txt_gender_nametitle: TextView? = null
-    private var txt_gender_namesubtitle: TextView? = null
-    private var txt_gender_subtitle: TextView? = null
-    private var btn_gender_next: Button? = null
-    private var chtxt_gender_women: CheckedTextView? = null
-    private var chtxt_gender_man: CheckedTextView? = null
-    private var txt_year_picker: TextView? = null
+    private lateinit var keeper :ResearchKeeper
 
     private var gender_selec: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_research_gender)
+        keeper = ResearchKeeper(this)
 
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_gender.setPadding(0, statusBarHeight(this), 0, 0)
 
+        keeper.gender?.let {
+            when (it) {
+                ResearchKeeper.MALE -> {
+                    chtxt_gender_women.isChecked = false
+                    chtxt_gender_man.isChecked = true
+                    gender_selec = true
+                }
+                else -> {
+                    chtxt_gender_women.isChecked = true
+                    chtxt_gender_man.isChecked = false
+                    gender_selec = true
+                }
+            }
+        }
+
+        keeper.year?.let {
+            //TODO: 이거 피커로 변경해서 피커를 세팅
+            txt_year_picker.text = it.toString()
+        }
+
+        checkSelectButton()
         makeController()
         setColorInPartitial()
     }
@@ -50,16 +70,7 @@ class ResearchGenderActivity : AppCompatActivity() {
 
     // 사용자 입력받아서 초기화
     private fun makeController(){
-        //edt_username = findViewById((R.id.edt_username))
-        txt_gender_nametitle = findViewById(R.id.txt_gender_nametitle)
-        txt_gender_namesubtitle = findViewById(R.id.txt_gender_namesubtitle)
-        btn_gender_next = findViewById(R.id.btn_gender_next)
-        txt_gender_subtitle = findViewById(R.id.txt_gender_subtitle)
-        chtxt_gender_women = findViewById(R.id.chtxt_gender_women)
-        chtxt_gender_man = findViewById(R.id.chtxt_gender_man)
-        txt_year_picker = findViewById(R.id.txt_year_picker)
-
-        val name: String = intent.getStringExtra("username")
+        val name = keeper.name
 
         txt_gender_nametitle?.text = name + "님,"
         txt_gender_namesubtitle?.text = name + "님만의"
@@ -67,10 +78,14 @@ class ResearchGenderActivity : AppCompatActivity() {
         btn_gender_next?.setOnClickListener{
             val year = txt_year_picker?.text
 
-            if(gender_selec == false || year?.isEmpty()!!){
+            if(!gender_selec || year?.isEmpty()!!){
                 toast("아직 체크하지 않은 사항이 있습니다.")
             }
             else {
+                keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
+                //TODO: 이거 피커 값으로 세팅해주어야 함.
+                keeper.year = 1999
+
                 val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
                 disease_intent.putExtra("username", name)
 
@@ -82,30 +97,46 @@ class ResearchGenderActivity : AppCompatActivity() {
             chtxt_gender_women?.isChecked = true
             chtxt_gender_man?.isChecked = false
             gender_selec = true
+            checkSelectButton()
         }
 
         chtxt_gender_man?.setOnClickListener{
             chtxt_gender_women?.isChecked = false
             chtxt_gender_man?.isChecked = true
             gender_selec = true
+            checkSelectButton()
         }
 
         txt_year_picker?.setOnClickListener{
-//            val builder = AlertDialog.Builder(this)
-//            val dialogView = layoutInflater.inflate(R.layout.year_picker, null)
-//            val dialogText = dialogView.findViewById<NumberPicker>(R.id.picker_year)
-//
-//            builder.setView(dialogView)
-//                .setPositiveButton("확인") { dialogInterface, i ->
-//                    txt_year_picker?.text = dialogText.toString()
-//                    /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
-//
+            val builder = AlertDialog.Builder(this)
+            val dialogView = layoutInflater.inflate(R.layout.dialog_yearpicker, null)
+
+            //number_picker.formatter = String.format()
+//            number_picker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener() {
+//                override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
+//                    String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal).logDebug()
 //                }
-//                .setNegativeButton("취소") { dialogInterface, i ->
-//                    /* 취소일 때 아무 액션이 없으므로 빈칸 */
-//                }
-//                .show()
+//            })
+
+            builder.setView(dialogView)
+                .setPositiveButton("확인") { dialogInterface, i ->
+                    //txt_year_picker?.text = number_picker.value.toString()
+                    /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
+                }
+                .setNegativeButton("취소") { dialogInterface, i ->
+                    txt_year_picker?.text = ""
+                }
+                .show()
+
+            checkSelectButton()
         }
+    }
+
+    private fun checkSelectButton(): Boolean{
+        if(gender_selec || txt_year_picker.text.isNotEmpty()){
+            return true
+        }
+        return false
     }
 
     // 강조타이틀 설정
