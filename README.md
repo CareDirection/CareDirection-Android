@@ -13,7 +13,7 @@ Naming Rule
 	
 	
   	
-* # Border 
+* ## Border 
 	* ### radius
     		기본 틀 : color_border_form
 		* 6dp  -> color_border_square / gray_boder_line
