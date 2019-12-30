@@ -16,6 +16,13 @@
     <color name="colorGrey">#CDCDCD</color>
     <color name="colorDarkGrey">#787878</color>
 
+    <color name="colorIngredient1">#f0a5a5</color>
+    <color name="colorIngredient2">#83ccd2</color>
+    <color name="colorIngredient3">#778ece</color>
+    <color name="colorIngredient4">#a3bee6</color>
+    <color name="colorIngredient5">#94cb94</color>
+    <color name="colorIngredient6">#fdd477</color>
+
     <color name="colorYellow">#EBF0B0</color>
 </resources>
 

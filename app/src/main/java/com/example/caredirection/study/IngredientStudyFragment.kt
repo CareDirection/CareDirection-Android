@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caredirection.R
 import com.example.caredirection.data.RvFunctionalAllData
+import com.example.caredirection.data.RvIngredientData
 import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
+import com.example.caredirection.study.ingredient.IngredientAdapter
 import kotlinx.android.synthetic.main.activity_home_functional.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_ingredient_study.*
@@ -34,6 +37,20 @@ class StudyFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         top_bar_ingredient_study.txt_top_bar_title.text = "성분학습"
+
+        //성분 리싸이클러뷰
+        rv_ingredient_view.layoutManager=LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val rvIngredientAdapter=IngredientAdapter(context!!)
+        rv_ingredient_view.adapter=rvIngredientAdapter
+       rvIngredientAdapter.data= listOf(
+            RvIngredientData(R.color.colorIngredient1,"홍삼"),
+           RvIngredientData(R.color.colorIngredient2,"오메가 3"),
+           RvIngredientData(R.color.colorIngredient3,"밀크씨슬"),
+           RvIngredientData(R.color.colorIngredient4,"루테인"),
+           RvIngredientData(R.color.colorIngredient5,"유산균"),
+           RvIngredientData(R.color.colorIngredient6,"비타민 D")
+        )
+
 
 
 
