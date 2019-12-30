@@ -4,9 +4,14 @@ careDirection_Android파트 git 장소입니다.
 
 ![workflow_product](https://user-images.githubusercontent.com/48307960/71580292-5493d880-2b43-11ea-85c1-4cdc682be3f7.png)
 
+## Library
+* ### MpAndroid Chart: 그래프 적용을 위해 사용
+* ### DialogPlus : dialog animate 적용하기 위해 사용
+* ### Google Material : google material design 적용을 위해 사용
+* ### Retrofit+Gson : Json 데이터를 이용한 rest 서버 통신을 위해 사용
+* ### Firebase : firebase cloud messaging
 
-
-Naming Rule
+# Naming Rule
 * ## View id값
 	* 버튼 : btn_
 	* 텍스트뷰 : txt_~
@@ -21,7 +26,7 @@ Naming Rule
 * ## Border 
 	* ### radius
     		기본 틀 : color_border_form
-		* 6dp  -> color_border_square / gray_boder_line
+		* 6dp  -> color_border_square / gray_boder_lineㅜ
 		* 10dp -> color_border_long
 		* 18dp -> white_border_fill / white_border_line
 		* 23dp -> color_border
