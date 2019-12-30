@@ -16,9 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
+import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
 import com.example.caredirection.home.functional.HomeFunctionalActivity
 import com.orhanobut.dialogplus.DialogPlus
 import com.orhanobut.dialogplus.DialogPlusBuilder
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 private const val ARG_PARAM1 = "param1"
@@ -95,7 +98,23 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //리사이클러뷰 가져오기
+        rv_home_functional_selected_view.layoutManager=LinearLayoutManager(context)
+        val rvHomeFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(context!!)
+        rv_home_functional_selected_view.adapter = rvHomeFunctionalSelectedFeatureAdapter
+
+        rvHomeFunctionalSelectedFeatureAdapter.data=listOf(
+            RvFunctionalSelectedData(listOf("장건강","피로회복"),"오메가3"),
+            RvFunctionalSelectedData(listOf("혈행개선"),""),
+            RvFunctionalSelectedData(listOf("장건강","피로회복","눈건강"),"오메가3"),
+            RvFunctionalSelectedData(listOf("피로회복","뼈"),"오메가3"),
+            RvFunctionalSelectedData(listOf("운동보조","두뇌활동"),"홍삼")
+        )
+
+
+
+
+
+        //card-리사이클러뷰 가져오기
         rvCareView = homeFragmentView.findViewById(R.id.rv_care_view) as RecyclerView
         //리사이클러뷰 레이아웃 설정
         rvCareView.layoutManager =
