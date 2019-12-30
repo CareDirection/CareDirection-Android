@@ -2,26 +2,52 @@ package com.example.caredirection.product.search
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import com.example.caredirection.product.standard.MainProductHolder
-import com.example.caredirection.product.standard.main_product_rv_item
 
-class SearchProductAdapter(private val context: Context): RecyclerView.Adapter<SearchProductHoler>() {
-    var data = listOf<rv_search_item>()
+class SearchProductAdapter(private val context: Context): RecyclerView.Adapter<SearchProductAdapter.SearchProductHolder>() {
+    var item = listOf<rv_search_item>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchProductHoler {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_item_product,parent,false)
 
-        return SearchProductHoler(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchProductHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.rv_search_item_product,parent,false)
+
+        return SearchProductHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return item.size
     }
 
-    override fun onBindViewHolder(holder: SearchProductHoler, position: Int) {
-        holder.bind(data[position])
+    override fun onBindViewHolder(holder: SearchProductHolder, position: Int) {
+        holder.bind(item[position])
     }
+
+    inner class SearchProductHolder(view: View):RecyclerView.ViewHolder(view) {
+
+        val txt_rv_search_item_ename : TextView = view.findViewById(R.id.txt_rv_search_result_item_ename)
+        val txt_rv_search_item_publisher: TextView = view.findViewById(R.id.txt_rv_search_result_item_publisher)
+        val txt_rv_search_item_kname: TextView = view.findViewById(R.id.txt_rv_search_result_item_kname)
+        val txt_rv_item_product_price : TextView = view.findViewById(R.id.txt_rv_search_result_item_price)
+
+
+        fun bind(data: rv_search_item){
+            txt_rv_search_item_ename.text = data.EndName
+            txt_rv_search_item_publisher.text = data.Publisher
+            txt_rv_search_item_kname.text = data.KorName
+            txt_rv_item_product_price.text = data.Price
+
+        }
+    }
+    data class rv_search_item(
+        val EndName: String,
+        val Publisher: String,
+        val KorName: String,
+        val Price: String,
+        var checked : Boolean
+    )
+
 }

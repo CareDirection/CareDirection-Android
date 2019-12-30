@@ -1,8 +1,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-       android:shape="rectangle">
-    <solid android:color="@color/colorTransparent"/>
-    <stroke android:width="3dp"
-            android:color="@color/colorWhite" />
-    <corners
-        android:radius="18dp"/>
+android:shape="rectangle">
+<solid android:color="@color/colorTransparent"/>
+<stroke android:width="3dp"
+    android:color="@color/colorWhite" />
+<corners
+    android:radius="18dp"/>
 </shape>

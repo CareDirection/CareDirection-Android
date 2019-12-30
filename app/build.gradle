@@ -66,6 +66,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //로그인 material
+    'com.rengwoxian.materialeditted:library:2.1.4'
+
     // 둥근 이미지 커스텀 뷰 라이브러리
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

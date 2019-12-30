@@ -47,3 +47,4 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return true
     }
 }
+

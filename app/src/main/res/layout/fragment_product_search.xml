@@ -46,13 +46,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/edit_search_fragment"
+            <TextView
+                android:id="@+id/txt_search_fragment"
                 android:hint="제품을 검색해주세요"
                 android:layout_width="251dp"
                 android:layout_height="47dp"
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="15dp"
+                android:gravity="left|center"
                 app:layout_constraintStart_toEndOf="@id/spinner_fragment_product_search"
                 app:layout_constraintTop_toTopOf="parent" />
 

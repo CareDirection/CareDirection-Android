@@ -13,14 +13,19 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
         </activity>
-        <activity android:name=".product.standard.ActivityProductSearch" />
         <activity android:name=".care_product.CareRegisterComplete" />
         <activity android:name=".setting.MyPageActivity"></activity>
         <activity android:name=".research.lifestyle.LifeStyleActivity" />
         <activity android:name=".home.functional.HomeFunctionalActivity"></activity>
+        <activity android:name=".ActivityRegister"></activity>
+        <activity android:name=".ActivityLogin" />
+        <activity android:name=".product.standard.DialogProductStandardFilter" />
+        <activity android:name=".product.result.ProductSearchResult" />
+        <activity android:name=".product.detail.ActivityProductDetail" />
+        <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".care_product.CareProductActivity"/>
-        <activity android:name=".research.ResearchChange"></activity>
+        <activity android:name=".care_product.CareProductActivity" />
+        <activity android:name=".research.ResearchChange" />
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
@@ -31,10 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".research.userInfo.ResearchNameActivity"></activity>
+        <activity android:name=".research.userInfo.ResearchNameActivity" />
         <activity android:name=".research.ResearchActivity">        </activity>
 
-        <service android:name=".common.fcm.CadiFirebaseMessagingService" >
+        <service android:name=".common.fcm.CadiFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
