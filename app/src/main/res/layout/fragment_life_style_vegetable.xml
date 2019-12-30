@@ -93,7 +93,7 @@
         android:layout_marginTop="132dp"
         android:layout_marginEnd="122dp"
         android:text="다음"
-        android:enabled="false"
+        android:enabled="true"
         android:background="@drawable/selector_btn_next"
         android:textColor="@color/colorTranslucenceLight"
         android:fontFamily="@font/notosanskr_medium"

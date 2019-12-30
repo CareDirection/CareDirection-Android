@@ -11,7 +11,7 @@ class LifeStylePagerAdapter (fm:FragmentManager, private val num_fragment: Int):
             0 -> LifeStyleAlcoholFragment()
             1 -> LifeStyleVegetableFragment()
             2 -> LifeStyleActivityFragment()
-             3 -> LifeStyleAlcoholFragment()
+             3 -> LifeStyleActivityFragment()
             else -> LifeStyleActivityFragment()
         }
     }

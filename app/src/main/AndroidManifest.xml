@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".research.lifestyle.LifeStyleActivity"></activity>
+        <activity android:name=".setting.MyPageActivity"></activity>
+        <activity android:name=".research.lifestyle.LifeStyleActivity" />
         <activity android:name=".product.standard.ActivityProductSearch" />
         <activity android:name=".care_product.CareRegisterComplete" />
         <activity android:name=".MainActivity" />
@@ -20,12 +21,8 @@
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
-        <activity android:name=".home.HomeActivity">
-
-        </activity>
-        <activity android:name=".research.userInfo.ResearchNameActivity">
-
-        </activity>
+        <activity android:name=".home.HomeActivity"></activity>
+        <activity android:name=".research.userInfo.ResearchNameActivity"></activity>
         <activity android:name=".research.ResearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

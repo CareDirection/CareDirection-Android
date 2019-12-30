@@ -80,7 +80,7 @@
         android:layout_marginTop="168dp"
         android:layout_marginEnd="122dp"
         android:background="@drawable/selector_btn_next"
-        android:enabled="false"
+        android:enabled="true"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:lineSpacingExtra="9sp"
