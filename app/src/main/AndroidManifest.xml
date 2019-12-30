@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".product.detail.ActivityProductDetail"></activity>
+        <activity android:name=".product.standard.DialogProductStandardFilter"></activity>
+        <activity android:name=".product.ProductSearchResult" />
+        <activity android:name=".product.detail.ActivityProductDetail" />
         <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".care_product.CareRegisterComplete" />
         <activity android:name=".MainActivity" />
@@ -27,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".research.userInfo.ResearchNameActivity"></activity>
+        <activity android:name=".research.userInfo.ResearchNameActivity" />
 
         <service android:name=".common.fcm.CadiFirebaseMessagingService">
             <intent-filter>

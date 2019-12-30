@@ -63,12 +63,12 @@
         android:id="@+id/checked_dialog_product_standard_absorption_left"
         android:layout_width="51dp"
         android:layout_height="31dp"
-        android:background="@color/colorPrimaryLight"
+        android:background="@drawable/selector_product_standard_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_dialog_product_standard_absorption"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="11dp"
-        android:checked="true"
+        android:checked="false"
         />
     <CheckedTextView
         android:id="@+id/checked_dialog_product_standard_absorption_right"
@@ -78,8 +78,8 @@
         app:layout_constraintTop_toBottomOf="@id/txt_dialog_product_standard_absorption"
         android:layout_marginTop="11dp"
         android:layout_marginLeft="10dp"
-        android:background="@color/colorPrimaryLight"
-        android:checked="true"
+        android:background="@drawable/selector_product_standard_bar"
+        android:checked="false"
         />
     <TextView
         android:id="@+id/txt_dialog_product_standard_citation"
@@ -98,23 +98,23 @@
         android:id="@+id/checked_dialog_product_standard_citation_left"
         android:layout_width="51dp"
         android:layout_height="31dp"
-        android:background="@color/colorPrimaryLight"
+        android:background="@drawable/selector_product_standard_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_dialog_product_standard_citation"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="11dp"
-        android:checked="true"
+        android:checked="false"
         />
 
     <CheckedTextView
         android:id="@+id/checked_dialog_product_standard_citation_right"
         android:layout_width="51dp"
         android:layout_height="31dp"
-        android:background="@color/colorPrimaryLight"
+        android:background="@drawable/selector_product_standard_bar"
         app:layout_constraintStart_toEndOf="@+id/checked_dialog_product_standard_citation_left"
         app:layout_constraintTop_toBottomOf="@id/txt_dialog_product_standard_citation"
         android:layout_marginTop="11dp"
         android:layout_marginLeft="10dp"
-        android:checked="true"
+        android:checked="false"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

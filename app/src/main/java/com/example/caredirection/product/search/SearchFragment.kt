@@ -38,7 +38,6 @@ class SearchFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
-
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
