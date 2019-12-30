@@ -17,7 +17,7 @@ class HomeFunctionalActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home_functional)
 
         //탑 바
-        txt_top_bar_home_functional.txt_top_bar_plain.text="기능성 원료"
+        txt_top_bar_home_functional.txt_top_bar_title.text="기능성 원료"
 
         //케어받는 기능
         rv_functional_selected_view.layoutManager=LinearLayoutManager(this)

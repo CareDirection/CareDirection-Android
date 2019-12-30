@@ -6,7 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.caredirection.R
-import com.example.caredirection.StudyFragment
+import com.example.caredirection.study.StudyFragment
 import com.example.caredirection.product.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

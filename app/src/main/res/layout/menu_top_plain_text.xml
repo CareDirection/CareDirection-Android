@@ -7,10 +7,10 @@
     android:layout_height="56dp">
 
     <TextView
-        android:id="@+id/txt_top_bar_plain"
+        android:id="@+id/txt_top_bar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/notosanskr_regular"
+        android:fontFamily="@font/notosanskr_bold"
         android:lineSpacingExtra="9sp"
         android:text="복용제품 등록"
         android:textColor="@color/colorBlack"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_top_bar_plain"
+        app:layout_constraintTop_toBottomOf="@id/txt_top_bar_title"
         app:srcCompat="@color/colorDarkGrey" />
 
 
