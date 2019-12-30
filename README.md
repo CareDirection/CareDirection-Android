@@ -1,10 +1,9 @@
 # Care-Direction
 careDirection_Android파트 git 장소입니다.
 
-<div>
-	<img width="200" src="[워크플로우_제품.pdf](https://github.com/CareDirection/CareDirection-Android/files/4009648/_.pdf)
-">
-</div>
+
+![workflow_product](https://user-images.githubusercontent.com/48307960/71580292-5493d880-2b43-11ea-85c1-4cdc682be3f7.png)
+
 
 
 Naming Rule
