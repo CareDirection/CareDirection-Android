@@ -23,8 +23,13 @@ Naming Rule
 		
     
 * ## Package 분류
-	* Feature
+	* home
 		* 개발자 각자 만드는 패키지는 절대 건들지 말것
+	* product
+		*
+	* research
+		*
+		
 * ## Git 사용시 주의사항
 	* master 브랜치에 올리기 전에 deve 브랜치에서 먼저 합치기
 	
