@@ -1,9 +1,7 @@
 package com.example.caredirection.home
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +18,8 @@ import com.example.caredirection.R
 import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.home.functional.FunctionalFragment
 import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
-import com.example.caredirection.home.functional.HomeFunctionalActivity
 import com.github.mikephil.charting.components.AxisBase
 import com.orhanobut.dialogplus.DialogPlus
 import com.github.mikephil.charting.components.LimitLine
@@ -288,7 +286,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
             //TODO 프래그먼트로 이동
             // val functional_intent = Intent(context,FunctonalFragment::class.java)
             //startActivity(functional_intent)
-         activity!!.supportFragmentManager.beginTransaction().replace(R.id.frame_layout,FunctionalFragment()).addToBackStack(null).commit()
+         activity!!.supportFragmentManager.beginTransaction().replace(R.id.frame_layout,
+             FunctionalFragment()
+         ).addToBackStack(null).commit()
             }
     }
 

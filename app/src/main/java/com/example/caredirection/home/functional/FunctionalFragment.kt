@@ -1,6 +1,5 @@
-package com.example.caredirection.home
+package com.example.caredirection.home.functional
 
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caredirection.R
 import com.example.caredirection.data.RvFunctionalAllData
 import com.example.caredirection.data.RvFunctionalSelectedData
-import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
-import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
-import kotlinx.android.synthetic.main.activity_home_functional.*
+import kotlinx.android.synthetic.main.fragment_functional.*
 import kotlinx.android.synthetic.main.menu_top_plain_text.view.*
 
 
