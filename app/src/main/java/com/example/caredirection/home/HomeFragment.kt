@@ -3,6 +3,7 @@ package com.example.caredirection.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,11 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColor
+import androidx.core.graphics.toColorInt
+import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,12 +26,14 @@ import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
 import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
 import com.example.caredirection.home.functional.HomeFunctionalActivity
+import com.github.mikephil.charting.components.AxisBase
 import com.orhanobut.dialogplus.DialogPlus
 import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.menu_top_home.view.*
@@ -34,10 +41,19 @@ import kotlinx.android.synthetic.main.menu_top_home.view.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        val idx = rv_care_view.getChildAdapterPosition(v!!)
+        //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
+        Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
+
+
+    }
+
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    val listData = ArrayList<BarEntry>()
 
     //private lateinit var
     private var rvCareProductData = listOf<RvCareProductData>()
@@ -63,44 +79,15 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         homeFragmentView= inflater.inflate(R.layout.fragment_home, container, false)
 
-        //스피너 설정
-        val spinnerHomeEssentialArray = resources.getStringArray(R.array.spinner_home_essential_items)
-        val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
-
-        homeFragmentView.spinner_home_essential.adapter = spinnerHomeEssentialArrayAdapter
-        homeFragmentView.spinner_home_essential.dropDownVerticalOffset = 4 //스피너 드롭다운 위치 설정
-        homeFragmentView.spinner_home_essential.setSelection(0)
-        homeFragmentView.spinner_home_essential.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                //TODO 내부 코드 완성하기
-                    when(position){
-                        0->{
-
-                        }
-                        1->{
-
-                        }
-                    }
-            }
-
-        }
         return homeFragmentView}
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val spinnerHomeEssentialArray = resources.getStringArray(R.array.spinner_home_essential_items)
+        val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
 
-
+        //TODO 통신으로 받은 데이터 넘겨주기
         //그래프 그려주기
-        val listData = ArrayList<BarEntry>()
         listData.add(BarEntry(0f, 55f))
         listData.add(BarEntry(1f, 20f))
         listData.add(BarEntry(2f,60f))
@@ -112,9 +99,90 @@ class HomeFragment : Fragment() {
         listData.add(BarEntry(8f,60f))
         listData.add(BarEntry(9f,80f))
         listData.add(BarEntry(10f,120f))
-
         initLineChart()
-        setChart(listData)
+
+        //밑에 라벨 //TODO 네이밍 다시 하기
+        val vitamins = arrayOf("A1", "A2", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+
+
+        //스피너 초기 설정
+        homeFragmentView.spinner_home_essential.dropDownVerticalOffset = 4 //스피너 드롭다운 위치 설정
+        homeFragmentView.spinner_home_essential.adapter = spinnerHomeEssentialArrayAdapter
+        //스피너 초기값은 0 (즉, 낮은 순)
+        homeFragmentView.spinner_home_essential.setSelection(0)
+
+        homeFragmentView.spinner_home_essential.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //스피너 설정 값에 따라서 선택정렬해줌
+                //그럼 그려주는 순서가 바뀐다
+                when(position){
+                    0->{
+                        //낮은 순
+                        for( i in 0 until listData.size-1){
+                            var min = i
+                            for(j in i+1 until listData.size){
+                                if(listData[j].y <= listData[min].y){
+                                    min = j
+                                }
+                            }
+                            if( i != min){
+
+                                //순서 선택정렬
+                                var temp = listData[i].y
+                                listData[i].y = listData[min].y
+                                listData[min].y = temp
+
+                                //매칭되어있는 라벨도 함께 이동
+                                var tempX= vitamins[i]
+                                vitamins[i] = vitamins[min]
+                                vitamins[min] = tempX
+                            }
+                        }
+                        setChart(listData, vitamins)
+
+                    }
+                    1->{
+                        //높은 순
+//                        listData.sortByDescending {
+//                            it.y
+//                        }
+
+                        for( i in 0 until listData.size-1){
+                            var min = i
+                            for(j in i+1 until listData.size){
+                                if(listData[j].y >= listData[min].y){
+                                    min = j
+                                }
+                            }
+                            if( i != min){
+                                var temp = listData[i].y
+                                listData[i].y = listData[min].y
+                                listData[min].y = temp
+
+                                var tempX= vitamins[i]
+                                vitamins[i] = vitamins[min]
+                                vitamins[min] = tempX
+                            }
+                        }
+
+                        setChart(listData, vitamins)
+                    }
+                }
+            }
+
+        }
+
+
+
 
 
         essential_details.setOnClickListener{
@@ -154,7 +222,7 @@ class HomeFragment : Fragment() {
         rvCareProductAdapter=CareProductAdapter(context!!)
         //카드뷰에 어댑터 연결
         rv_care_view.adapter = rvCareProductAdapter
-
+        rvCareProductAdapter.setOnClick(this)
         //더미 데이터 넣어주기
         rvCareProductAdapter.data = listOf(
             RvCareProductData(R.color.colorRed,true,"ddddddddd"),
@@ -226,7 +294,7 @@ class HomeFragment : Fragment() {
     private fun initLineChart() {
 
         val xAxis = chart_home.xAxis
-        xAxis.setDrawLabels(false)
+//        xAxis.setDrawLabels(false)
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f
         xAxis.setDrawGridLines(false)
@@ -243,18 +311,23 @@ class HomeFragment : Fragment() {
         rightYAxis.setDrawAxisLine(false)
         */
         val ll1 = LimitLine(100f, "Maximum Limit")
-        ll1.lineWidth = 4f
+        ll1.lineWidth = 3f
         ll1.enableDashedLine(50f, 20f, 0f)
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
         //TODO phase는 무엇인가?
         ll1.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
-        ll1.lineColor=R.color.colorRed
+        ll1.lineColor = ContextCompat.getColor(context!!, android.R.color.black)
+
+        //Todo 컬러가 안 먹음
+
         ll1.textSize = 10f
        // ll1.lineColor=R.color.colorGrey
 
         val ll2 = LimitLine(30f, "Minimum Limit")
-        ll2.lineWidth = 3f
-        ll2.lineColor=R.color.colorPrimary
+        ll2.lineWidth = 3f//선의 굵기
+     //   ll2.lineColor=R.color.colorPrimary //Todo
+        val color=ll2.lineColor
+        ll2.label=color.toString()
         ll2.enableDashedLine(50f, 20f, 0f)
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
         //TODO phase는 무엇인가?
@@ -277,15 +350,40 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setChart(listData: ArrayList<BarEntry>) {
-        val dataSet = BarDataSet(listData, getString(R.string.app_name))
+    private fun setChart(listData: ArrayList<BarEntry>, vitamins : Array<String>) {
+        val dataSet = BarDataSet(listData, "")
 
         val listColor = ArrayList<Int>()
-        listColor.add(ContextCompat.getColor(context!!, R.color.colorBlueGraph))
-        listColor.add(ContextCompat.getColor(context!!, R.color.colorRedGraph))
+//        listColor.add(ContextCompat.getColor(context!!, R.color.colorBlueGraph))
+//        listColor.add(ContextCompat.getColor(context!!, R.color.colorRedGraph))
+
+        val formatter = object : ValueFormatter() {
+            override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+                Log.v("YGYG", value.toInt().toString())
+//                Log.v("YGYG", vitamins[value.toInt()])
+
+                return vitamins[value.toInt()]
+
+            }
+        }
+
+        listData.forEach {
+            if(it.y >  100.0f || it.y < 30.0f)
+                listColor.add(ContextCompat.getColor(context!!, R.color.colorRedGraph))
+            else
+                listColor.add(ContextCompat.getColor(context!!, R.color.colorBlueGraph))
+        }
 
         dataSet.colors = listColor
+
         dataSet.valueTextColor = ContextCompat.getColor(context!!, android.R.color.black)
+
+        dataSet.setDrawValues(false)
+
+        chart_home.legend.isEnabled = false// 색 블럭 그룹핑할떄 이색은 이 그룹이다
+
+        chart_home.description.isEnabled = false
+
 
         val lineData = BarData(dataSet)
         chart_home.data = lineData
@@ -301,6 +399,10 @@ class HomeFragment : Fragment() {
         chart_home.setVisibleXRange(3f,8f)
         chart_home.animateY(1000) //세로축 에니메이션
         // chart.data = lineData
+
+        val xAxis = chart_home.xAxis
+        xAxis.valueFormatter = formatter
+
         chart_home.invalidate()
 
 
