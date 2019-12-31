@@ -12,6 +12,7 @@ import com.example.caredirection.data.RvFunctionalAllData
 import com.example.caredirection.data.RvIngredientData
 import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
 import com.example.caredirection.study.ingredient.IngredientAdapter
+
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_ingredient_study.*
 import kotlinx.android.synthetic.main.menu_top_plain_text.view.*
