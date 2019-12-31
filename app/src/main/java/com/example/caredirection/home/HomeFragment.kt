@@ -285,10 +285,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 .create().show()
         }
         homeFragmentView.functional_details.setOnClickListener{
-            val functional_intent = Intent(context,HomeFunctionalActivity::class.java)
-            //TODO
-            startActivity(functional_intent)
-        }
+            //TODO 프래그먼트로 이동
+            // val functional_intent = Intent(context,FunctonalFragment::class.java)
+            //startActivity(functional_intent)
+         activity!!.supportFragmentManager.beginTransaction().replace(R.id.frame_layout,FunctionalFragment()).addToBackStack(null).commit()
+            }
     }
 
 
