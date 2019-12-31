@@ -25,6 +25,8 @@ import android.widget.TextView
 
 
 
+
+
 /**
  * A simple [Fragment] subclass.
  */
@@ -42,15 +44,4 @@ class LifeStyleAlcoholFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_life_style_alcohol, container, false)
     }
 
-//    // 강조타이틀 설정
-//    private fun setColorInPartitial(){
-//        val content = txt_alcohol_title_1.text.toString()
-//
-//        val sText = SpannableString(content)
-//
-//        sText.setSpan(ForegroundColorSpan(resources.getColor(R.color.colorYellow)), -10, -8, 0)
-//
-//        txt_alcohol_title_1?.text = sText
-//
-//    }
 }

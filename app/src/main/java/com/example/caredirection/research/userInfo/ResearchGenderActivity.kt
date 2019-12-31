@@ -111,7 +111,7 @@ class ResearchGenderActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.dialog_yearpicker, null)
 
-            //number_picker.formatter = String.format()
+
 //            number_picker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener() {
 //                override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
 //                    String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal).logDebug()
