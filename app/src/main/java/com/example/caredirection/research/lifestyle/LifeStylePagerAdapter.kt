@@ -10,7 +10,7 @@ class LifeStylePagerAdapter (fm:FragmentManager, private val num_fragment: Int):
          return when(position){
             0 -> LifeStyleAlcoholFragment()
             1 -> LifeStyleVegetableFragment()
-            2 -> LifeStyleActivityFragment()
+            2 -> LifeStyleTempFragment()
              3 -> LifeStyleActivityFragment()
             else -> LifeStyleActivityFragment()
         }

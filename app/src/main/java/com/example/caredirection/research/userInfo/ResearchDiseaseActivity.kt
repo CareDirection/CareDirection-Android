@@ -103,6 +103,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 //    private fun checkSelectButton(): Boolean{
 //        return disButtons.any { it.isChecked }
 //    }
+
     private fun checkSelectButton(){
         if(disButtons.any { it.isChecked }){
             btn_disease_next.isEnabled = true
