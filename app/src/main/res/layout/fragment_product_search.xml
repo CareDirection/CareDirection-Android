@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="82dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_fragment_search_title">
 
             <Spinner
@@ -43,17 +44,21 @@
                 android:layout_height="47dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_search_fragment"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
                 android:id="@+id/txt_search_fragment"
-                android:hint="제품을 검색해주세요"
                 android:layout_width="251dp"
                 android:layout_height="47dp"
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
                 android:gravity="left|center"
+                android:hint="제품을 검색해주세요"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/spinner_fragment_product_search"
                 app:layout_constraintTop_toTopOf="parent" />
 

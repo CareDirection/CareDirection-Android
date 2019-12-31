@@ -13,6 +13,8 @@ class ActivityLogin : AppCompatActivity() {
 
         btn_activity_register.setOnClickListener{
             startActivity(Intent(this@ActivityLogin, ActivityRegister::class.java))
+
+
         }
     }
 }
