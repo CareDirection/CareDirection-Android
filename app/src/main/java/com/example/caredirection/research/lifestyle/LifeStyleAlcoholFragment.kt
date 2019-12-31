@@ -1,6 +1,7 @@
 package com.example.caredirection.research.lifestyle
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
@@ -32,7 +33,7 @@ import android.widget.TextView
  */
 class LifeStyleAlcoholFragment : Fragment() {
 
-    private lateinit var keeper : ResearchKeeper
+    private lateinit var keeper: ResearchKeeper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,13 @@ class LifeStyleAlcoholFragment : Fragment() {
         //keeper = ResearchKeeper(this)
         //setColorInPartitial()
         return inflater.inflate(R.layout.fragment_life_style_alcohol, container, false)
+
+        makeController()
     }
 
+    private fun makeController() {
+        btn_alcohol_next.setOnClickListener {
+
+        }
+    }
 }
