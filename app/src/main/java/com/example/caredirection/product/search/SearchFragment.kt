@@ -120,18 +120,18 @@ class SearchFragment : Fragment() {
         val txt_rv_search_nutrient : CheckedTextView = view.findViewById(R.id.txt_rv_search_nutrient)
 
         fun bind(position: Int){
-            val item = data[position]
-            txt_search_nutrient.text = item.nutrient
-            selector_rv_item_nutrient.isChecked = item.check
-            txt_rv_search_nutrient.isChecked = item.check
+                val item = data[position]
+                txt_search_nutrient.text = item.nutrient
+                selector_rv_item_nutrient.isChecked = item.check
+                txt_rv_search_nutrient.isChecked = item.check
 
-            itemView.setOnClickListener{
-                (0 until data.size).forEach {
-                    data[it] = data[it].copy(check = false)
+                itemView.setOnClickListener{
+                    (0 until data.size).forEach {
+                        data[it] = data[it].copy(check = false)
+                    }
+                    data[position] = data[position].copy(check = true)
+                    rv_search_nutirient_adapter.notifyDataSetChanged()
                 }
-                data[position] = data[position].copy(check = true)
-                rv_search_nutirient_adapter.notifyDataSetChanged()
-            }
         }
     }
 

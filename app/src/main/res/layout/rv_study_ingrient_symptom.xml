@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="84dp"
+    android:layout_height="29dp"
+    android:id="@+id/rv_study_nutrient_symptom_item">
+
+    <androidx.appcompat.widget.AppCompatCheckedTextView
+        android:id="@+id/txt_rv_study_nutrient_symptom_item"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:lineSpacingExtra="6sp"
+        android:gravity="center"
+        android:textColor="@color/selector_product_search_nutrient_color"
+        android:checked="false"
+        android:text="종합비타민"
+        android:letterSpacing="-0.02"
+        />
+    <androidx.appcompat.widget.AppCompatCheckedTextView
+        android:id="@+id/selector_rv_item_study_nutrient_symptom"
+        android:layout_width="match_parent"
+        android:layout_height="2.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:checked="false"
+        android:background="@drawable/selector_product_search_nutrient" />
+</androidx.constraintlayout.widget.ConstraintLayout>

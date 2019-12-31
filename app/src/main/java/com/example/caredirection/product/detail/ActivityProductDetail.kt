@@ -1,6 +1,5 @@
 package com.example.caredirection.product.detail
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,9 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.caredirection.ActivityProductDetailWeb
 import com.example.caredirection.R
-import com.example.caredirection.product.standard.MainProductAdapter
 import kotlinx.android.synthetic.main.activity_product_detail.*
 
 class ActivityProductDetail : AppCompatActivity() {
@@ -38,10 +35,11 @@ class ActivityProductDetail : AppCompatActivity() {
 
         rv_product_detail.layoutManager = LinearLayoutManager(this@ActivityProductDetail)
         rv_product_detail_adapter.data = listOf(
-            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)"),
-            ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)"),
-            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)")
+            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)","https://hydok.tistory.com/34"),
+            ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)","sopt.org"),
+            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)","facebook.com")
         )
+
 
         rv_product_detail.adapter = rv_product_detail_adapter
 
