@@ -71,21 +71,11 @@ class ResearchGenderActivity : AppCompatActivity() {
         txt_gender_namesubtitle?.text = name + "님만의"
 
         btn_gender_next?.setOnClickListener{
-            val year = txt_year_picker?.text
+            keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
+            keeper.year = Integer.parseInt(txt_year_picker.text.toString())
 
-            if(!gender_selec||year?.isEmpty()!!){
-                toast("아직 체크하지 않은 사항이 있습니다.")
-            }
-            else {
-                keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
-                //TODO: 이거 피커 값으로 세팅해주어야 함.
-                keeper.year = Integer.parseInt(txt_year_picker.text.toString())
-
-                val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
-                disease_intent.putExtra("username", name)
-
-                startActivity(disease_intent)
-            }
+            val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
+            startActivity(disease_intent)
         }
 
         chtxt_gender_women?.setOnClickListener{
@@ -110,22 +100,23 @@ class ResearchGenderActivity : AppCompatActivity() {
                 .setPositiveButton("확인") { dialogInterface, i ->
                     val picker = dialogView.findViewById<NumberPicker>(R.id.number_picker)
                     txt_year_picker?.text = picker.value.toString()
+                    checkSelectButton()
                     /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
                 }
                 .setNegativeButton("취소") { dialogInterface, i ->
-                    txt_year_picker?.text = ""
+                    checkSelectButton()
                 }
                 .show()
-
-            checkSelectButton()
         }
     }
 
-    private fun checkSelectButton(): Boolean{
-        if(gender_selec || txt_year_picker.text.isNotEmpty()){
-            return true
+    private fun checkSelectButton(){
+        if(gender_selec && txt_year_picker.text.isNotBlank()){
+            btn_gender_next.isEnabled = true
         }
-        return false
+        else{
+            btn_gender_next.isEnabled = false
+        }
     }
 
     // 강조타이틀 설정
