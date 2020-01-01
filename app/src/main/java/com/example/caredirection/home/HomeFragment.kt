@@ -18,6 +18,7 @@ import com.example.caredirection.R
 import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.home.care_product.CareProductAdapter
 import com.example.caredirection.home.functional.FunctionalFragment
 import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
 import com.github.mikephil.charting.components.AxisBase
@@ -36,12 +37,17 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment(), View.OnClickListener {
+
     override fun onClick(v: View?) {
+
+        //position
         val idx = rv_care_view.getChildAdapterPosition(v!!)
         //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
         Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
-
-
+        val fm = fragmentManager!!
+        val myfrag = CustomDialogFragment()
+        myfrag.show(fm, "demo")
+        //rvCareProductAdapter.data[idx]
     }
 
     private var param1: String? = null
@@ -241,10 +247,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //리사이클러뷰 레이아웃 설정
         rv_care_view.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         //어댑더 정의
-        rvCareProductAdapter=CareProductAdapter(context!!)
+        rvCareProductAdapter=
+            CareProductAdapter(context!!)
+
+        //클릭 리스너 받기
+        rvCareProductAdapter.setOnClick(this)
+
         //카드뷰에 어댑터 연결
         rv_care_view.adapter = rvCareProductAdapter
-        rvCareProductAdapter.setOnClick(this)
+
+
 
         //TODO 통신 오면 고치기
         //더미 데이터 넣어주기
@@ -316,8 +328,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 }
         }
     //bottom navigation 설정 끝
-    private fun initLineChart() {
 
+
+
+    private fun initLineChart() {
         val xAxis = chart_home.xAxis
 //        xAxis.setDrawLabels(false) 이것이 바로 라벨을 지워주는 친구였다 ex) 비타민 D 같은 것들
         xAxis.position = XAxis.XAxisPosition.BOTTOM
