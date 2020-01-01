@@ -16,9 +16,11 @@ class IngredientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingredient)
+        val fromIngredientIntent = getIntent()
+        Ingredient=fromIngredientIntent.getStringExtra("ingredient")
 
-        top_bar_main.top_plain_text.txt_top_bar_title.text = "홍삼"
-//        val fromIngredient: Intent=
+        top_bar_main.top_plain_text.txt_top_bar_title.text = Ingredient
+
 
     }
 }
