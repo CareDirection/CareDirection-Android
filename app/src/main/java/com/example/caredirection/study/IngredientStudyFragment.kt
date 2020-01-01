@@ -46,11 +46,11 @@ class StudyFragment : Fragment(),View.OnClickListener{
         rv_ingredient_view.adapter=rvIngredientAdapter
         rvIngredientAdapter.data= listOf(
             RvIngredientData(R.color.colorIngredient1,"홍삼"),
-           RvIngredientData(R.color.colorIngredient2,"오메가 3"),
-           RvIngredientData(R.color.colorIngredient3,"밀크씨슬"),
-           RvIngredientData(R.color.colorIngredient4,"루테인"),
-           RvIngredientData(R.color.colorIngredient5,"유산균"),
-           RvIngredientData(R.color.colorIngredient6,"비타민 D")
+            RvIngredientData(R.color.colorIngredient2,"오메가 3"),
+            RvIngredientData(R.color.colorIngredient3,"밀크씨슬"),
+            RvIngredientData(R.color.colorIngredient4,"루테인"),
+            RvIngredientData(R.color.colorIngredient5,"유산균"),
+            RvIngredientData(R.color.colorIngredient6,"비타민 D")
         )
 
 
@@ -84,13 +84,14 @@ class StudyFragment : Fragment(),View.OnClickListener{
         //position
         val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
         //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
-        Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
+       // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
         Ingredient=rvIngredientAdapter.data[idx].text
-
+       // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
         //startActivity(functional_intent)
         val Ingredient_intent = Intent(context,IngredientActivity::class.java)
-        Ingredient_intent.putExtra("Ingredient",Ingredient)
+        Ingredient_intent.putExtra("ingredient",Ingredient)
         startActivity(Ingredient_intent)
+
 
         //rvCareProductAdapter.data[idx]
     }
