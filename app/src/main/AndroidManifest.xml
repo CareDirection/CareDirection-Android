@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".research.ActivitySurveySearch">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
         <activity android:name=".SplashActivity" />
@@ -37,7 +33,11 @@
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
         <activity android:name=".home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".research.userInfo.ResearchNameActivity" />
         <activity android:name=".research.ResearchActivity">        </activity>
