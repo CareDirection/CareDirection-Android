@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.data.RvFunctionalAllData
 import com.example.caredirection.research.ActivitySurveySearch
+import com.example.caredirection.study.ActivityStudySymptom
 
 class FunctionalAllFeatureHolder(view: View, var context: Context) : RecyclerView.ViewHolder(view){
     val imgFunctionalAll: ImageView = view.findViewById(R.id.img_rv_item_functional_all)
@@ -23,7 +24,7 @@ class FunctionalAllFeatureHolder(view: View, var context: Context) : RecyclerVie
         txtFunctionalAll.text=data.txt
 
         itemView.setOnClickListener{
-            val intent = Intent(context, ActivitySurveySearch::class.java)
+            val intent = Intent(context, ActivityStudySymptom::class.java)
 
             startActivity(context ,intent, null)
         }

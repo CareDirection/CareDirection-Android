@@ -424,7 +424,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         chart_home.isDragDecelerationEnabled=true
         // chart.setDragXEnabled(true)
         //chart.setHorizontalScrollBarEnabled(true)
-        chart_home.isDoubleTapToZoomEnabled=true//두번터치하고 스크롤은 됨
+        chart_home.isDoubleTapToZoomEnabled=false//두번터치하고 스크롤은 됨
         chart_home.isDragXEnabled=true
         chart_home.setVisibleXRange(3f,6f) // X에 그려줄 최소, 최대 단위 정하기
         chart_home.animateY(1000) //세로축 에니메이션

@@ -82,6 +82,7 @@ class SearchFragment : Fragment() {
         )
         rv_search_product.adapter = rv_search_product_adapter
 
+        //
         txt_search_fragment_intent = view.findViewById(R.id.txt_search_fragment_intent)
         txt_search_fragment_intent.setOnClickListener{
             val intent = Intent(context, ActivityProductStandard::class.java)
