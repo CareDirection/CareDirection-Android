@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,7 +50,7 @@ class ActivityProductStandard : AppCompatActivity() {
 //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
         rv_main_product_adapter = MainProductAdapter(this@ActivityProductStandard)
         //리사이클러뷰 가져오기
-        rv_main_product = findViewById(R.id.activityt_product_rv)
+        rv_main_product = findViewById(R.id.activity_product_rv)
         //리사이클러뷰에 리니얼로 넣기
         rv_main_product.layoutManager = LinearLayoutManager(this@ActivityProductStandard)
         rv_main_product_adapter.data = mutableListOf(
@@ -172,8 +171,7 @@ class ActivityProductStandard : AppCompatActivity() {
         inner class MainProductHolder(view: View) : RecyclerView.ViewHolder(view) {
             var item = listOf<MainProductAdapter>()
 
-            val txt_rv_item_product_ename: TextView =
-                view.findViewById(R.id.txt_rv_search_result_item_ename)
+            val txt_rv_item_product_ename: TextView = view.findViewById(R.id.txt_rv_search_result_item_ename)
             val txt_rv_item_product_publisher: TextView =
                 view.findViewById(R.id.txt_rv_search_result_item_publisher)
             val txt_rv_item_product_kname: TextView =

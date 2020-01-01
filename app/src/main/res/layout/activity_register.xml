@@ -11,20 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="51dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="17dp"
             android:layout_marginLeft="16dp"
-            android:textSize="18sp"
-            android:textColor="#2b2d2e"
+            android:layout_marginTop="17dp"
             android:lineSpacingExtra="9sp"
             android:text="회원가입"
-            />
+            android:textColor="#2b2d2e"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -40,33 +39,104 @@
         android:id="@+id/txt_activity_register_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#2b2d2e"
-        android:lineSpacingExtra="7sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line_activity_register"
-        android:layout_marginTop="35dp"
         android:layout_marginLeft="16dp"
-        android:text="아이디"
+        android:layout_marginTop="35dp"
         android:fontFamily="@font/notosanskr_medium"
-        />
+        android:lineSpacingExtra="7sp"
+        android:text="아이디"
+        android:textColor="#2b2d2e"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_activity_register" />
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edt_activity_register_id"
         android:layout_width="225dp"
         android:layout_height="40dp"
+        android:layout_marginTop="7dp"
         app:layout_constraintStart_toStartOf="@+id/txt_activity_register_id"
         app:layout_constraintTop_toBottomOf="@+id/txt_activity_register_id"
-        android:layout_marginTop="7dp"
 
         />
+
     <Button
+        android:id="@+id/btn_activity_register_checked"
         android:layout_width="95dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toEndOf="@+id/edt_activity_register_id"
-        app:layout_constraintTop_toTopOf="@+id/edt_activity_register_id"
         android:layout_marginLeft="8dp"
+        android:background="@drawable/primary_border_line"
+        android:text="중복확인"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/edt_activity_register_id"
+        app:layout_constraintTop_toTopOf="@+id/edt_activity_register_id" />
 
+    <TextView
+        android:id="@+id/txt_activity_register_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:lineSpacingExtra="7sp"
+        android:text="비밀번호"
+        android:textColor="#2b2d2e"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/edt_activity_register_id"
+        app:layout_constraintTop_toBottomOf="@+id/edt_activity_register_id" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_activity_register_pwd"
+        android:layout_width="328dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_activity_register_pwd"
+        app:layout_constraintTop_toBottomOf="@+id/txt_activity_register_pwd" />
+
+    <TextView
+        android:id="@+id/txt_activity_register_pwd_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#2b2d2e"
+        android:lineSpacingExtra="7sp"
+        app:layout_constraintStart_toStartOf="@+id/edt_activity_register_pwd"
+        app:layout_constraintTop_toBottomOf="@+id/edt_activity_register_pwd"
+        android:layout_marginTop="48dp"
+        android:text="비밀번호 재확인"
         />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_activity_register_pwd_check"
+        android:layout_width="328dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_activity_register_pwd_check"
+        app:layout_constraintTop_toBottomOf="@+id/txt_activity_register_pwd_check"
+        android:layout_marginTop="7dp"
+        />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/layout_activity_register"
+    android:layout_width="328dp"
+    android:layout_height="65dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edt_activity_register_pwd_check"
+    android:layout_marginTop="181dp"
+    android:background="@drawable/primarylight_border_square"
+    >
+    <TextView
+        android:id="@+id/txt_activity_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:textColor="#f5f5f5"
+        android:lineSpacingExtra="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="가입하기"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

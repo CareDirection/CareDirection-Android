@@ -8,13 +8,14 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import com.example.caredirection.product.standard.MainProductAdapter
 import kotlinx.android.synthetic.main.activity_product_detail.*
 
 class ActivityProductDetail : AppCompatActivity() {
 
     private lateinit var rv_product_detail: RecyclerView
     private lateinit var rv_product_detail_adapter : ProductDetailAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
@@ -34,12 +35,15 @@ class ActivityProductDetail : AppCompatActivity() {
 
         rv_product_detail.layoutManager = LinearLayoutManager(this@ActivityProductDetail)
         rv_product_detail_adapter.data = listOf(
-            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)"),
-            ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)"),
-            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)")
+            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)","https://hydok.tistory.com/34"),
+            ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)","sopt.org"),
+            ProductDetailAdapter.RvProductDetailData("쿠팡","16,920 원","(1일 188원)","facebook.com")
         )
 
+
         rv_product_detail.adapter = rv_product_detail_adapter
+
+
 
         val category = arrayOf("30정","90정", "180정")
         val categoryAdapter = ArrayAdapter(this@ActivityProductDetail,R.layout.spinner_product_search_item, category)

@@ -1,9 +1,11 @@
 package com.example.caredirection.study
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,21 +13,20 @@ import com.example.caredirection.R
 import com.example.caredirection.data.RvFunctionalAllData
 import com.example.caredirection.data.RvIngredientData
 import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
+import com.example.caredirection.study.ingredient.IngredientActivity
 import com.example.caredirection.study.ingredient.IngredientAdapter
-import kotlinx.android.synthetic.main.activity_home_functional.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_ingredient_study.*
 import kotlinx.android.synthetic.main.menu_top_plain_text.view.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class StudyFragment : Fragment(){
-
+class StudyFragment : Fragment(),View.OnClickListener{
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
-
+    private lateinit var rvIngredientAdapter: IngredientAdapter
+    private lateinit var Ingredient : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -40,15 +41,16 @@ class StudyFragment : Fragment(){
 
         //성분 리싸이클러뷰
         rv_ingredient_view.layoutManager=LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val rvIngredientAdapter=IngredientAdapter(context!!)
+        rvIngredientAdapter=IngredientAdapter(context!!)
+        rvIngredientAdapter.setOnClick(this)
         rv_ingredient_view.adapter=rvIngredientAdapter
-       rvIngredientAdapter.data= listOf(
+        rvIngredientAdapter.data= listOf(
             RvIngredientData(R.color.colorIngredient1,"홍삼"),
-           RvIngredientData(R.color.colorIngredient2,"오메가 3"),
-           RvIngredientData(R.color.colorIngredient3,"밀크씨슬"),
-           RvIngredientData(R.color.colorIngredient4,"루테인"),
-           RvIngredientData(R.color.colorIngredient5,"유산균"),
-           RvIngredientData(R.color.colorIngredient6,"비타민 D")
+            RvIngredientData(R.color.colorIngredient2,"오메가 3"),
+            RvIngredientData(R.color.colorIngredient3,"밀크씨슬"),
+            RvIngredientData(R.color.colorIngredient4,"루테인"),
+            RvIngredientData(R.color.colorIngredient5,"유산균"),
+            RvIngredientData(R.color.colorIngredient6,"비타민 D")
         )
 
 
@@ -76,7 +78,23 @@ class StudyFragment : Fragment(){
 
 
     }
+    //recycler view click 이벤트 처리를 위해
+    override fun onClick(v: View?) {
 
+        //position
+        val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
+        //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
+       // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
+        Ingredient=rvIngredientAdapter.data[idx].text
+       // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
+        //startActivity(functional_intent)
+        val Ingredient_intent = Intent(context,IngredientActivity::class.java)
+        Ingredient_intent.putExtra("ingredient",Ingredient)
+        startActivity(Ingredient_intent)
+
+
+        //rvCareProductAdapter.data[idx]
+    }
     override fun onDetach() {
         super.onDetach()
         listener = null
