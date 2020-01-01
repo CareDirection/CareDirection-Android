@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.CheckBox
@@ -71,13 +72,19 @@ class ResearchDiseaseActivity : AppCompatActivity() {
                 checkSelectButton()
             }
         }
+        var count : Int = 0
+        disButtons.forEachIndexed { index, checkBox ->
+            disButtons[index].setOnClickListener{
+                count++
+                toast("index = " + index)
 
-        disButtons.forEach {
-            it.setOnClickListener{
-                toast("눌림")
+                btn_disease_clear.isEnabled = false
                 checkSelectButton()
             }
         }
+
+
+
 
         btn_disease_next.setOnClickListener{
 //            if (!checkSelectButton()){
