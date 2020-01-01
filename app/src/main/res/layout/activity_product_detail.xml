@@ -112,8 +112,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_activity_product_detail_content_ename"
-                    tools:text="뉴트리디데이 프리미엄 오메가 3
-    골드 1100" />
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:text="뉴트리디데이 프리미엄 오메가 3 골드 1100" />
 
                 <Spinner
                     android:id="@+id/spinner_activity_product_detail_per"
@@ -133,7 +133,9 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@id/spinner_activity_product_detail_per"
                     app:layout_constraintTop_toTopOf="@id/spinner_activity_product_detail_per"
-                    android:text="일때    16,920 원" />
+                    android:text="일때    16,920 원"
+                    android:fontFamily="@font/notosanskr_regular"
+                    />
 
                 <TextView
                     android:id="@+id/txt_activity_product_detail_content_dayper"
@@ -145,6 +147,7 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/txt_activity_product_detail_content_price"
                     app:layout_constraintTop_toTopOf="@+id/txt_activity_product_detail_content_price"
+                    android:fontFamily="@font/notosanskr_regular"
                     android:text="(1일 188원)" />
 
 
@@ -429,6 +432,7 @@
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_product_detail_character_title"
+                    android:fontFamily="@font/notosanskr_regular"
                     android:text="-알레스카 자연산 대구\n-알레스카 자연산 대구\n-알레스카 자연산 대구\n-알레스카 자연산 대구\n" />
 
                 <TextView
@@ -483,6 +487,7 @@
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_product_detail_intake_title"
+                    android:fontFamily="@font/notosanskr_regular"
                     android:text="1일 1~2정식 식사 후 섭취" />
 
                 <TextView
@@ -515,7 +520,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="39dp"
-                    android:text="성분 정보 1정 기준"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:text="성분 정보 "
+                    />
+                <TextView
+                    android:id="@+id/txt_product_detail_per_intake_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:lineSpacingExtra="8sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="39dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:text="1정 기준"
                     />
                 <TextView
                     android:id="@+id/txt_product_detail_per_intake_content1"

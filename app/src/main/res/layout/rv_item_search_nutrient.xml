@@ -21,6 +21,7 @@
         android:textColor="@color/selector_product_search_nutrient_color"
         android:checked="false"
         android:text="종합비타민"
+        android:fontFamily="@font/notosanskr_light"
         android:letterSpacing="-0.02"
         />
     <androidx.appcompat.widget.AppCompatCheckedTextView
