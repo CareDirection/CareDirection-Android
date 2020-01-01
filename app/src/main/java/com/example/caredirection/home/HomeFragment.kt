@@ -362,7 +362,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         ll1.lineWidth = 3f
         ll1.enableDashedLine(50f, 20f, 0f)
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
-        ll1.labelPosition = LimitLine.LimitLabelPosition.LEFT_TOP
+        //ll1.labelPosition = LimitLine.LimitLabelPosition.LEFT_TOP
         //ll1.lineColor=R.color.colorRed 이렇게 하니까 안먹음 getcolor 사용해야함
         ll1.lineColor = ContextCompat.getColor(context!!,R.color.colorRed)
 
@@ -375,8 +375,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         ll2.lineColor = ContextCompat.getColor(context!!,R.color.colorPrimary)
         ll2.enableDashedLine(50f, 20f, 0f)
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
-        //TODO phase는 무엇인가?
-        ll2.labelPosition = LimitLine.LimitLabelPosition.LEFT_TOP
+
+        // ll2.labelPosition = LimitLine.LimitLabelPosition.LEFT_TOP
         ll2.textSize = 10f
 
 
