@@ -1,4 +1,4 @@
-package com.example.caredirection.research
+package com.example.caredirection.care_product
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

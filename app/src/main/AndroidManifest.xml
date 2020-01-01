@@ -15,7 +15,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme">
         <activity android:name=".study.ActivityStudySymptom"></activity>
-        <activity android:name=".research.ActivitySurveySearch"></activity>
+        <activity android:name=".care_product.ActivitySurveySearch"></activity>
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
         <activity android:name=".study.ingredient.IngredientActivity" />
         <activity android:name=".research.ResearchFinishActivity"></activity>

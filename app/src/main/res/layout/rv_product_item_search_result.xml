@@ -32,6 +32,7 @@
         app:layout_constraintStart_toEndOf="@id/img_rv_search_result_item_product"
         app:layout_constraintTop_toTopOf="parent"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="Vita Naturals Inc" />
     <TextView
         android:id="@+id/txt_rv_search_result_item_publisher"
@@ -58,6 +59,7 @@
         android:layout_marginTop="2dp"
         android:textColor="@color/colorBlack"
         android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         android:text="더리얼 알티지 오메가 3 맥스 1400"
         />
     <TextView
@@ -72,6 +74,7 @@
         android:textColor="@color/colorBlack"
         android:lineSpacingExtra="6sp"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="36,800 원"
         />
     <TextView
@@ -86,6 +89,7 @@
         android:layout_marginLeft="6dp"
         android:lineSpacingExtra="6sp"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="(1일 750원)"
         />
     <TextView
@@ -100,6 +104,7 @@
         android:textColor="@color/colorDarkGrey"
         android:lineSpacingExtra="10sp"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="30정 기준"
         />
 

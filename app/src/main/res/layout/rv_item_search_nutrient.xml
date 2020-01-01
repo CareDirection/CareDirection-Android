@@ -22,6 +22,7 @@
         android:checked="false"
         android:text="종합비타민"
         android:fontFamily="@font/notosanskr_light"
+        android:includeFontPadding="false"
         android:letterSpacing="-0.02"
         />
     <androidx.appcompat.widget.AppCompatCheckedTextView

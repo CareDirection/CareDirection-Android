@@ -2,6 +2,8 @@ package com.example.caredirection.network
 
 import com.example.caredirection.data.network.IngredientData
 import com.example.caredirection.data.network.LoginData
+import com.example.caredirection.data.network.ProductSearchData
+import com.example.caredirection.product.result.ProductSearchResult
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -18,5 +20,10 @@ interface RequestInterface {
         @Header("token")token: String,
         @Path("nutrient_idx")nutrient_idx:Int
     ):Call<IngredientData>
+
+    @GET("/product/tablist")
+    fun getProductSearchList(
+        @Header("token")token: String
+    ): Call<ProductSearchData>
 
 }

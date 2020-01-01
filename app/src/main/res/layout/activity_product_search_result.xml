@@ -52,6 +52,8 @@
             android:layout_marginTop="15dp"
             android:hint="제품을 검색해주세요"
             app:layout_constraintStart_toEndOf="@id/spinner_activity_product_search_result"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -76,6 +78,8 @@
         android:textColor="#2b2d2e"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/txt_activity_product_search_result"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         app:layout_constraintTop_toTopOf="@+id/txt_activity_product_search_result" />
 
     <TextView

@@ -46,7 +46,9 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/img_rv_search_result_item_product"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Vita Naturals Inc" />
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="Vita Naturals Inc" />
 
     <TextView
         android:id="@+id/txt_rv_search_result_item_publisher"
@@ -62,12 +64,14 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_ename"
         app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         tools:text="해외직구" />
 
     <TextView
         android:id="@+id/txt_rv_search_result_item_kname"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="16dp"
@@ -78,7 +82,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_rv_search_result_item_product"
         app:layout_constraintTop_toBottomOf="@id/txt_rv_search_result_item_ename"
-        tools:text="더리얼 알티지 오메가 3 맥스 1400" />
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:text="더리얼 알티지 오메가 3 맥스 1400" />
 
     <TextView
         android:id="@+id/txt_rv_search_result_item_price"
@@ -90,7 +96,9 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/txt_rv_search_result_item_kname"
         app:layout_constraintTop_toBottomOf="@id/txt_rv_search_result_item_kname"
-        tools:text="36,800 원" />
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="36,800 원" />
 
     <TextView
         android:id="@+id/txt_rv_search_result_item_perprice"
@@ -102,7 +110,9 @@
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_price"
         app:layout_constraintTop_toTopOf="@+id/txt_rv_search_result_item_price"
-        tools:text="(1일 750원)" />
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="(1일 750원)" />
 
     <TextView
         android:id="@+id/txt_rv_search_result_item_perstandard"
@@ -114,7 +124,9 @@
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_perprice"
         app:layout_constraintTop_toTopOf="@+id/txt_rv_search_result_item_perprice"
-        tools:text="30정 기준" />
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="30정 기준" />
 
     <CheckedTextView
         android:id="@+id/img_rv_standard_item_filter"

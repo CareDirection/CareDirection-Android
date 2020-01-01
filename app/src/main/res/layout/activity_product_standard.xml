@@ -24,6 +24,8 @@
             android:text="오메가 3"
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +90,8 @@
                     android:lineSpacingExtra="9sp"
                     android:text="1100mg"
                     android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
                     android:textSize="18sp" />
 
                 <TextView
@@ -99,6 +103,8 @@
                     android:lineSpacingExtra="8sp"
                     android:text="함량"
                     android:textColor="@color/colorDarkGrey"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
                     android:textSize="14sp" />
 
 
@@ -121,6 +127,8 @@
                     android:lineSpacingExtra="9sp"
                     android:text="EE"
                     android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
                     android:textSize="18sp" />
 
                 <TextView
@@ -132,6 +140,8 @@
                     android:lineSpacingExtra="8sp"
                     android:text="흡수율"
                     android:textColor="#727272"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -152,6 +162,8 @@
                     android:lineSpacingExtra="9sp"
                     android:text="O"
                     android:textColor="#2b2d2e"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
                     android:textSize="18sp" />
 
                 <TextView
@@ -163,6 +175,8 @@
                     android:lineSpacingExtra="8sp"
                     android:text="인증마크"
                     android:textColor="@color/colorDarkGrey"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
                     android:textSize="14sp" />
             </LinearLayout>
 
