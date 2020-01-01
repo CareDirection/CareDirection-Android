@@ -114,7 +114,7 @@
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center_horizontal|center_vertical"
         android:includeFontPadding="false"
-        android:text="다음"
+        android:text="완료"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

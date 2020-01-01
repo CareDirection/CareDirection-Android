@@ -10,15 +10,10 @@ import android.text.SpannableStringBuilder
 import com.example.caredirection.R
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.WindowManager
-import android.widget.*
-import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_gender.*
-import kotlinx.android.synthetic.main.dialog_yearpicker.*
-import java.util.*
 
 
 class ResearchGenderActivity : AppCompatActivity() {
@@ -78,11 +73,8 @@ class ResearchGenderActivity : AppCompatActivity() {
         btn_gender_next?.setOnClickListener{
             val year = txt_year_picker?.text
 
-            if(!gender_selec){
+            if(!gender_selec||year?.isEmpty()!!){
                 toast("아직 체크하지 않은 사항이 있습니다.")
-            }
-            else if(year?.isEmpty()!!){
-                toast("미미")
             }
             else {
                 keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
@@ -112,14 +104,7 @@ class ResearchGenderActivity : AppCompatActivity() {
 
         txt_year_picker?.setOnClickListener{
             val builder = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.dialog_yearpicker, null)
-
-
-//            number_picker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener() {
-//                override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
-//                    String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal).logDebug()
-//                }
-//            })
+            val dialogView = layoutInflater.inflate(R.layout.dialog_year_picker, null)
 
             builder.setView(dialogView)
                 .setPositiveButton("확인") { dialogInterface, i ->

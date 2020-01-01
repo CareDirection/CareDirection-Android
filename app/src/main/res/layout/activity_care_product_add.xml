@@ -171,4 +171,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="62dp"
+        android:text="등록"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textSize="18sp"
+        android:lineSpacingExtra="9sp"
+        android:textColor="@color/colorWhite"
+        android:includeFontPadding="false"
+        android:background="@drawable/primary_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

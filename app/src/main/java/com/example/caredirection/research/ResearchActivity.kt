@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.caredirection.R
+import com.example.caredirection.care_product.CareProductActivity
+import com.example.caredirection.care_product.CareProductAddActivity
 import com.example.caredirection.home.HomeActivity
 import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.lifestyle.LifeStyleActivity
@@ -44,7 +46,7 @@ class ResearchActivity : AppCompatActivity() {
             intents.add(Intent(this@ResearchActivity, ResearchFinishActivity::class.java))
             if(researchfinish == null) return@run
 
-            intents.add(Intent(this@ResearchActivity, HomeActivity::class.java))
+            intents.add(Intent(this@ResearchActivity, CareProductActivity::class.java))
         }
 
         startActivities(intents.toTypedArray())
