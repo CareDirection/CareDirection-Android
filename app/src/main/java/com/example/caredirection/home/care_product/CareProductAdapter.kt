@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductData
 
-class CareProductAdapter(private val context: Context) : RecyclerView.Adapter<CareProductHolder>(){
+class CareProductAdapter(private val context: Context ) : RecyclerView.Adapter<CareProductHolder>(){
 
     //adapter는 viewoHolder로 변경할 data를 가지고 있는다.
     var data = listOf<RvCareProductData>()

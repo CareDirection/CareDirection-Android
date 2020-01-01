@@ -247,15 +247,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //리사이클러뷰 레이아웃 설정
         rv_care_view.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         //어댑더 정의
-        rvCareProductAdapter=
-            CareProductAdapter(context!!)
-
-        //클릭 리스너 받기
-        rvCareProductAdapter.setOnClick(this)
-
+        rvCareProductAdapter= CareProductAdapter(context!!)
         //카드뷰에 어댑터 연결
+        rvCareProductAdapter.setOnClick(this)
         rv_care_view.adapter = rvCareProductAdapter
-
 
 
         //TODO 통신 오면 고치기
@@ -328,10 +323,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 }
         }
     //bottom navigation 설정 끝
-
-
-
     private fun initLineChart() {
+
         val xAxis = chart_home.xAxis
 //        xAxis.setDrawLabels(false) 이것이 바로 라벨을 지워주는 친구였다 ex) 비타민 D 같은 것들
         xAxis.position = XAxis.XAxisPosition.BOTTOM
