@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Study_Ingredient_Activity"></activity>
-        <activity android:name=".SplashActivity"></activity>
-        <activity android:name=".home.functional.HomeFunctionalActivity"></activity>
+        <activity android:name=".study.ingredient.IngredientActivity"></activity>
+        <activity android:name=".SplashActivity" />
         <activity android:name=".care_product.CareRegisterComplete" />
         <activity android:name=".setting.MyPageActivity" />
         <activity android:name=".research.lifestyle.LifeStyleActivity" />
@@ -37,8 +36,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".research.userInfo.ResearchNameActivity" />
-        <activity android:name=".research.ResearchActivity"></activity>
-
+        <activity android:name=".research.ResearchActivity" />
 
         <service android:name=".common.fcm.CadiFirebaseMessagingService">
             <intent-filter>

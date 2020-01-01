@@ -243,8 +243,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //어댑더 정의
         rvCareProductAdapter=CareProductAdapter(context!!)
         //카드뷰에 어댑터 연결
-        rv_care_view.adapter = rvCareProductAdapter
         rvCareProductAdapter.setOnClick(this)
+        rv_care_view.adapter = rvCareProductAdapter
+
 
         //TODO 통신 오면 고치기
         //더미 데이터 넣어주기
