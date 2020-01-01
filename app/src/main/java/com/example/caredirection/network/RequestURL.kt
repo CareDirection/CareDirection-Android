@@ -3,7 +3,7 @@ package com.example.caredirection.network
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RequestURL {
+object RequestURL{
 
     // API 주소
     private const val BASE_URL ="http://13.124.134.215:3000"
