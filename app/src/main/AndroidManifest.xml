@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.caredirection">
 
-<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".care_product.CareProductAddActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,10 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".care_product.CareRegisterComplete" />
-        <activity android:name=".setting.MyPageActivity"></activity>
+        <activity android:name=".setting.MyPageActivity" />
         <activity android:name=".research.lifestyle.LifeStyleActivity" />
-        <activity android:name=".home.functional.HomeFunctionalActivity"></activity>
-        <activity android:name=".ActivityRegister"></activity>
+        <activity android:name=".home.functional.HomeFunctionalActivity" />
+        <activity android:name=".ActivityRegister" />
         <activity android:name=".ActivityLogin" />
         <activity android:name=".product.standard.DialogProductStandardFilter" />
         <activity android:name=".product.result.ProductSearchResult" />
@@ -34,17 +35,15 @@
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
-        <activity android:name=".home.HomeActivity">
-
-        </activity>
+        <activity android:name=".home.HomeActivity"></activity>
         <activity android:name=".research.userInfo.ResearchNameActivity" />
-        <activity android:name=".research.ResearchActivity">        </activity>
+        <activity android:name=".research.ResearchActivity"></activity>
 
         <service android:name=".common.fcm.CadiFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
+
 </manifest>
