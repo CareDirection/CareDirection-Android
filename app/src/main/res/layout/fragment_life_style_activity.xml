@@ -72,23 +72,4 @@
             android:textSize="20sp" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/btn_activity_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="122dp"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="35dp"
-        android:background="@drawable/selector_btn_next"
-        android:enabled="true"
-        android:fontFamily="@font/notosanskr_medium"
-        android:includeFontPadding="false"
-        android:lineSpacingExtra="9sp"
-        android:text="다음"
-        android:textColor="@color/colorTranslucenceLight"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

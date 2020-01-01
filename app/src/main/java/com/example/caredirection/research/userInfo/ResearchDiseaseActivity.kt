@@ -32,7 +32,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         cl_disease.setPadding(0, statusBarHeight(this), 0, 0)
 
         disButtons = listOf(
-            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6, btn_disease_clear
+            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6
         )
 
         keeper.disease?.let { set ->
@@ -73,6 +73,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         }
 
         disButtons.forEach {
+            val check  = it.isChecked
             it.setOnClickListener{
                 toast("눌림")
                 checkSelectButton()
@@ -96,7 +97,6 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
             startActivity(symptom_intent)
         }
-
 
     }
 

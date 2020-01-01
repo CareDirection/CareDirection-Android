@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             app:np_max="2020"
             app:np_min="1900"
-            app:np_value="1980"
+            app:np_value="1988"
             app:np_selectedTextColor="@color/colorPrimaryDark"
             app:np_dividerColor="@color/colorPrimaryLight"
             app:np_textColor="@color/colorPrimary"/>
