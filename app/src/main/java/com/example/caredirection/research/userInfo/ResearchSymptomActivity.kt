@@ -15,6 +15,7 @@ import com.example.caredirection.R
 import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.ResearchChange
+import kotlinx.android.synthetic.main.activity_research_gender.*
 import kotlinx.android.synthetic.main.activity_research_symptom.*
 
 class ResearchSymptomActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
         cl_symptom.setPadding(0, statusBarHeight(this), 0, 0)
 
         btnSymptoms = listOf(
-            btn_symptom_1, btn_symptom_2, btn_symptom_3, btn_symptom_4, btn_symptom_5, btn_symptom_6, btn_symptom_7, btn_symptom_8, btn_symptom_9, btn_symptom_clear
+            btn_symptom_1, btn_symptom_2, btn_symptom_3, btn_symptom_4, btn_symptom_5, btn_symptom_6, btn_symptom_7, btn_symptom_8, btn_symptom_9
         )
 
         keeper.disease?.let { set ->
@@ -68,6 +69,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
                 .forEach {
                     it.isChecked = false
                     it.setTextColor(resources.getColor(R.color.colorWhite))
+                    checkSelectButton()
                 }
         }
 
@@ -83,6 +85,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
 //                    toast("나가")
 //                    return@setOnClickListener
 //                }
+
 
                 keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
 

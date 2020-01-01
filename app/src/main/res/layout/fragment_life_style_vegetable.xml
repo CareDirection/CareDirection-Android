@@ -85,23 +85,5 @@
 
     </RadioGroup>
 
-    <Button
-        android:id="@+id/btn_vegetable_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="122dp"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="122dp"
-        android:text="다음"
-        android:enabled="true"
-        android:background="@drawable/selector_btn_next"
-        android:textColor="@color/colorTranslucenceLight"
-        android:fontFamily="@font/notosanskr_medium"
-        android:textSize="20sp"
-        android:lineSpacingExtra="9sp"
-        android:includeFontPadding="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_vegetable_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -78,13 +78,16 @@ class ResearchGenderActivity : AppCompatActivity() {
         btn_gender_next?.setOnClickListener{
             val year = txt_year_picker?.text
 
-            if(!gender_selec || year?.isEmpty()!!){
+            if(!gender_selec){
                 toast("아직 체크하지 않은 사항이 있습니다.")
+            }
+            else if(year?.isEmpty()!!){
+                toast("미미")
             }
             else {
                 keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
                 //TODO: 이거 피커 값으로 세팅해주어야 함.
-                keeper.year = 1999
+                keeper.year = Integer.parseInt(txt_year_picker.text.toString())
 
                 val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
                 disease_intent.putExtra("username", name)
@@ -111,7 +114,7 @@ class ResearchGenderActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.dialog_yearpicker, null)
 
-            //number_picker.formatter = String.format()
+
 //            number_picker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener() {
 //                override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
 //                    String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal).logDebug()
@@ -120,7 +123,8 @@ class ResearchGenderActivity : AppCompatActivity() {
 
             builder.setView(dialogView)
                 .setPositiveButton("확인") { dialogInterface, i ->
-                    //txt_year_picker?.text = number_picker.value.toString()
+                    val picker = dialogView.findViewById<NumberPicker>(R.id.number_picker)
+                    txt_year_picker?.text = picker.value.toString()
                     /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
                 }
                 .setNegativeButton("취소") { dialogInterface, i ->

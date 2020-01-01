@@ -26,14 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="52dp"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:lineSpacingExtra="11sp"
         android:text="케디에 오신 것을 환영합니다:)"
         android:textColor="@color/colorWhite"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_gender_nametitle" />
 
@@ -96,7 +94,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/selector_btn_women"
-        android:checked="true"
+        android:checked="false"
         app:layout_constraintEnd_toStartOf="@+id/chtxt_gender_man"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +128,7 @@
 
     <TextView
         android:id="@+id/txt_year_picker"
-        android:layout_width="283dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="18dp"
@@ -143,7 +141,6 @@
         android:includeFontPadding="false"
         android:lineSpacingExtra="9sp"
         android:paddingStart="16dp"
-        android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

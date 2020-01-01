@@ -32,7 +32,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         cl_disease.setPadding(0, statusBarHeight(this), 0, 0)
 
         disButtons = listOf(
-            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6, btn_disease_clear
+            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6
         )
 
         keeper.disease?.let { set ->
@@ -71,10 +71,12 @@ class ResearchDiseaseActivity : AppCompatActivity() {
                 checkSelectButton()
             }
         }
-
-        disButtons.forEach {
-            it.setOnClickListener{
-                toast("눌림")
+        var count : Int = 0
+        disButtons.forEachIndexed { index, checkBox ->
+            disButtons[index].setOnClickListener{
+                count++
+                toast("index = " + index)
+                btn_disease_clear.isEnabled = false
                 checkSelectButton()
             }
         }
@@ -103,6 +105,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 //    private fun checkSelectButton(): Boolean{
 //        return disButtons.any { it.isChecked }
 //    }
+
     private fun checkSelectButton(){
         if(disButtons.any { it.isChecked }){
             btn_disease_next.isEnabled = true

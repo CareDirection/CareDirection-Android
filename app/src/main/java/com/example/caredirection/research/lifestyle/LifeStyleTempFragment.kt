@@ -14,12 +14,12 @@ import android.view.ViewGroup
 
 import com.example.caredirection.R
 import com.example.caredirection.research.DB.ResearchKeeper
-import kotlinx.android.synthetic.main.fragment_life_style_vegetable.*
+import kotlinx.android.synthetic.main.fragment_life_style_temp.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class LifeStyleVegetableFragment : Fragment() {
+class LifeStyleTempFragment : Fragment() {
 
     private lateinit var keeper: ResearchKeeper
 
@@ -33,39 +33,39 @@ class LifeStyleVegetableFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_life_style_vegetable, container, false)
+        return inflater.inflate(R.layout.fragment_life_style_temp, container, false)
     }
 
     override fun onStart() {
         super.onStart()
-        txt_vegetable_title.text = keeper.name + "님은"+"\n"+"일주일에 몇 회 이상"+"\n"+"녹황색 채소를 섭취하시나요?"
+        txt_temp_title.text = keeper.name + "님은"+"\n"+"일주일에 몇 회 이상"+"\n"+"스크럼을 하시나요?"
 
         setColorInPartitial()
 
-        if(keeper.vegetable?:-1 == -1){
-            rg_vegetable_1.clearCheck()
+        if(keeper.temp?:-1 == -1){
+            rg_temp_1.clearCheck()
         }else{
-            rg_vegetable_1.check(keeper.vegetable!!)
+            rg_temp_1.check(keeper.temp!!)
         }
-        rg_vegetable_1.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.vegetable = rg_vegetable_1.checkedRadioButtonId
-            Log.v("YGYG", rg_vegetable_1.checkedRadioButtonId.toString())
+        rg_temp_1.setOnCheckedChangeListener { radioGroup, i ->
+            keeper.temp = rg_temp_1.checkedRadioButtonId
+            Log.v("YGYG", rg_temp_1.checkedRadioButtonId.toString())
 
         }
 
     }
 
     private fun setColorInPartitial(){
-        val builder = SpannableStringBuilder(txt_vegetable_title?.text.toString())
+        val builder = SpannableStringBuilder(txt_temp_title?.text.toString())
         val start : Int = keeper.name!!.length + 15
 
 
         builder.setSpan(
             ForegroundColorSpan(Color.parseColor("#ebf0b0")),
             start,
-            start + 6,
+            start + 3,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        txt_vegetable_title?.text = builder
+        txt_temp_title?.text = builder
     }
 }

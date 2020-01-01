@@ -11,29 +11,35 @@ import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.caredirection.R
+import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.lifestyle.LifeStyleActivity
 import kotlinx.android.synthetic.main.activity_research_change.*
 
 class ResearchChange : AppCompatActivity() {
 
     private var txt_change_title: TextView? = null
+    private lateinit var keeper : ResearchKeeper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_research_change)
 
+        keeper = ResearchKeeper(this)
+
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_change.setPadding(0, statusBarHeight(this), 0, 0)
 
-        val name: String = intent.getStringExtra("username")
+//        val name: String = intent.getStringExtra("username")
 
         txt_change_title = findViewById(R.id.txt_change_title)
 
         btn_change_next.setOnClickListener{
-            val intent = Intent(this,LifeStyleActivity::class.java)
-            intent.putExtra("username",name)
 
-            startActivity(intent)
+            keeper.lifeCycle = 1
+//            val intent = Intent(this,LifeStyleActivity::class.java)
+//            intent.putExtra("username",name)
+
+            startActivity(Intent(this, LifeStyleActivity::class.java))
         }
 
         setColorInPartitial()

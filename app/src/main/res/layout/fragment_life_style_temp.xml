@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".research.lifestyle.LifeStyleAlcoholFragment">
+    tools:context=".research.lifestyle.LifeStyleTempFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/txt_alcohol_title_1"
+        android:id="@+id/txt_temp_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -16,91 +15,70 @@
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:lineSpacingExtra="12sp"
-        android:text="박진오님은 담배를 피시나요?"
+        android:text="박진오님은\n설문조사를 언제 마무리 \n해주실까요?"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/rg_alcohol_1"
+        android:id="@+id/rg_temp_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_alcohol_title_1">
+        app:layout_constraintTop_toBottomOf="@+id/txt_temp_title">
 
         <RadioButton
-            android:id="@+id/btn_alcohol_1"
+            android:id="@+id/btn_temp_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@drawable/selector_radio_btn"
             android:checked="false"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:text="네"
+            android:lineSpacingExtra="9sp"
+            android:text="7회 이상"
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/btn_alcohol_2"
+            android:id="@+id/btn_temp_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@drawable/selector_radio_btn"
             android:checked="false"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:text="아니요"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/txt_alcohol_title_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="53dp"
-        android:fontFamily="@font/notosanskr_medium"
-        android:includeFontPadding="false"
-        android:lineSpacingExtra="12sp"
-        android:text="박진오님은 술을 주 2회 이상\n드시나요?"
-        android:textColor="@color/colorWhite"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_alcohol_1" />
-
-    <RadioGroup
-        android:id="@+id/rg_alcohol_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_alcohol_title_2">
-
-        <RadioButton
-            android:id="@+id/btn_alcohol_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:button="@drawable/selector_radio_btn"
-            android:checked="false"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            android:text="네"
+            android:lineSpacingExtra="9sp"
+            android:text="5회 ~ 6회"
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/btn_alcohol_4"
+            android:id="@+id/btn_temp_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@drawable/selector_radio_btn"
             android:checked="false"
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
-            android:text="아니요"
+            android:lineSpacingExtra="9sp"
+            android:text="3회 ~ 4회"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/btn_temp_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_radio_btn"
+            android:checked="false"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="9sp"
+            android:text="2회 이하"
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
