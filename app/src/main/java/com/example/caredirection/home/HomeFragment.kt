@@ -91,7 +91,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         //TODO 통신으로 받은 데이터 넘겨주기
         //그래프 그려주기
-        listData.add(BarEntry(0f, 55f))
+        listData.add(BarEntry(0f,130f))
         listData.add(BarEntry(1f, 20f))
         listData.add(BarEntry(2f,60f))
         listData.add(BarEntry(3f,80f))
@@ -102,6 +102,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         listData.add(BarEntry(8f,60f))
         listData.add(BarEntry(9f,80f))
         listData.add(BarEntry(10f,120f))
+
 
         listData2.add(BarEntry(0f, 55f))
         listData2.add(BarEntry(1f, 20f))
@@ -114,6 +115,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         listData2.add(BarEntry(8f,60f))
         listData2.add(BarEntry(9f,80f))
         listData2.add(BarEntry(10f,120f))
+
         initLineChart()
 
         //밑에 라벨 //TODO 네이밍 다시 하기
@@ -356,7 +358,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         leftYAxis.setDrawAxisLine(false)
 
         //상한선 그려주기
-        val ll1 = LimitLine(100f, "상한 섭취량")
+        val ll1 = LimitLine(100f, "")
         ll1.lineWidth = 3f
         ll1.enableDashedLine(50f, 20f, 0f)
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
@@ -367,7 +369,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         ll1.textSize = 10f
        // ll1.lineColor=R.color.colorGrey
 
-        val ll2 = LimitLine(30f, "권장 섭취량")
+        val ll2 = LimitLine(30f, "")
         ll2.lineWidth = 3f//선의 굵기
         //ll2.lineColor=R.color.colorPrimary //Todo
         ll2.lineColor = ContextCompat.getColor(context!!,R.color.colorPrimary)
