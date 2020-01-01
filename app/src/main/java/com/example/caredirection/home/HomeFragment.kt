@@ -1,5 +1,6 @@
 package com.example.caredirection.home
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
@@ -19,7 +20,7 @@ import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
 import com.example.caredirection.home.care_product.CareProductAdapter
-import com.example.caredirection.home.functional.FunctionalFragment
+import com.example.caredirection.home.functional.FunctionalActivity
 import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
 import com.github.mikephil.charting.components.AxisBase
 import com.orhanobut.dialogplus.DialogPlus
@@ -291,11 +292,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
         homeFragmentView.functional_details.setOnClickListener{
             //TODO 프래그먼트로 이동
-            // val functional_intent = Intent(context,FunctonalFragment::class.java)
-            //startActivity(functional_intent)
-         activity!!.supportFragmentManager.beginTransaction().replace(R.id.frame_layout,
-             FunctionalFragment()
-         ).addToBackStack(null).commit()
+            val functional_intent = Intent(context,FunctionalActivity::class.java)
+            startActivity(functional_intent)
+
             }
     }
 
