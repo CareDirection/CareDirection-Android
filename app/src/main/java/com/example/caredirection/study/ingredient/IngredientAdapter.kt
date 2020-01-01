@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.data.RvIngredientData
-import com.example.caredirection.home.CareProductHolder
 
 class IngredientAdapter (private val context: Context):RecyclerView.Adapter<IngredientHolder>(){
 
