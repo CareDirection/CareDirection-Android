@@ -13,6 +13,7 @@ interface RequestInterface {
         @Field("user_id")user_id : String //category에 String 타입 category 값 전달.
     ) : Call<LoginData>
 
+    //성분학습뷰 - 성분 통신 -은이
     @GET("/nutrient/{nutrient_idx}")
     fun getIngredientInfo(
         @Header("token")token: String,
