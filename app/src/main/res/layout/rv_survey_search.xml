@@ -8,8 +8,16 @@
 
     >
 
+    <CheckedTextView
+        android:id="@+id/checked_rv_servey_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_rv_search_servey"
+        android:checked="false"
+        />
+
     <ImageView
-        android:id="@+id/img_rv_search_result_item_product"
+        android:id="@+id/img_rv_survey_search_item"
         android:layout_width="98dp"
         android:layout_height="98dp"
         android:layout_marginLeft="16dp"
@@ -21,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_rv_search_result_item_ename"
+        android:id="@+id/txt_rv_survey_search_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
@@ -29,12 +37,12 @@
         android:lineSpacingExtra="10sp"
         android:textColor="@color/colorDarkGrey"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/img_rv_search_result_item_product"
+        app:layout_constraintStart_toEndOf="@id/img_rv_survey_search_item"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Vita Naturals Inc" />
     <TextView
-        android:id="@+id/txt_rv_search_result_item_publisher"
-        app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_ename"
+        android:id="@+id/txt_rv_survey_search_item_publisher"
+        app:layout_constraintStart_toEndOf="@id/txt_rv_survey_search_item"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
@@ -46,21 +54,21 @@
         tools:text="해외직구"
         />
     <TextView
-        android:id="@+id/txt_rv_search_result_item_kname"
+        android:id="@+id/txt_rv_search_survey_item_kname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
-        app:layout_constraintStart_toEndOf="@id/img_rv_search_result_item_product"
-        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_result_item_ename"
+        app:layout_constraintStart_toEndOf="@id/img_rv_survey_search_item"
+        app:layout_constraintTop_toBottomOf="@id/txt_rv_survey_search_item_publisher"
         android:lineSpacingExtra="8sp"
         android:layout_marginTop="2dp"
         android:textColor="@color/colorBlack"
         tools:text="더리얼 알티지 오메가 3 맥스 1400"
         />
     <TextView
-        android:id="@+id/txt_rv_search_result_item_price"
-        app:layout_constraintStart_toEndOf="@id/img_rv_search_result_item_product"
-        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_result_item_kname"
+        android:id="@+id/txt_rv_search_survey_item_price"
+        app:layout_constraintStart_toEndOf="@id/img_rv_survey_search_item"
+        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_survey_item_kname"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="7dp"
         android:layout_width="wrap_content"
@@ -71,11 +79,11 @@
         tools:text="36,800 원"
         />
     <TextView
-        android:id="@+id/txt_rv_search_result_item_perprice"
+        android:id="@+id/txt_rv_search_survey_item_perprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_price"
-        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_result_item_kname"
+        app:layout_constraintStart_toEndOf="@id/txt_rv_search_survey_item_price"
+        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_survey_item_kname"
         android:layout_marginTop="35dp"
         android:textSize="12sp"
         android:textColor="@color/colorDarkGrey"
@@ -84,9 +92,9 @@
         tools:text="(1일 750원)"
         />
     <TextView
-        android:id="@+id/txt_rv_search_result_item_perstandard"
-        app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_perprice"
-        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_result_item_kname"
+        android:id="@+id/txt_rv_search_survey_item_perstandard"
+        app:layout_constraintStart_toEndOf="@id/txt_rv_search_survey_item_perprice"
+        app:layout_constraintTop_toBottomOf="@id/txt_rv_search_survey_item_kname"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="9dp"
         android:layout_width="wrap_content"
