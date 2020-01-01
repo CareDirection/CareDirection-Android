@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.CheckBox
@@ -33,7 +32,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         cl_disease.setPadding(0, statusBarHeight(this), 0, 0)
 
         disButtons = listOf(
-            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6, btn_disease_clear
+            btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6
         )
 
         keeper.disease?.let { set ->
@@ -77,14 +76,10 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             disButtons[index].setOnClickListener{
                 count++
                 toast("index = " + index)
-
                 btn_disease_clear.isEnabled = false
                 checkSelectButton()
             }
         }
-
-
-
 
         btn_disease_next.setOnClickListener{
 //            if (!checkSelectButton()){

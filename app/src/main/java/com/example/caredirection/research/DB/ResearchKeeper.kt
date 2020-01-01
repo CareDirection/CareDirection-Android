@@ -48,6 +48,7 @@ class ResearchKeeper (context: Context) {
             }
         }
 
+
     var symptom: Set<String>?
         get() {
             return local.getStringSet(RESEARCH_SYMPTOM, null)
@@ -55,6 +56,28 @@ class ResearchKeeper (context: Context) {
         set(value) {
             local.edit {
                 putStringSet(RESEARCH_SYMPTOM, value)
+            }
+        }
+
+    var lifeCycle: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_CHANGE, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_CHANGE, value?:0)
+            }
+        }
+
+    var lifeCyclerPage : Int
+        get(){
+            val candi = local.getInt(RESEARCH_STEP, 0)
+            return if (candi == -1) 0 else candi
+        }
+        set(value){
+            local.edit{
+                putInt(RESEARCH_STEP, value)
             }
         }
 
@@ -68,6 +91,7 @@ class ResearchKeeper (context: Context) {
                 putInt(RESEARCH_ALCOHOL, value?:-1)
             }
         }
+
     var cigarette: Int?
         get() {
             val candi = local.getInt(RESEARCH_CIGARETTE, -1)
@@ -78,6 +102,7 @@ class ResearchKeeper (context: Context) {
                 putInt(RESEARCH_CIGARETTE, value?:-1)
             }
         }
+
     var vegetable: Int?
         get() {
             val candi = local.getInt(RESEARCH_VEGETABLE, -1)
@@ -88,6 +113,18 @@ class ResearchKeeper (context: Context) {
                 putInt(RESEARCH_VEGETABLE, value?:-1)
             }
         }
+
+    var temp: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_TEMP, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_TEMP, value?:-1)
+            }
+        }
+
     var activity: Int?
         get() {
             val candi = local.getInt(RESEARCH_ACTIVITY, -1)
@@ -96,6 +133,17 @@ class ResearchKeeper (context: Context) {
         set(value) {
             local.edit {
                 putInt(RESEARCH_ACTIVITY, value?:-1)
+            }
+        }
+
+    var researchfinish: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_FINISH, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_FINISH, value ?: 0)
             }
         }
 
@@ -110,7 +158,14 @@ class ResearchKeeper (context: Context) {
         private const val RESEARCH_ALCOHOL = "6"
         private const val RESEARCH_CIGARETTE = "7"
         private const val RESEARCH_VEGETABLE = "8"
-        private const val RESEARCH_ACTIVITY = "9"
+        private const val RESEARCH_TEMP = "9"
+        private const val RESEARCH_ACTIVITY = "10"
+
+        private const val RESEARCH_CHANGE = "11"
+        private const val RESEARCH_STEP = "12"
+
+        private const val RESEARCH_FINISH = "13"
+
 
         const val MALE = 0
         const val FEMALE = 1
