@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductData
 import kotlinx.android.synthetic.main.rv_item_care_home.view.*
@@ -15,7 +16,7 @@ class CareProductHolder(view:View) : RecyclerView.ViewHolder(view){
     val nameProduct : TextView = view.findViewById(R.id.txt_care_product)
 
     fun bind(data:RvCareProductData){
-        imgCareProduct.setBackgroundResource(R.color.colorRed)
+
         isCheckedCareProduct.setImageResource(R.drawable.selector_home_care_product)
         nameProduct.text=data.nameProduct
 

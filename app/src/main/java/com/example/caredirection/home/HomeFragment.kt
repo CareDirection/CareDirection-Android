@@ -270,10 +270,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //TODO 통신 오면 고치기
         //더미 데이터 넣어주기
         rvCareProductAdapter.data = listOf(
-            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
-            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
-            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
-            RvCareProductData(R.color.colorRed, true, "ddddddddd")
+            RvCareProductData(R.color.colorRed, true, "dddddㄻ먼이너ㅣㅇd"),
+            RvCareProductData(R.color.colorRed, true, "ddㅇㄹ나ㅓㄴㅇㄹddddddd"),
+            RvCareProductData(R.color.colorRed, true, "dㄹㄴㅇdㄹㅇㄴddddddd"),
+            RvCareProductData(R.color.colorRed, true, "dddㅁㄴㅁ   dddddd")
         )
 
         //
