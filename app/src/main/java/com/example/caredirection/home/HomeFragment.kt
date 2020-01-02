@@ -17,11 +17,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caredirection.R
 import com.example.caredirection.common.CustomDialogFragment
+import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.home.care_product.CareProductAdapter
 import com.example.caredirection.home.functional.FunctionalActivity
 import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
+import com.example.caredirection.network.RequestURL
 import com.github.mikephil.charting.components.AxisBase
 import com.orhanobut.dialogplus.DialogPlus
 import com.github.mikephil.charting.components.LimitLine
@@ -33,29 +36,24 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.menu_top_home.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
-    override fun onClick(v: View?) {
 
-        //position
-        val idx = rv_care_view.getChildAdapterPosition(v!!)
-        //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
-        Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
-        val fm = fragmentManager!!
-        val myfrag = CustomDialogFragment()
-        myfrag.show(fm, "demo")
-        //rvCareProductAdapter.data[idx]
-    }
 
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     val listData = ArrayList<BarEntry>()
     val listData2 = ArrayList<BarEntry>()
+    private lateinit var barEntry:Array<Float>
+    private lateinit var xLabelIngredients :Array<String>
 
     //private lateinit var
     private var rvCareProductData = listOf<RvCareProductData>()
@@ -88,39 +86,41 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val spinnerHomeEssentialArray = resources.getStringArray(R.array.spinner_home_essential_items)
         val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
 
-
-        //TODO 통신으로 받은 데이터 넘겨주기
-        //그래프 그려주기
-        listData.add(BarEntry(0f,130f))
-        listData.add(BarEntry(1f, 20f))
-        listData.add(BarEntry(2f,60f))
-        listData.add(BarEntry(3f,80f))
-        listData.add(BarEntry(4f,120f))
-        listData.add(BarEntry(5f,40f))
-        listData.add(BarEntry(6f, 55f))
-        listData.add(BarEntry(7f, 20f))
-        listData.add(BarEntry(8f,60f))
-        listData.add(BarEntry(9f,80f))
-        listData.add(BarEntry(10f,120f))
-
-
-        listData2.add(BarEntry(0f, 55f))
-        listData2.add(BarEntry(1f, 20f))
-        listData2.add(BarEntry(2f,60f))
-        listData2.add(BarEntry(3f,80f))
-        listData2.add(BarEntry(4f,120f))
-        listData2.add(BarEntry(5f,40f))
-        listData2.add(BarEntry(6f, 55f))
-        listData2.add(BarEntry(7f, 20f))
-        listData2.add(BarEntry(8f,60f))
-        listData2.add(BarEntry(9f,80f))
-        listData2.add(BarEntry(10f,120f))
-
-        initLineChart()
+//
+//        //TODO 통신으로 받은 데이터 넘겨주기
+//        //그래프 그려주기
+//        listData.add(BarEntry(0f,130f))
+//        listData.add(BarEntry(1f, 20f))
+//        listData.add(BarEntry(2f,60f))
+//        listData.add(BarEntry(3f,80f))
+//        listData.add(BarEntry(4f,120f))
+//        listData.add(BarEntry(5f,40f))
+//        listData.add(BarEntry(6f, 55f))
+//        listData.add(BarEntry(7f, 20f))
+//        listData.add(BarEntry(8f,60f))
+//        listData.add(BarEntry(9f,80f))
+//        listData.add(BarEntry(10f,120f))
+//
+//
+//        listData2.add(BarEntry(0f, 55f))
+//        listData2.add(BarEntry(1f, 20f))
+//        listData2.add(BarEntry(2f,60f))
+//        listData2.add(BarEntry(3f,80f))
+//        listData2.add(BarEntry(4f,120f))
+//        listData2.add(BarEntry(5f,40f))
+//        listData2.add(BarEntry(6f, 55f))
+//        listData2.add(BarEntry(7f, 20f))
+//        listData2.add(BarEntry(8f,60f))
+//        listData2.add(BarEntry(9f,80f))
+//        listData2.add(BarEntry(10f,120f))
+//
+//        initLineChart()
+        getHomegraphResponse()
 
         //밑에 라벨 //TODO 네이밍 다시 하기
-        val xLabelIngredients = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
-        setChart(listData, xLabelIngredients)
+          xLabelIngredients = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+//        setChart(listData, xLabelIngredients)
+
 
         //스피너 초기 설정
         homeFragmentView.spinner_home_essential.dropDownVerticalOffset = 4 //스피너 드롭다운 위치 설정
@@ -323,6 +323,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     }
                 }
         }
+
+    override fun onClick(v: View?) {
+
+        //position
+        val idx = rv_care_view.getChildAdapterPosition(v!!)
+        //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
+        Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
+        val fm = fragmentManager!!
+        val myfrag = CustomDialogFragment()
+        myfrag.show(fm, "demo")
+        //rvCareProductAdapter.data[idx]
+    }
+
     //bottom navigation 설정 끝
     private fun initLineChart() {
 
@@ -441,8 +454,38 @@ class HomeFragment : Fragment(), View.OnClickListener {
         xAxis.valueFormatter = formatter
 
         chart_home.invalidate()
+    }
 
+    private fun getHomegraphResponse(){
+        val call: Call<HomeGraphData> = RequestURL.service.getHomeGraph( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
 
+        call.enqueue(
+            object : Callback<HomeGraphData>{
+                override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+
+                override fun onResponse(
+                    call: Call<HomeGraphData>,
+                    response: Response<HomeGraphData>
+                ) {
+                    val graphResponse: HomeGraphData=response.body()!!
+                    //TODO 차트에 그려줄 퍼센츠와 라벨 가져오기
+                    for(i in 0..10){
+                        barEntry= arrayOf(0f,0f,0f,0f,0f,0f,0f,0f,0f,0f,0f)
+                        barEntry[i]=graphResponse.data[i].nutrient_percent.toFloat()
+                        listData.add(BarEntry(i.toFloat(),barEntry[i]))
+                        listData2.add(BarEntry(i.toFloat(),barEntry[i]))
+
+                        xLabelIngredients[i]=graphResponse.data[i].nutrient_name
+                    }
+                    initLineChart()
+                    setChart(listData,xLabelIngredients)
+
+                }
+
+            }
+        )
     }
 }
 
