@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.caredirection.R
 import com.example.caredirection.care_product.CareProductActivity
-import com.example.caredirection.care_product.CareProductAddActivity
-import com.example.caredirection.home.HomeActivity
 import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.lifestyle.LifeStyleActivity
 import com.example.caredirection.research.userInfo.ResearchDiseaseActivity
@@ -37,7 +35,7 @@ class ResearchActivity : AppCompatActivity() {
             intents.add(Intent(this@ResearchActivity, ResearchSymptomActivity::class.java))
             if (symptom == null) return@run
 
-            intents.add(Intent(this@ResearchActivity, ResearchChange::class.java))
+            intents.add(Intent(this@ResearchActivity, ResearchChangeActivity::class.java))
             if (lifeCycle == null) return@run
 
             intents.add(Intent(this@ResearchActivity, LifeStyleActivity::class.java))

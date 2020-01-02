@@ -10,12 +10,9 @@ import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
 import android.widget.CheckBox
-import android.widget.CheckedTextView
 import com.example.caredirection.R
-import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
-import com.example.caredirection.research.ResearchChange
-import kotlinx.android.synthetic.main.activity_research_gender.*
+import com.example.caredirection.research.ResearchChangeActivity
 import kotlinx.android.synthetic.main.activity_research_symptom.*
 
 class ResearchSymptomActivity : AppCompatActivity() {
@@ -93,7 +90,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
         btn_symptom_next?.setOnClickListener{
                 keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
 
-                val intent = Intent(this,ResearchChange::class.java)
+                val intent = Intent(this,ResearchChangeActivity::class.java)
                 startActivity(intent)
 //            }
         }

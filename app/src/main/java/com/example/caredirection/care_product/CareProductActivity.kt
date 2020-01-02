@@ -1,5 +1,6 @@
 package com.example.caredirection.care_product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductRegisterData
+import kotlinx.android.synthetic.main.activity_care_product.*
 
 class CareProductActivity : AppCompatActivity() {
 
@@ -40,6 +42,8 @@ class CareProductActivity : AppCompatActivity() {
 
         rvCareRegisterAdapter.notifyDataSetChanged()
 
-
+        btn_care_register_product.setOnClickListener {
+            startActivity(Intent(this, ActivitySurveySearch::class.java))
+        }
     }
 }

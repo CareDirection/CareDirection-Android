@@ -27,8 +27,6 @@ class ResearchFinishActivity : AppCompatActivity() {
         btn_finish_next.setOnClickListener{
 
             keeper.researchfinish = 1
-//            val intent = Intent(this,LifeStyleActivity::class.java)
-//            intent.putExtra("username",name)
 
             startActivity(Intent(this, CareProductActivity::class.java))
         }

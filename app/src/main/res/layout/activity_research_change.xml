@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_research_gradient"
-    tools:context=".research.ResearchChange">
+    tools:context=".research.ResearchChangeActivity">
 
     <TextView
         android:id="@+id/txt_change_title"

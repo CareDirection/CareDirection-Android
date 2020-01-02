@@ -1,6 +1,7 @@
-package com.example.caredirection.research
+package com.example.caredirection.care_product
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -79,6 +80,9 @@ class ActivitySurveySearch : AppCompatActivity() {
                     }
                     data[position] = data[position].copy(check = true)
                     rv_servey_serach_adapter.notifyDataSetChanged()
+
+//                    val add_intent = Intent(this,CareProductAddActivity::class.java)
+//                    startActivity(add_intent)
                 }
                 }
         }

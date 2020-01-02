@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".study.ActivityStudySymptom"></activity>
-        <activity android:name=".research.ActivitySurveySearch"></activity>
+        <activity android:name=".care_product.ActivitySurveySearch"></activity>
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
         <activity android:name=".study.ingredient.IngredientActivity" />
         <activity android:name=".care_product.CareRegisterComplete" />
@@ -40,7 +40,7 @@
         <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".MainActivity" />
         <activity android:name=".care_product.CareProductActivity" />
-        <activity android:name=".research.ResearchChange" />
+        <activity android:name=".research.ResearchChangeActivity" />
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />

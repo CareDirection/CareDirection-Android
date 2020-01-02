@@ -15,7 +15,7 @@ import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.lifestyle.LifeStyleActivity
 import kotlinx.android.synthetic.main.activity_research_change.*
 
-class ResearchChange : AppCompatActivity() {
+class ResearchChangeActivity : AppCompatActivity() {
 
     private var txt_change_title: TextView? = null
     private lateinit var keeper : ResearchKeeper
