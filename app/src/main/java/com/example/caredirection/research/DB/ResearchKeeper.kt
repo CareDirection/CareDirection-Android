@@ -114,7 +114,7 @@ class ResearchKeeper (context: Context) {
             }
         }
 
-    var temp: Int?
+    var exercise: Int?
         get() {
             val candi = local.getInt(RESEARCH_TEMP, -1)
             return if (candi == -1) null else candi
@@ -136,7 +136,7 @@ class ResearchKeeper (context: Context) {
             }
         }
 
-    var researchfinish: Int?
+    var researchFinish: Int?
         get() {
             val candi = local.getInt(RESEARCH_FINISH, -1)
             return if (candi == -1) null else candi
@@ -144,6 +144,28 @@ class ResearchKeeper (context: Context) {
         set(value) {
             local.edit {
                 putInt(RESEARCH_FINISH, value ?: 0)
+            }
+        }
+
+    var careProductAdd: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_CAREPRODUCTADD, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_CAREPRODUCTADD, value ?: 0)
+            }
+        }
+
+    var careProductComplete: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_CAREPRODUCTCOMPLETE, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_CAREPRODUCTCOMPLETE, value ?: 0)
             }
         }
 
@@ -165,7 +187,8 @@ class ResearchKeeper (context: Context) {
         private const val RESEARCH_STEP = "12"
 
         private const val RESEARCH_FINISH = "13"
-
+        private const val RESEARCH_CAREPRODUCTADD = "14"
+        private const val RESEARCH_CAREPRODUCTCOMPLETE = "15"
 
         const val MALE = 0
         const val FEMALE = 1

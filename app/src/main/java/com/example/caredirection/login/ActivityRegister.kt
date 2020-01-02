@@ -1,7 +1,8 @@
-package com.example.caredirection
+package com.example.caredirection.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.caredirection.R
 
 class ActivityRegister : AppCompatActivity() {
 

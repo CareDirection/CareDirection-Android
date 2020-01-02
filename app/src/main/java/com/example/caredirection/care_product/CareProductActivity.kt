@@ -9,19 +9,22 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductRegisterData
+import com.example.caredirection.home.HomeActivity
+import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_care_product.*
 
 class CareProductActivity : AppCompatActivity() {
 
     private lateinit var rvCareRegisterView : RecyclerView
     private lateinit var rvCareRegisterAdapter : CareProductRegisterAdapter
+    private lateinit var keeper: ResearchKeeper
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_care_product)
 
-
+        keeper = ResearchKeeper(this)
 
         rvCareRegisterView=findViewById(R.id.rv_care_register_view)
 
@@ -44,6 +47,11 @@ class CareProductActivity : AppCompatActivity() {
 
         btn_care_register_product.setOnClickListener {
             startActivity(Intent(this, ActivitySurveySearch::class.java))
+        }
+
+        btn_care_register_product_next.setOnClickListener {
+            keeper.careProductAdd = 1
+            startActivity(Intent(this, CareRegisterComplete::class.java))
         }
     }
 }

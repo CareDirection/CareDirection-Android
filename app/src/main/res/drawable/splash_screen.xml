@@ -4,7 +4,7 @@
     <item android:drawable="@color/colorWhite"
         android:height="716dp" android:width="360dp"/>
 
-    <item android:drawable="@drawable/img_logo"
+    <item android:drawable="@drawable/img_splash_logo"
         android:height="258dp" android:width="220dp"
         android:top="144dp"
         android:left="70dp"

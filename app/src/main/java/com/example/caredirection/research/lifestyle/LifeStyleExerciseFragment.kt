@@ -46,17 +46,17 @@ class LifeStyleExerciseFragment : Fragment() {
 
         setColorInPartitial()
 
-        if(keeper.temp?:-1 == -1){
+        if(keeper.exercise?:-1 == -1){
             rg_temp_1.clearCheck()
             btn.isEnabled = false
             btn.setTextColor(resources.getColor(R.color.colorWhite))
         }else{
-            rg_temp_1.check(keeper.temp!!)
+            rg_temp_1.check(keeper.exercise!!)
             btn.isEnabled = true
             btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
         rg_temp_1.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.temp = rg_temp_1.checkedRadioButtonId
+            keeper.exercise = rg_temp_1.checkedRadioButtonId
             Log.v("YGYG", rg_temp_1.checkedRadioButtonId.toString())
             btn.isEnabled = true
             btn.setTextColor(resources.getColor(R.color.colorPrimary))

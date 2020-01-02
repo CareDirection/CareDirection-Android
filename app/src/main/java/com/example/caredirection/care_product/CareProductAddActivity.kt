@@ -82,5 +82,9 @@ class CareProductAddActivity : AppCompatActivity() {
                 }
                 .show()
         }
+
+        btn_care_product_add.setOnClickListener{
+            finish()
+        }
     }
 }

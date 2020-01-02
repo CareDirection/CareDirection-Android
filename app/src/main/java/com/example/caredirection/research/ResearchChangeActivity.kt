@@ -29,15 +29,11 @@ class ResearchChangeActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_change.setPadding(0, statusBarHeight(this), 0, 0)
 
-//        val name: String = intent.getStringExtra("username")
 
         txt_change_title = findViewById(R.id.txt_change_title)
 
         btn_change_next.setOnClickListener{
-
             keeper.lifeCycle = 1
-//            val intent = Intent(this,LifeStyleActivity::class.java)
-//            intent.putExtra("username",name)
 
             startActivity(Intent(this, LifeStyleActivity::class.java))
         }

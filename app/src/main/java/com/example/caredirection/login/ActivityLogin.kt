@@ -1,4 +1,4 @@
-package com.example.caredirection.research
+package com.example.caredirection.login
 
 import android.content.Context
 import android.content.Intent
@@ -6,29 +6,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.example.caredirection.R
-import com.example.caredirection.care_product.CareProductActivity
-import com.example.caredirection.home.HomeActivity
-import com.example.caredirection.research.DB.ResearchKeeper
-import kotlinx.android.synthetic.main.activity_research_finish.*
+import com.example.caredirection.research.ResearchActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
-class ResearchFinishActivity : AppCompatActivity() {
-
-    private lateinit var keeper : ResearchKeeper
+class ActivityLogin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_research_finish)
-
-        keeper = ResearchKeeper(this)
+        setContentView(R.layout.activity_login)
 
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        cl_finish.setPadding(0, statusBarHeight(this), 0, 0)
+        cl_login.setPadding(0, statusBarHeight(this), 0, 0)
 
-        btn_finish_next.setOnClickListener{
+        btn_activity_login.setOnClickListener {
+            startActivity(Intent(this@ActivityLogin, ResearchActivity::class.java))
+        }
 
-            keeper.researchFinish = 1
+        btn_activity_register.setOnClickListener{
+            startActivity(Intent(this@ActivityLogin, ActivityRegister::class.java))
 
-            startActivity(Intent(this, CareProductActivity::class.java))
         }
     }
 

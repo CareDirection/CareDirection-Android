@@ -81,10 +81,10 @@ class ActivitySurveySearch : AppCompatActivity() {
                     data[position] = data[position].copy(check = true)
                     rv_servey_serach_adapter.notifyDataSetChanged()
 
-//                    val add_intent = Intent(this,CareProductAddActivity::class.java)
-//                    startActivity(add_intent)
+                    val add_intent = Intent(context,CareProductAddActivity::class.java)
+                    startActivity(add_intent)
                 }
-                }
+            }
         }
     }
 
