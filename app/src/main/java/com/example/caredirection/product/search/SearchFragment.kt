@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.data.network.Data
+import com.example.caredirection.data.network.ProductSearchContentData
 import com.example.caredirection.data.network.ProductSearchData
 import com.example.caredirection.network.RequestURL
 import com.example.caredirection.product.result.ProductSearchResult
@@ -69,6 +71,7 @@ class SearchFragment : Fragment() {
         rv_search_nutrient.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
 
         getProductSearchResponse()
+
         /*data = mutableListOf(
             SearchNutrientItem("오메가3"),
             SearchNutrientItem("종합비타민"),
@@ -84,10 +87,11 @@ class SearchFragment : Fragment() {
         rv_search_product = view.findViewById(R.id.rv_search_item_product)
 
         rv_search_product.layoutManager = LinearLayoutManager(requireContext())
-        rv_search_product_adapter.item = listOf(
+
+        /*rv_search_product_adapter.item = listOf(
             SearchProductAdapter.rv_search_item("ENGliSH NAME", "publisher", "KOREA NAME", "price", false),
             SearchProductAdapter.rv_search_item("ENGliSH NAME", "publisher", "KOREA NAME", "price", false)
-        )
+        )*/
         rv_search_product.adapter = rv_search_product_adapter
 
         //
@@ -142,7 +146,9 @@ class SearchFragment : Fragment() {
                         data[it] = data[it].copy(check = false)
                     }
                     data[position] = data[position].copy(check = true)
+                    getProductSearchContentResponse(item.nutrient)
                     rv_search_nutirient_adapter.notifyDataSetChanged()
+
                 }
         }
     }
@@ -178,12 +184,40 @@ class SearchFragment : Fragment() {
                     (0 until productSearchList.data.size!!).forEach {
                        // Toast.makeText(context,  productSearchList.data[it].tab_name,Toast.LENGTH_SHORT).show()
                         data.add(SearchNutrientItem(productSearchList.data[it].tab_name))
+
                     }
                 }
             }
 
         )
     }
+
+    private fun getProductSearchContentResponse(search_word: String){
+        val call: Call<ProductSearchContentData> = RequestURL.service.getProductContentList(search_word,"nutrient",2)
+
+        call.enqueue(
+            object : Callback<ProductSearchContentData>{
+                override fun onFailure(call: Call<ProductSearchContentData>, t: Throwable) {
+
+                }
+
+                override fun onResponse(
+                    call: Call<ProductSearchContentData>,
+                    response: Response<ProductSearchContentData>
+                ) {
+                    val productSearchcontentList : Data = response.body()!!.data
+
+
+                    (0 until productSearchcontentList.searchList.size!!).forEach {
+                        rv_search_product_adapter.item.add(productSearchcontentList.searchList[it])
+                        rv_search_product_adapter.notifyDataSetChanged()
+                    }
+
+                }
+            })
+    }
+
+
 }
 
 

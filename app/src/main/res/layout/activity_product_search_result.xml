@@ -46,7 +46,7 @@
 
         <EditText
             android:id="@+id/edt_activity_product_search_result"
-            android:layout_width="251dp"
+            android:layout_width="151dp"
             android:layout_height="47dp"
             android:layout_marginLeft="9dp"
             android:layout_marginTop="15dp"
@@ -55,6 +55,14 @@
             android:fontFamily="@font/notosanskr_regular"
             android:includeFontPadding="false"
             app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/img_activity_product_search"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:src="@drawable/btn_search_selected"
+            app:layout_constraintStart_toEndOf="@+id/edt_activity_product_search_result"
+            app:layout_constraintTop_toTopOf="@+id/edt_activity_product_search_result"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
