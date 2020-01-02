@@ -466,7 +466,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //홈뷰 - 그래프 통신
     private fun getHomeGraphResponse() {
         val call: Call<HomeGraphData> =
-            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
+            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGlsZHVzZXJfaWR4IjoxfQ.iOg6R_zQ37_uhyddBohJ5tEOZNu9kKjqddAQJHOJ6vI")
 
         call.enqueue(
             object : Callback<HomeGraphData> {
