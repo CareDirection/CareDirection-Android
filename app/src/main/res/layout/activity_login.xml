@@ -64,6 +64,7 @@
             android:layout_marginRight="18dp"
             android:fontFamily="@font/notosanskr_regular"
             android:hint="비밀번호"
+            android:inputType="textPassword"
             android:gravity="center_vertical"
             android:includeFontPadding="false"
             android:lineSpacingExtra="6sp"
