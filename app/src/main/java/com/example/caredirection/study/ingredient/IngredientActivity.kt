@@ -1,7 +1,6 @@
 package com.example.caredirection.study.ingredient
 
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -9,7 +8,6 @@ import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
 import com.example.caredirection.data.network.IngredientData
-import com.example.caredirection.data.network.IngredientInfoItem
 import com.example.caredirection.network.RequestURL
 import kotlinx.android.synthetic.main.activity_ingredient.*
 import kotlinx.android.synthetic.main.activity_ingredient.view.*
@@ -34,7 +32,7 @@ class IngredientActivity : AppCompatActivity() {
         val fromIngredientIntent = getIntent()
         Ingredient=fromIngredientIntent.getStringExtra("ingredient")
 
-        top_bar_main.top_plain_text.txt_top_bar_title.text = "성분"
+        top_bar.top_plain_text.txt_top_bar_title.text = "성분"
         txt_ingredient_ingredient.text=Ingredient
 
         ingredientIdx=when(Ingredient){
@@ -66,13 +64,13 @@ class IngredientActivity : AppCompatActivity() {
                     response: Response<IngredientData>
                 ) {
                     val ingredientRepos : IngredientData = response.body()!!
-                    txt_ingredient_comment.text= ingredientRepos.data[0].nutrient_common_description
+                    txt_article_title.text= ingredientRepos.data[0].nutrient_common_description
                     val ingredient_image_uri= ingredientRepos.data[0].image_key
 
                     Glide.with(this@IngredientActivity)
                         .load(ingredient_image_uri)
                         .centerCrop()
-                        .into(img_ingredient_ingredient)
+                        .into(img_article_details)
 
 
 

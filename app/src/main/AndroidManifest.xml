@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home.functional.FunctionalActivity"></activity>
+        <activity android:name=".study.article.ArticleDetailsActivity"></activity>
+        <activity android:name=".home.functional.FunctionalActivity" />
         <activity android:name=".study.ActivityStudySymptom" />
         <activity android:name=".research.ActivitySurveySearch" />
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
@@ -47,7 +48,7 @@
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".research.userInfo.ResearchNameActivity" />
-        <activity android:name=".research.ResearchActivity"></activity>
+        <activity android:name=".research.ResearchActivity" />
 
         <service android:name=".common.fcm.CadiFirebaseMessagingService">
             <intent-filter>
