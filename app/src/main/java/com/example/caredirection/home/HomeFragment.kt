@@ -20,7 +20,6 @@ import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
-import com.example.caredirection.data.network.FunctionalItem
 import com.example.caredirection.data.network.HomeFunctionalData
 import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.home.care_product.CareProductAdapter
@@ -48,20 +47,20 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment(), View.OnClickListener {
 
 
-
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     val listData = ArrayList<BarEntry>()
     val listData2 = ArrayList<BarEntry>()
-    private lateinit var barEntry:Array<Float>
-    private lateinit var xLabelIngredients2 :Array<String>
-    private lateinit var xLabelIngredients1 :Array<String>
+    private lateinit var barEntry: Array<Float>
+    private lateinit var xLabelIngredients2: Array<String>
+    private lateinit var xLabelIngredients1: Array<String>
 
     //private lateinit var
     private var rvCareProductData = listOf<RvCareProductData>()
-    private lateinit var homeFragmentView :View
+    private lateinit var homeFragmentView: View
     private lateinit var rvCareProductAdapter: CareProductAdapter
+    private lateinit var rvHomeFunctionalSelectedFeatureAdapter: FunctionalSelectedFeatureAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,14 +79,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        homeFragmentView= inflater.inflate(R.layout.fragment_home, container, false)
+        homeFragmentView = inflater.inflate(R.layout.fragment_home, container, false)
 
-        return homeFragmentView}
+        return homeFragmentView
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val spinnerHomeEssentialArray = resources.getStringArray(R.array.spinner_home_essential_items)
-        val spinnerHomeEssentialArrayAdapter=ArrayAdapter(context!!,R.layout.spinner_home_essential,spinnerHomeEssentialArray)
+        val spinnerHomeEssentialArray =
+            resources.getStringArray(R.array.spinner_home_essential_items)
+        val spinnerHomeEssentialArrayAdapter =
+            ArrayAdapter(context!!, R.layout.spinner_home_essential, spinnerHomeEssentialArray)
 
 //
 //        //TODO 통신으로 받은 데이터 넘겨주기
@@ -118,11 +120,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
 //        listData2.add(BarEntry(10f,120f))
 //
 //        initLineChart()
-        getHomegraphResponse()
+        getHomeGraphResponse()
 
         //밑에 라벨 //TODO 네이밍 다시 하기
-        xLabelIngredients2 = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
-        xLabelIngredients1 = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+        xLabelIngredients2 =
+            arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+        xLabelIngredients1 =
+            arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
 //        setChart(listData, xLabelIngredients)
 
 
@@ -136,88 +140,89 @@ class HomeFragment : Fragment(), View.OnClickListener {
 //        homeFragmentView.spinner_home_essential.setSelection(0,false)
         //homeFragmentView.spinner_home_essential.isSelected=true
 
-        homeFragmentView.spinner_home_essential.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+        homeFragmentView.spinner_home_essential.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
 
-            }
+                }
 
 
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                //스피너 설정 값에 따라서 선택정렬해줌
-                //그럼 그려주는 순서가 바뀐다
-                when(position){
-                    0->{
-                        setChart(listData, xLabelIngredients1)
-                    }
-                    1->{
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    //스피너 설정 값에 따라서 선택정렬해줌
+                    //그럼 그려주는 순서가 바뀐다
+                    when (position) {
+                        0 -> {
+                            setChart(listData, xLabelIngredients1)
+                        }
+                        1 -> {
 
-                        //낮은 순
-                        for( i in 0 until listData2.size-1){
-                            var min = i
-                            for(j in i+1 until listData2.size){
-                                if(listData2[j].y <= listData2[min].y){
-                                    min = j
+                            //낮은 순
+                            for (i in 0 until listData2.size - 1) {
+                                var min = i
+                                for (j in i + 1 until listData2.size) {
+                                    if (listData2[j].y <= listData2[min].y) {
+                                        min = j
+                                    }
+                                }
+                                if (i != min) {
+
+                                    //순서 선택정렬
+                                    var temp = listData2[i].y
+                                    listData2[i].y = listData2[min].y
+                                    listData2[min].y = temp
+
+                                    //매칭되어있는 라벨도 함께 이동
+                                    var tempX = xLabelIngredients2[i]
+                                    xLabelIngredients2[i] = xLabelIngredients2[min]
+                                    xLabelIngredients2[min] = tempX
                                 }
                             }
-                            if( i != min){
+                            setChart(listData2, xLabelIngredients2)
 
-                                //순서 선택정렬
-                                var temp = listData2[i].y
-                                listData2[i].y = listData2[min].y
-                                listData2[min].y = temp
-
-                                //매칭되어있는 라벨도 함께 이동
-                                var tempX= xLabelIngredients2[i]
-                                xLabelIngredients2[i] = xLabelIngredients2[min]
-                                xLabelIngredients2[min] = tempX
-                            }
                         }
-                        setChart(listData2, xLabelIngredients2)
-
-                    }
-                    2->{
-                        //높은 순
+                        2 -> {
+                            //높은 순
 //                        listData.sortByDescending {
 //                            it.y
 //                        }
 
-                        for( i in 0 until listData2.size-1){
-                            //선택정렬 높은순으로 합니다
-                            var min = i
-                            for(j in i+1 until listData2.size){
-                                if(listData2[j].y >= listData2[min].y){
-                                    min = j
+                            for (i in 0 until listData2.size - 1) {
+                                //선택정렬 높은순으로 합니다
+                                var min = i
+                                for (j in i + 1 until listData2.size) {
+                                    if (listData2[j].y >= listData2[min].y) {
+                                        min = j
+                                    }
+                                }
+
+                                if (i != min) {
+                                    var temp = listData2[i].y
+                                    listData2[i].y = listData2[min].y
+                                    listData2[min].y = temp
+
+                                    //라벨도 같이 움직입니다.
+                                    var tempX = xLabelIngredients2[i]
+                                    xLabelIngredients2[i] = xLabelIngredients2[min]
+                                    xLabelIngredients2[min] = tempX
                                 }
                             }
 
-                            if( i != min){
-                                var temp = listData2[i].y
-                                listData2[i].y = listData2[min].y
-                                listData2[min].y = temp
+                            setChart(listData2, xLabelIngredients2)
 
-                                //라벨도 같이 움직입니다.
-                                var tempX= xLabelIngredients2[i]
-                                xLabelIngredients2[i] = xLabelIngredients2[min]
-                                xLabelIngredients2[min] = tempX
-                            }
                         }
 
-                        setChart(listData2, xLabelIngredients2)
-
                     }
-
                 }
-            }
 
-        }
+            }
 //        setChart(listData, xLabelIngredients)
 
-        essential_details.setOnClickListener{
+        essential_details.setOnClickListener {
             //필수 비타민 & 미네랄 상세보기로 이동
             //todo 커스텀 다이얼로그 띄워주는 위치 변경
             //프래그먼트 다이얼로그 생성
@@ -228,34 +233,35 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
         //기능성원료 - 케어받는 기능 정리
-        rv_home_functional_selected_view.layoutManager=LinearLayoutManager(context)
-        val rvHomeFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(context!!)
+        rv_home_functional_selected_view.layoutManager = LinearLayoutManager(context)
+        rvHomeFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(context!!)
         rv_home_functional_selected_view.adapter = rvHomeFunctionalSelectedFeatureAdapter
         //TODO 통신 데이터 연결
-        rvHomeFunctionalSelectedFeatureAdapter.data=listOf(
-            RvFunctionalSelectedData(listOf("장건강","피로회복"),"오메가3"),
-            RvFunctionalSelectedData(listOf("혈행개선"),""),
-            RvFunctionalSelectedData(listOf("장건강","피로회복","눈건강"),"프로폴리스"),
-            RvFunctionalSelectedData(listOf("피로회복","뼈","장건강"),"오메가3"),
-            RvFunctionalSelectedData(listOf("운동보조","두뇌활동"),"홍삼")
-        )
-
+//        rvHomeFunctionalSelectedFeatureAdapter.data=listOf(
+//            RvFunctionalSelectedData(arrayOf("장건강","피로회복"),"오메가3"),
+//            RvFunctionalSelectedData(arrayOf("혈행개선"),"kjkl"),
+//            RvFunctionalSelectedData(arrayOf("장건강","피로회복","눈건강"),"프로폴리스"),
+//            RvFunctionalSelectedData(arrayOf("피로회복","뼈","장건강"),"오메가3"),
+//            RvFunctionalSelectedData(arrayOf("운동보조","두뇌활동"),"홍삼")
+//        )
+        getHomeFunctionalResponse()
 
         //TOdo 리싸이클러뷰가 있으면 보이게 바꾸고 card 사라지게 만들기
         //이건 뭔가 만들었는데 실은 복용 등록 페이지로 이동후에
         //리싸이클러뷰를 띄워줌 -> 즉 리싸이클러뷰가 있으면 카드뷰 안띄워주는 거죠?
-        btn_home_care_product_register.setOnClickListener{
-            rv_care_view.isVisible=true
-            btn_home_care_product_register.visibility=GONE
+        btn_home_care_product_register.setOnClickListener {
+            rv_care_view.isVisible = true
+            btn_home_care_product_register.visibility = GONE
         }
 
 
         //card-리사이클러뷰 가져오기
         //rvCareView.isVisible=true
         //리사이클러뷰 레이아웃 설정
-        rv_care_view.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        rv_care_view.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         //어댑더 정의
-        rvCareProductAdapter= CareProductAdapter(context!!)
+        rvCareProductAdapter = CareProductAdapter(context!!)
         //카드뷰에 어댑터 연결
         rvCareProductAdapter.setOnClick(this)
         rv_care_view.adapter = rvCareProductAdapter
@@ -264,10 +270,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //TODO 통신 오면 고치기
         //더미 데이터 넣어주기
         rvCareProductAdapter.data = listOf(
-            RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-            RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-            RvCareProductData(R.color.colorRed,true,"ddddddddd"),
-            RvCareProductData(R.color.colorRed,true,"ddddddddd")
+            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
+            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
+            RvCareProductData(R.color.colorRed, true, "ddddddddd"),
+            RvCareProductData(R.color.colorRed, true, "ddddddddd")
         )
 
         //
@@ -292,39 +298,42 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 .setGravity(Gravity.TOP)
                 .setAdapter(adapter)
                 .setExpanded(false)
-                .setPadding(0,0,0,34)
+                .setPadding(0, 0, 0, 34)
                 .setContentBackgroundResource(R.drawable.white_border_top_down)
                 .create().show()
         }
-        homeFragmentView.functional_details.setOnClickListener{
+        homeFragmentView.functional_details.setOnClickListener {
             //TODO 프래그먼트로 이동
-            val functional_intent = Intent(context,FunctionalActivity::class.java)
+            val functional_intent = Intent(context, FunctionalActivity::class.java)
             startActivity(functional_intent)
 
-            }
+        }
     }
 
     //bottom navigation 설정 시작
-        fun onButtonPressed(uri: Uri) {
+    fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
-        }
-        override fun onDetach() {
-            super.onDetach()
-            listener = null
-        }
-        interface OnFragmentInteractionListener {
-            fun onFragmentInteraction(uri: Uri)
-        }
-        companion object {
-            @JvmStatic
-            fun newInstance(param1: String, param2: String) =
-                HomeFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    interface OnFragmentInteractionListener {
+        fun onFragmentInteraction(uri: Uri)
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            HomeFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
-        }
+            }
+    }
 
     override fun onClick(v: View?) {
 
@@ -345,14 +354,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
 //        xAxis.setDrawLabels(false) 이것이 바로 라벨을 지워주는 친구였다 ex) 비타민 D 같은 것들
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f // 라벨 써주는 간격 조정
-       // xAxis.mLabelRotatedWidth=10//이건 뭐지
-      //이거하면 죽음  xAxis.spaceMax=5f
+        // xAxis.mLabelRotatedWidth=10//이건 뭐지
+        //이거하면 죽음  xAxis.spaceMax=5f
 
         xAxis.setDrawGridLines(false)
         xAxis.setDrawAxisLine(false)
 
         val rightYAxis = chart_home.axisRight
-        rightYAxis.isEnabled=false
+        rightYAxis.isEnabled = false
         //rightYAxis.mAxisMinimum=0f
         //rightYAxis.mAxisMaximum=120f
         /*
@@ -367,7 +376,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         leftYAxis.setAxisMinimum(0f)
         //leftYAxis.mAxisMinimum=0f
         //leftYAxis.mAxisMaximum=120f
-        leftYAxis.granularity= 20f //라벨 써주는 간격 조정
+        leftYAxis.granularity = 20f //라벨 써주는 간격 조정
         leftYAxis.setDrawLabels(false) //todo 기-디한테 라벨 써주는지 아닌지 물어보기
         leftYAxis.setDrawGridLines(false)
         leftYAxis.setDrawAxisLine(false)
@@ -379,15 +388,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
         //ll1.labelPosition = LimitLine.LimitLabelPosition.LEFT_TOP
         //ll1.lineColor=R.color.colorRed 이렇게 하니까 안먹음 getcolor 사용해야함
-        ll1.lineColor = ContextCompat.getColor(context!!,R.color.colorRed)
+        ll1.lineColor = ContextCompat.getColor(context!!, R.color.colorRed)
 
         ll1.textSize = 10f
-       // ll1.lineColor=R.color.colorGrey
+        // ll1.lineColor=R.color.colorGrey
 
         val ll2 = LimitLine(30f, "")
         ll2.lineWidth = 3f//선의 굵기
         //ll2.lineColor=R.color.colorPrimary //Todo
-        ll2.lineColor = ContextCompat.getColor(context!!,R.color.colorPrimary)
+        ll2.lineColor = ContextCompat.getColor(context!!, R.color.colorPrimary)
         ll2.enableDashedLine(50f, 20f, 0f)
         //ll1.enableDashedLine(선의 길이, 선사이의 공간, 0f)
 
@@ -398,7 +407,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         leftYAxis.addLimitLine(ll2)
     }
 
-    private fun setChart(listData: ArrayList<BarEntry>, xLabelIngredients : Array<String>) {
+    private fun setChart(listData: ArrayList<BarEntry>, xLabelIngredients: Array<String>) {
         val dataSet = BarDataSet(listData, "")
 
         val listColor = ArrayList<Int>()
@@ -416,7 +425,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
         listData.forEach {
-            if(it.y >  100.0f || it.y < 30.0f)
+            if (it.y > 100.0f || it.y < 30.0f)
                 listColor.add(ContextCompat.getColor(context!!, R.color.colorRedGraph))
             else
                 listColor.add(ContextCompat.getColor(context!!, R.color.colorBlueGraph))
@@ -437,14 +446,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
         chart_home.data = lineData
         chart_home.setFitBars(true)
         chart_home.setTouchEnabled(true)//됨
-        chart_home.isHorizontalScrollBarEnabled=true
+        chart_home.isHorizontalScrollBarEnabled = true
         //chart.isDragXEnabled=true
-        chart_home.isDragDecelerationEnabled=true
+        chart_home.isDragDecelerationEnabled = true
         // chart.setDragXEnabled(true)
         //chart.setHorizontalScrollBarEnabled(true)
-        chart_home.isDoubleTapToZoomEnabled=false//두번터치하고 스크롤은 됨
-        chart_home.isDragXEnabled=true
-        chart_home.setVisibleXRange(3f,6f) // X에 그려줄 최소, 최대 단위 정하기
+        chart_home.isDoubleTapToZoomEnabled = false//두번터치하고 스크롤은 됨
+        chart_home.isDragXEnabled = true
+        chart_home.setVisibleXRange(3f, 6f) // X에 그려줄 최소, 최대 단위 정하기
         chart_home.animateY(1000) //세로축 에니메이션
         // chart.data = lineData
 
@@ -455,11 +464,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     //홈뷰 - 그래프 통신
-    private fun getHomegraphResponse(){
-        val call: Call<HomeGraphData> = RequestURL.service.getHomeGraph( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
+    private fun getHomeGraphResponse() {
+        val call: Call<HomeGraphData> =
+            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
 
         call.enqueue(
-            object : Callback<HomeGraphData>{
+            object : Callback<HomeGraphData> {
                 override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
                     t.toString().logDebug()
                 }
@@ -468,30 +478,32 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     call: Call<HomeGraphData>,
                     response: Response<HomeGraphData>
                 ) {
-                    val graphResponse: HomeGraphData=response.body()!!
+                    val graphResponse: HomeGraphData = response.body()!!
                     //TODO 차트에 그려줄 퍼센츠와 라벨 가져오기
-                    for(i in 0..10){
-                        barEntry= arrayOf(0f,0f,0f,0f,0f,0f,0f,0f,0f,0f,0f)
-                        barEntry[i]=graphResponse.data[i].nutrient_percent.toFloat()
-                        listData.add(BarEntry(i.toFloat(),barEntry[i]))
-                        listData2.add(BarEntry(i.toFloat(),barEntry[i]))
+                    for (i in 0..10) {
+                        barEntry = arrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
+                        barEntry[i] = graphResponse.data[i].nutrient_percent.toFloat()
+                        listData.add(BarEntry(i.toFloat(), barEntry[i]))
+                        listData2.add(BarEntry(i.toFloat(), barEntry[i]))
 
-                        xLabelIngredients2[i]=graphResponse.data[i].nutrient_name
-                        xLabelIngredients1[i]=graphResponse.data[i].nutrient_name
+                        xLabelIngredients2[i] = graphResponse.data[i].nutrient_name
+                        xLabelIngredients1[i] = graphResponse.data[i].nutrient_name
                     }
                     initLineChart()
-                  //  setChart(listData,xLabelIngredients)
+                    //  setChart(listData,xLabelIngredients)
 
                 }
 
             }
         )
     }
+
     //홈뷰 - 기능성 원료 통신
-    private fun getHomeFunctionalResponse(){
-        val call: Call<HomeFunctionalData> = RequestURL.service.getFunctional( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6IjMifQ.-KEfwDT3c7yMpSO3ujWo_oZLa2cEHyKriDts_2BEvfg")
+    private fun getHomeFunctionalResponse() {
+        val call: Call<HomeFunctionalData> =
+            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGlsZHVzZXJfaWR4Ijo0fQ.J6rwFP6n8HSmw8YWznkZri5eOpj-sNuzpFKuUY8zlBc")
         call.enqueue(
-            object :Callback<HomeFunctionalData>{
+            object : Callback<HomeFunctionalData> {
                 override fun onFailure(call: Call<HomeFunctionalData>, t: Throwable) {
                     t.toString().logDebug()
                 }
@@ -502,26 +514,32 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 ) {
                     //TODO recycler view에 띄우기
                     //
-                    val functionalRespo:HomeFunctionalData = response.body()!!
-                    val funtionalItem=functionalRespo.data//리써이클러뷰의 아이템 //전역변수여야 하나? 여기서 어댑터로 연결해주면 될듯
+                    val functionalRespo: HomeFunctionalData = response.body()!!
+                    val funtionalItem =
+                        functionalRespo.data//리써이클러뷰의 아이템 //전역변수여야 하나? 여기서 어댑터로 연결해주면 될듯
 
-                    //val nutrientName=Array<String>(functionalRespo.data.size,{""})
+                    val rvItem = Array(funtionalItem.size) {
+                        RvFunctionalSelectedData(
+                            arrayOf("", ""), ""
+                        )
+                    }
 
-                    for(i in 0..funtionalItem.size){
+                    for (i in funtionalItem.indices) {
 
-                        var efficacyList=funtionalItem[i].efficacy
+                        val efficacyList = funtionalItem[i].efficacy
+                        val tempEfficacy = Array(efficacyList.size) { "" }
 
+                        for (j in efficacyList.indices) {
+                            //  var tempEfficacy=List<String>(efficacyList.size,{""})
+                            tempEfficacy[j] = efficacyList[j].efficacy_name
 
-                         //   var tempRvItem=RvFunctionalSelectedData(efficacyList,funtionalItem[i].)
+                            val tempRvItem =
+                                RvFunctionalSelectedData(tempEfficacy, funtionalItem[i].nutrient)
+                            rvItem[i] = tempRvItem
+                        }
+                        rvHomeFunctionalSelectedFeatureAdapter.data = rvItem
+                        rvHomeFunctionalSelectedFeatureAdapter.notifyDataSetChanged()
 
-
-                        //nutrientName[i]=functionalRespo.data[i].nutrient
-
-                        //var efficacy= List<String>(functionalRespo.data[i].efficacy.size,{""})
-
-
-
-                       // RvFunctionalSelectedData(efficacy,nutrientName[i])
 
                     }
                 }

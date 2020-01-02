@@ -22,12 +22,12 @@ class FunctionalActivity : AppCompatActivity() {
         rv_functional_selected_view.layoutManager= LinearLayoutManager(this)
         val rvFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(this!!)
         rv_functional_selected_view.adapter=rvFunctionalSelectedFeatureAdapter
-        rvFunctionalSelectedFeatureAdapter.data=listOf(
-            RvFunctionalSelectedData(listOf("장건강","피로회복"),"오메가3"),
-            RvFunctionalSelectedData(listOf("혈행개선"),""),
-            RvFunctionalSelectedData(listOf("장건강","피로회복","눈건강"),"프로폴리스"),
-            RvFunctionalSelectedData(listOf("피로회복","뼈","장건강"),"오메가3"),
-            RvFunctionalSelectedData(listOf("운동보조","두뇌활동"),"홍삼")
+        rvFunctionalSelectedFeatureAdapter.data=arrayOf(
+            RvFunctionalSelectedData(arrayOf("장건강","피로회복"),"오메가3"),
+            RvFunctionalSelectedData(arrayOf("혈행개선"),""),
+            RvFunctionalSelectedData(arrayOf("장건강","피로회복","눈건강"),"프로폴리스"),
+            RvFunctionalSelectedData(arrayOf("피로회복","뼈","장건강"),"오메가3"),
+            RvFunctionalSelectedData(arrayOf("운동보조","두뇌활동"),"홍삼")
         )
 
 
