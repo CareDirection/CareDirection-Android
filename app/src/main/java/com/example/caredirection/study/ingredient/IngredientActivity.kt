@@ -1,8 +1,10 @@
 package com.example.caredirection.study.ingredient
 
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
@@ -36,12 +38,12 @@ class IngredientActivity : AppCompatActivity() {
         txt_ingredient_ingredient.text=Ingredient
 
         ingredientIdx=when(Ingredient){
-            "홍삼"->1
-            "오메가 3"->4
-            "밀크씨슬"->2
-            "루테인"->3
-            "유산균"->4
-            "비타민 D"->5
+            "홍삼"->22
+            "오메가 3"->2
+            "밀크씨슬"->3
+            "루테인"->4
+            "유산균"->5
+            "비타민 D"->6
             else->0
         }
 
@@ -52,11 +54,11 @@ class IngredientActivity : AppCompatActivity() {
 
     private fun getIngredientInfoResponse(){
         val call: Call<IngredientData> = RequestURL.service.getIngredientInfo( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6IjMifQ.-KEfwDT3c7yMpSO3ujWo_oZLa2cEHyKriDts_2BEvfg",ingredientIdx)
-
         call.enqueue(
             object : Callback<IngredientData>{
                 override fun onFailure(call: Call<IngredientData>, t: Throwable) {
                     "성분 값을 가지고 오지 못하였습니다.".logDebug()
+                    t.toString().logDebug()
                 }
 
                 override fun onResponse(
@@ -65,7 +67,15 @@ class IngredientActivity : AppCompatActivity() {
                 ) {
                     val ingredientRepos : IngredientData = response.body()!!
                     txt_ingredient_comment.text= ingredientRepos.data[0].nutrient_common_description
-                 //  ingredient_image= ingredientRepos.image_key
+                    val ingredient_image_uri= ingredientRepos.data[0].image_key
+
+                    Glide.with(this@IngredientActivity)
+                        .load(ingredient_image_uri)
+                        .centerCrop()
+                        .into(img_ingredient_ingredient)
+
+
+
                 }
 
             }
