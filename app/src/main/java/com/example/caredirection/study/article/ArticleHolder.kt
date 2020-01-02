@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.data.RvArticleData
-import kotlinx.android.synthetic.main.activity_ingredient.*
 
 class ArticleHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
@@ -16,10 +15,11 @@ class ArticleHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(data: RvArticleData) {
         Glide.with(view)
-            .load(R.drawable.flickr_marco_verch)
+            .load(data.img)
             .centerCrop()
             .into(img)
         txt.text = data.text
+
     }
 
 }

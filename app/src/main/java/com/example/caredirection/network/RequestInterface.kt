@@ -1,5 +1,6 @@
 package com.example.caredirection.network
 
+import com.example.caredirection.data.network.ArticleListData
 import com.example.caredirection.data.network.IngredientData
 import com.example.caredirection.data.network.LoginData
 import retrofit2.Call
@@ -19,5 +20,11 @@ interface RequestInterface {
         @Header("token")token: String,
         @Path("nutrient_idx")nutrient_idx:Int
     ):Call<IngredientData>
+
+    //성분학습뷰 - 아티클리스트 - 은이
+    @GET("/article")
+    fun getArticleList(
+        @Header("Content-Type") content_Type:String="application/json"
+    ):Call<ArticleListData>
 
 }
