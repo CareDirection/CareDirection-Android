@@ -20,6 +20,7 @@ import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.data.network.HomeFunctionalData
 import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.home.care_product.CareProductAdapter
 import com.example.caredirection.home.functional.FunctionalActivity
@@ -53,7 +54,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     val listData = ArrayList<BarEntry>()
     val listData2 = ArrayList<BarEntry>()
     private lateinit var barEntry:Array<Float>
-    private lateinit var xLabelIngredients :Array<String>
+    private lateinit var xLabelIngredients2 :Array<String>
+    private lateinit var xLabelIngredients1 :Array<String>
 
     //private lateinit var
     private var rvCareProductData = listOf<RvCareProductData>()
@@ -118,7 +120,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         getHomegraphResponse()
 
         //밑에 라벨 //TODO 네이밍 다시 하기
-          xLabelIngredients = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+        xLabelIngredients2 = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+        xLabelIngredients1 = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
 //        setChart(listData, xLabelIngredients)
 
 
@@ -148,7 +151,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 //그럼 그려주는 순서가 바뀐다
                 when(position){
                     0->{
-                        setChart(listData, xLabelIngredients)
+                        setChart(listData, xLabelIngredients1)
                     }
                     1->{
 
@@ -168,12 +171,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
                                 listData2[min].y = temp
 
                                 //매칭되어있는 라벨도 함께 이동
-                                var tempX= xLabelIngredients[i]
-                                xLabelIngredients[i] = xLabelIngredients[min]
-                                xLabelIngredients[min] = tempX
+                                var tempX= xLabelIngredients2[i]
+                                xLabelIngredients2[i] = xLabelIngredients2[min]
+                                xLabelIngredients2[min] = tempX
                             }
                         }
-                        setChart(listData2, xLabelIngredients)
+                        setChart(listData2, xLabelIngredients2)
 
                     }
                     2->{
@@ -197,13 +200,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
                                 listData2[min].y = temp
 
                                 //라벨도 같이 움직입니다.
-                                var tempX= xLabelIngredients[i]
-                                xLabelIngredients[i] = xLabelIngredients[min]
-                                xLabelIngredients[min] = tempX
+                                var tempX= xLabelIngredients2[i]
+                                xLabelIngredients2[i] = xLabelIngredients2[min]
+                                xLabelIngredients2[min] = tempX
                             }
                         }
 
-                        setChart(listData2, xLabelIngredients)
+                        setChart(listData2, xLabelIngredients2)
+
                     }
 
                 }
@@ -275,7 +279,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
             // .setExpanded(true,100)
             // .setAdapter()
 
-
             val adapter = TopDownDialogHolder(context!!)
             //TODO: 서버에서 받아온 녀석으로 하셈.
             adapter.data = listOf(
@@ -299,8 +302,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             }
     }
-
-
 
     //bottom navigation 설정 시작
         fun onButtonPressed(uri: Uri) {
@@ -392,12 +393,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         // ll2.labelPosition = LimitLine.LimitLabelPosition.LEFT_TOP
         ll2.textSize = 10f
 
-
-
         leftYAxis.addLimitLine(ll1)  // 상한선 그리기
         leftYAxis.addLimitLine(ll2)
-
-
     }
 
     private fun setChart(listData: ArrayList<BarEntry>, xLabelIngredients : Array<String>) {
@@ -456,6 +453,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         chart_home.invalidate()
     }
 
+    //홈뷰 - 그래프 통신
     private fun getHomegraphResponse(){
         val call: Call<HomeGraphData> = RequestURL.service.getHomeGraph( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
 
@@ -477,15 +475,50 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         listData.add(BarEntry(i.toFloat(),barEntry[i]))
                         listData2.add(BarEntry(i.toFloat(),barEntry[i]))
 
-                        xLabelIngredients[i]=graphResponse.data[i].nutrient_name
+                        xLabelIngredients2[i]=graphResponse.data[i].nutrient_name
+                        xLabelIngredients1[i]=graphResponse.data[i].nutrient_name
                     }
                     initLineChart()
-                    setChart(listData,xLabelIngredients)
+                  //  setChart(listData,xLabelIngredients)
 
                 }
 
             }
         )
+    }
+    //홈뷰 - 기능성 원료 통신
+    private fun getHomeFunctionalResponse(){
+        val call: Call<HomeFunctionalData> = RequestURL.service.getFunctional( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6IjMifQ.-KEfwDT3c7yMpSO3ujWo_oZLa2cEHyKriDts_2BEvfg")
+        call.enqueue(
+            object :Callback<HomeFunctionalData>{
+                override fun onFailure(call: Call<HomeFunctionalData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+
+                override fun onResponse(
+                    call: Call<HomeFunctionalData>,
+                    response: Response<HomeFunctionalData>
+                ) {
+                    //TODO recycler view에 띄우기
+                    //
+                    val functionalRespo:HomeFunctionalData = response.body()!!
+                    val nutrientName=Array<String>(functionalRespo.data.size,{""})
+
+                    for(i in 1..10){
+                        nutrientName[i]=functionalRespo.data[i].nutrient
+
+                        var efficacy= List<String>(functionalRespo.data[i].efficacy.size,{""})
+
+
+
+                        RvFunctionalSelectedData(efficacy,nutrientName[i])
+
+                    }
+                }
+
+            }
+        )
+
     }
 }
 

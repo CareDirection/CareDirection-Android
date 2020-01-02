@@ -1,9 +1,6 @@
 package com.example.caredirection.network
 
-import com.example.caredirection.data.network.FunctionalData
-import com.example.caredirection.data.network.HomeGraphData
-import com.example.caredirection.data.network.IngredientData
-import com.example.caredirection.data.network.LoginData
+import com.example.caredirection.data.network.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -26,7 +23,7 @@ interface RequestInterface {
     @GET("/nutrient/function")
     fun getFunctional(
         @Header("token")token: String
-    ):Call<FunctionalData>
+    ):Call<HomeFunctionalData>
 
     //홈뷰 -그래프 가져오기 - 은이
     @GET("/graph")

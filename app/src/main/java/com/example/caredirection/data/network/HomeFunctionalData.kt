@@ -1,6 +1,6 @@
 package com.example.caredirection.data.network
 
-data class FunctionalData(
+data class HomeFunctionalData(
     val status : Int,
     val message: String,
     val data : List<FunctionalItem>
