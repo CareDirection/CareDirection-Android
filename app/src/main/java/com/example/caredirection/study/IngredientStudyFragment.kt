@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caredirection.R
+import com.example.caredirection.data.RvArticleData
 import com.example.caredirection.data.RvFunctionalAllData
 import com.example.caredirection.data.RvIngredientData
 import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
+import com.example.caredirection.study.article.ArticleAdapter
 import com.example.caredirection.study.ingredient.IngredientActivity
 import com.example.caredirection.study.ingredient.IngredientAdapter
 import kotlinx.android.synthetic.main.fragment_ingredient_study.*
@@ -76,6 +78,12 @@ class StudyFragment : Fragment(),View.OnClickListener{
             RvFunctionalAllData(R.drawable.btn_bone,"뼈")
         )
 
+       rv_ingredient_article_view.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        //어댑더 정의
+        val rvArticleAdapter = ArticleAdapter(context!!)
+        //뷰에 어댑터 연결
+        rv_ingredient_article_view.adapter = rvArticleAdapter
+        rvArticleAdapter.data= arrayOf(RvArticleData("ㅇㄹㅇ","ㅇㄹ너래ㅑㄴ얼"),RvArticleData("ㅇㄹㅇ","ㅇㄹ너래ㅑㄴ얼"),RvArticleData("ㅇㄹㅇ","ㅇㄹ너래ㅑㄴ얼"))
 
     }
     //recycler view click 이벤트 처리를 위해
