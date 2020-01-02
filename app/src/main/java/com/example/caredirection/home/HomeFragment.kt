@@ -20,6 +20,7 @@ import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.data.network.FunctionalItem
 import com.example.caredirection.data.network.HomeFunctionalData
 import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.home.care_product.CareProductAdapter
@@ -502,16 +503,25 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     //TODO recycler view에 띄우기
                     //
                     val functionalRespo:HomeFunctionalData = response.body()!!
-                    val nutrientName=Array<String>(functionalRespo.data.size,{""})
+                    val funtionalItem=functionalRespo.data//리써이클러뷰의 아이템 //전역변수여야 하나? 여기서 어댑터로 연결해주면 될듯
 
-                    for(i in 1..10){
-                        nutrientName[i]=functionalRespo.data[i].nutrient
+                    //val nutrientName=Array<String>(functionalRespo.data.size,{""})
 
-                        var efficacy= List<String>(functionalRespo.data[i].efficacy.size,{""})
+                    for(i in 0..funtionalItem.size){
+
+                        var efficacyList=funtionalItem[i].efficacy
+
+
+                         //   var tempRvItem=RvFunctionalSelectedData(efficacyList,funtionalItem[i].)
+
+
+                        //nutrientName[i]=functionalRespo.data[i].nutrient
+
+                        //var efficacy= List<String>(functionalRespo.data[i].efficacy.size,{""})
 
 
 
-                        RvFunctionalSelectedData(efficacy,nutrientName[i])
+                       // RvFunctionalSelectedData(efficacy,nutrientName[i])
 
                     }
                 }
