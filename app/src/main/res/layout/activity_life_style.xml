@@ -32,12 +32,12 @@
 
     <Button
         android:id="@+id/btn_life_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="116dp"
+        android:layout_height="41dp"
         android:layout_marginStart="122dp"
         android:layout_marginEnd="122dp"
         android:background="@drawable/selector_btn_next"
-        android:enabled="true"
+        android:enabled="false"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:lineSpacingExtra="9sp"

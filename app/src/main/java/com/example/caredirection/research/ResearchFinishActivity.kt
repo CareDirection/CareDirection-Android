@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.example.caredirection.R
+import com.example.caredirection.care_product.CareProductActivity
 import com.example.caredirection.home.HomeActivity
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_finish.*
@@ -29,7 +30,7 @@ class ResearchFinishActivity : AppCompatActivity() {
 //            val intent = Intent(this,LifeStyleActivity::class.java)
 //            intent.putExtra("username",name)
 
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, CareProductActivity::class.java))
         }
     }
 

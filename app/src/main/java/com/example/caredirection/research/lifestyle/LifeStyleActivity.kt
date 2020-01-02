@@ -38,7 +38,7 @@ class LifeStyleActivity : AppCompatActivity() {
 
             keeper.lifeCyclerPage = position
 
-            if(position > 4){
+            if(position > 3){
                 val finish_intent = Intent(this,ResearchFinishActivity::class.java)
 
                 startActivity(finish_intent)

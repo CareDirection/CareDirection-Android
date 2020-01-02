@@ -75,21 +75,21 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_gender_subtitle" />
 
     <CheckedTextView
-        android:id="@+id/chtxt_gender_women"
+        android:id="@+id/chtxt_gender_man"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/selector_btn_women"
+        android:background="@drawable/selector_btn_man"
         android:checked="false"
-        app:layout_constraintEnd_toStartOf="@+id/chtxt_gender_man"
+        app:layout_constraintEnd_toStartOf="@+id/chtxt_gender_women"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_gender" />
 
     <CheckedTextView
-        android:id="@+id/chtxt_gender_man"
+        android:id="@+id/chtxt_gender_women"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
@@ -97,8 +97,8 @@
         android:background="@drawable/selector_btn_women"
         android:checked="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chtxt_gender_women"
-        app:layout_constraintTop_toTopOf="@+id/chtxt_gender_women" />
+        app:layout_constraintStart_toEndOf="@+id/chtxt_gender_man"
+        app:layout_constraintTop_toTopOf="@+id/chtxt_gender_man" />
 
     <TextView
         android:id="@+id/txt_year"
