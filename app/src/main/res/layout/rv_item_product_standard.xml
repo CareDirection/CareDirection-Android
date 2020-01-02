@@ -53,10 +53,12 @@
     <TextView
         android:id="@+id/txt_rv_search_result_item_publisher"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="6sp"
         android:textColor="#787878"
         android:textSize="12sp"
@@ -64,14 +66,12 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/txt_rv_search_result_item_ename"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/notosanskr_regular"
-        android:includeFontPadding="false"
         tools:text="해외직구" />
 
     <TextView
         android:id="@+id/txt_rv_search_result_item_kname"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="16dp"

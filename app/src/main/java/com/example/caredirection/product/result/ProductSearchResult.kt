@@ -49,6 +49,12 @@ class ProductSearchResult : AppCompatActivity() {
                 ) {
                     when (position) {
 
+                        0 -> {
+
+                        }
+                        1 -> {
+
+                        }
                     }
                 }
             }
@@ -65,6 +71,8 @@ class ProductSearchResult : AppCompatActivity() {
 
         img_activity_product_search.setOnClickListener{
             getProductSearchContent(edt_activity_product_search_result.text.toString())
+
+
         }
 
        /* rv_product_search_result_adapter.data = listOf(

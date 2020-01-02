@@ -3,7 +3,6 @@ package com.example.caredirection.data.network
 import com.google.gson.annotations.SerializedName
 
 data class ProductSearchData(
-
     @SerializedName("status")
     val status : Int,
 

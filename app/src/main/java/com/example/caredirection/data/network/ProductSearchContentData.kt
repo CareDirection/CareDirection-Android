@@ -1,6 +1,6 @@
 package com.example.caredirection.data.network
 
-data class ProductSearchContentData(
+data class  ProductSearchContentData(
     val data: Data,
     val message: String,
     val status: Int

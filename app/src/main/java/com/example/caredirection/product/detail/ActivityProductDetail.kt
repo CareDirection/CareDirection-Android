@@ -42,22 +42,10 @@ class ActivityProductDetail : AppCompatActivity() {
 
         rv_product_detail.layoutManager = LinearLayoutManager(this@ActivityProductDetail)
         getProductDetailLow()
-       /* rv_product_detail_adapter.data = listOf(
-            ProductDetailAdapter.RvProductDetailData(
-                "쿠팡",
-                "16,920 원",
-                "(1일 188원)",
-                "https://hydok.tistory.com/34"
-            ),
-            ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)", "sopt.org"),
-            ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)", "facebook.com")
-        )*/
 
 
         rv_product_detail.adapter = rv_product_detail_adapter
 
-
-        //val category = arrayOf("30정","90정", "180정")
 
         val categoryAdapter =
             ArrayAdapter(
