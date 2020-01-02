@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caredirection.R
-import com.example.caredirection.data.network.CommonData
 import com.example.caredirection.data.network.ProductDetailData
+import com.example.caredirection.data.network.ProductDetailLowest
 import com.example.caredirection.network.RequestURL
 import kotlinx.android.synthetic.main.activity_product_detail.*
 import retrofit2.Call
@@ -41,7 +41,8 @@ class ActivityProductDetail : AppCompatActivity() {
         rv_product_detail = findViewById(R.id.rv_product_detail_item)
 
         rv_product_detail.layoutManager = LinearLayoutManager(this@ActivityProductDetail)
-        rv_product_detail_adapter.data = listOf(
+        getProductDetailLow()
+       /* rv_product_detail_adapter.data = listOf(
             ProductDetailAdapter.RvProductDetailData(
                 "쿠팡",
                 "16,920 원",
@@ -50,7 +51,7 @@ class ActivityProductDetail : AppCompatActivity() {
             ),
             ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)", "sopt.org"),
             ProductDetailAdapter.RvProductDetailData("쿠팡", "16,920 원", "(1일 188원)", "facebook.com")
-        )
+        )*/
 
 
         rv_product_detail.adapter = rv_product_detail_adapter
@@ -68,6 +69,9 @@ class ActivityProductDetail : AppCompatActivity() {
 
         //region 스피너
         //categoryAdapter.setDropDownViewResource(R.layout.spinner_product_search_item)
+
+
+
 
         spinner_activity_product_detail_per.apply {
             adapter = categoryAdapter
@@ -116,7 +120,7 @@ class ActivityProductDetail : AppCompatActivity() {
                         categoryPrice.add(ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
                         category.add(ProductDetailDataList.data[it].count_price.product_quantity_count.toString())
                     }
-                //region detailcontent
+                    //region detailcontent
                     Glide.with(this@ActivityProductDetail)
                         .load(ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.image_key)
                         .centerCrop()
@@ -153,5 +157,33 @@ class ActivityProductDetail : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    private fun getProductDetailLow() {
+        val call: Call<ProductDetailLowest> = RequestURL.service.getProductDetailLow(
+            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6MjQsImlhdCI6MTU3Nzg3NzY1NiwiZXhwIjo4Nzk3Nzg3NzY1NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.WysKIH3-qDf3GTR-RKKl23hp_9byodzDm7TdISMTkmk",
+            product_idx = "6"
+        )
+        call.enqueue(
+            object : Callback<ProductDetailLowest> {
+                override fun onFailure(call: Call<ProductDetailLowest>, t: Throwable) {
+
+                }
+
+                override fun onResponse(
+                    call: Call<ProductDetailLowest>,
+                    response: Response<ProductDetailLowest>
+                ) {
+                    val ProductDetailLow: ProductDetailLowest = response.body()!!
+
+
+                    (0 until ProductDetailLow.data.size!!).forEach {
+                        rv_product_detail_adapter.data.add(ProductDetailLow.data[it])
+                        rv_product_detail_adapter.notifyDataSetChanged()
+                    }
+
+
+                }
+            })
     }
 }

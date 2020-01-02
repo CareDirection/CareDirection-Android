@@ -50,4 +50,12 @@ interface RequestInterface {
         @Path("product_idx") product_idx: String
     ): Call<ProductDetailLowest>
 
+    @GET("/product/{product_idx}/standard")
+    fun getProductStandard(
+        @Header("Content-Type") contentType : String = "application/json",
+        @Path("product_idx") product_idx: String
+    ):Call<ProductStandardData>
+
+//    asdf.getProductStandard( product_idx = "asdf").enqeuue
+
 }

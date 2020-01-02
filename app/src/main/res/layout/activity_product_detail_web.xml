@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".product.detail.ActivityProductDetailWeb">
+    tools:context=".product.detail.ActivityProductDetailWeb"
+    android:usesCleartextTraffic="true"
+    >
 
     <WebView
         android:id="@+id/activity_product_detail_webview"

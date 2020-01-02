@@ -51,8 +51,6 @@ class SearchProductAdapter(private val context: Context) :
 
 
         fun bind(data: Search) {
-
-
             Glide.with(itemView)
                 .load(data.image_key)
                 .centerCrop()
