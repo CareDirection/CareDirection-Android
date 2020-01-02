@@ -11,10 +11,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
 import com.example.caredirection.R
-
+import kotlinx.android.synthetic.main.dialog_care_product_check.*
 
 
 class CustomDialogFragment : DialogFragment(){
+
+    var productName:String="dkjsljf"
+    var amount:String="1일 기준"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -36,8 +40,16 @@ class CustomDialogFragment : DialogFragment(){
         })
         return rootView
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        txt_dialog_care_product_name.text=productName
+        txt_dialog_amount.text=amount
+
+    }
     override fun onStart() {
         super.onStart()
+
 
         val window = dialog!!.window
         window!!.setBackgroundDrawableResource(R.drawable.white_border_dialog_21)

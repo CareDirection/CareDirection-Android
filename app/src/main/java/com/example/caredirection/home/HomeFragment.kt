@@ -340,9 +340,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //position
         val idx = rv_care_view.getChildAdapterPosition(v!!)
         //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
+
         Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
         val fm = fragmentManager!!
         val myfrag = CustomDialogFragment()
+        myfrag.productName=rvCareProductAdapter.data[idx].nameProduct
         myfrag.show(fm, "demo")
         //rvCareProductAdapter.data[idx]
     }
