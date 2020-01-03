@@ -41,16 +41,20 @@
             app:layout_constraintTop_toBottomOf="@id/layout_fragment_search_title">
 
 
-            <Spinner
+            <TextView
                 android:id="@+id/spinner_fragment_product_search"
                 android:layout_width="wrap_content"
-                android:layout_height="47dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="15dp"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:lineSpacingExtra="9sp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:text="제품"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_search_fragment"
                 app:layout_constraintEnd_toStartOf="@+id/txt_search_fragment"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="@+id/txt_search_fragment" />
 
 
             <TextView

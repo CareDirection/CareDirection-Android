@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_product_search, container, false)
 
         //스피너
-        val category = arrayOf("제품", "성분")
+       /* val category = arrayOf("제품", "성분")
         val categoryAdapter =
             ArrayAdapter(context!!, R.layout.spinner_product_search_item, category)
         //categoryAdapter.setDropDownViewResource(R.layout.fragment_product_search)
@@ -58,15 +58,16 @@ class SearchFragment : Fragment() {
                     id: Long
                 ) {
                     when (position) {
-                        /* 0 -> {
+                        *//* 0 -> {
                              Toast.makeText(context!!, "1번", Toast.LENGTH_LONG).show()
                          }
                          1 -> {
                              Toast.makeText(context!!, "1번", Toast.LENGTH_LONG).show()
-                         }*/
+                         }*//*
                     }
                 }
-            }
+            }*/
+
 
         //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
         rv_search_nutirient_adapter = SearchNutrientAdapter()

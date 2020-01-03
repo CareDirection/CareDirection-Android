@@ -187,5 +187,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/txt_rv_search_result_item_perstandard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txt_rv_search_result_item_perstandard"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
         android:checked="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
