@@ -11,6 +11,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
 import android.widget.CheckBox
 import com.example.caredirection.R
+import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.ResearchChangeActivity
 import kotlinx.android.synthetic.main.activity_research_symptom.*
@@ -40,6 +41,11 @@ class ResearchSymptomActivity : AppCompatActivity() {
                     it.setTextColor(resources.getColor(R.color.colorPrimary))
                     checkSelectButton()
                 }
+            if(btn_symptom_clear.text in set){
+                btn_symptom_clear.isChecked = true
+                btn_symptom_clear.setTextColor(resources.getColor(R.color.colorPrimary))
+                checkSelectButton()
+            }
         }
 
         makeController()
@@ -88,7 +94,15 @@ class ResearchSymptomActivity : AppCompatActivity() {
         }
 
         btn_symptom_next?.setOnClickListener{
-                keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
+//                keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
+            val set = mutableSetOf<String>()
+            btnSymptoms
+                .filter { it.isChecked }
+                .forEach { set.add(it.text.toString()) }
+            if(btn_symptom_clear.isChecked) set.add(btn_symptom_clear.text.toString())
+            keeper.disease = set
+
+            toast(keeper.disease.toString())
 
                 val intent = Intent(this,ResearchChangeActivity::class.java)
                 startActivity(intent)

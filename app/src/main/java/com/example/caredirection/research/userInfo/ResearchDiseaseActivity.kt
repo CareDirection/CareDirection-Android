@@ -44,6 +44,11 @@ class ResearchDiseaseActivity : AppCompatActivity() {
                     it.setTextColor(resources.getColor(R.color.colorPrimary))
                     checkSelectButton()
                 }
+            if(btn_disease_clear.text in set){
+                btn_disease_clear.isChecked = true
+                btn_disease_clear.setTextColor(resources.getColor(R.color.colorPrimary))
+                checkSelectButton()
+            }
         }
 
         makeController()
@@ -97,7 +102,10 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             disButtons
                 .filter { it.isChecked }
                 .forEach { set.add(it.text.toString()) }
+            if(btn_disease_clear.isChecked) set.add(btn_disease_clear.text.toString())
             keeper.disease = set
+
+            toast(keeper.disease.toString())
 
             val symptom_intent = Intent(this,ResearchSymptomActivity::class.java)
             startActivity(symptom_intent)
