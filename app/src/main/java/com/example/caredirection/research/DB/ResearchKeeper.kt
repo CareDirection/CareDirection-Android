@@ -27,14 +27,13 @@ class ResearchKeeper (context: Context) {
             }
         }
 
-    var year: Int?
+    var year: String?
         get() {
-            val candi = local.getInt(RESEARCH_YEAR, -1)
-            return if (candi == -1) null else candi
+            return local.getString(RESEARCH_YEAR, null)
         }
         set(value) {
             local.edit {
-                putInt(RESEARCH_YEAR, value?:-1)
+                putString(RESEARCH_YEAR, value)
             }
         }
 

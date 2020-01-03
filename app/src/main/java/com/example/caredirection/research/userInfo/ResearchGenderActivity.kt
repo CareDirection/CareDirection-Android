@@ -72,7 +72,7 @@ class ResearchGenderActivity : AppCompatActivity() {
 
         btn_gender_next?.setOnClickListener{
             keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
-            keeper.year = Integer.parseInt(txt_year_picker.text.toString())
+            keeper.year = txt_year_picker.text.toString()
 
             val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
             startActivity(disease_intent)
