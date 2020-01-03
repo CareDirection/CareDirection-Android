@@ -37,12 +37,12 @@ class IngredientActivity : AppCompatActivity() {
         txt_ingredient_ingredient.text=Ingredient
 
         ingredientIdx=when(Ingredient){
-            "홍삼"->1
-            "오메가 3"->4
-            "밀크씨슬"->2
-            "루테인"->3
-            "유산균"->4
-            "비타민 D"->5
+            "홍삼"->35
+            "오메가 3"->41
+            "밀크씨슬"->37
+            "루테인"->38
+            "유산균"->36
+            "비타민 D"->27
             else->0
         }
 
