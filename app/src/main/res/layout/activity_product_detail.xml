@@ -7,7 +7,6 @@
     tools:context=".product.detail.ActivityProductDetail">
 
 
-    //오메가3
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_product_detail_top"
@@ -321,12 +320,85 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/chart_product_detail"
+                android:id="@+id/layout_product_detail"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@color/colorDarkGrey"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_content_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_content_layout">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/chart_product_detail"
+                    android:layout_width="297dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorWhite"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_essential_desc" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="6sp"
+                    android:text="상한"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView20"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="6sp"
+                    android:text="섭취량"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/chart_home"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="6sp"
+                    android:text="권장"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView22"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="6sp"
+                    android:text="섭취량"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/chart_home"
+                    app:layout_constraintHorizontal_bias="0.514"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/line_product_detail_chart"
@@ -335,9 +407,7 @@
                 android:background="@color/colorDarkGrey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chart_product_detail" />
-
-            //제품 효과
+                app:layout_constraintTop_toBottomOf="@+id/layout_product_detail" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_product_detail_effect"
@@ -446,9 +516,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            //제품 특징
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+           <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_product_detail_character"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
