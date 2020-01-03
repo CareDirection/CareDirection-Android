@@ -139,6 +139,11 @@ interface RequestInterface {
         @Path("product_idx")product_idx:Int
     ):Call<HomeGraphData>
 
+    //home - 그래프 상세보기 - 은이
+    @GET("/graph/detailed")
+    fun getGreaphDetailed(
+        @Header("token")token:String
+    ):Call<HomeGraphDetailData>
 //    asdf.getProductStandard( product_idx = "asdf").enqeuue
 
 }
