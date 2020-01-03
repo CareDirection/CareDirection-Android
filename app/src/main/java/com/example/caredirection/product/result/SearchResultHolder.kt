@@ -1,13 +1,16 @@
 package com.example.caredirection.product.result
 
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.data.network.ProductSearchContentData
 import com.example.caredirection.data.network.Search
+import com.example.caredirection.product.detail.ActivityProductDetail
 import org.w3c.dom.Text
 
 class SearchResultHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -32,6 +35,13 @@ class SearchResultHolder(view: View): RecyclerView.ViewHolder(view) {
         txt_rv_search_result_item_price.text = data.product_quantity_price.toString()
         txt_rv_search_result_item_perprice.text = (data.product_quantity_price / data.product_quantity_count).toString()
         txt_rv_search_result_item_perstandard.text = data.product_quantity_count.toString()
+        itemView.setOnClickListener{
+            val intent = Intent(itemView.context, ActivityProductDetail::class.java)
+
+            intent.putExtra("name", data.product_idx.toString())
+
+            startActivity(itemView.context,intent,null)
+        }
     }
 
 }

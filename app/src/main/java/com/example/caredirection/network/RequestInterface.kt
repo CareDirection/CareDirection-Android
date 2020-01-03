@@ -56,6 +56,7 @@ interface RequestInterface {
         @Path("product_idx") product_idx: String
     ):Call<ProductStandardData>
 
+
 //    asdf.getProductStandard( product_idx = "asdf").enqeuue
 
 }

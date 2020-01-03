@@ -46,8 +46,8 @@
 
         <EditText
             android:id="@+id/edt_activity_product_search_result"
-            android:layout_width="151dp"
-            android:layout_height="47dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
             android:layout_marginTop="15dp"
             android:hint="제품을 검색해주세요"
@@ -82,10 +82,21 @@
         android:id="@+id/txt_activity_product_search_result_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 0건"
+        android:text=" 0"
         android:textColor="#2b2d2e"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/txt_activity_product_search_result"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toTopOf="@+id/txt_activity_product_search_result" />
+    <TextView
+        android:id="@+id/txt_activity_product_search_result_number2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="건"
+        android:textColor="#2b2d2e"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/txt_activity_product_search_result_number"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         app:layout_constraintTop_toTopOf="@+id/txt_activity_product_search_result" />

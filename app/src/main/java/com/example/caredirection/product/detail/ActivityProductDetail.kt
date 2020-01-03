@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_product_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class ActivityProductDetail : AppCompatActivity() {
 
@@ -25,11 +26,18 @@ class ActivityProductDetail : AppCompatActivity() {
     private var category = mutableListOf<String>()
     private var categoryPrice = mutableListOf<String>()
 
+    private lateinit var product_number: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-        getProductDailData()
+        try{
+            product_number = intent.getStringExtra("name")!!.toString()
+            getProductDailData(product_number)
+        }catch (e : Exception){
+
+        }
+
         initList()
     }
 
@@ -84,11 +92,13 @@ class ActivityProductDetail : AppCompatActivity() {
         }
     }
 
-    private fun getProductDailData() {
-        val call: Call<ProductDetailData> = RequestURL.service.getProductDetailData(
-            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6MjQsImlhdCI6MTU3Nzg3NzY1NiwiZXhwIjo4Nzk3Nzg3NzY1NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.WysKIH3-qDf3GTR-RKKl23hp_9byodzDm7TdISMTkmk",
-            product_idx = "6"
-        )
+    private fun getProductDailData(product_number: String) {
+        val call: Call<ProductDetailData> = RequestURL.run {
+            service.getProductDetailData(
+                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6MjQsImlhdCI6MTU3Nzg3NzY1NiwiZXhwIjo4Nzk3Nzg3NzY1NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.WysKIH3-qDf3GTR-RKKl23hp_9byodzDm7TdISMTkmk",
+                product_idx = product_number
+            )
+        }
 
         call.enqueue(
             object : Callback<ProductDetailData> {

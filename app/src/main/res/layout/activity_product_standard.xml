@@ -112,6 +112,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/activity_product_detail_item_standard2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -147,6 +148,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/activity_product_detail_item_standard3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

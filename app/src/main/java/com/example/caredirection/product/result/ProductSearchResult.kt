@@ -1,10 +1,13 @@
 package com.example.caredirection.product.result
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
@@ -12,11 +15,13 @@ import com.example.caredirection.data.network.Data
 import com.example.caredirection.data.network.ProductSearchContentData
 import com.example.caredirection.network.RequestURL
 import com.example.caredirection.product.detail.ProductDetailAdapter
+import com.example.caredirection.product.standard.ActivityProductStandard
 import kotlinx.android.synthetic.main.activity_product_search_result.*
 import kotlinx.android.synthetic.main.fragment_product_search.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class ProductSearchResult : AppCompatActivity() {
 
@@ -50,10 +55,29 @@ class ProductSearchResult : AppCompatActivity() {
                     when (position) {
 
                         0 -> {
+                            img_activity_product_search.setOnClickListener{
+                                try{
+                                    getProductSearchContent(edt_activity_product_search_result.text.toString())
+                                }catch (e : Exception){
+                                    Toast.makeText(this@ProductSearchResult,"올바른 값을 입력하시오", Toast.LENGTH_SHORT).show()
+                                }
 
+                            }
                         }
                         1 -> {
+                            img_activity_product_search.setOnClickListener{
+                                try {
 
+                                }catch (e : Exception){
+                                    Toast.makeText(this@ProductSearchResult,"올바른 값을 입력하시오", Toast.LENGTH_SHORT).show()
+                                }
+                                val intent = Intent(this@ProductSearchResult, ActivityProductStandard::class.java)
+
+                                intent.putExtra("name", edt_activity_product_search_result.text.toString())
+
+                                startActivity(intent, null)
+                                finish()
+                            }
                         }
                     }
                 }
@@ -68,20 +92,6 @@ class ProductSearchResult : AppCompatActivity() {
         rv_product_search_result = findViewById(R.id.rv_activity_product_search_result)
 
         rv_product_search_result.layoutManager = LinearLayoutManager(this@ProductSearchResult)
-
-        img_activity_product_search.setOnClickListener{
-            getProductSearchContent(edt_activity_product_search_result.text.toString())
-
-
-        }
-
-       /* rv_product_search_result_adapter.data = listOf(
-            RvSearchResultData("쿠팡", "16,920 원", "(1일 188원)"),
-            RvSearchResultData("쿠팡", "16,920 원", "(1일 188원)"),
-            RvSearchResultData("쿠팡", "16,920 원", "(1일 188원)"),
-            RvSearchResultData("쿠팡", "16,920 원", "(1일 188원)"),
-            RvSearchResultData("쿠팡", "16,920 원", "(1일 188원)")
-        )*/
 
         rv_product_search_result.adapter = rv_product_search_result_adapter
     }
@@ -103,6 +113,7 @@ class ProductSearchResult : AppCompatActivity() {
                     val productSearchcontentList : Data = response.body()!!.data
 
                     (0 until productSearchcontentList.searchList.size!!).forEach {
+
                         rv_product_search_result_adapter.data.add(productSearchcontentList.searchList[it])
                         rv_product_search_result_adapter.notifyDataSetChanged()
                     }
