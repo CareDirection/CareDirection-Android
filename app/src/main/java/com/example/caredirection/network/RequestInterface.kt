@@ -1,9 +1,6 @@
 package com.example.caredirection.network
 
-import com.example.caredirection.data.network.ArticleDetailsData
-import com.example.caredirection.data.network.ArticleListData
-import com.example.caredirection.data.network.IngredientData
-import com.example.caredirection.data.network.LoginData
+import com.example.caredirection.data.network.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -22,6 +19,18 @@ interface RequestInterface {
         @Path("nutrient_idx")nutrient_idx:Int
     ):Call<IngredientData>
 
+    //홈뷰 - 기능성 원료 - 은이
+    @GET("/nutrient/function")
+    fun getFunctional(
+        @Header("token")token: String
+    ):Call<HomeFunctionalData>
+
+    //홈뷰 -그래프 가져오기 - 은이
+    @GET("/graph")
+    fun getHomeGraph(
+        @Header("token")token: String
+    ):Call<HomeGraphData>
+
     //성분학습뷰 - 아티클리스트 - 은이
     @GET("/article")
     fun getArticleList(
@@ -34,4 +43,11 @@ interface RequestInterface {
         @Path("article_idx")article_idx:Int
     ):Call<ArticleDetailsData>
 
+
+    @GET("/product/dose/list")
+    fun getCareProductList(
+        @Header("Content-Type")content_type:String="application/json",
+        @Header("token")token:String,
+        @Query("date")date:String
+    ):Call<HomCareProductData>
 }

@@ -8,6 +8,7 @@ import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
 import com.example.caredirection.data.network.IngredientData
+import com.example.caredirection.data.network.IngredientInfoItem
 import com.example.caredirection.network.RequestURL
 import kotlinx.android.synthetic.main.activity_ingredient.*
 import kotlinx.android.synthetic.main.activity_ingredient.view.*
@@ -36,12 +37,12 @@ class IngredientActivity : AppCompatActivity() {
         txt_ingredient_ingredient.text=Ingredient
 
         ingredientIdx=when(Ingredient){
-            "홍삼"->22
-            "오메가 3"->2
-            "밀크씨슬"->3
-            "루테인"->4
-            "유산균"->5
-            "비타민 D"->6
+            "홍삼"->1
+            "오메가 3"->4
+            "밀크씨슬"->2
+            "루테인"->3
+            "유산균"->4
+            "비타민 D"->5
             else->0
         }
 
@@ -51,12 +52,12 @@ class IngredientActivity : AppCompatActivity() {
     }
 
     private fun getIngredientInfoResponse(){
-        val call: Call<IngredientData> = RequestURL.service.getIngredientInfo( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU",ingredientIdx)
+        val call: Call<IngredientData> = RequestURL.service.getIngredientInfo( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6IjMifQ.-KEfwDT3c7yMpSO3ujWo_oZLa2cEHyKriDts_2BEvfg",ingredientIdx)
+
         call.enqueue(
             object : Callback<IngredientData>{
                 override fun onFailure(call: Call<IngredientData>, t: Throwable) {
                     "성분 값을 가지고 오지 못하였습니다.".logDebug()
-                    t.toString().logDebug()
                 }
 
                 override fun onResponse(

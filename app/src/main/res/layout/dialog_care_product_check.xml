@@ -7,20 +7,24 @@
 
     <TextView
         android:id="@+id/txt_dialog_care_product_name"
-        android:layout_width="wrap_content"
+        android:layout_width="291dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="9dp"
+        android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:lineSpacingExtra="9sp"
         android:text="향상된 크릴 플러스 오메가-3"
+        android:textAlignment="center"
         android:textColor="@color/colorBlack"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/img_dialog_care_product"
         android:layout_width="71dp"
         android:layout_height="85dp"
         android:layout_marginTop="16dp"
@@ -41,7 +45,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintTop_toBottomOf="@+id/img_dialog_care_product" />
 
     <TextView
         android:id="@+id/txt_dialog_standard_a_day"
