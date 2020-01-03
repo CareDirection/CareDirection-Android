@@ -105,6 +105,7 @@ class SearchFragment : Fragment() {
         view.txt_search_fragment.setOnClickListener{
             val intent = Intent(context, ProductSearchResult::class.java)
 
+
             startActivity(intent)
         }
 
@@ -161,7 +162,7 @@ class SearchFragment : Fragment() {
     //endregion RecyclerView
 
     private fun getProductSearchResponse(){
-        val call: Call<ProductSearchData> = RequestURL.service.getProductSearchList(token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
+        val call: Call<ProductSearchData> = RequestURL.service.getProductSearchList(token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI")
 
         call.enqueue(
             object : Callback<ProductSearchData>{

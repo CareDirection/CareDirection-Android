@@ -37,6 +37,13 @@ class ProductSearchResult : AppCompatActivity() {
         val categoryAdapter =
             ArrayAdapter(this@ProductSearchResult, R.layout.spinner_product_search_item, category)
 
+        if(txt_activity_product_search_result_number.text.toString() == "0"){
+            txt_activity_product_search_empty.visibility = View.VISIBLE
+        }
+        else if(txt_activity_product_search_result_number.text.toString() != "0"){
+            txt_activity_product_search_empty.visibility = View.INVISIBLE
+        }
+
         //region 스피너
         categoryAdapter.setDropDownViewResource(R.layout.spinner_product_search_item)
         spinner_activity_product_search_result.adapter = categoryAdapter
@@ -59,6 +66,7 @@ class ProductSearchResult : AppCompatActivity() {
                             img_activity_product_search.setOnClickListener{
                                 try{
                                     getProductSearchContent(edt_activity_product_search_result.text.toString())
+
                                 }catch (e : Exception){
                                     Toast.makeText(this@ProductSearchResult,"올바른 값을 입력하시오", Toast.LENGTH_SHORT).show()
                                 }
@@ -124,6 +132,9 @@ class ProductSearchResult : AppCompatActivity() {
 
                         rv_product_search_result_adapter.data.add(productSearchcontentList.searchList[it])
                         rv_product_search_result_adapter.notifyDataSetChanged()
+                        txt_activity_product_search_result_number.text = productSearchcontentList.searchList.size.toString()
+
+
                     }
                 }
             })
