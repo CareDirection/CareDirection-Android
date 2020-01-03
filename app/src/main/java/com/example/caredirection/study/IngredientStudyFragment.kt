@@ -18,6 +18,7 @@ import com.example.caredirection.data.network.ArticleListData
 import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
 import com.example.caredirection.network.RequestURL
 import com.example.caredirection.study.article.ArticleAdapter
+import com.example.caredirection.study.article.ArticleDetailsActivity
 import com.example.caredirection.study.ingredient.IngredientActivity
 import com.example.caredirection.study.ingredient.IngredientAdapter
 import kotlinx.android.synthetic.main.fragment_ingredient_study.*
@@ -34,7 +35,8 @@ class StudyFragment : Fragment(), View.OnClickListener {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var rvIngredientAdapter: IngredientAdapter
-    private lateinit var Ingredient: String
+    private lateinit var IngredientIdx: String
+    private lateinit var articleIdxIntent:String
 
     private lateinit var rvArticleAdapter: ArticleAdapter
 
@@ -91,6 +93,7 @@ class StudyFragment : Fragment(), View.OnClickListener {
         //어댑더 정의
         rvArticleAdapter = ArticleAdapter(context!!)
         //뷰에 어댑터 연결
+        rvArticleAdapter.setOnClick(this)
         rv_ingredient_article_view.adapter = rvArticleAdapter
 //        rvArticleAdapter.data = arrayOf(
 //            RvArticleData("ㅇㄹㅇ", "ㅇㄹ너래ㅑㄴ얼"),
@@ -104,15 +107,25 @@ class StudyFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         //position
+
         val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
-        //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
-        // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
-        Ingredient = rvIngredientAdapter.data[idx].text
-        // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
-        //startActivity(functional_intent)
-        val Ingredient_intent = Intent(context, IngredientActivity::class.java)
-        Ingredient_intent.putExtra("ingredient", Ingredient)
-        startActivity(Ingredient_intent)
+            //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
+            // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
+            IngredientIdx = rvIngredientAdapter.data[idx].text
+            // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
+            //startActivity(functional_intent)
+            val IngredientIntent = Intent(context, IngredientActivity::class.java)
+            IngredientIntent.putExtra("ingredient", IngredientIdx)
+            startActivity(IngredientIntent)
+
+        val articleIdx= rv_ingredient_article_view.getChildAdapterPosition(v!!)
+            articleIdxIntent = rvArticleAdapter.data[articleIdx].text
+            // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
+            //startActivity(functional_intent)
+            val articleIntent = Intent(context, ArticleDetailsActivity::class.java)
+            IngredientIntent.putExtra("article", articleIdxIntent)
+            startActivity(articleIntent)
+
 
 
         //rvCareProductAdapter.data[idx]
@@ -134,7 +147,7 @@ class StudyFragment : Fragment(), View.OnClickListener {
                     val articleListRespo = response.body()!!.data
                     val articles = mutableListOf<RvArticleData>()
                     for (item in articleListRespo) {
-                        articles.add(RvArticleData(item.image_key, item.article_title))
+                        articles.add(RvArticleData(item.article_idx,item.image_key, item.article_title))
                     }
                     rvArticleAdapter.data = articles.toTypedArray()
                     rvArticleAdapter.notifyDataSetChanged()

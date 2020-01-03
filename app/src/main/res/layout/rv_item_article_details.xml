@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/txt_article_sub_title"
+        android:id="@+id/txt_rv_item_article_sub_title"
         android:layout_width="328dp"
         android:layout_height="48dp"
         android:layout_marginTop="56dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_article_sub_comment"
+        android:id="@+id/txt_rv_item_article_sub_content"
         android:layout_width="328dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -30,13 +30,13 @@
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="6sp"
         android:text=" 만성피로에 시달리는 현대인들. 비타민 C는 기본이고, 온갖 종류의 영양제와 함께 살고 있습니다. 하지만!  음식에도 안 맞는 궁합이 있듯이 영양제를 잘못 먹으면  제 효과를 보 "
-        app:layout_constraintEnd_toEndOf="@+id/img_article_sub"
+        app:layout_constraintEnd_toEndOf="@+id/img_rv_item_article_sub"
         app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/img_article_sub"
-        app:layout_constraintTop_toBottomOf="@+id/img_article_sub" />
+        app:layout_constraintStart_toStartOf="@+id/img_rv_item_article_sub"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_article_sub" />
 
     <ImageView
-        android:id="@+id/img_article_sub"
+        android:id="@+id/img_rv_item_article_sub"
         android:layout_width="328dp"
         android:layout_height="160dp"
         android:layout_marginTop="25dp"
@@ -45,8 +45,8 @@
         android:letterSpacing="-0.02"
         android:includeFontPadding="false"
         android:lineSpacingExtra="6sp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_article_sub_title"
-        app:layout_constraintStart_toStartOf="@+id/txt_article_sub_title"
-        app:layout_constraintTop_toBottomOf="@+id/txt_article_sub_title"
+        app:layout_constraintEnd_toEndOf="@+id/txt_rv_item_article_sub_title"
+        app:layout_constraintStart_toStartOf="@+id/txt_rv_item_article_sub_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rv_item_article_sub_title"
         app:srcCompat="@drawable/bg_research_gradient" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,10 +15,11 @@ import com.example.caredirection.data.RvArticleData
 class ArticleAdapter (private val context: Context): RecyclerView.Adapter<ArticleHolder>(){
 
     var data= arrayOf<RvArticleData>()
+    private lateinit var onClick : View.OnClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_item_ingredient_article,parent,false)
-
+        view.setOnClickListener(onClick)
         return ArticleHolder(view)
     }
 
@@ -28,6 +29,10 @@ class ArticleAdapter (private val context: Context): RecyclerView.Adapter<Articl
 
     override fun onBindViewHolder(holder: ArticleHolder, position: Int) {
         holder.bind(data[position])
+    }
+
+    fun setOnClick(l : View.OnClickListener){
+        onClick = l
     }
 
 }
