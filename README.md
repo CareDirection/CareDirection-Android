@@ -4,8 +4,7 @@
 
 개발 기간 : 19.12.21 ~ 20.01.04
 
-
-![workflow_product](https://user-images.githubusercontent.com/48307960/71580292-5493d880-2b43-11ea-85c1-4cdc682be3f7.png)
+<img src= 'image/CareDirection_workflow.png'>
 
 
 
