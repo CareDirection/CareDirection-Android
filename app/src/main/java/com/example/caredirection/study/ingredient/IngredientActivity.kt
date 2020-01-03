@@ -1,7 +1,6 @@
 package com.example.caredirection.study.ingredient
 
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -31,19 +30,19 @@ class IngredientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingredient)
-        val fromIngredientIntent= getIntent()
+        val fromIngredientIntent = getIntent()
         Ingredient=fromIngredientIntent.getStringExtra("ingredient")
 
-        top_bar_main.top_plain_text.txt_top_bar_title.text = "성분"
+        top_bar.top_plain_text.txt_top_bar_title.text = "성분"
         txt_ingredient_ingredient.text=Ingredient
 
         ingredientIdx=when(Ingredient){
             "홍삼"->1
-            "오메가 3"->2
-            "밀크씨슬"->3
-            "루테인"->4
-            "유산균"->5
-            "비타민 D"->6
+            "오메가 3"->4
+            "밀크씨슬"->2
+            "루테인"->3
+            "유산균"->4
+            "비타민 D"->5
             else->0
         }
 
@@ -59,7 +58,6 @@ class IngredientActivity : AppCompatActivity() {
             object : Callback<IngredientData>{
                 override fun onFailure(call: Call<IngredientData>, t: Throwable) {
                     "성분 값을 가지고 오지 못하였습니다.".logDebug()
-                    t.toString().logDebug()
                 }
 
                 override fun onResponse(
@@ -67,14 +65,13 @@ class IngredientActivity : AppCompatActivity() {
                     response: Response<IngredientData>
                 ) {
                     val ingredientRepos : IngredientData = response.body()!!
-                    txt_ingredient_comment.text= ingredientRepos.data[0].nutrient_common_description
+                    txt_article_title.text= ingredientRepos.data[0].nutrient_common_description
                     val ingredient_image_uri= ingredientRepos.data[0].image_key
-/*
-                    Glide.with()
+
+                    Glide.with(this@IngredientActivity)
                         .load(ingredient_image_uri)
                         .centerCrop()
-                        .into(img_ingredient_ingredient)
-*/
+                        .into(img_article_details)
 
 
 
