@@ -35,8 +35,8 @@ class StudyFragment : Fragment(), View.OnClickListener {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var rvIngredientAdapter: IngredientAdapter
-    private lateinit var IngredientIdx: String
-    private var articleIdxIntent: Int=200
+    private var IngredientIdx = ""
+    private var articleIdxIntent: Int = 200
 
     private lateinit var rvArticleAdapter: ArticleAdapter
 
@@ -93,7 +93,7 @@ class StudyFragment : Fragment(), View.OnClickListener {
         //어댑더 정의
         rvArticleAdapter = ArticleAdapter(context!!)
         //뷰에 어댑터 연결
-        rvArticleAdapter.setOnClick(this,rv_ingredient_article_view)
+        rvArticleAdapter.setOnClick(this, rv_ingredient_article_view)
         rv_ingredient_article_view.adapter = rvArticleAdapter
 //        rvArticleAdapter.data = arrayOf(
 //            RvArticleData("ㅇㄹㅇ", "ㅇㄹ너래ㅑㄴ얼"),
@@ -108,98 +108,101 @@ class StudyFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         //position
-        val articleIdx = rv_ingredient_article_view.getChildAdapterPosition(v!!)
-        articleIdxIntent = rvArticleAdapter.data[articleIdx].index
-        if(articleIdxIntent!=200) {
-            articleIdxIntent.toString().logDebug()
-            val articleIntent = Intent(context, ArticleDetailsActivity::class.java)
-            articleIntent.putExtra("article", articleIdxIntent!!)
-            startActivity(articleIntent)
+//        val articleIdx = rv_ingredient_article_view.getChildAdapterPosition(v!!)
+//        articleIdxIntent = rvArticleAdapter.data[articleIdx].index
+//
+//        articleIdxIntent.toString().logDebug()
+//        if (articleIdxIntent != 200) {
+//            val articleIntent = Intent(context, ArticleDetailsActivity::class.java)
+//            articleIntent.putExtra("article", articleIdxIntent!!)
+//            //articleIdxIntent=200
+//            startActivity(articleIntent)
+//        }
+
+        val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
+        //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
+        // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
+
+        IngredientIdx = rvIngredientAdapter.data[idx].text
+        // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
+        //startActivity(functional_intent)
+        articleIdxIntent.toString().logDebug()
+        if (IngredientIdx != "") {
+
+            val IngredientIntent = Intent(context, IngredientActivity::class.java)
+            IngredientIntent.putExtra("ingredient", IngredientIdx)
+            startActivity(IngredientIntent)
         }
 
-            val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
-            //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
-            // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
-            if(articleIdxIntent==200) {
-                IngredientIdx = rvIngredientAdapter.data[idx].text
-                // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
-                //startActivity(functional_intent)
-                articleIdxIntent.toString().logDebug()
-                val IngredientIntent = Intent(context, IngredientActivity::class.java)
-                IngredientIntent.putExtra("ingredient", IngredientIdx)
-                startActivity(IngredientIntent)
-            }
+            //rvCareProductAdapter.data[idx]
+        }
 
-
-        //rvCareProductAdapter.data[idx]
-    }
-
-    private fun getAricleListRessponse() {
-        val call: Call<ArticleListData> = RequestURL.service.getArticleList()
-        call.enqueue(
-            object : Callback<ArticleListData> {
-                override fun onFailure(call: Call<ArticleListData>, t: Throwable) {
-                    t.toString().logDebug()
-                }
-
-                override fun onResponse(
-                    call: Call<ArticleListData>,
-                    response: Response<ArticleListData>
-                ) {
-
-                    val articleListRespo = response.body()!!.data
-                    val articles = mutableListOf<RvArticleData>()
-                    for (item in articleListRespo) {
-                        articles.add(
-                            RvArticleData(
-                                item.article_idx,
-                                item.image_key,
-                                item.article_title
-                            )
-                        )
+        private fun getAricleListRessponse() {
+            val call: Call<ArticleListData> = RequestURL.service.getArticleList()
+            call.enqueue(
+                object : Callback<ArticleListData> {
+                    override fun onFailure(call: Call<ArticleListData>, t: Throwable) {
+                        t.toString().logDebug()
                     }
-                    rvArticleAdapter.data = articles.toTypedArray()
-                    rvArticleAdapter.notifyDataSetChanged()
+
+                    override fun onResponse(
+                        call: Call<ArticleListData>,
+                        response: Response<ArticleListData>
+                    ) {
+
+                        val articleListRespo = response.body()!!.data
+                        val articles = mutableListOf<RvArticleData>()
+                        for (item in articleListRespo) {
+                            articles.add(
+                                RvArticleData(
+                                    item.article_idx,
+                                    item.image_key,
+                                    item.article_title
+                                )
+                            )
+                        }
+                        rvArticleAdapter.data = articles.toTypedArray()
+                        rvArticleAdapter.notifyDataSetChanged()
+
+                    }
 
                 }
+            )
 
-            }
-        )
+        }
 
-    }
+        override fun onDetach() {
+            super.onDetach()
+            listener = null
+        }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_ingredient_study, container, false)
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ingredient_study, container, false)
-    }
+        fun onButtonPressed(uri: Uri) {
+            listener?.onFragmentInteraction(uri)
+        }
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
+        interface OnFragmentInteractionListener {
+            // TODO: Update argument type and name
+            fun onFragmentInteraction(uri: Uri)
+        }
 
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StudyFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        companion object {
+            // TODO: Rename and change types and number of parameters
+            @JvmStatic
+            fun newInstance(param1: String, param2: String) =
+                StudyFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
                 }
-            }
+        }
     }
-}
 
