@@ -36,7 +36,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6
         )
 
-        toast(keeper.disease.toString())
+        //toast(keeper.disease.toString())
 
         keeper.disease?.let { set ->
             disButtons
@@ -105,7 +105,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             if(btn_disease_clear.isChecked) set.add(btn_disease_clear.text.toString())
             keeper.disease = set
 
-            toast(keeper.disease.toString())
+            //toast(keeper.disease.toString())
 
             val symptom_intent = Intent(this,ResearchSymptomActivity::class.java)
             startActivity(symptom_intent)

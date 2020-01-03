@@ -56,7 +56,6 @@ class ResearchFinishActivity : AppCompatActivity() {
         user_survey_item_value1 = keeper.disease.toString().slice(dRange)
         user_survey_item_value2 = keeper.symptom.toString().slice(sRange)
 
-        keeper.cigarette.toString().logDebug()
 
         //담배
         when(keeper.cigarette){
@@ -85,23 +84,12 @@ class ResearchFinishActivity : AppCompatActivity() {
             2131361926 -> user_survey_item_value6 = "2회 이하"
         }
 
-        keeper.exercise.toString().logDebug()
-
         //운동
         when(keeper.exercise){
             2131361899 -> user_survey_item_value7 = "4회 이상"
             2131361900 -> user_survey_item_value7 = "2회 ~ 3회"
             2131361901 -> user_survey_item_value7 = "1회 이하"
         }
-
-        user_survey_item_value1.logDebug()
-        user_survey_item_value2.logDebug()
-        user_survey_item_value3.logDebug()
-        user_survey_item_value4.logDebug()
-        user_survey_item_value5.logDebug()
-        user_survey_item_value6.logDebug()
-        user_survey_item_value7.logDebug()
-        toastLong("")
 
     }
 
