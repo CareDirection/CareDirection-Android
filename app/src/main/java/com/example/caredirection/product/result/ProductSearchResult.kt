@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -94,6 +95,13 @@ class ProductSearchResult : AppCompatActivity() {
         rv_product_search_result.layoutManager = LinearLayoutManager(this@ProductSearchResult)
 
         rv_product_search_result.adapter = rv_product_search_result_adapter
+
+        edt_activity_product_search_result.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                getProductSearchContent(edt_activity_product_search_result.text.toString())
+            }
+            true
+        }
     }
 
     private fun getProductSearchContent(search_word: String) {
