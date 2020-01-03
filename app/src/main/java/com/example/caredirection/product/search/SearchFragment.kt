@@ -2,6 +2,7 @@ package com.example.caredirection.product.search
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.data.network.Data
+import com.example.caredirection.data.network.ProductSearchContentData
+import com.example.caredirection.data.network.ProductSearchData
+import com.example.caredirection.network.RequestURL
 import com.example.caredirection.product.result.ProductSearchResult
 import com.example.caredirection.product.standard.ActivityProductStandard
 import kotlinx.android.synthetic.main.fragment_product_search.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchFragment : Fragment() {
 
@@ -61,14 +69,17 @@ class SearchFragment : Fragment() {
         rv_search_nutrient = view.findViewById(R.id.rv_search_nutrient_txt)//
 
         rv_search_nutrient.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
-        data = mutableListOf(
-            SearchNutrientItem("오메가3", true),
+
+        getProductSearchResponse()
+
+        /*data = mutableListOf(
+            SearchNutrientItem("오메가3"),
             SearchNutrientItem("종합비타민"),
             SearchNutrientItem("홍삼"),
             SearchNutrientItem("로얄젤리"),
             SearchNutrientItem("비타민A"),
             SearchNutrientItem("비타민D")
-        )
+        )*/
         //리사이클러뷰에 어뎁더 써서 연결하기
         rv_search_nutrient.adapter = rv_search_nutirient_adapter
 
@@ -76,10 +87,11 @@ class SearchFragment : Fragment() {
         rv_search_product = view.findViewById(R.id.rv_search_item_product)
 
         rv_search_product.layoutManager = LinearLayoutManager(requireContext())
-        rv_search_product_adapter.item = listOf(
+
+        /*rv_search_product_adapter.item = listOf(
             SearchProductAdapter.rv_search_item("ENGliSH NAME", "publisher", "KOREA NAME", "price", false),
             SearchProductAdapter.rv_search_item("ENGliSH NAME", "publisher", "KOREA NAME", "price", false)
-        )
+        )*/
         rv_search_product.adapter = rv_search_product_adapter
 
         //
@@ -97,11 +109,14 @@ class SearchFragment : Fragment() {
         }
 
         return view
+
+
     }
 
     //region Nutrient RecyclerView
 
     private var data = mutableListOf<SearchNutrientItem>()
+
 
     private inner class SearchNutrientAdapter: RecyclerView.Adapter<SearchNutrientHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchNutrientHolder {
@@ -131,15 +146,78 @@ class SearchFragment : Fragment() {
                         data[it] = data[it].copy(check = false)
                     }
                     data[position] = data[position].copy(check = true)
+                    getProductSearchContentResponse(item.nutrient)
                     rv_search_nutirient_adapter.notifyDataSetChanged()
+
                 }
         }
     }
 
     data class SearchNutrientItem(
-        val nutrient : String,
-        val check: Boolean = false
+        var nutrient : String,
+        var check: Boolean = false
     )
 
     //endregion RecyclerView
+
+    private fun getProductSearchResponse(){
+        val call: Call<ProductSearchData> = RequestURL.service.getProductSearchList(token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6OH0.1aTgLt9PjqIDpERitt0eOQMuoyQUypMBYw4JaGi6M6M")
+
+        call.enqueue(
+            object : Callback<ProductSearchData>{
+                override fun onFailure(call: Call<ProductSearchData>, t: Throwable) {
+                   Toast.makeText(context,"안된다고오오",Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(
+                    call: Call<ProductSearchData>,
+                    response: Response<ProductSearchData>
+                ) {
+                   // var test = mutableListOf<SearchNutrientItem>()
+
+
+                    //배열로 통신 데이터 받아오기
+                    val productSearchList : ProductSearchData = response.body()!!
+                    //Toast.makeText(context,  productSearchList.data[0].tab_name,Toast.LENGTH_SHORT).show()
+
+                    Log.d("잘되나", productSearchList.data[0].tab_name)
+                    (0 until productSearchList.data.size!!).forEach {
+                       // Toast.makeText(context,  productSearchList.data[it].tab_name,Toast.LENGTH_SHORT).show()
+                        data.add(SearchNutrientItem(productSearchList.data[it].tab_name))
+
+                    }
+                }
+            }
+
+        )
+    }
+
+    private fun getProductSearchContentResponse(search_word: String){
+        val call: Call<ProductSearchContentData> = RequestURL.service.getProductContentList(search_word,"nutrient",2)
+
+        call.enqueue(
+            object : Callback<ProductSearchContentData>{
+                override fun onFailure(call: Call<ProductSearchContentData>, t: Throwable) {
+
+                }
+
+                override fun onResponse(
+                    call: Call<ProductSearchContentData>,
+                    response: Response<ProductSearchContentData>
+                ) {
+                    val productSearchcontentList : Data = response.body()!!.data
+
+
+                    (0 until productSearchcontentList.searchList.size!!).forEach {
+                        rv_search_product_adapter.item.add(productSearchcontentList.searchList[it])
+                        rv_search_product_adapter.notifyDataSetChanged()
+                    }
+
+                }
+            })
+    }
+
+
 }
+
+
