@@ -296,8 +296,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             adapter.data = listOf(
                 TopDownDialogHolder.Child("1", "엄마"),
                 TopDownDialogHolder.Child("2", "은이"),
-                TopDownDialogHolder.Child("3", "버미"),
-                TopDownDialogHolder.Child("3", "명히")
+                TopDownDialogHolder.Child("3", "버미")
             )
             DialogPlus.newDialog(context)
                 .setGravity(Gravity.TOP)

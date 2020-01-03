@@ -21,7 +21,6 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
-        android:src="@color/colorRed"
         app:layout_constraintBottom_toBottomOf="@+id/btn_home_top_down_child_add_user_name"
         app:layout_constraintEnd_toStartOf="@+id/txt_home_top_down_child_add_user_name"
         app:layout_constraintTop_toTopOf="@+id/btn_home_top_down_child_add_user_name"
