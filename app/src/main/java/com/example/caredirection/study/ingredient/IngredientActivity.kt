@@ -51,7 +51,7 @@ class IngredientActivity : AppCompatActivity() {
     }
 
     private fun getIngredientInfoResponse(){
-        val call: Call<IngredientData> = RequestURL.service.getIngredientInfo( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6IjMifQ.-KEfwDT3c7yMpSO3ujWo_oZLa2cEHyKriDts_2BEvfg",ingredientIdx)
+        val call: Call<IngredientData> = RequestURL.service.getIngredientInfo( "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU",ingredientIdx)
         call.enqueue(
             object : Callback<IngredientData>{
                 override fun onFailure(call: Call<IngredientData>, t: Throwable) {
