@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".study.article.ArticleDetailsActivity">
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <include
+            android:id="@+id/top_plain_title"
+            layout="@layout/menu_top_plain_text" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/txt_article_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="12sp"
+                android:text="2019. 01. 23"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/txt_article_title"
+                app:layout_constraintTop_toBottomOf="@+id/txt_article_title" />
+
+            <TextView
+                android:id="@+id/txt_article_main_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="6sp"
+                android:text=" 만성피로에 시달리는 현대인들 비타민 C는 기본이고, 온갖 종류의 영양제와 함께 살고 있습니다.하지만! 음식에도 안 맞는 궁합이 있듯이 영양제를 잘못 먹으면 제 효과를 보지 못하거나 독이 될 수도 있다는데요."
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_article_date" />
+
+            <ImageView
+                android:id="@+id/img_article_details"
+                android:layout_width="0dp"
+                android:layout_height="356dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_ingredient_ingredient"
+                app:srcCompat="@drawable/flickr_marco_verch" />
+
+            <TextView
+                android:id="@+id/txt_article_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="276dp"
+                android:background="@drawable/white_border_article"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="10sp"
+                android:paddingStart="16dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="116dp"
+                android:text="함께 먹었다가‘독’되는 영양제 궁합 8가지"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:fontFamily="@font/notosanskr_medium" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_article_sub_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="92dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_article_main_comment" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

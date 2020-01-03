@@ -35,6 +35,8 @@
         android:textSize="16sp"
         android:textColor="#2b2d2e"
         android:lineSpacingExtra="0sp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
         android:text="쿠팡"
         />
 
@@ -48,7 +50,10 @@
         android:textColor="#2b2d2e"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/txt_product_detail_item_title"
-        app:layout_constraintTop_toBottomOf="@id/txt_product_detail_item_title" />
+        app:layout_constraintTop_toBottomOf="@id/txt_product_detail_item_title"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        />
 
     <TextView
         android:id="@+id/txt_product_detail_item_day_price"
@@ -71,7 +76,9 @@
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/txt_product_detail_item_day_price"
         app:layout_constraintStart_toEndOf="@+id/txt_product_detail_item_day_price"
-        tools:text="사러가기" />
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="사러가기" />
 
     <ImageView
         android:id="@+id/img_product_detail_item_buy"
@@ -80,7 +87,6 @@
         android:src="@drawable/btn_arrow_select"
         app:layout_constraintStart_toEndOf="@+id/txt_product_detail_item_buy"
         app:layout_constraintTop_toTopOf="@+id/txt_product_detail_item_buy"
-        android:layout_marginLeft="5dp"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

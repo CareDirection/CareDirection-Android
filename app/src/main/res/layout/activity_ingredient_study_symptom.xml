@@ -39,6 +39,7 @@
             android:lineSpacingExtra="9sp"
             android:text="피로회복"
             android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             app:layout_constraintTop_toBottomOf="@+id/line_ingredient_study_symptom"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp"
@@ -74,6 +75,8 @@
             android:textColor="#787878"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="6sp"
+            android:fontFamily="@font/notosanskr_regular"
+            android:includeFontPadding="false"
             android:text=" 만성피로에 시달리는 현대인들.
 비타민 C는 기본이고,\n
 온갖 종류의 영양제와\n

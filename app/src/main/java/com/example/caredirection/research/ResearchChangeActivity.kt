@@ -47,7 +47,7 @@ class ResearchChangeActivity : AppCompatActivity() {
             val gender = keeper.gender!!
             val year = keeper.year!!
 
-            //postInfoResponse(name,gender,year)
+            postInfoResponse(name,gender,year)
 
             startActivity(Intent(this, LifeStyleActivity::class.java))
         }

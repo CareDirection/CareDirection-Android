@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".study.FragmentStudySymptom">
+    tools:context=".study.ActivityStudySymptom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -43,6 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="20dp"
+            android:includeFontPadding="false"
             />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredient_study_symptom"
@@ -74,6 +75,8 @@
             android:textColor="#787878"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="6sp"
+            android:fontFamily="@font/notosanskr_light"
+            android:includeFontPadding="false"
             android:text=" 만성피로에 시달리는 현대인들.
 비타민 C는 기본이고,\n
 온갖 종류의 영양제와\n

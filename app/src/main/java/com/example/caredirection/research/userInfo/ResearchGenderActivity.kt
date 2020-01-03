@@ -46,8 +46,7 @@ class ResearchGenderActivity : AppCompatActivity() {
         }
 
         keeper.year?.let {
-            //TODO: 이거 피커로 변경해서 피커를 세팅
-            txt_year_picker.text = it.toString()
+            txt_year_picker.text = it
         }
 
         checkSelectButton()

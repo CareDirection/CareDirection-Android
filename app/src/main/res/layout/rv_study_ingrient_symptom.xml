@@ -20,6 +20,8 @@
         android:gravity="center"
         android:textColor="@color/selector_product_search_nutrient_color"
         android:checked="false"
+        android:fontFamily="@font/notosanskr_light"
+        android:includeFontPadding="false"
         android:text="종합비타민"
         android:letterSpacing="-0.02"
         />

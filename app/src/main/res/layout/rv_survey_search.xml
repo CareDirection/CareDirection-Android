@@ -39,7 +39,9 @@
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/img_rv_survey_search_item"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Vita Naturals Inc" />
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:text="Vita Naturals Inc" />
     <TextView
         android:id="@+id/txt_rv_survey_search_item_publisher"
         app:layout_constraintStart_toEndOf="@id/txt_rv_survey_search_item"
@@ -51,7 +53,9 @@
         android:textSize="12sp"
         android:textColor="#787878"
         android:lineSpacingExtra="6sp"
-        tools:text="해외직구"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="해외직구"
         />
     <TextView
         android:id="@+id/txt_rv_search_survey_item_kname"
@@ -63,7 +67,9 @@
         android:lineSpacingExtra="8sp"
         android:layout_marginTop="2dp"
         android:textColor="@color/colorBlack"
-        tools:text="더리얼 알티지 오메가 3 맥스 1400"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:text="더리얼 알티지 오메가 3 맥스 1400"
         />
     <TextView
         android:id="@+id/txt_rv_search_survey_item_price"
@@ -76,7 +82,9 @@
         android:textSize="12sp"
         android:textColor="@color/colorBlack"
         android:lineSpacingExtra="6sp"
-        tools:text="36,800 원"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="36,800 원"
         />
     <TextView
         android:id="@+id/txt_rv_search_survey_item_perprice"
@@ -89,7 +97,9 @@
         android:textColor="@color/colorDarkGrey"
         android:layout_marginLeft="6dp"
         android:lineSpacingExtra="6sp"
-        tools:text="(1일 750원)"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="(1일 750원)"
         />
     <TextView
         android:id="@+id/txt_rv_search_survey_item_perstandard"
@@ -102,7 +112,9 @@
         android:textSize="12sp"
         android:textColor="@color/colorDarkGrey"
         android:lineSpacingExtra="10sp"
-        tools:text="30정 기준"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:text="30정 기준"
         />
 
 

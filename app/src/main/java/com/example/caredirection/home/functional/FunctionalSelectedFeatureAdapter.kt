@@ -10,7 +10,7 @@ import com.example.caredirection.data.RvFunctionalSelectedData
 
 class FunctionalSelectedFeatureAdapter (private val context: Context) : RecyclerView.Adapter<FunctionalSelectedFeatureHolder>(){
 
-    var data = listOf<RvFunctionalSelectedData>()
+    var data = arrayOf<RvFunctionalSelectedData>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

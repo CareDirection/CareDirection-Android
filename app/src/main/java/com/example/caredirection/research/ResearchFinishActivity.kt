@@ -2,8 +2,10 @@ package com.example.caredirection.research
 
 import android.content.Context
 import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.L
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import android.widget.RadioButton
 import com.example.caredirection.R
@@ -11,19 +13,24 @@ import com.example.caredirection.care_product.CareProductActivity
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
 import com.example.caredirection.common.toastLong
+import com.example.caredirection.data.network.LifeCycleData
 import com.example.caredirection.home.HomeActivity
+import com.example.caredirection.network.RequestURL
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_finish.*
 import kotlinx.android.synthetic.main.fragment_life_style_activity.*
 import kotlinx.android.synthetic.main.fragment_life_style_alcohol.*
 import kotlinx.android.synthetic.main.fragment_life_style_exercise.*
 import kotlinx.android.synthetic.main.fragment_life_style_vegetable.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ResearchFinishActivity : AppCompatActivity() {
 
     private lateinit var keeper : ResearchKeeper
-    private lateinit var user_survey_item_value1 : String
-    private lateinit var user_survey_item_value2 : String
+    private var user_survey_item_value1 : String =""
+    private var user_survey_item_value2 : String =""
     private lateinit var user_survey_item_value3 : String
     private lateinit var user_survey_item_value4 : String
     private lateinit var user_survey_item_value5 : String
@@ -42,67 +49,92 @@ class ResearchFinishActivity : AppCompatActivity() {
         btn_finish_next.setOnClickListener{
             keeper.researchFinish = 1
 
-            setDatas()
+            keeper.disease?.sorted()?.forEach {
+                user_survey_item_value1 = "$user_survey_item_value1$it,"
+            }
+
+            keeper.symptom?.sorted()?.forEach {
+                user_survey_item_value2 = "$user_survey_item_value2$it,"
+            }
+
+            //질병, 증상
+            var dRange = IntRange(0, user_survey_item_value1.length-2)
+            var sRange = IntRange(0, user_survey_item_value2.length-2)
+            user_survey_item_value1 = user_survey_item_value1.slice(dRange)
+            user_survey_item_value2 = user_survey_item_value2.slice(sRange)
+
+            //담배
+            when(keeper.cigarette){
+                R.id.btn_alcohol_1 -> user_survey_item_value3 = "네"
+                R.id.btn_alcohol_2 -> user_survey_item_value3 = "아니오"
+            }
+
+            //술
+            when(keeper.alcohol){
+                R.id.btn_alcohol_3 -> user_survey_item_value4 = "네"
+                R.id.btn_alcohol_4 -> user_survey_item_value4 = "아니오"
+            }
+
+            //야외활동
+            when(keeper.activity){
+                R.id.btn_activity_1 -> user_survey_item_value5 = "4시간 이상"
+                R.id.btn_activity_2 -> user_survey_item_value5 = "1시간 ~ 4시간"
+                R.id.btn_activity_3 -> user_survey_item_value5 = "1시간 이하"
+            }
+
+            //녹황색 채소 섭취
+            when(keeper.vegetable){
+                R.id.btn_vegetable_1 -> user_survey_item_value6 = "7회 이상"
+                R.id.btn_vegetable_2 -> user_survey_item_value6 = "5회 ~ 6회"
+                R.id.btn_vegetable_3 -> user_survey_item_value6 = "3회 ~ 4회"
+                R.id.btn_vegetable_4 -> user_survey_item_value6 = "2회 이하"
+            }
+
+            //운동
+            when(keeper.exercise){
+                R.id.btn_exercise_1 -> user_survey_item_value7 = "4회 이상"
+                R.id.btn_exercise_2 -> user_survey_item_value7 = "2회 ~ 3회"
+                R.id.btn_exercise_3 -> user_survey_item_value7 = "1회 이하"
+            }
+
+            user_survey_item_value1.logDebug()
+            user_survey_item_value2.logDebug()
+            user_survey_item_value3.logDebug()
+            user_survey_item_value4.logDebug()
+            user_survey_item_value5.logDebug()
+            user_survey_item_value6.logDebug()
+            user_survey_item_value7.logDebug()
+
+            postLifeCycle(user_survey_item_value1,user_survey_item_value2,user_survey_item_value3,user_survey_item_value4,user_survey_item_value5,user_survey_item_value6,user_survey_item_value7)
 
             startActivity(Intent(this, CareProductActivity::class.java))
         }
     }
 
-    private fun setDatas(){
-
-        //질병, 증상
-        var dRange = IntRange(1, keeper.disease.toString().length-2)
-        var sRange = IntRange(1, keeper.symptom.toString().length-2)
-        user_survey_item_value1 = keeper.disease.toString().slice(dRange)
-        user_survey_item_value2 = keeper.symptom.toString().slice(sRange)
-
-        keeper.cigarette.toString().logDebug()
-
-        //담배
-        when(keeper.cigarette){
-            2131361882 -> user_survey_item_value3 = "네"
-            2131361883 -> user_survey_item_value3 = "아니오"
-        }
-
-        //술
-        when(keeper.alcohol){
-            2131361884 -> user_survey_item_value4 = "네"
-            2131361885 -> user_survey_item_value4 = "아니오"
-        }
-
-        //야외활동
-        when(keeper.activity){
-            2131361876 -> user_survey_item_value5 = "4시간 이상"
-            2131361877 -> user_survey_item_value5 = "1시간 ~ 4시간"
-            2131361878 -> user_survey_item_value5 = "1시간 이하"
-        }
-
-        //녹황색 채소 섭취
-        when(keeper.vegetable){
-            2131361923 -> user_survey_item_value6 = "7회 이상"
-            2131361924 -> user_survey_item_value6 = "5회 ~ 6회"
-            2131361925 -> user_survey_item_value6 = "3회 ~ 4회"
-            2131361926 -> user_survey_item_value6 = "2회 이하"
-        }
-
-        keeper.exercise.toString().logDebug()
-
-        //운동
-        when(keeper.exercise){
-            2131361899 -> user_survey_item_value7 = "4회 이상"
-            2131361900 -> user_survey_item_value7 = "2회 ~ 3회"
-            2131361901 -> user_survey_item_value7 = "1회 이하"
-        }
-
-        user_survey_item_value1.logDebug()
-        user_survey_item_value2.logDebug()
-        user_survey_item_value3.logDebug()
-        user_survey_item_value4.logDebug()
-        user_survey_item_value5.logDebug()
-        user_survey_item_value6.logDebug()
-        user_survey_item_value7.logDebug()
-        toastLong("")
-
+    private fun postLifeCycle(s1:String,s2:String,s3:String,s4:String,s5:String,s6:String,s7:String){
+        val call: Call<LifeCycleData> = RequestURL.service.postLifeCycle("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU",s1,s2,s3,s4,s5,s6,s7)
+        call.enqueue(
+            object : Callback<LifeCycleData> {
+                override fun onFailure(call: Call<LifeCycleData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+                override fun onResponse(
+                    call: Call<LifeCycleData>,
+                    response: Response<LifeCycleData>
+                ) {
+                    Log.d("haeeul", "${response.message()}")
+                    if (response.isSuccessful) {
+                        val InfoRepos : LifeCycleData = response.body()!!
+                        val message = InfoRepos.message
+                        Log.d("haeeul", "라이프스타일 성공 ${response.body()}")
+                        toast(message)
+                    } else {
+                        Log.d("haeeul","라이프스타일 실패 ${response.errorBody()?.string()}")
+                        toast("실패")
+                    }
+                }
+            }
+        )
     }
 
     // 상태바 배경투명 설정

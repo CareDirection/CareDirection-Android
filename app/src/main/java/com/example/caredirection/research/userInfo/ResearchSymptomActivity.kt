@@ -101,7 +101,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
             if(btn_symptom_clear.isChecked) set.add(btn_symptom_clear.text.toString())
             keeper.symptom = set
 
-            toast(keeper.symptom.toString())
+            //toast(keeper.symptom.toString())
 
                 val intent = Intent(this,ResearchChangeActivity::class.java)
                 startActivity(intent)
