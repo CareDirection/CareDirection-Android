@@ -105,8 +105,6 @@ class SearchFragment : Fragment() {
         txt_search_fragment_intent.setOnClickListener {
             val intent = Intent(context, ActivityProductStandard::class.java)
 
-            //여기에 해당 텍스트 전달
-
             startActivityForResult(intent, 100)
         }
 

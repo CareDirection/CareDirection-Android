@@ -64,16 +64,16 @@ class IngredientActivity : AppCompatActivity() {
                     call: Call<IngredientData>,
                     response: Response<IngredientData>
                 ) {
-                    val ingredientRepos : IngredientData = response.body()!!
-                    txt_article_title.text= ingredientRepos.data[0].nutrient_common_description
-                    val ingredient_image_uri= ingredientRepos.data[0].image_key
+                    if (response.isSuccessful) {
+                        val ingredientRepos: IngredientData = response.body()!!
+                        txt_article_title.text = ingredientRepos.data[0].nutrient_common_description
+                        val ingredient_image_uri = ingredientRepos.data[0].image_key
 
-                    Glide.with(this@IngredientActivity)
-                        .load(ingredient_image_uri)
-                        .centerCrop()
-                        .into(img_article_details)
-
-
+                        Glide.with(this@IngredientActivity)
+                            .load(ingredient_image_uri)
+                            .centerCrop()
+                            .into(img_article_details)
+                    }
 
                 }
 

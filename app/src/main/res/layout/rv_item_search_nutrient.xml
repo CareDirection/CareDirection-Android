@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="84dp"
     android:layout_height="29dp"
-    android:id="@+id/rv_search_item_nutrient">
+    android:id="@+id/rv_search_item_nutrient"
+    >
 
     <androidx.appcompat.widget.AppCompatCheckedTextView
         android:id="@+id/txt_rv_search_nutrient"

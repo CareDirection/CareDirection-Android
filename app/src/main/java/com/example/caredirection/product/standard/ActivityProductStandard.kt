@@ -62,14 +62,9 @@ class ActivityProductStandard : AppCompatActivity() {
         }
 
 
-
-
         img_activity_product_top_filter.setOnClickListener {
             filterDialog()
         }
-
-
-
 
         img_activity_product_top_search.setOnClickListener {
             val intent = Intent(this@ActivityProductStandard, ProductSearchResult::class.java)

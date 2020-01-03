@@ -21,6 +21,7 @@ class CareProductHolder(private val view:View) : RecyclerView.ViewHolder(view){
             .centerCrop()
             .into(imgCareProduct)
         isCheckedCareProduct.setImageResource(R.drawable.selector_home_care_product)
+        isCheckedCareProduct.isSelected = data.isCheckedCareProduct
         nameProduct.text=data.nameProduct
 
     }
