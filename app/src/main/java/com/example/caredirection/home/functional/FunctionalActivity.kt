@@ -28,7 +28,7 @@ class FunctionalActivity : AppCompatActivity() {
 
         //케어받는 기능
         rv_functional_selected_view.layoutManager= LinearLayoutManager(this)
-        rvFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(this!!)
+        rvFunctionalSelectedFeatureAdapter = FunctionalSelectedFeatureAdapter(this)
         rv_functional_selected_view.adapter=rvFunctionalSelectedFeatureAdapter
 //        rvFunctionalSelectedFeatureAdapter.data=arrayOf(
 //            RvFunctionalSelectedData(arrayOf("장건강","피로회복"),"오메가3"),
@@ -43,7 +43,7 @@ class FunctionalActivity : AppCompatActivity() {
         //전체기능리사이클러뷰 레이아웃 설정
         rv_functional_all_view.layoutManager = GridLayoutManager(this,3)
         //어댑더 정의
-        val rvFunctionalAllAdapter = FunctionalAllFeatureAdapter(this!!)
+        val rvFunctionalAllAdapter = FunctionalAllFeatureAdapter(this)
         //뷰에 어댑터 연결
         rv_functional_all_view.adapter = rvFunctionalAllAdapter
         //더미 데이터 넣어주기

@@ -3,15 +3,19 @@ package com.example.caredirection.care_product
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.RvCareProductRegisterData
-import com.example.caredirection.home.HomeActivity
+import com.example.caredirection.data.network.HomCareProductData
+import com.example.caredirection.network.RequestURL
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_care_product.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CareProductActivity : AppCompatActivity() {
 
@@ -36,14 +40,16 @@ class CareProductActivity : AppCompatActivity() {
         rvCareRegisterView.adapter=rvCareRegisterAdapter
         snapHelper.attachToRecyclerView(rvCareRegisterView)
 
-        rvCareRegisterAdapter.data= listOf(
-            RvCareProductRegisterData("10외 남음","","회사","해외직구","뉴트리디데이 프리미엄 오메가 3골드 1100",2222222,300,30),
-            RvCareProductRegisterData("10외 남음","","회사","해외직구","이건 유산균이다",2222222,300,30),
-            RvCareProductRegisterData("10외 남음","","회사","해외직구","이건 유산균이다",2222222,300,30),
-            RvCareProductRegisterData("10외 남음","","회사","해외직구","이건 유산균이다",2222222,300,30)
-        )
+        getHomCareProductResponse()
 
-        rvCareRegisterAdapter.notifyDataSetChanged()
+//        rvCareRegisterAdapter.data= listOf(
+//            RvCareProductRegisterData(10,"","회사","해외직구","뉴트리디데이 프리미엄 오메가 3골드 1100","2222222","300","30"),
+//            RvCareProductRegisterData(10,"","회사","해외직구","이건 유산균이다","2222222","300","30"),
+//            RvCareProductRegisterData(10,"","회사","해외직구","이건 유산균이다","2222222","300","30"),
+//            RvCareProductRegisterData(10,"","회사","해외직구","이건 유산균이다","2222222","300","30")
+//        )
+//
+//        rvCareRegisterAdapter.notifyDataSetChanged()
 
         btn_care_register_product.setOnClickListener {
             startActivity(Intent(this, ActivitySurveySearch::class.java))
@@ -53,5 +59,52 @@ class CareProductActivity : AppCompatActivity() {
             keeper.careProductAdd = 1
             startActivity(Intent(this, CareRegisterComplete::class.java))
         }
+    }
+
+    private fun getHomCareProductResponse() {
+        val call: Call<HomCareProductData> =
+            RequestURL.service.getCareProductList(
+                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",
+                date = "2020-01-04"
+            )
+        call.enqueue(object : Callback<HomCareProductData> {
+            override fun onFailure(call: Call<HomCareProductData>, t: Throwable) {
+                t.toString().logDebug()
+            }
+
+            override fun onResponse(
+                call: Call<HomCareProductData>,
+                response: Response<HomCareProductData>
+            ) {
+                val careProducts = mutableListOf<RvCareProductRegisterData>()
+                if (response.isSuccessful) {
+                    response.message()
+                    val productRespo = response.body()!!
+                    productRespo.toString().logDebug()
+                    for (item in productRespo.data) {
+                        careProducts.add(
+                            RvCareProductRegisterData(
+                                item.product_remain,
+                                item.image_location,
+                                item.product_company_name,
+                                item.product_is_import,
+                                item.product_name,
+                                item.product_price,
+                                item.product_price_per_unit,
+                                item.product_quantity
+                            )
+                        )
+                        item.product_idx.toString().logDebug()
+                    }
+
+                    rvCareRegisterAdapter.data = careProducts
+                    rvCareRegisterAdapter.notifyDataSetChanged()
+
+                }
+            }
+
+        })
+
+
     }
 }
