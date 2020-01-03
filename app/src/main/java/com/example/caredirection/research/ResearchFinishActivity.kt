@@ -15,6 +15,7 @@ import com.example.caredirection.common.toast
 import com.example.caredirection.common.toastLong
 import com.example.caredirection.data.network.LifeCycleData
 import com.example.caredirection.home.HomeActivity
+import com.example.caredirection.login.TokenController
 import com.example.caredirection.network.RequestURL
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_finish.*
@@ -60,8 +61,6 @@ class ResearchFinishActivity : AppCompatActivity() {
             //질병, 증상
             var dRange = IntRange(0, user_survey_item_value1.length-2)
             var sRange = IntRange(0, user_survey_item_value2.length-2)
-            user_survey_item_value1 = user_survey_item_value1.slice(dRange)
-            user_survey_item_value2 = user_survey_item_value2.slice(sRange)
 
             //담배
             when(keeper.cigarette){
@@ -97,14 +96,6 @@ class ResearchFinishActivity : AppCompatActivity() {
                 R.id.btn_exercise_3 -> user_survey_item_value7 = "1회 이하"
             }
 
-            user_survey_item_value1.logDebug()
-            user_survey_item_value2.logDebug()
-            user_survey_item_value3.logDebug()
-            user_survey_item_value4.logDebug()
-            user_survey_item_value5.logDebug()
-            user_survey_item_value6.logDebug()
-            user_survey_item_value7.logDebug()
-
             postLifeCycle(user_survey_item_value1,user_survey_item_value2,user_survey_item_value3,user_survey_item_value4,user_survey_item_value5,user_survey_item_value6,user_survey_item_value7)
 
             startActivity(Intent(this, CareProductActivity::class.java))
@@ -112,29 +103,35 @@ class ResearchFinishActivity : AppCompatActivity() {
     }
 
     private fun postLifeCycle(s1:String,s2:String,s3:String,s4:String,s5:String,s6:String,s7:String){
-        val call: Call<LifeCycleData> = RequestURL.service.postLifeCycle("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU",s1,s2,s3,s4,s5,s6,s7)
-        call.enqueue(
-            object : Callback<LifeCycleData> {
-                override fun onFailure(call: Call<LifeCycleData>, t: Throwable) {
-                    t.toString().logDebug()
-                }
-                override fun onResponse(
-                    call: Call<LifeCycleData>,
-                    response: Response<LifeCycleData>
-                ) {
-                    Log.d("haeeul", "${response.message()}")
-                    if (response.isSuccessful) {
-                        val InfoRepos : LifeCycleData = response.body()!!
-                        val message = InfoRepos.message
-                        Log.d("haeeul", "라이프스타일 성공 ${response.body()}")
-                        toast(message)
-                    } else {
-                        Log.d("haeeul","라이프스타일 실패 ${response.errorBody()?.string()}")
-                        toast("실패")
+        val token = TokenController.getAccessToken(this)
+
+        if(token != null) {
+            val call: Call<LifeCycleData> =
+                RequestURL.service.postLifeCycle(token, s1, s2, s3, s4, s5, s6, s7)
+            call.enqueue(
+                object : Callback<LifeCycleData> {
+                    override fun onFailure(call: Call<LifeCycleData>, t: Throwable) {
+                        t.toString().logDebug()
+                    }
+
+                    override fun onResponse(
+                        call: Call<LifeCycleData>,
+                        response: Response<LifeCycleData>
+                    ) {
+                        Log.d("haeeul", "${response.message()}")
+                        if (response.isSuccessful) {
+                            val InfoRepos: LifeCycleData = response.body()!!
+                            val message = InfoRepos.message
+                            Log.d("haeeul", "라이프스타일 성공 ${response.body()}")
+                            //toast(message)
+                        } else {
+                            Log.d("haeeul", "라이프스타일 실패 ${response.errorBody()?.string()}")
+                            //toast("실패")
+                        }
                     }
                 }
-            }
-        )
+            )
+        }
     }
 
     // 상태바 배경투명 설정
