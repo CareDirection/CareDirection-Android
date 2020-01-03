@@ -5,8 +5,7 @@
 개발 기간 : 19.12.21 ~ 20.01.04
 
 
-![Uploading CareDirection_workflow.png…]()
-
+![workflow_product](https://user-images.githubusercontent.com/48307960/71580292-5493d880-2b43-11ea-85c1-4cdc682be3f7.png)
 
 
 
@@ -257,6 +256,8 @@ chart_home.animateY(1000) //세로축 에니메이션
 
   
 
+
+
 # Naming Rule
 
 * ## View id값
@@ -341,6 +342,8 @@ chart_home.animateY(1000) //세로축 에니메이션
   …
   app:layout_constraintHorizontal_chainStyle="spread"
 
+  
+
   ## lambda 사용
 
   Listener, forEach, let 등을 구현하는데 있어 간결한 표현과 편리한 이용을 위해 람다식을 사용하였다.
@@ -395,6 +398,8 @@ chart_home.animateY(1000) //세로축 에니메이션
   }
   ```
 
+  
+
   ## extension function 사용
 
   자주 쓰이는 Log와 Toast를 확장 함수를 통해 간략한 표현법으로 정의하여 이용에 편리성을 높였다.
@@ -422,6 +427,12 @@ chart_home.animateY(1000) //세로축 에니메이션
   ```
 
   
+
+  ## 개발자
+
+  - **정은이** - [EuneeChung](https://github.com/EuneeChung)
+  - **조충범** - [cndqjacndqja](https://github.com/cndqjacndqja)
+  - **천명희** - [Haeeul](https://github.com/Haeeul)
 
   ## Git 사용시 주의사항
 
