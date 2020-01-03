@@ -69,10 +69,10 @@ class ResearchChangeActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val InfoRepos : InfoData = response.body()!!
                         val message = InfoRepos.message
-                        Log.d("haeeul", "성공 ${response.body()}")
+                        Log.d("haeeul", "개인정보 성공 ${response.body()}")
                         toast(message)
                     } else {
-                        Log.d("haeeul","실패 ${response.errorBody()?.string()}")
+                        Log.d("haeeul","개인정보 실패 ${response.errorBody()?.string()}")
                         toast("실패")
                     }
                 }

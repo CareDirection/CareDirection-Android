@@ -20,6 +20,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
 
     private lateinit var btnSymptoms: List<CheckBox>
     private lateinit var keeper :ResearchKeeper
+    private var check : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +38,14 @@ class ResearchSymptomActivity : AppCompatActivity() {
             btnSymptoms
                 .filter { it.text in set }
                 .forEach {
-                    it.isChecked = true
-                    it.setTextColor(resources.getColor(R.color.colorPrimary))
+                    checkBtnColor(it,true)
                     checkSelectButton()
                 }
-            if(btn_symptom_clear.text in set){
-                btn_symptom_clear.isChecked = true
-                btn_symptom_clear.setTextColor(resources.getColor(R.color.colorPrimary))
-                checkSelectButton()
-            }
+        }
+
+        if(check==false){
+            checkBtnColor(btn_symptom_clear,true)
+            checkSelectButton()
         }
 
         makeController()
@@ -100,9 +100,9 @@ class ResearchSymptomActivity : AppCompatActivity() {
                 .filter { it.isChecked }
                 .forEach { set.add(it.text.toString()) }
             if(btn_symptom_clear.isChecked) set.add(btn_symptom_clear.text.toString())
-            keeper.disease = set
+            keeper.symptom = set
 
-            toast(keeper.disease.toString())
+            toast(keeper.symptom.toString())
 
                 val intent = Intent(this,ResearchChangeActivity::class.java)
                 startActivity(intent)

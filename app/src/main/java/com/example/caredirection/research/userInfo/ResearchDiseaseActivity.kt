@@ -23,6 +23,7 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
     private lateinit var disButtons : List<CheckBox>
     private lateinit var keeper :ResearchKeeper
+    private var check : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +41,15 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             disButtons
                 .filter { it.text in set }
                 .forEach {
-                    it.isChecked = true
-                    it.setTextColor(resources.getColor(R.color.colorPrimary))
+                    checkBtnColor(it,true)
                     checkSelectButton()
+                    check = true
                 }
-            if(btn_disease_clear.text in set){
-                btn_disease_clear.isChecked = true
-                btn_disease_clear.setTextColor(resources.getColor(R.color.colorPrimary))
-                checkSelectButton()
-            }
+        }
+
+        if(check==false){
+            checkBtnColor(btn_disease_clear,true)
+            checkSelectButton()
         }
 
         makeController()
@@ -78,19 +79,18 @@ class ResearchDiseaseActivity : AppCompatActivity() {
                 }
             }
             else {
-                checkBtnColor(btn_disease_clear,false)
-            }
+            checkBtnColor(btn_disease_clear,false)
+        }
             checkSelectButton()
         }
 
         disButtons.forEachIndexed { index, checkBox ->
             disButtons[index].setOnClickListener{
-                if(disButtons[index].isChecked){
-                    checkBtnColor(disButtons[index],true)
-                    checkBtnColor(btn_disease_clear,false)
-                }
-                else{
-                    checkBtnColor(disButtons[index],false)
+                if (disButtons[index].isChecked) {
+                    checkBtnColor(disButtons[index], true)
+                    checkBtnColor(btn_disease_clear, false)
+                } else {
+                    checkBtnColor(disButtons[index], false)
                 }
                 checkSelectButton()
             }
