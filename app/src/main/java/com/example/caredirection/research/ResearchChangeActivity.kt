@@ -47,7 +47,7 @@ class ResearchChangeActivity : AppCompatActivity() {
             val gender = keeper.gender!!
             val year = keeper.year!!
 
-            postInfoResponse(name,gender,year)
+            //postInfoResponse(name,gender,year)
 
             startActivity(Intent(this, LifeStyleActivity::class.java))
         }
@@ -55,7 +55,7 @@ class ResearchChangeActivity : AppCompatActivity() {
         setColorInPartitial()
     }
     private fun postInfoResponse(name: String,gender: Int,birth: String){
-        val call: Call<InfoData> = RequestURL.service.postInfo("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjEsImlhdCI6MTU3ODAwOTc4NiwiZXhwIjo4Nzk3ODAwOTc4NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.vCa_1zQwS1x5HWYItuj55hdk5_k4U8WwwhJrBjkJZ08",name,gender,birth)
+        val call: Call<InfoData> = RequestURL.service.postInfo("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU",name,gender,birth)
         call.enqueue(
             object : Callback<InfoData> {
                 override fun onFailure(call: Call<InfoData>, t: Throwable) {

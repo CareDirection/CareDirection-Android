@@ -115,12 +115,12 @@ class ResearchKeeper (context: Context) {
 
     var exercise: Int?
         get() {
-            val candi = local.getInt(RESEARCH_TEMP, -1)
+            val candi = local.getInt(RESEARCH_EXERCISE, -1)
             return if (candi == -1) null else candi
         }
         set(value) {
             local.edit {
-                putInt(RESEARCH_TEMP, value?:-1)
+                putInt(RESEARCH_EXERCISE, value?:-1)
             }
         }
 
@@ -179,7 +179,7 @@ class ResearchKeeper (context: Context) {
         private const val RESEARCH_ALCOHOL = "6"
         private const val RESEARCH_CIGARETTE = "7"
         private const val RESEARCH_VEGETABLE = "8"
-        private const val RESEARCH_TEMP = "9"
+        private const val RESEARCH_EXERCISE = "9"
         private const val RESEARCH_ACTIVITY = "10"
 
         private const val RESEARCH_CHANGE = "11"

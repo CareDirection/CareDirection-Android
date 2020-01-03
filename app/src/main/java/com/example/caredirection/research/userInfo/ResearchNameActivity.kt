@@ -38,6 +38,7 @@ class ResearchNameActivity : AppCompatActivity() {
         makeController()
     }
 
+
     // 상태바 배경투명 설정
     fun statusBarHeight(context: Context): Int {
         val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")

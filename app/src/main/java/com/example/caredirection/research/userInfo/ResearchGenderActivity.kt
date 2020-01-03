@@ -101,7 +101,6 @@ class ResearchGenderActivity : AppCompatActivity() {
                     val picker = dialogView.findViewById<NumberPicker>(R.id.number_picker)
                     txt_year_picker?.text = picker.value.toString()
                     checkSelectButton()
-                    /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
                 }
                 .setNegativeButton("취소") { dialogInterface, i ->
                     checkSelectButton()

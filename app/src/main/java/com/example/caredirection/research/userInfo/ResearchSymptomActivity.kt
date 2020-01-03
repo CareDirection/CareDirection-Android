@@ -20,7 +20,6 @@ class ResearchSymptomActivity : AppCompatActivity() {
 
     private lateinit var btnSymptoms: List<CheckBox>
     private lateinit var keeper :ResearchKeeper
-    private var check : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
             btn_symptom_1, btn_symptom_2, btn_symptom_3, btn_symptom_4, btn_symptom_5, btn_symptom_6, btn_symptom_7, btn_symptom_8, btn_symptom_9
         )
 
-        keeper.disease?.let { set ->
+        keeper.symptom?.let { set ->
             btnSymptoms
                 .filter { it.text in set }
                 .forEach {
@@ -43,7 +42,7 @@ class ResearchSymptomActivity : AppCompatActivity() {
                 }
         }
 
-        if(check==false){
+        if(keeper.symptom.toString()=="[없음]"){
             checkBtnColor(btn_symptom_clear,true)
             checkSelectButton()
         }

@@ -71,17 +71,17 @@ class LifeStyleAlcoholFragment : Fragment() {
         setColorInPartitialAlcohol()
         setColorInPartitialSmoke()
 
-        if(keeper.alcohol?:-1 == -1){
+        if(keeper.cigarette?:-1 == -1){
             rg_alcohol_1.clearCheck()
 
         }else{
-            rg_alcohol_1.check(keeper.alcohol!!)
+            rg_alcohol_1.check(keeper.cigarette!!)
             check1 = true
         }
-        if(keeper.cigarette?:-1 == -1){
+        if(keeper.alcohol?:-1 == -1){
             rg_alcohol_2.clearCheck()
         }else{
-            rg_alcohol_2.check(keeper.cigarette!!)
+            rg_alcohol_2.check(keeper.alcohol!!)
             check2 = true
         }
 
@@ -95,8 +95,8 @@ class LifeStyleAlcoholFragment : Fragment() {
 //        }
 
         rg_alcohol_1.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.alcohol = rg_alcohol_1.checkedRadioButtonId
-            Log.v("YGYG", rg_alcohol_1.checkedRadioButtonId.toString())
+            keeper.cigarette = i
+            radioGroup.checkedRadioButtonId.toString().logDebug()
             check1 = true
             if(check1==true&& check2==true){
                 btn.isEnabled = true
@@ -105,8 +105,8 @@ class LifeStyleAlcoholFragment : Fragment() {
         }
 
         rg_alcohol_2.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.cigarette = rg_alcohol_2.checkedRadioButtonId
-            Log.v("YGYG", rg_alcohol_2.checkedRadioButtonId.toString())
+            keeper.alcohol = radioGroup.checkedRadioButtonId
+            Log.v("YGYG", radioGroup.checkedRadioButtonId.toString())
             check2 = true
             if(check1==true&& check2==true){
                 btn.isEnabled = true

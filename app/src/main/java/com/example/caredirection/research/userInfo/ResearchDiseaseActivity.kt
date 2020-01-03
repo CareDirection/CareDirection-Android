@@ -23,7 +23,6 @@ class ResearchDiseaseActivity : AppCompatActivity() {
 
     private lateinit var disButtons : List<CheckBox>
     private lateinit var keeper :ResearchKeeper
-    private var check : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +36,18 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6
         )
 
+        toast(keeper.disease.toString())
+
         keeper.disease?.let { set ->
             disButtons
                 .filter { it.text in set }
                 .forEach {
                     checkBtnColor(it,true)
                     checkSelectButton()
-                    check = true
                 }
         }
 
-        if(check==false){
+        if(keeper.disease.toString()=="[없음]"){
             checkBtnColor(btn_disease_clear,true)
             checkSelectButton()
         }

@@ -42,22 +42,22 @@ class LifeStyleExerciseFragment : Fragment() {
 
         val btn : Button = activity!!.findViewById(R.id.btn_life_next)
 
-        txt_temp_title.text = keeper.name + "님은"+"\n"+"땀이 날 정도의 운동을"+"\n"+"일주일에 얼마나 하시나요?"
+        txt_exercise_title.text = keeper.name + "님은"+"\n"+"땀이 날 정도의 운동을"+"\n"+"일주일에 얼마나 하시나요?"
 
         setColorInPartitial()
 
         if(keeper.exercise?:-1 == -1){
-            rg_temp_1.clearCheck()
+            rg_exercise_1.clearCheck()
             btn.isEnabled = false
             btn.setTextColor(resources.getColor(R.color.colorWhite))
         }else{
-            rg_temp_1.check(keeper.exercise!!)
+            rg_exercise_1.check(keeper.exercise!!)
             btn.isEnabled = true
             btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
-        rg_temp_1.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.exercise = rg_temp_1.checkedRadioButtonId
-            Log.v("YGYG", rg_temp_1.checkedRadioButtonId.toString())
+        rg_exercise_1.setOnCheckedChangeListener { radioGroup, i ->
+            keeper.exercise = rg_exercise_1.checkedRadioButtonId
+            Log.v("YGYG", rg_exercise_1.checkedRadioButtonId.toString())
             btn.isEnabled = true
             btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
@@ -65,7 +65,7 @@ class LifeStyleExerciseFragment : Fragment() {
     }
 
     private fun setColorInPartitial(){
-        val builder = SpannableStringBuilder(txt_temp_title?.text.toString())
+        val builder = SpannableStringBuilder(txt_exercise_title?.text.toString())
         val start : Int = keeper.name!!.length + 12
 
 
@@ -75,6 +75,6 @@ class LifeStyleExerciseFragment : Fragment() {
             start + 2,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        txt_temp_title?.text = builder
+        txt_exercise_title?.text = builder
     }
 }
