@@ -18,7 +18,6 @@ import com.example.caredirection.data.network.ArticleListData
 import com.example.caredirection.home.functional.FunctionalAllFeatureAdapter
 import com.example.caredirection.network.RequestURL
 import com.example.caredirection.study.article.ArticleAdapter
-import com.example.caredirection.study.article.ArticleDetailsActivity
 import com.example.caredirection.study.ingredient.IngredientActivity
 import com.example.caredirection.study.ingredient.IngredientAdapter
 import kotlinx.android.synthetic.main.fragment_ingredient_study.*
@@ -101,7 +100,7 @@ class StudyFragment : Fragment(), View.OnClickListener {
 //            RvArticleData("ㅇㄹㅇ", "ㅇㄹ너래ㅑㄴ얼")
 //        )
         articleIdxIntent.toString().logDebug()
-        getAricleListRessponse()
+        getArticleListRessponse()
     }
 
     //recycler view click 이벤트 처리를 위해
@@ -134,21 +133,22 @@ class StudyFragment : Fragment(), View.OnClickListener {
             startActivity(IngredientIntent)
         }
 
-            //rvCareProductAdapter.data[idx]
-        }
+        //rvCareProductAdapter.data[idx]
+    }
 
-        private fun getAricleListRessponse() {
-            val call: Call<ArticleListData> = RequestURL.service.getArticleList()
-            call.enqueue(
-                object : Callback<ArticleListData> {
-                    override fun onFailure(call: Call<ArticleListData>, t: Throwable) {
-                        t.toString().logDebug()
-                    }
+    private fun getArticleListRessponse() {
+        val call: Call<ArticleListData> = RequestURL.service.getArticleList()
+        call.enqueue(
+            object : Callback<ArticleListData> {
+                override fun onFailure(call: Call<ArticleListData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
 
-                    override fun onResponse(
-                        call: Call<ArticleListData>,
-                        response: Response<ArticleListData>
-                    ) {
+                override fun onResponse(
+                    call: Call<ArticleListData>,
+                    response: Response<ArticleListData>
+                ) {
+                    if (response.isSuccessful) {
 
                         val articleListRespo = response.body()!!.data
                         val articles = mutableListOf<RvArticleData>()
@@ -163,46 +163,46 @@ class StudyFragment : Fragment(), View.OnClickListener {
                         }
                         rvArticleAdapter.data = articles.toTypedArray()
                         rvArticleAdapter.notifyDataSetChanged()
-
-                    }
-
-                }
-            )
-
-        }
-
-        override fun onDetach() {
-            super.onDetach()
-            listener = null
-        }
-
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.fragment_ingredient_study, container, false)
-        }
-
-        fun onButtonPressed(uri: Uri) {
-            listener?.onFragmentInteraction(uri)
-        }
-
-        interface OnFragmentInteractionListener {
-            // TODO: Update argument type and name
-            fun onFragmentInteraction(uri: Uri)
-        }
-
-        companion object {
-            // TODO: Rename and change types and number of parameters
-            @JvmStatic
-            fun newInstance(param1: String, param2: String) =
-                StudyFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
                     }
                 }
-        }
+
+            }
+        )
+
     }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_ingredient_study, container, false)
+    }
+
+    fun onButtonPressed(uri: Uri) {
+        listener?.onFragmentInteraction(uri)
+    }
+
+    interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        fun onFragmentInteraction(uri: Uri)
+    }
+
+    companion object {
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            StudyFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+}
 

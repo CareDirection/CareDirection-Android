@@ -41,7 +41,7 @@ class ArticleDetailsActivity : AppCompatActivity() {
         rvArticleDetailsAdapter.notifyDataSetChanged()
     }
     private fun getArticleDetailsResponse(){
-        val call: Call<ArticleDetailsData> = RequestURL.service.getArticleDetails(article_idx=6)
+        val call: Call<ArticleDetailsData> = RequestURL.service.getArticleDetails(article_idx=articleIdx)
         call.enqueue(
             object :Callback<ArticleDetailsData>{
                 override fun onFailure(call: Call<ArticleDetailsData>, t: Throwable) {
@@ -62,8 +62,12 @@ class ArticleDetailsActivity : AppCompatActivity() {
                             .load(detailsReso.main_contents.image_key)
                             .centerCrop()
                             .into(img_article_details)
-
-
+                        val detail = mutableListOf<RvArticleDetailsData>()
+                        for(item in detailsReso.sub_contents){
+                            detail.add(RvArticleDetailsData(item.image_key,item.sub_article_title,item.sub_article_content))
+                        }
+                        rvArticleDetailsAdapter.data=detail
+                        rvArticleDetailsAdapter.notifyDataSetChanged()
                     }
                 }
 

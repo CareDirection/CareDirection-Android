@@ -29,7 +29,7 @@ class ResearchKeeper (context: Context) {
 
     var year: String?
         get() {
-            return local.getString(RESEARCH_YEAR, null)
+              return local.getString(RESEARCH_YEAR, null)
         }
         set(value) {
             local.edit {

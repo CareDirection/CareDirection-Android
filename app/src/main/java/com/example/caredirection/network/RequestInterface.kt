@@ -78,6 +78,12 @@ interface RequestInterface {
         @Header("Content-Type") content_Type:String="application/json"
     ):Call<ArticleListData>
 
+    @POST("/product/{product_idx}/dose/check")
+    fun postCareProductDose(
+        @Header("token")token:String,
+        @Path("product_idx")product_idx:Int
+    ):Call<CareProductDoseData>
+
     @GET("\t/article/{article_idx}")
     fun getArticleDetails(
         @Header("Content-Type") content_Type:String="application/json",

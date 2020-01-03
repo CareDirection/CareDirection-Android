@@ -8,4 +8,5 @@
     android:lineSpacingExtra="6sp"
     android:textSize="14sp"
     android:textAlignment="center"
+    android:layout_gravity="center"
     />
