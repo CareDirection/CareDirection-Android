@@ -414,7 +414,7 @@ class ActivityProductDetail : AppCompatActivity() {
     //홈뷰 - 그래프 통신
     private fun getProductGraphResponse() {
         val call: Call<HomeGraphData> =
-            RequestURL.service.getProductDetailGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",166)
+            RequestURL.service.getProductDetailGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",product_number.toInt())
         call.enqueue(
             object : Callback<HomeGraphData> {
                 override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
