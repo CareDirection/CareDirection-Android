@@ -30,10 +30,18 @@ interface RequestInterface {
     fun getHomeGraph(
         @Header("token")token: String
     ):Call<HomeGraphData>
+
     //성분학습뷰 - 아티클리스트 - 은이
     @GET("/article")
     fun getArticleList(
         @Header("Content-Type") content_Type:String="application/json"
     ):Call<ArticleListData>
 
+
+    @GET("/product/dose/list")
+    fun getCareProductList(
+        @Header("Content-Type")content_type:String="application/json",
+        @Header("token")token:String,
+        @Query("date")date:String
+    ):Call<HomCareProductData>
 }
