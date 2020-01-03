@@ -31,7 +31,7 @@ class ArticleAdapter (private val context: Context): RecyclerView.Adapter<Articl
         holder.bind(data[position])
     }
 
-    fun setOnClick(l : View.OnClickListener){
+    fun setOnClick(l : View.OnClickListener,view :View){
         onClick = l
     }
 

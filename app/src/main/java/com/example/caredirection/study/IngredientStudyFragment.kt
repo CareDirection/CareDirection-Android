@@ -36,7 +36,7 @@ class StudyFragment : Fragment(), View.OnClickListener {
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var rvIngredientAdapter: IngredientAdapter
     private lateinit var IngredientIdx: String
-    private lateinit var articleIdxIntent:String
+    private var articleIdxIntent: Int=200
 
     private lateinit var rvArticleAdapter: ArticleAdapter
 
@@ -93,13 +93,14 @@ class StudyFragment : Fragment(), View.OnClickListener {
         //어댑더 정의
         rvArticleAdapter = ArticleAdapter(context!!)
         //뷰에 어댑터 연결
-        rvArticleAdapter.setOnClick(this)
+        rvArticleAdapter.setOnClick(this,rv_ingredient_article_view)
         rv_ingredient_article_view.adapter = rvArticleAdapter
 //        rvArticleAdapter.data = arrayOf(
 //            RvArticleData("ㅇㄹㅇ", "ㅇㄹ너래ㅑㄴ얼"),
 //            RvArticleData("ㅇㄹㅇ", "ㅇㄹ너래ㅑㄴ얼"),
 //            RvArticleData("ㅇㄹㅇ", "ㅇㄹ너래ㅑㄴ얼")
 //        )
+        articleIdxIntent.toString().logDebug()
         getAricleListRessponse()
     }
 
@@ -107,25 +108,27 @@ class StudyFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         //position
+        val articleIdx = rv_ingredient_article_view.getChildAdapterPosition(v!!)
+        articleIdxIntent = rvArticleAdapter.data[articleIdx].index
+        if(articleIdxIntent!=200) {
+            articleIdxIntent.toString().logDebug()
+            val articleIntent = Intent(context, ArticleDetailsActivity::class.java)
+            articleIntent.putExtra("article", articleIdxIntent!!)
+            startActivity(articleIntent)
+        }
 
-        val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
+            val idx = rv_ingredient_view.getChildAdapterPosition(v!!)
             //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
             // Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
-            IngredientIdx = rvIngredientAdapter.data[idx].text
-            // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
-            //startActivity(functional_intent)
-            val IngredientIntent = Intent(context, IngredientActivity::class.java)
-            IngredientIntent.putExtra("ingredient", IngredientIdx)
-            startActivity(IngredientIntent)
-
-        val articleIdx= rv_ingredient_article_view.getChildAdapterPosition(v!!)
-            articleIdxIntent = rvArticleAdapter.data[articleIdx].text
-            // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
-            //startActivity(functional_intent)
-            val articleIntent = Intent(context, ArticleDetailsActivity::class.java)
-            IngredientIntent.putExtra("article", articleIdxIntent)
-            startActivity(articleIntent)
-
+            if(articleIdxIntent==200) {
+                IngredientIdx = rvIngredientAdapter.data[idx].text
+                // Toast.makeText(context, Ingredient , Toast.LENGTH_SHORT).show()
+                //startActivity(functional_intent)
+                articleIdxIntent.toString().logDebug()
+                val IngredientIntent = Intent(context, IngredientActivity::class.java)
+                IngredientIntent.putExtra("ingredient", IngredientIdx)
+                startActivity(IngredientIntent)
+            }
 
 
         //rvCareProductAdapter.data[idx]
@@ -147,7 +150,13 @@ class StudyFragment : Fragment(), View.OnClickListener {
                     val articleListRespo = response.body()!!.data
                     val articles = mutableListOf<RvArticleData>()
                     for (item in articleListRespo) {
-                        articles.add(RvArticleData(item.article_idx,item.image_key, item.article_title))
+                        articles.add(
+                            RvArticleData(
+                                item.article_idx,
+                                item.image_key,
+                                item.article_title
+                            )
+                        )
                     }
                     rvArticleAdapter.data = articles.toTypedArray()
                     rvArticleAdapter.notifyDataSetChanged()
