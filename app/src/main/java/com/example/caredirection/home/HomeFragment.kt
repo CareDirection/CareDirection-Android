@@ -20,6 +20,7 @@ import com.example.caredirection.common.CustomDialogFragment
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.RvCareProductData
 import com.example.caredirection.data.RvFunctionalSelectedData
+import com.example.caredirection.data.network.HomCareProductData
 import com.example.caredirection.data.network.HomeFunctionalData
 import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.home.care_product.CareProductAdapter
@@ -146,7 +147,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                 }
 
-
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
@@ -266,15 +266,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
         rvCareProductAdapter.setOnClick(this)
         rv_care_view.adapter = rvCareProductAdapter
 
-
+        getHomCareProductResponse()
         //TODO 통신 오면 고치기
         //더미 데이터 넣어주기
-        rvCareProductAdapter.data = listOf(
-            RvCareProductData("", true, "dddddㄻ먼이너ㅣㅇd"),
-            RvCareProductData("", true, "ddㅇㄹ나ㅓㄴㅇㄹddddddd"),
-            RvCareProductData("", true, "dㄹㄴㅇdㄹㅇㄴddddddd"),
-            RvCareProductData("", true, "dddㅁㄴㅁ   dddddd")
-        )
+//        rvCareProductAdapter.data = listOf(
+//            RvCareProductData("", true, "dddddㄻ먼이너ㅣㅇd"),
+//            RvCareProductData("", true, "ddㅇㄹ나ㅓㄴㅇㄹddddddd"),
+//            RvCareProductData("", true, "dㄹㄴㅇdㄹㅇㄴddddddd"),
+//            RvCareProductData("", true, "dddㅁㄴㅁ   dddddd")
+//        )
 
         //
 
@@ -344,7 +344,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
         val fm = fragmentManager!!
         val myfrag = CustomDialogFragment()
-        myfrag.productName=rvCareProductAdapter.data[idx].nameProduct
+        myfrag.productName = rvCareProductAdapter.data[idx].nameProduct
         myfrag.show(fm, "demo")
         //rvCareProductAdapter.data[idx]
     }
@@ -469,7 +469,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun getHomeGraphResponse() {
         val call: Call<HomeGraphData> =
             RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
-
         call.enqueue(
             object : Callback<HomeGraphData> {
                 override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
@@ -503,7 +502,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //홈뷰 - 기능성 원료 통신
     private fun getHomeFunctionalResponse() {
         val call: Call<HomeFunctionalData> =
-            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
+            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI")
         call.enqueue(
             object : Callback<HomeFunctionalData> {
                 override fun onFailure(call: Call<HomeFunctionalData>, t: Throwable) {
@@ -548,6 +547,37 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             }
         )
+
+    }
+
+    //카드뷰 복용관리 통신
+    private fun getHomCareProductResponse() {
+        val call: Call<HomCareProductData> =
+            RequestURL.service.getCareProductList(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",date="2020-01-02")
+        call.enqueue(object:Callback<HomCareProductData>{
+            override fun onFailure(call: Call<HomCareProductData>, t: Throwable) {
+                t.toString().logDebug()
+            }
+
+            override fun onResponse(
+                call: Call<HomCareProductData>,
+                response: Response<HomCareProductData>
+            ) {
+                val careProducts= mutableListOf<RvCareProductData>()
+               if(response.isSuccessful){
+                   response.message()
+                   val productRespo=response.body()!!
+                   for(item in productRespo.data){
+                       careProducts.add(RvCareProductData(item.image_location,item.product_is_dosed,item.product_name))
+                   }
+                   rvCareProductAdapter.data = careProducts
+                   rvCareProductAdapter.notifyDataSetChanged()
+
+               }
+            }
+
+        })
+
 
     }
 }

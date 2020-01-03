@@ -30,4 +30,11 @@ interface RequestInterface {
     fun getHomeGraph(
         @Header("token")token: String
     ):Call<HomeGraphData>
+
+    @GET("/product/dose/list")
+    fun getCareProductList(
+        @Header("Content-Type")content_type:String="application/json",
+        @Header("token")token:String,
+        @Query("date")date:String
+    ):Call<HomCareProductData>
 }

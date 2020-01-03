@@ -9,7 +9,7 @@ data class RvFunctionalSelectedData(
     fun getDrawable(type: String): Int {
         return when (type) {
             //TODO: 여기에 장건강, 등 리소스 연결해 놓을 것
-            "장건강"-> R.drawable.btn_liver
+            "간건강"-> R.drawable.btn_liver
             "피로회복"->R.drawable.btn_fatigue_recovery
             "눈건강"->R.drawable.btn_brain
             "혈행개선"->R.drawable.btn_blood
