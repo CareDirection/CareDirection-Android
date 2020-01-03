@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityRegister">
+    tools:context=".login.ActivityRegister">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_activity_register_top"
@@ -86,6 +86,7 @@
         android:id="@+id/edt_activity_register_pwd"
         android:layout_width="328dp"
         android:layout_height="40dp"
+        android:inputType="textPassword"
         android:layout_marginTop="7dp"
         app:layout_constraintStart_toStartOf="@+id/txt_activity_register_pwd"
         app:layout_constraintTop_toBottomOf="@+id/txt_activity_register_pwd" />
@@ -106,13 +107,14 @@
         android:id="@+id/edt_activity_register_pwd_check"
         android:layout_width="328dp"
         android:layout_height="40dp"
+        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/txt_activity_register_pwd_check"
         app:layout_constraintTop_toBottomOf="@+id/txt_activity_register_pwd_check"
         android:layout_marginTop="7dp"
         />
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/layout_activity_register"
+    android:id="@+id/btn_register_confirm"
     android:layout_width="328dp"
     android:layout_height="65dp"
     app:layout_constraintStart_toStartOf="parent"

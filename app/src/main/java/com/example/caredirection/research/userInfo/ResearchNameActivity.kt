@@ -38,6 +38,7 @@ class ResearchNameActivity : AppCompatActivity() {
         makeController()
     }
 
+
     // 상태바 배경투명 설정
     fun statusBarHeight(context: Context): Int {
         val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
@@ -76,18 +77,10 @@ class ResearchNameActivity : AppCompatActivity() {
         btn_name_next?.setOnClickListener{
             val name = edt_username?.text.toString()
 
-            // 이름 빈칸일 경우,
-            if(name.isBlank()){
-                toast("아직 이름이 정해지지 않았습니다.")
-            }
-            else{
-                keeper.name = name
+            keeper.name = name
 
-                val gender_intent = Intent(this,ResearchGenderActivity::class.java)
-                gender_intent.putExtra("username",name)
-
-                startActivity(gender_intent)
-            }
+            val gender_intent = Intent(this,ResearchGenderActivity::class.java)
+            startActivity(gender_intent)
         }
     }
 }

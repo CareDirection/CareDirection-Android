@@ -12,8 +12,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 
 import com.example.caredirection.R
+import com.example.caredirection.common.logDebug
 import com.example.caredirection.home.HomeActivity
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.fragment_life_style_activity.*
@@ -40,21 +43,32 @@ class LifeStyleActivityFragment : Fragment() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val btn : Button = activity!!.findViewById(R.id.btn_life_next)
+
         txt_activity_title.text = keeper.name + "님은"+"\n"+"하루에 햇빛을 받으며"+"\n"+"야외활동을 얼마나 하시나요?"
 
         setColorInPartitial()
 
         if(keeper.activity?:-1 == -1){
+            "여기1".logDebug()
             rg_activity_1.clearCheck()
+            btn.isEnabled = false
+            btn.setTextColor(resources.getColor(R.color.colorWhite))
         }else{
+            "여기2".logDebug()
             rg_activity_1.check(keeper.activity!!)
+            btn.isEnabled = true
+            btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
+
         rg_activity_1.setOnCheckedChangeListener { radioGroup, i ->
             keeper.activity = rg_activity_1.checkedRadioButtonId
             Log.v("YGYG", rg_activity_1.checkedRadioButtonId.toString())
-
+            btn.isEnabled = true
+            btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
 
     }

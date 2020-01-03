@@ -10,14 +10,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme">
         <activity android:name=".study.article.ArticleDetailsActivity"></activity>
         <activity android:name=".home.functional.FunctionalActivity" />
         <activity android:name=".study.ActivityStudySymptom" />
-        <activity android:name=".research.ActivitySurveySearch" />
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
         <activity android:name=".study.ingredient.IngredientActivity" />
         <activity android:name=".research.ResearchFinishActivity" />
@@ -31,18 +30,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".care_product.ActivitySurveySearch"></activity>
         <activity android:name=".care_product.CareRegisterComplete" />
-        <activity android:name=".setting.MyPageActivity" />
+        <activity android:name=".setting.MyPageActivity"></activity>
         <activity android:name=".research.lifestyle.LifeStyleActivity" />
-        <activity android:name=".ActivityRegister" />
-        <activity android:name=".ActivityLogin" />
+        <activity android:name=".login.ActivityRegister"></activity>
+        <activity android:name=".login.ActivityLogin" />
         <activity android:name=".product.standard.DialogProductStandardFilter" />
         <activity android:name=".product.result.ProductSearchResult" />
         <activity android:name=".product.detail.ActivityProductDetail" />
         <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".MainActivity" />
         <activity android:name=".care_product.CareProductActivity" />
-        <activity android:name=".research.ResearchChange" />
+        <activity android:name=".research.ResearchChangeActivity" />
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
@@ -55,6 +56,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-    </application>
 
+    </application>
 </manifest>

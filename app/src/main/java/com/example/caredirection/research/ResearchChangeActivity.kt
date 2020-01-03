@@ -8,14 +8,22 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.caredirection.R
+import com.example.caredirection.common.logDebug
+import com.example.caredirection.common.toast
+import com.example.caredirection.data.network.InfoData
+import com.example.caredirection.network.RequestURL
 import com.example.caredirection.research.DB.ResearchKeeper
 import com.example.caredirection.research.lifestyle.LifeStyleActivity
 import kotlinx.android.synthetic.main.activity_research_change.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class ResearchChange : AppCompatActivity() {
+class ResearchChangeActivity : AppCompatActivity() {
 
     private var txt_change_title: TextView? = null
     private lateinit var keeper : ResearchKeeper
@@ -29,20 +37,47 @@ class ResearchChange : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         cl_change.setPadding(0, statusBarHeight(this), 0, 0)
 
-//        val name: String = intent.getStringExtra("username")
 
         txt_change_title = findViewById(R.id.txt_change_title)
 
         btn_change_next.setOnClickListener{
-
             keeper.lifeCycle = 1
-//            val intent = Intent(this,LifeStyleActivity::class.java)
-//            intent.putExtra("username",name)
+
+            val name = keeper.name!!
+            val gender = keeper.gender!!
+            val year = keeper.year!!
+
+            postInfoResponse(name,gender,year)
 
             startActivity(Intent(this, LifeStyleActivity::class.java))
         }
 
         setColorInPartitial()
+    }
+    private fun postInfoResponse(name: String,gender: Int,birth: String){
+        val call: Call<InfoData> = RequestURL.service.postInfo("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU",name,gender,birth)
+        call.enqueue(
+            object : Callback<InfoData> {
+                override fun onFailure(call: Call<InfoData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+                override fun onResponse(
+                    call: Call<InfoData>,
+                    response: Response<InfoData>
+                ) {
+                    Log.d("haeeul", "${response.message()}")
+                    if (response.isSuccessful) {
+                        val InfoRepos : InfoData = response.body()!!
+                        val message = InfoRepos.message
+                        Log.d("haeeul", "개인정보 성공 ${response.body()}")
+                        toast(message)
+                    } else {
+                        Log.d("haeeul","개인정보 실패 ${response.errorBody()?.string()}")
+                        toast("실패")
+                    }
+                }
+            }
+        )
     }
 
     fun statusBarHeight(context: Context): Int {

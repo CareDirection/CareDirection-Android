@@ -23,9 +23,11 @@ import kotlinx.android.synthetic.main.fragment_life_style_alcohol.*
 import android.graphics.Typeface
 import android.text.style.StyleSpan
 import android.util.Log
+import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_life_style.*
+import kotlinx.android.synthetic.main.activity_life_style.view.*
 import kotlinx.android.synthetic.main.activity_research_disease.*
 
 
@@ -36,6 +38,10 @@ class LifeStyleAlcoholFragment : Fragment() {
 
     private lateinit var lifestyle1 : List<RadioButton>
     private lateinit var keeper: ResearchKeeper
+
+    private var check1: Boolean = false
+    private var check2: Boolean = false
+    private lateinit var Lifeview:View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,49 +56,64 @@ class LifeStyleAlcoholFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_life_style_alcohol, container, false)
-
+        Lifeview =inflater.inflate(R.layout.fragment_life_style_alcohol, container, false)
+        return Lifeview
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val btn : Button = activity!!.findViewById(R.id.btn_life_next)
+
         txt_alcohol_title_1.text = keeper.name + "님은 담배를 피시나요?"
         txt_alcohol_title_2.text = keeper.name + "님은 술을 주 2회 이상" + "\n" + "드시나요?"
 
         setColorInPartitialAlcohol()
         setColorInPartitialSmoke()
 
-        if(keeper.alcohol?:-1 == -1){
-            rg_alcohol_1.clearCheck()
-        }else{
-            rg_alcohol_1.check(keeper.alcohol!!)
-        }
-        rg_alcohol_1.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.alcohol = rg_alcohol_1.checkedRadioButtonId
-            Log.v("YGYG", rg_alcohol_1.checkedRadioButtonId.toString())
-            //checkSelectButton()
-        }
-
         if(keeper.cigarette?:-1 == -1){
+            rg_alcohol_1.clearCheck()
+
+        }else{
+            rg_alcohol_1.check(keeper.cigarette!!)
+            check1 = true
+        }
+        if(keeper.alcohol?:-1 == -1){
             rg_alcohol_2.clearCheck()
         }else{
-            rg_alcohol_2.check(keeper.cigarette!!)
+            rg_alcohol_2.check(keeper.alcohol!!)
+            check2 = true
         }
+
+//        if(check1==true&& check2==true){
+//            btn.isEnabled = true
+//            btn.setTextColor(resources.getColor(R.color.colorPrimary))
+//        }
+//        else{
+//            btn.isEnabled = false
+//            btn.setTextColor(resources.getColor(R.color.colorWhite))
+//        }
+
+        rg_alcohol_1.setOnCheckedChangeListener { radioGroup, i ->
+            keeper.cigarette = i
+            radioGroup.checkedRadioButtonId.toString().logDebug()
+            check1 = true
+            if(check1==true&& check2==true){
+                btn.isEnabled = true
+                btn.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+        }
+
         rg_alcohol_2.setOnCheckedChangeListener { radioGroup, i ->
-            keeper.cigarette = rg_alcohol_2.checkedRadioButtonId
-            Log.v("YGYG", rg_alcohol_2.checkedRadioButtonId.toString())
-            //checkSelectButton()
+            keeper.alcohol = radioGroup.checkedRadioButtonId
+            Log.v("YGYG", radioGroup.checkedRadioButtonId.toString())
+            check2 = true
+            if(check1==true&& check2==true){
+                btn.isEnabled = true
+                btn.setTextColor(resources.getColor(R.color.colorPrimary))
+            }
         }
 
-    }
-
-    private fun checkSelectButton(){
-        if(lifestyle1.any { it.isChecked }){
-            btn_life_next.isEnabled = true
-        }
-        else{
-            btn_life_next.isEnabled = false
-        }
     }
 
     private fun setColorInPartitialAlcohol(){

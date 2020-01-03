@@ -10,6 +10,7 @@ import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Checkable
 import android.widget.CheckedTextView
@@ -35,14 +36,20 @@ class ResearchDiseaseActivity : AppCompatActivity() {
             btn_disease_1, btn_disease_2, btn_disease_3, btn_disease_4, btn_disease_5, btn_disease_6
         )
 
+        //toast(keeper.disease.toString())
+
         keeper.disease?.let { set ->
             disButtons
                 .filter { it.text in set }
                 .forEach {
-                    it.isChecked = true
-                    it.setTextColor(resources.getColor(R.color.colorPrimary))
+                    checkBtnColor(it,true)
                     checkSelectButton()
                 }
+        }
+
+        if(keeper.disease.toString()=="[없음]"){
+            checkBtnColor(btn_disease_clear,true)
+            checkSelectButton()
         }
 
         makeController()
@@ -65,49 +72,61 @@ class ResearchDiseaseActivity : AppCompatActivity() {
         txt_disease_nametitle.text = name + "님께서"
 
         btn_disease_clear.setOnClickListener {
-            disButtons.forEach {
-                it.isChecked = false
-                it.setTextColor(resources.getColor(R.color.colorWhite))
-                checkSelectButton()
+            if(btn_disease_clear.isChecked){
+                checkBtnColor(btn_disease_clear,true)
+                disButtons.forEach {
+                    checkBtnColor(it,false)
+                }
             }
+            else {
+            checkBtnColor(btn_disease_clear,false)
         }
-        var count : Int = 0
+            checkSelectButton()
+        }
+
         disButtons.forEachIndexed { index, checkBox ->
             disButtons[index].setOnClickListener{
-                count++
-                toast("index = " + index)
-                btn_disease_clear.isEnabled = false
+                if (disButtons[index].isChecked) {
+                    checkBtnColor(disButtons[index], true)
+                    checkBtnColor(btn_disease_clear, false)
+                } else {
+                    checkBtnColor(disButtons[index], false)
+                }
                 checkSelectButton()
             }
         }
 
         btn_disease_next.setOnClickListener{
-//            if (!checkSelectButton()){
-//                toast("뭘 고르고 넘기셈")
-//                return@setOnClickListener
-//            }
 
             val set = mutableSetOf<String>()
             disButtons
                 .filter { it.isChecked }
                 .forEach { set.add(it.text.toString()) }
+            if(btn_disease_clear.isChecked) set.add(btn_disease_clear.text.toString())
             keeper.disease = set
 
-            val symptom_intent = Intent(this,ResearchSymptomActivity::class.java)
-            symptom_intent.putExtra("username",name)
+            //toast(keeper.disease.toString())
 
+            val symptom_intent = Intent(this,ResearchSymptomActivity::class.java)
             startActivity(symptom_intent)
         }
 
 
     }
 
-//    private fun checkSelectButton(): Boolean{
-//        return disButtons.any { it.isChecked }
-//    }
+    private fun checkBtnColor(checkBox: CheckBox, boolean: Boolean){
+        if(boolean){
+            checkBox.isChecked = true
+            checkBox.setTextColor(resources.getColor(R.color.colorPrimary))
+        }
+        else{
+            checkBox.isChecked = false
+            checkBox.setTextColor(resources.getColor(R.color.colorWhite))
+        }
+    }
 
     private fun checkSelectButton(){
-        if(disButtons.any { it.isChecked }){
+        if(disButtons.any { it.isChecked }||btn_disease_clear.isChecked){
             btn_disease_next.isEnabled = true
         }
         else{
