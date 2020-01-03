@@ -307,7 +307,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 .create().show()
         }
         homeFragmentView.functional_details.setOnClickListener {
-            //TODO 프래그먼트로 이동
+
             val functional_intent = Intent(context, FunctionalActivity::class.java)
             startActivity(functional_intent)
 
