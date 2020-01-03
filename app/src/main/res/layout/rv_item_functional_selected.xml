@@ -29,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="20dp"
             android:fontFamily="@font/notosanskr_light"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
@@ -39,13 +38,13 @@
             android:textColor="@color/colorDarkGrey"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/grayline"
+            app:layout_constraintStart_toStartOf="@+id/img_rv_item_functional_selected_1"
             app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_1" />
 
         <ImageView
             android:id="@+id/grayline"
-            android:layout_width="10dp"
+            android:layout_width="11dp"
             android:layout_height="0.5dp"
             android:layout_marginTop="33dp"
             app:layout_constraintStart_toEndOf="@+id/img_rv_item_functional_selected_1"
@@ -66,7 +65,7 @@
 
         <ImageView
             android:id="@+id/grayline2"
-            android:layout_width="10dp"
+            android:layout_width="11dp"
             android:layout_height="0.5dp"
             android:layout_marginTop="33dp"
             app:layout_constraintStart_toEndOf="@+id/img_rv_item_functional_selected_2"
@@ -87,8 +86,6 @@
             android:id="@+id/txt_rv_item_functional_selected_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="21dp"
             android:fontFamily="@font/notosanskr_light"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
@@ -97,8 +94,8 @@
             android:text="간건강"
             android:textColor="@color/colorDarkGrey"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/grayline2"
+            app:layout_constraintStart_toStartOf="@+id/img_rv_item_functional_selected_2"
             app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,7 +104,6 @@
         android:id="@+id/rv_item_functional_selected_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-20dp"
         android:layout_marginTop="12dp"
         android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_2"
@@ -116,7 +112,7 @@
 
         <ImageView
             android:id="@+id/grayline3"
-            android:layout_width="19dp"
+            android:layout_width="11dp"
             android:layout_height="0.5dp"
             android:layout_marginTop="33dp"
             app:layout_constraintStart_toEndOf="@+id/img_rv_item_functional_selected_3"
@@ -137,8 +133,6 @@
             android:id="@+id/txt_rv_item_functional_selected_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="20dp"
             android:fontFamily="@font/notosanskr_light"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
@@ -147,8 +141,9 @@
             android:text="간건강"
             android:textColor="@color/colorDarkGrey"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/grayline3"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="@+id/img_rv_item_functional_selected_3"
             app:layout_constraintTop_toBottomOf="@+id/img_rv_item_functional_selected_3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -157,7 +152,6 @@
         android:id="@+id/rv_item_functional_selected_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-10dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/rv_item_functional_selected_3"
         app:layout_constraintTop_toTopOf="parent">
