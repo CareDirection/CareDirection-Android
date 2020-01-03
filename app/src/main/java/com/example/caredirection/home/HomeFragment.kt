@@ -63,6 +63,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var rvCareProductAdapter: CareProductAdapter
     private lateinit var rvHomeFunctionalSelectedFeatureAdapter: FunctionalSelectedFeatureAdapter
 
+    private val callback: ((position: Int, isChecked: Boolean) -> Unit) = { position, isChecked ->
+        rvCareProductAdapter.data[position].isCheckedCareProduct = isChecked
+        rvCareProductAdapter.notifyItemChanged(position)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //bottom navigation 설정 시작 - in onCreate
@@ -220,15 +225,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 }
 
             }
+
 //        setChart(listData, xLabelIngredients)
 
         essential_details.setOnClickListener {
             //필수 비타민 & 미네랄 상세보기로 이동
-            //todo 커스텀 다이얼로그 띄워주는 위치 변경
-            //프래그먼트 다이얼로그 생성
-            val fm = fragmentManager!!
-            val myfrag = CustomDialogFragment()
-            myfrag.show(fm, "demo")
+            val essentialIntent=Intent(context,GraphDetailsActivity::class.java)
+            startActivity(essentialIntent)
         }
 
 
@@ -291,8 +294,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             adapter.data = listOf(
                 TopDownDialogHolder.Child("1", "엄마"),
                 TopDownDialogHolder.Child("2", "은이"),
-                TopDownDialogHolder.Child("3", "버미"),
-                TopDownDialogHolder.Child("3", "명히")
+                TopDownDialogHolder.Child("3", "버미")
             )
             DialogPlus.newDialog(context)
                 .setGravity(Gravity.TOP)
@@ -303,7 +305,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 .create().show()
         }
         homeFragmentView.functional_details.setOnClickListener {
-            //TODO 프래그먼트로 이동
+
             val functional_intent = Intent(context, FunctionalActivity::class.java)
             startActivity(functional_intent)
 
@@ -339,13 +341,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         //position
         val idx = rv_care_view.getChildAdapterPosition(v!!)
+
         //데이터가 담긴 배열의 idx 번째 데이터를 가져옴.
 
         Toast.makeText(context, idx.toString(), Toast.LENGTH_SHORT).show()
         val fm = fragmentManager!!
-        val myfrag = CustomDialogFragment()
+        val myfrag = CustomDialogFragment(idx, callback)
         myfrag.productName = rvCareProductAdapter.data[idx].nameProduct
-        myfrag.img=rvCareProductAdapter.data[idx].imgCareProduct
+        myfrag.img = rvCareProductAdapter.data[idx].imgCareProduct
+        myfrag.idx = rvCareProductAdapter.data[idx].productIdx
         myfrag.show(fm, "demo")
         //rvCareProductAdapter.data[idx]
     }
@@ -554,8 +558,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //카드뷰 복용관리 통신
     private fun getHomCareProductResponse() {
         val call: Call<HomCareProductData> =
-            RequestURL.service.getCareProductList(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",date="2020-01-02")
-        call.enqueue(object:Callback<HomCareProductData>{
+            RequestURL.service.getCareProductList(
+                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",
+                date = "2020-01-04"
+            )
+        call.enqueue(object : Callback<HomCareProductData> {
             override fun onFailure(call: Call<HomCareProductData>, t: Throwable) {
                 t.toString().logDebug()
             }
@@ -564,17 +571,27 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 call: Call<HomCareProductData>,
                 response: Response<HomCareProductData>
             ) {
-                val careProducts= mutableListOf<RvCareProductData>()
-               if(response.isSuccessful){
-                   response.message()
-                   val productRespo=response.body()!!
-                   for(item in productRespo.data){
-                       careProducts.add(RvCareProductData(item.image_location,item.product_is_dosed,item.product_name))
-                   }
-                   rvCareProductAdapter.data = careProducts
-                   rvCareProductAdapter.notifyDataSetChanged()
+                val careProducts = mutableListOf<RvCareProductData>()
+                if (response.isSuccessful) {
+                    response.message()
+                    val productRespo = response.body()!!
+                    productRespo.toString().logDebug()
+                    for (item in productRespo.data) {
+                        careProducts.add(
+                            RvCareProductData(
+                                item.product_idx,
+                                item.image_location,
+                                item.product_is_dosed,
+                                item.product_name
+                            )
+                        )
+                        item.product_idx.toString().logDebug()
+                    }
 
-               }
+                    rvCareProductAdapter.data = careProducts
+                    rvCareProductAdapter.notifyDataSetChanged()
+
+                }
             }
 
         })

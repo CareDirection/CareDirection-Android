@@ -10,12 +10,10 @@ import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.WindowManager
 import android.widget.CheckBox
-import android.widget.CheckedTextView
 import com.example.caredirection.R
 import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
-import com.example.caredirection.research.ResearchChange
-import kotlinx.android.synthetic.main.activity_research_gender.*
+import com.example.caredirection.research.ResearchChangeActivity
 import kotlinx.android.synthetic.main.activity_research_symptom.*
 
 class ResearchSymptomActivity : AppCompatActivity() {
@@ -35,14 +33,18 @@ class ResearchSymptomActivity : AppCompatActivity() {
             btn_symptom_1, btn_symptom_2, btn_symptom_3, btn_symptom_4, btn_symptom_5, btn_symptom_6, btn_symptom_7, btn_symptom_8, btn_symptom_9
         )
 
-        keeper.disease?.let { set ->
+        keeper.symptom?.let { set ->
             btnSymptoms
                 .filter { it.text in set }
                 .forEach {
-                    it.isChecked = true
-                    it.setTextColor(resources.getColor(R.color.colorPrimary))
+                    checkBtnColor(it,true)
                     checkSelectButton()
                 }
+        }
+
+        if(keeper.symptom.toString()=="[없음]"){
+            checkBtnColor(btn_symptom_clear,true)
+            checkSelectButton()
         }
 
         makeController()
@@ -65,43 +67,60 @@ class ResearchSymptomActivity : AppCompatActivity() {
         txt_symptom_nametitle?.text = name + "님께서는"
 
         btn_symptom_clear.setOnClickListener {
-            btnSymptoms
-                .forEach {
-                    it.isChecked = false
-                    it.setTextColor(resources.getColor(R.color.colorWhite))
-                    checkSelectButton()
+            if(btn_symptom_clear.isChecked){
+                checkBtnColor(btn_symptom_clear,true)
+                btnSymptoms.forEach {
+                    checkBtnColor(it,false)
                 }
+            }
+            else {
+                checkBtnColor(btn_symptom_clear,false)
+            }
+            checkSelectButton()
         }
 
-        btnSymptoms.forEach {
-            it.setOnClickListener{
-                toast("눌림")
+        btnSymptoms.forEachIndexed { index, checkBox ->
+            btnSymptoms[index].setOnClickListener{
+                if(btnSymptoms[index].isChecked){
+                    checkBtnColor(btnSymptoms[index],true)
+                    checkBtnColor(btn_symptom_clear,false)
+                }
+                else{
+                    checkBtnColor(btnSymptoms[index],false)
+                }
                 checkSelectButton()
             }
         }
 
         btn_symptom_next?.setOnClickListener{
-//                if (!checkSelectButton()) {
-//                    toast("나가")
-//                    return@setOnClickListener
-//                }
+//                keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
+            val set = mutableSetOf<String>()
+            btnSymptoms
+                .filter { it.isChecked }
+                .forEach { set.add(it.text.toString()) }
+            if(btn_symptom_clear.isChecked) set.add(btn_symptom_clear.text.toString())
+            keeper.symptom = set
 
+            //toast(keeper.symptom.toString())
 
-                keeper.symptom = btnSymptoms.filter { it.isChecked }.map { it.text.toString() }.toSet()
-
-                val intent = Intent(this,ResearchChange::class.java)
-                intent.putExtra("username",name)
-
+                val intent = Intent(this,ResearchChangeActivity::class.java)
                 startActivity(intent)
 //            }
         }
     }
+    private fun checkBtnColor(checkBox: CheckBox, boolean: Boolean){
+        if(boolean){
+            checkBox.isChecked = true
+            checkBox.setTextColor(resources.getColor(R.color.colorPrimary))
+        }
+        else{
+            checkBox.isChecked = false
+            checkBox.setTextColor(resources.getColor(R.color.colorWhite))
+        }
+    }
 
-//    private fun checkSelectButton(): Boolean{
-//        return btnSymptoms.any { it.isChecked }
-//    }
     private fun checkSelectButton(){
-        if(btnSymptoms.any { it.isChecked }){
+        if(btnSymptoms.any { it.isChecked }||btn_symptom_clear.isChecked){
             btn_symptom_next.isEnabled = true
         }
         else{

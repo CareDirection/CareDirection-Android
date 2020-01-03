@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".care_product.CareProductActivity"
-    android:background="@color/colorDarkGrey">
+    tools:context=".care_product.Register.CareProductActivity">
 
     <LinearLayout
         android:id="@+id/top_bar"
@@ -13,7 +12,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/colorBlack"
         app:layout_constraintTop_toTopOf="parent">
         <include layout="@layout/menu_top_plain_text" />
     </LinearLayout>
@@ -24,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
-        android:background="@color/colorRed"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:lineSpacingExtra="9sp"
@@ -72,9 +69,10 @@
                 android:elevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.686"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_care_register_view">
+                app:layout_constraintTop_toBottomOf="@+id/rv_care_register_view"
+                app:layout_constraintVertical_bias="0.478">
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -114,7 +112,7 @@
         android:fontFamily="@font/notosanskr_medium"
         android:gravity="center_horizontal|center_vertical"
         android:includeFontPadding="false"
-        android:text="다음"
+        android:text="완료"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

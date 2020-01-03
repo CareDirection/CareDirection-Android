@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 import com.example.caredirection.R
 import com.example.caredirection.research.DB.ResearchKeeper
@@ -36,21 +37,29 @@ class LifeStyleVegetableFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_life_style_vegetable, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val btn : Button = activity!!.findViewById(R.id.btn_life_next)
+
         txt_vegetable_title.text = keeper.name + "님은"+"\n"+"일주일에 몇 회 이상"+"\n"+"녹황색 채소를 섭취하시나요?"
 
         setColorInPartitial()
 
         if(keeper.vegetable?:-1 == -1){
             rg_vegetable_1.clearCheck()
+            btn.isEnabled = false
+            btn.setTextColor(resources.getColor(R.color.colorWhite))
         }else{
             rg_vegetable_1.check(keeper.vegetable!!)
+            btn.isEnabled = true
+            btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
         rg_vegetable_1.setOnCheckedChangeListener { radioGroup, i ->
             keeper.vegetable = rg_vegetable_1.checkedRadioButtonId
             Log.v("YGYG", rg_vegetable_1.checkedRadioButtonId.toString())
-
+            btn.isEnabled = true
+            btn.setTextColor(resources.getColor(R.color.colorPrimary))
         }
 
     }

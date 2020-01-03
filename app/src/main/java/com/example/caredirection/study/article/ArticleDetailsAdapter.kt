@@ -11,7 +11,7 @@ import com.example.caredirection.data.RvArticleDetailsData
 class ArticleDetailsAdapter (private val context :Context) :RecyclerView.Adapter<ArticleDetailsHolder>(){
 
 
-    val data = listOf<RvArticleDetailsData>()
+    var data = listOf<RvArticleDetailsData>()
 
 
 

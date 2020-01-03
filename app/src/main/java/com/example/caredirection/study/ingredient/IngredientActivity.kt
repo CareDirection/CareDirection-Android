@@ -37,12 +37,12 @@ class IngredientActivity : AppCompatActivity() {
         txt_ingredient_ingredient.text=Ingredient
 
         ingredientIdx=when(Ingredient){
-            "홍삼"->1
-            "오메가 3"->4
-            "밀크씨슬"->2
-            "루테인"->3
-            "유산균"->4
-            "비타민 D"->5
+            "홍삼"->35
+            "오메가 3"->41
+            "밀크씨슬"->37
+            "루테인"->38
+            "유산균"->36
+            "비타민 D"->27
             else->0
         }
 
@@ -64,16 +64,16 @@ class IngredientActivity : AppCompatActivity() {
                     call: Call<IngredientData>,
                     response: Response<IngredientData>
                 ) {
-                    val ingredientRepos : IngredientData = response.body()!!
-                    txt_article_title.text= ingredientRepos.data[0].nutrient_common_description
-                    val ingredient_image_uri= ingredientRepos.data[0].image_key
+                    if (response.isSuccessful) {
+                        val ingredientRepos: IngredientData = response.body()!!
+                        txt_article_title.text = ingredientRepos.data[0].nutrient_common_description
+                        val ingredient_image_uri = ingredientRepos.data[0].image_key
 
-                    Glide.with(this@IngredientActivity)
-                        .load(ingredient_image_uri)
-                        .centerCrop()
-                        .into(img_article_details)
-
-
+                        Glide.with(this@IngredientActivity)
+                            .load(ingredient_image_uri)
+                            .centerCrop()
+                            .into(img_article_details)
+                    }
 
                 }
 

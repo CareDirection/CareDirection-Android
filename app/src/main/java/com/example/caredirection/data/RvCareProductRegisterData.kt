@@ -1,12 +1,12 @@
 package com.example.caredirection.data
 
 data class RvCareProductRegisterData(
-    val amount : String,
+    val amount : Int,
     val img : String,
     val company : String,
-    val whereBuy : String,
+    val whereBuy : Boolean,
     val productName :String,
-    val price: Int,
-    val priceADay:Int,
-    val amountStandardPills:Int
+    val price: String,
+    val priceADay:String,
+    val amountStandardPills:String
 )

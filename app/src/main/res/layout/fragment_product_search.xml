@@ -27,6 +27,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
                 android:text="제품"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -63,6 +64,8 @@
                 android:hint="제품을 검색해주세요"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/spinner_fragment_product_search"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -78,6 +81,7 @@
             android:layout_marginLeft="16dp"
             app:layout_constraintTop_toBottomOf="@+id/fragment_search_reference"
             android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:text="케어 디렉션"
             />
 
@@ -92,7 +96,7 @@
             android:textSize="13sp"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/notosanskr_regular"
-
+            android:includeFontPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_fragment_product_search_logo" />
 
@@ -133,7 +137,10 @@
                 android:textColor="@color/colorWhite"
                 android:text="더 많은 제품 보러가기"
                 android:fontFamily="@font/notosanskr_medium"
-                app:layout_constraintTop_toBottomOf="@id/rv_search_item_product" />
+                app:layout_constraintTop_toBottomOf="@id/rv_search_item_product"
+                android:includeFontPadding="false"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
+import com.example.caredirection.data.network.Search
 import kotlinx.android.synthetic.main.activity_product_search_result.view.*
 
 class SearchResultAdapter(private val context: Context): RecyclerView.Adapter<SearchResultHolder>(){
-    var data = listOf<RvSearchResultData>()
+    var data = mutableListOf<Search>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_product_item_search_result,parent,false)

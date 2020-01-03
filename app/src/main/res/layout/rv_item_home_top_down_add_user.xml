@@ -21,10 +21,10 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
-        android:src="@color/colorRed"
         app:layout_constraintBottom_toBottomOf="@+id/btn_home_top_down_child_add_user_name"
         app:layout_constraintEnd_toStartOf="@+id/txt_home_top_down_child_add_user_name"
-        app:layout_constraintTop_toTopOf="@+id/btn_home_top_down_child_add_user_name" />
+        app:layout_constraintTop_toTopOf="@+id/btn_home_top_down_child_add_user_name"
+        app:srcCompat="@drawable/btn_plus" />
 
     <TextView
         android:id="@+id/txt_home_top_down_child_add_user_name"
@@ -44,7 +44,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="34dp"
         android:fontFamily="@font/notosanskr_regular"
         android:includeFontPadding="false"
         android:lineSpacingExtra="6sp"

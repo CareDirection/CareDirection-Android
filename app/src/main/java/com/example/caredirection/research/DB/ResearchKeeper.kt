@@ -27,14 +27,13 @@ class ResearchKeeper (context: Context) {
             }
         }
 
-    var year: Int?
+    var year: String?
         get() {
-            val candi = local.getInt(RESEARCH_YEAR, -1)
-            return if (candi == -1) null else candi
+              return local.getString(RESEARCH_YEAR, null)
         }
         set(value) {
             local.edit {
-                putInt(RESEARCH_YEAR, value?:-1)
+                putString(RESEARCH_YEAR, value)
             }
         }
 
@@ -114,14 +113,14 @@ class ResearchKeeper (context: Context) {
             }
         }
 
-    var temp: Int?
+    var exercise: Int?
         get() {
-            val candi = local.getInt(RESEARCH_TEMP, -1)
+            val candi = local.getInt(RESEARCH_EXERCISE, -1)
             return if (candi == -1) null else candi
         }
         set(value) {
             local.edit {
-                putInt(RESEARCH_TEMP, value?:-1)
+                putInt(RESEARCH_EXERCISE, value?:-1)
             }
         }
 
@@ -136,7 +135,7 @@ class ResearchKeeper (context: Context) {
             }
         }
 
-    var researchfinish: Int?
+    var researchFinish: Int?
         get() {
             val candi = local.getInt(RESEARCH_FINISH, -1)
             return if (candi == -1) null else candi
@@ -144,6 +143,28 @@ class ResearchKeeper (context: Context) {
         set(value) {
             local.edit {
                 putInt(RESEARCH_FINISH, value ?: 0)
+            }
+        }
+
+    var careProductAdd: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_CAREPRODUCTADD, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_CAREPRODUCTADD, value ?: 0)
+            }
+        }
+
+    var careProductComplete: Int?
+        get() {
+            val candi = local.getInt(RESEARCH_CAREPRODUCTCOMPLETE, -1)
+            return if (candi == -1) null else candi
+        }
+        set(value) {
+            local.edit {
+                putInt(RESEARCH_CAREPRODUCTCOMPLETE, value ?: 0)
             }
         }
 
@@ -158,14 +179,15 @@ class ResearchKeeper (context: Context) {
         private const val RESEARCH_ALCOHOL = "6"
         private const val RESEARCH_CIGARETTE = "7"
         private const val RESEARCH_VEGETABLE = "8"
-        private const val RESEARCH_TEMP = "9"
+        private const val RESEARCH_EXERCISE = "9"
         private const val RESEARCH_ACTIVITY = "10"
 
         private const val RESEARCH_CHANGE = "11"
         private const val RESEARCH_STEP = "12"
 
         private const val RESEARCH_FINISH = "13"
-
+        private const val RESEARCH_CAREPRODUCTADD = "14"
+        private const val RESEARCH_CAREPRODUCTCOMPLETE = "15"
 
         const val MALE = 0
         const val FEMALE = 1

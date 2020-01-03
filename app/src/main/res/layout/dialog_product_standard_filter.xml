@@ -18,6 +18,7 @@
         android:textColor="@color/colorBlack"
         android:fontFamily="@font/notosanskr_medium"
         android:lineSpacingExtra="9sp"
+        android:includeFontPadding="false"
         android:text="필터"
         />
     <TextView
@@ -33,6 +34,7 @@
         android:lineSpacingExtra="8sp"
         android:gravity="center_horizontal"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="함량"/>
 
     <Spinner
@@ -57,6 +59,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="흡수율"
         />
     <CheckedTextView
@@ -101,6 +104,7 @@
         android:textColor="#787878"
         android:lineSpacingExtra="8sp"
         android:text="인증마크"
+        android:includeFontPadding="false"
         />
     <CheckedTextView
         android:id="@+id/checked_dialog_product_standard_citation_left"
