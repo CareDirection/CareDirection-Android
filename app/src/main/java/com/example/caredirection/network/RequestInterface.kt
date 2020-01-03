@@ -1,5 +1,6 @@
 package com.example.caredirection.network
 
+import com.example.caredirection.data.network.ArticleDetailsData
 import com.example.caredirection.data.network.ArticleListData
 import com.example.caredirection.data.network.IngredientData
 import com.example.caredirection.data.network.LoginData
@@ -26,5 +27,11 @@ interface RequestInterface {
     fun getArticleList(
         @Header("Content-Type") content_Type:String="application/json"
     ):Call<ArticleListData>
+
+    @GET("\t/article/{article_idx}")
+    fun getArticleDetails(
+        @Header("Content-Type") content_Type:String="application/json",
+        @Path("article_idx")article_idx:Int
+    ):Call<ArticleDetailsData>
 
 }
