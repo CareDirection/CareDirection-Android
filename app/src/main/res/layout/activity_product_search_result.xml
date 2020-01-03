@@ -70,7 +70,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -138,7 +141,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:lineSpacingExtra="6sp"
-        android:text="결과"
+        android:text="결과 "
         android:textColor="#2b2d2e"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +153,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
-        android:text=" 0"
+        android:text="0"
         android:textColor="#2b2d2e"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/txt_activity_product_search_result"
