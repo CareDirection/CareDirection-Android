@@ -62,7 +62,7 @@ class FunctionalActivity : AppCompatActivity() {
     //홈뷰 - 기능성 원료 통신
     private fun getFunctionalResponse() {
         val call: Call<HomeFunctionalData> =
-            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGlsZHVzZXJfaWR4Ijo0fQ.J6rwFP6n8HSmw8YWznkZri5eOpj-sNuzpFKuUY8zlBc")
+            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI")
         call.enqueue(
             object : Callback<HomeFunctionalData> {
                 override fun onFailure(call: Call<HomeFunctionalData>, t: Throwable) {

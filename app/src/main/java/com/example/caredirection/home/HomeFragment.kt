@@ -345,6 +345,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val fm = fragmentManager!!
         val myfrag = CustomDialogFragment()
         myfrag.productName = rvCareProductAdapter.data[idx].nameProduct
+        myfrag.img=rvCareProductAdapter.data[idx].imgCareProduct
         myfrag.show(fm, "demo")
         //rvCareProductAdapter.data[idx]
     }

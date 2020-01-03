@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
+import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import kotlinx.android.synthetic.main.dialog_care_product_check.*
 
@@ -18,6 +19,7 @@ class CustomDialogFragment : DialogFragment(){
 
     var productName:String="dkjsljf"
     var amount:String="1일 기준"
+    var img:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +46,11 @@ class CustomDialogFragment : DialogFragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         txt_dialog_care_product_name.text=productName
-        txt_dialog_amount.text=amount
+
+        Glide.with(this)
+            .load(img)
+            .centerCrop()
+            .into(img_dialog_care_product)
 
     }
     override fun onStart() {
