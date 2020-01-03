@@ -39,7 +39,6 @@ class SearchProductAdapter(private val context: Context) :
 
         val img_rv_search_result_item_product: ImageView =
             view.findViewById(R.id.img_rv_search_result_item_product)
-
         val txt_rv_search_item_ename: TextView =
             view.findViewById(R.id.txt_rv_search_result_item_ename)
         val txt_rv_search_item_publisher: TextView =
@@ -60,12 +59,19 @@ class SearchProductAdapter(private val context: Context) :
                 .centerCrop()
                 .into(img_rv_search_result_item_product)
             txt_rv_search_item_ename.text = data.product_company_name
-            txt_rv_search_item_publisher.text = data.product_is_import.toString()
+            if(data.product_is_import == 0){
+                txt_rv_search_item_publisher.visibility = View.INVISIBLE
+            }
+            else if(data.product_is_import == 1){
+                txt_rv_search_item_publisher.visibility = View.VISIBLE
+            }
             txt_rv_search_item_kname.text = data.product_name
             txt_rv_item_product_price.text = data.product_quantity_price.toString()
             txt_rv_search_result_item_perprice.text = (data.product_quantity_price/data.product_quantity_count).toString()
             txt_rv_search_result_item_perstandard.text = data.product_quantity_count.toString()
-
+            if(data.product_is_import == 0 ){
+                txt_rv_search_item_publisher
+            }
             itemView.setOnClickListener{
                 val intent = Intent(itemView.context, ActivityProductDetail::class.java)
 

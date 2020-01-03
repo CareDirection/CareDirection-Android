@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_product_standard.*
 import kotlinx.android.synthetic.main.dialog_product_standard_explation.view.*
 import kotlinx.android.synthetic.main.dialog_product_standard_filter.view.*
 import kotlinx.android.synthetic.main.rv_item_product_standard.*
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,6 +78,19 @@ class ActivityProductStandard : AppCompatActivity() {
         }
     }
 
+    private fun filterDialog(){
+        val builder = AlertDialog.Builder(this)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_txt_test, null)
+
+        //endregion
+
+        builder.setView(dialogView)
+            .setPositiveButton("OK") { dialogInterface, i ->
+
+            } .show()
+
+    }
+
     private fun initList() {
 //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
         rv_main_product_adapter = MainProductAdapter(this@ActivityProductStandard)
@@ -125,7 +139,7 @@ class ActivityProductStandard : AppCompatActivity() {
         }
     }
 
-    private fun filterDialog() {
+   /* private fun filterDialog() {
         val builder = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_product_standard_filter, null)
 
@@ -156,7 +170,7 @@ class ActivityProductStandard : AppCompatActivity() {
         //endregion 인증마크
 
         //region 함량
-        val category = arrayOf("10000mg ~ 1000mg", "10000mg ~ 1000mg", "10000mg ~ 1000mg")
+        val category = arrayOf("10000mg ~ 1000mg", "20000mg ~ 3000mg", "40000mg ~ 5000mg")
         val categoryAdapter = ArrayAdapter(
             this@ActivityProductStandard,
             R.layout.spinner_product_search_item,
@@ -191,7 +205,7 @@ class ActivityProductStandard : AppCompatActivity() {
             .setNegativeButton("취소") { dialogInterface, i ->
             }
             .show()
-    }
+    }*/
 
     var check = mutableListOf<Boolean>()
 
@@ -208,25 +222,28 @@ class ActivityProductStandard : AppCompatActivity() {
                     call: Call<ProductStandardData>,
                     response: Response<ProductStandardData>
                 ) {
-                    val ProductStandardnutrient: ProductStandardData = response.body()!!
+                    if(response.isSuccessful){
+                        val ProductStandardnutrient: ProductStandardData = response.body()!!
 
-                    standardcontent_txt = ProductStandardnutrient.data[0].standard_description
-                    standardabsorption_txt = ProductStandardnutrient.data[1].standard_description
-                    standardcertification_txt = ProductStandardnutrient.data[2].standard_description
-                    dialogShow()
-                    ProductStandardnutrient.data[0].standard_description
-                    txt_activity_product_detail_standard1.text =
-                        ProductStandardnutrient.data[0].standard
-                    activity_product_detail_standard1.text =
-                        ProductStandardnutrient.data[0].standard_value
-                    txt_activity_product_detail_standard2.text =
-                        ProductStandardnutrient.data[1].standard_value
-                    txt_activity_product_detail_standard2_txt.text =
-                        ProductStandardnutrient.data[1].standard
-                    activity_product_cardview_standard3.text =
-                        ProductStandardnutrient.data[2].standard_value
-                    activity_product_cardview_standard3_txt.text =
-                        ProductStandardnutrient.data[2].standard
+                        standardcontent_txt = ProductStandardnutrient.data[0].standard_description
+                        standardabsorption_txt = ProductStandardnutrient.data[1].standard_description
+                        standardcertification_txt = ProductStandardnutrient.data[2].standard_description
+                        dialogShow()
+                        ProductStandardnutrient.data[0].standard_description
+                        txt_activity_product_detail_standard1.text =
+                            ProductStandardnutrient.data[0].standard
+                        activity_product_detail_standard1.text =
+                            ProductStandardnutrient.data[0].standard_value
+                        txt_activity_product_detail_standard2.text =
+                            ProductStandardnutrient.data[1].standard_value
+                        txt_activity_product_detail_standard2_txt.text =
+                            ProductStandardnutrient.data[1].standard
+                        activity_product_cardview_standard3.text =
+                            ProductStandardnutrient.data[2].standard_value
+                        activity_product_cardview_standard3_txt.text =
+                            ProductStandardnutrient.data[2].standard
+                    }
+
                 }
             })
     }
@@ -245,15 +262,18 @@ class ActivityProductStandard : AppCompatActivity() {
                     call: Call<ProductSearchContentData>,
                     response: Response<ProductSearchContentData>
                 ) {
-                    val productSearchList: ProductSearchContentData = response.body()!!
+                    if(response.isSuccessful){
+                        val productSearchList: ProductSearchContentData = response.body()!!
 
-                    //Toast.makeText(context,  productSearchList.data[0].tab_name,Toast.LENGTH_SHORT).show()
-                    //어뎁터에 데이터 search객체 List로 추가
-                    (0 until productSearchList.data.searchList.size!!).forEach {
-                        rv_main_product_adapter.data.add(productSearchList.data.searchList[it])
-                        rv_main_product_adapter.notifyDataSetChanged()
-                        check.add(false)
+                        //Toast.makeText(context,  productSearchList.data[0].tab_name,Toast.LENGTH_SHORT).show()
+                        //어뎁터에 데이터 search객체 List로 추가
+                        (0 until productSearchList.data.searchList.size!!).forEach {
+                            rv_main_product_adapter.data.add(productSearchList.data.searchList[it])
+                            rv_main_product_adapter.notifyDataSetChanged()
+                            check.add(false)
+                        }
                     }
+
 
                 }
             })
@@ -295,7 +315,7 @@ class ActivityProductStandard : AppCompatActivity() {
                 view.findViewById(R.id.txt_rv_search_result_item_perstandard)
             val txt_rv_search_result_item_perprice: TextView =
                 view.findViewById(R.id.txt_rv_search_result_item_perprice)
-
+            val txt_rv_search_result_item_publisher: TextView   = view.findViewById(R.id.txt_rv_search_result_item_publisher)
             val rv_item_product_indicator: CheckedTextView =
                 view.findViewById(R.id.rv_standard_item_product_indicator)
             val img_rv_item_standard: CheckedTextView =
@@ -310,15 +330,24 @@ class ActivityProductStandard : AppCompatActivity() {
                     .load(item.image_key)
                     .centerCrop()
                     .into(img_rv_search_result_item_product)
+
                 txt_rv_item_product_ename.text = item.product_company_name
                // txt_rv_item_product_publisher.text = item.Publisher
                 txt_rv_item_product_kname.text = item.product_name
                 txt_rv_item_product_price.text = item.product_quantity_price.toString()
                 rv_item_product_indicator.isChecked = check[position]
                 img_rv_item_standard.isChecked = check[position]
-                txt_rv_search_result_item_perprice.text = item.product_quantity_count.toString()
-                txt_rv_search_result_item_perstandard.text =
-                    (item.product_quantity_price / item.product_quantity_count).toString()
+                txt_rv_search_result_item_perstandard.text =item.product_quantity_count.toString()
+                if(item.product_quantity_count != 0){
+                    txt_rv_search_result_item_perprice.text =
+                        (item.product_quantity_price / item.product_quantity_count).toString()
+                }
+                if(item.product_is_import == 0){
+                    txt_rv_search_result_item_publisher.visibility = View.INVISIBLE
+                }
+                else if(item.product_is_import == 1){
+                    txt_rv_search_result_item_publisher.visibility = View.VISIBLE
+                }
                 itemView.setOnClickListener {
                     val intent = Intent(this@ActivityProductStandard, ActivityProductDetail::class.java)
 

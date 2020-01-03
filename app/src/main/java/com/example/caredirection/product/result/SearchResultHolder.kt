@@ -30,10 +30,17 @@ class SearchResultHolder(view: View): RecyclerView.ViewHolder(view) {
             .centerCrop()
             .into(img_rv_search_result_item_product)
         txt_rv_search_result_item_ename.text = data.product_company_name
-        txt_rv_search_result_item_publisher.text = data.product_is_import.toString()
         txt_rv_search_result_item_kname.text = data.product_name.toString()
         txt_rv_search_result_item_price.text = data.product_quantity_price.toString()
-        txt_rv_search_result_item_perprice.text = (data.product_quantity_price / data.product_quantity_count).toString()
+        if(data.product_quantity_count != 0){
+            txt_rv_search_result_item_perprice.text = (data.product_quantity_price / data.product_quantity_count).toString()
+        }
+        if(data.product_is_import == 0){
+            txt_rv_search_result_item_publisher.visibility = View.INVISIBLE
+        }
+        else if(data.product_is_import == 1){
+            txt_rv_search_result_item_publisher.visibility = View.VISIBLE
+        }
         txt_rv_search_result_item_perstandard.text = data.product_quantity_count.toString()
         itemView.setOnClickListener{
             val intent = Intent(itemView.context, ActivityProductDetail::class.java)
