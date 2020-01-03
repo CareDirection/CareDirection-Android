@@ -81,7 +81,6 @@
                 android:id="@+id/txt_article_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="276dp"
                 android:background="@drawable/white_border_article"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
@@ -93,9 +92,9 @@
                 android:text="함께 먹었다가‘독’되는 영양제 궁합 8가지"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_article_details"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:fontFamily="@font/notosanskr_medium" />
 
             <androidx.recyclerview.widget.RecyclerView
