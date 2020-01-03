@@ -323,7 +323,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_product_detail"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_content_layout">
@@ -343,7 +343,6 @@
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:lineSpacingExtra="6sp"
@@ -351,7 +350,7 @@
                     android:textColor="@color/colorDarkGrey"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView20"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/chart_product_detail" />
 
                 <TextView
                     android:id="@+id/textView20"
@@ -373,7 +372,8 @@
                     android:id="@+id/textView21"
                     android:layout_width="wrap_content"
                     android:layout_height="21dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/notosanskr_bold"
                     android:includeFontPadding="false"
                     android:lineSpacingExtra="6sp"
@@ -389,18 +389,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="24dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
                     android:lineSpacingExtra="6sp"
                     android:text="섭취량"
                     android:textColor="@color/colorDarkGrey"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/chart_product_detail"
                     app:layout_constraintEnd_toStartOf="@+id/chart_home"
                     app:layout_constraintHorizontal_bias="0.514"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginBottom="21dp"
+                    android:text="제품으로 변화된 섭취량"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

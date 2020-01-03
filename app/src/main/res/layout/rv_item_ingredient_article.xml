@@ -23,11 +23,10 @@
         android:id="@+id/imageView14"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/img_rv_item_ingredient_article"
+        app:layout_constraintStart_toStartOf="@+id/img_rv_item_ingredient_article"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/colorDarkGreyOpacity" />
 

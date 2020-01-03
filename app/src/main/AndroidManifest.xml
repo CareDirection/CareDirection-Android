@@ -17,6 +17,7 @@
         <activity android:name=".study.ActivityStudySymptom"></activity>
         <activity android:name=".care_product.search.SearchCareProductActivity"></activity>
         <activity android:name=".study.article.ArticleDetailsActivity"></activity>
+        <activity android:name=".home.GraphDetailsActivity"></activity>
         <activity android:name=".home.functional.FunctionalActivity" />
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
         <activity android:name=".study.ingredient.IngredientActivity" />
@@ -31,12 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".care_product.CareRegisterComplete" />
-        <activity android:name=".setting.MyPageActivity"></activity>
+        <activity android:name=".setting.MyPageActivity" />
         <activity android:name=".research.lifestyle.LifeStyleActivity" />
-        <activity android:name=".login.ActivityRegister"></activity>
+        <activity android:name=".login.ActivityRegister" />
         <activity android:name=".login.ActivityLogin" />
         <activity android:name=".product.standard.DialogProductStandardFilter" />
         <activity android:name=".product.result.ProductSearchResult" />
@@ -48,9 +47,9 @@
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />
         <activity android:name=".research.userInfo.ResearchGenderActivity" />
-        <activity android:name=".home.HomeActivity"></activity>
+        <activity android:name=".home.HomeActivity" />
         <activity android:name=".research.userInfo.ResearchNameActivity" />
-        <activity android:name=".research.ResearchActivity">        </activity>
+        <activity android:name=".research.ResearchActivity"></activity>
 
         <service android:name=".common.fcm.CadiFirebaseMessagingService">
             <intent-filter>
