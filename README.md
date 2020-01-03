@@ -114,11 +114,7 @@ POST,GET,PUT,DELETE 통신 매서드를 이용하여
 
 ### 🔍 **Graph**
 
-설문조사에 따른 데이터를 기반으로 한 유저의 섭취량 그래프를 직관적으로 볼 수 있게 하므로서
-
-손 쉽게 파악할 수 있습니다. 직관적인 그래프를 통한 Self-Care의 방향성을 제시합니다.
-
-<사진 넣기 > 
+**뷰 기능 :** 설문조사에 따른 데이터를 기반으로 한 유저의 섭취량 그래프를 직관적으로 볼 수 있게 하므로서 손 쉽게 파악할 수 있습니다. 직관적인 그래프를 통한 Self-Care의 방향성을 제시합니다.
 
 ​	**💡Filter**  필수 비타민 & 미네랄에 대한 정보를 섭취량을 기준으로 이름순,  낮은 순,  높은 순 정렬
 
@@ -238,6 +234,27 @@ chart_home.animateY(1000) //세로축 에니메이션
 
 
 
+### 🔍 설문조사
+
+**뷰 기능 :**  성별,나이,질병,생활습관 등의 유저정보를 통해 영양소들의 권장량을 조정하고 주의성분을 반영합니다.
+
+- 설문조사 ‘이어하기’ 기능을 위한 정보 저장 및 뷰 이동을 SharedPreferences와 Intent,렌더링액티비티를 통해 구현. 
+
+> \- SharedPreferences를 이용하여 설문조사 정보를 뷰 단위로 저장.
+> 설문을 마치지 않은 채로 종료한 뒤 재접속 시, 렌더링액티비티를 이용하여 설문 진행도를(저장된 유효 정보 판단) 파악.
+> \- 유효한 정보가 없는 즉, 설문을 이어서 진행할 뷰까지 Intent list를 통해 이동.
+
+
+
+### 🔍 제품 기준 확인 및 검색 기능
+
+**뷰 기능 :** 영양제 제품이 포함하는 성분 중, 사용자가 따져봐야 하는 주요 특정 성분3가지를 제시함으로서 직관적으로 사용자가 자신에게 맞는 영양제를 찾을 수 있다.
+
+-  해당 뷰는 리사이클러뷰를 클릭하면, 해당 item의 check와 상단 3가지 기준이 바뀝니다.
+
+- 이를 구현하기 위해, bind함수 내에서 아이템 뷰가 클릭되면 리사이클러뷰 data배열 전체를 false로 초기화 시켜준 다음, 클릭된 해당 data배열을 ture초기화 시켜주었습니다.
+
+  
 
 # Naming Rule
 
@@ -283,10 +300,128 @@ chart_home.animateY(1000) //세로축 에니메이션
     * lifestyle : 사용자 유형에 대한 설문조사를 진행(케디만의 생활패턴 관련 질문)
     * userInfo : 사용자 정보에 대한 설문조사를 진행(일반적인 사용자 정보 관련 질문)
 
-* ## Git 사용시 주의사항
+  
+
+  ## Constraintlayout 사용
+
+  **Relative positioning **
+
+  **대부분의 뷰가 Constraintlayout으로 요소 간 상대 위치를 지정하여 구성하였습니다.**
+
+  - **Chain Type** : **Spread Chain 속성을 사용하여 서로의 간격이 일정하도록 유지되게 하였습니다.**
+
+  ```
+  <androidx.cardview.widget.CardView
+   android:id="@+id/cardview_activity_product_detail"
+   android:layout_width="98dp"
+   android:layout_height="69dp"
+   android:outlineAmbientShadowColor="@color/colorBlack"
+   app:cardCornerRadius="15dp"
+   app:cardElevation="16dp"
+   app:layout_constraintBottom_toBottomOf="parent"
+   app:layout_constraintEnd_toStartOf="@id/cardview_activity_product_detail_txt"
+   app:layout_constraintHorizontal_chainStyle="spread"
+   app:layout_constraintStart_toStartOf="parent"
+   app:layout_constraintTop_toTopOf="parent"> <TextView
+     android:id="@+id/txt_activity_product_detail_content"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center_horizontal"
+     android:layout_marginTop="11dp"
+     android:fontFamily="@font/notosanskr_medium"
+     android:includeFontPadding="false"
+     android:letterSpacing="-0.02"
+     android:lineSpacingExtra="9sp"
+     android:text="11000mg"
+     android:textColor="#00a5a8"
+     android:textSize="18sp" />
+  ```
+
+  …
+  app:layout_constraintHorizontal_chainStyle="spread"
+
+  ## lambda 사용
+
+  Listener, forEach, let 등을 구현하는데 있어 간결한 표현과 편리한 이용을 위해 람다식을 사용하였다.
+
+  - 리스너 (setOnClickLisetener, setOnCheckedChangeListener)
+
+  ```
+  btn_name_next?.setOnClickListener{
+        val name = edt_username?.text.toString()      keeper.name = name      val gender_intent = Intent(this,ResearchGenderActivity::class.java)
+        startActivity(gender_intent)
+     }
+  rg_alcohol_1.setOnCheckedChangeListener { radioGroup, i ->
+        keeper.cigarette = i
+        radioGroup.checkedRadioButtonId.toString().logDebug()
+        check1 = true
+     }
+  ```
+
+  - forEach , forEachIndexed
+
+  ```
+  if(btn_disease_clear.isChecked){
+          checkBtnColor(btn_disease_clear,true)
+          disButtons.forEach {
+            checkBtnColor(it,false)
+         }
+       }
+  disButtons.forEachIndexed { index, checkBox ->
+        disButtons[index].setOnClickListener{
+          if (disButtons[index].isChecked) {
+            checkBtnColor(disButtons[index], true)
+            checkBtnColor(btn_disease_clear, false)
+         } else {
+            checkBtnColor(disButtons[index], false)
+         }
+          checkSelectButton()
+       }
+     }
+  ```
+
+  -  let, filter, fun
+
+  ```
+  disButtons
+         .filter { it.isChecked }
+         .forEach { set.add(it.text.toString()) }
+        if(btn_disease_clear.isChecked) set.add(btn_disease_clear.text.toString())
+        keeper.disease = set
+  keeper.run {
+        intents.add(Intent(this@ResearchActivity, ResearchNameActivity::class.java))
+        if (name == null) return@run
+  }
+  ```
+
+  ## extension function 사용
+
+  자주 쓰이는 Log와 Toast를 확장 함수를 통해 간략한 표현법으로 정의하여 이용에 편리성을 높였다.
+
+  - Log
+
+  ```
+  private const val TAG = "cadi"fun String.logDebug() {
+    Log.d(TAG, this)
+  }fun String.logError() {
+    Log.e(TAG, this)
+  }fun String.logWarn() {
+    Log.w(TAG, this)
+  }
+  ```
+
+  -  Toast
+
+  ```
+  fun Context.toast(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+  }fun Context.toastLong(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+  }
+  ```
+
+  
+
+  ## Git 사용시 주의사항
 
   * master 브랜치에 올리기 전에 deve 브랜치에서 먼저 합치기
-
-  
-
-  
