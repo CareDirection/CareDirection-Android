@@ -15,7 +15,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme">
         <activity android:name=".study.ActivityStudySymptom"></activity>
-        <activity android:name=".care_product.ActivitySurveySearch"></activity>
+        <activity android:name=".care_product.search.SearchCareProductActivity"></activity>
         <activity android:name=".study.article.ArticleDetailsActivity"></activity>
         <activity android:name=".home.functional.FunctionalActivity" />
         <activity android:name=".product.detail.ActivityProductDetailWeb" />
@@ -43,7 +43,7 @@
         <activity android:name=".product.detail.ActivityProductDetail" />
         <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".care_product.CareProductActivity" />
+        <activity android:name=".care_product.Register.CareProductActivity" />
         <activity android:name=".research.ResearchChangeActivity" />
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />

@@ -1,4 +1,4 @@
-package com.example.caredirection.care_product
+package com.example.caredirection.care_product.Register
 
 import android.view.View
 import android.widget.ImageView

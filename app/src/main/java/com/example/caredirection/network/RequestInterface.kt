@@ -54,6 +54,14 @@ interface RequestInterface {
         @Field("user_survey_item_value7")user_survey_item_value7 : String
     ) : Call<LifeCycleData>
 
+    // 제품등록 뷰 - 상품 검색 - 명희
+    @GET("/search/dose/product")
+    fun getCareProductSearchList(
+        @Header("Content-Type")content_type:String="application/json",
+        @Header("token")token:String,
+        @Query("query")date:String
+    ):Call<CareProductSearchData>
+
     @GET("/nutrient/{nutrient_idx}")
     fun getIngredientInfo(
         @Header("token")token: String,
