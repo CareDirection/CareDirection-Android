@@ -51,7 +51,6 @@ class ActivityProductDetail : AppCompatActivity() {
     private lateinit var search_product_idx: String
 
     val listData = ArrayList<BarEntry>()
-    val listData2 = ArrayList<BarEntry>()
     private lateinit var barEntry: Array<Float>
     private lateinit var xLabelIngredients2: Array<String>
     private lateinit var xLabelIngredients1: Array<String>
@@ -67,6 +66,7 @@ class ActivityProductDetail : AppCompatActivity() {
 
         } catch (e: Exception) {
             search_product_idx = intent.getStringExtra("search_product_idx")!!.toString()
+            search_product_idx.toString().logDebug()
             getProductDailData(search_product_idx)
         }
         try {
@@ -75,21 +75,20 @@ class ActivityProductDetail : AppCompatActivity() {
 
         }
         initLineChart()
-        xLabelIngredients1 =
-            arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
-        listData.add(BarEntry(0f, 130f))
-        listData.add(BarEntry(1f, 20f))
-        listData.add(BarEntry(2f, 60f))
-        listData.add(BarEntry(3f, 80f))
-        listData.add(BarEntry(4f, 120f))
-        listData.add(BarEntry(5f, 40f))
-        listData.add(BarEntry(6f, 55f))
-        listData.add(BarEntry(7f, 20f))
-        listData.add(BarEntry(8f, 60f))
-        listData.add(BarEntry(9f, 80f))
-        listData.add(BarEntry(10f, 120f))
-        setChart(listData, xLabelIngredients1)
-
+        xLabelIngredients1 = arrayOf("비타민 A", "비타민", "B", "C", "D", "E", "A3", "B1", "C2", "D3", "E4")
+//        listData.add(BarEntry(0f, 130f))
+//        listData.add(BarEntry(1f, 20f))
+//        listData.add(BarEntry(2f, 60f))
+//        listData.add(BarEntry(3f, 80f))
+//        listData.add(BarEntry(4f, 120f))
+//        listData.add(BarEntry(5f, 40f))
+//        listData.add(BarEntry(6f, 55f))
+//        listData.add(BarEntry(7f, 20f))
+//        listData.add(BarEntry(8f, 60f))
+//        listData.add(BarEntry(9f, 80f))
+//        listData.add(BarEntry(10f, 120f))
+//        setChart(listData, xLabelIngredients1)
+        getProductGraphResponse()
         initList()
     }
 
@@ -177,7 +176,7 @@ class ActivityProductDetail : AppCompatActivity() {
                 product_idx = product_number
             )
         }
-
+            product_number.toString().logDebug()
         call.enqueue(
             object : Callback<ProductDetailData> {
                 override fun onFailure(call: Call<ProductDetailData>, t: Throwable) {
@@ -412,37 +411,35 @@ class ActivityProductDetail : AppCompatActivity() {
         chart_product_detail.invalidate()
     }
 
-//    //홈뷰 - 그래프 통신
-//    private fun getHomeGraphResponse() {
-//        val call: Call<HomeGraphData> =
-//            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
-//        call.enqueue(
-//            object : Callback<HomeGraphData> {
-//                override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
-//                    t.toString().logDebug()
-//                }
-//
-//                override fun onResponse(
-//                    call: Call<HomeGraphData>,
-//                    response: Response<HomeGraphData>
-//                ) {
-//                    val graphResponse: HomeGraphData = response.body()!!
-//                    //TODO 차트에 그려줄 퍼센츠와 라벨 가져오기
-//                    for (i in 0..10) {
-//                        barEntry = arrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
-//                        barEntry[i] = graphResponse.data[i].nutrient_percent.toFloat()
-//                        listData.add(BarEntry(i.toFloat(), barEntry[i]))
-//                        listData2.add(BarEntry(i.toFloat(), barEntry[i]))
-//
-//                        xLabelIngredients2[i] = graphResponse.data[i].nutrient_name
-//                        xLabelIngredients1[i] = graphResponse.data[i].nutrient_name
-//                    }
-//                    initLineChart()
-//                    //  setChart(listData,xLabelIngredients)
-//
-//                }
-//
-//            }
-//        )
-//    }
+    //홈뷰 - 그래프 통신
+    private fun getProductGraphResponse() {
+        val call: Call<HomeGraphData> =
+            RequestURL.service.getProductDetailGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",166)
+        call.enqueue(
+            object : Callback<HomeGraphData> {
+                override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+
+                override fun onResponse(
+                    call: Call<HomeGraphData>,
+                    response: Response<HomeGraphData>
+                ) {
+                    val graphResponse: HomeGraphData = response.body()!!
+                    //TODO 차트에 그려줄 퍼센츠와 라벨 가져오기
+                    for (i in 0..10) {
+                        barEntry = arrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
+                        barEntry[i] = graphResponse.data[i].nutrient_percent.toFloat()
+                        listData.add(BarEntry(i.toFloat(), barEntry[i]))
+
+                        xLabelIngredients1[i] = graphResponse.data[i].nutrient_name
+                    }
+                    initLineChart()
+                     setChart(listData,xLabelIngredients1)
+
+                }
+
+            }
+        )
+    }
 }
