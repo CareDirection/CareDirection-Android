@@ -468,7 +468,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //홈뷰 - 그래프 통신
     private fun getHomeGraphResponse() {
         val call: Call<HomeGraphData> =
-            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGlsZHVzZXJfaWR4IjoxfQ.iOg6R_zQ37_uhyddBohJ5tEOZNu9kKjqddAQJHOJ6vI")
+            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
 
         call.enqueue(
             object : Callback<HomeGraphData> {
@@ -503,7 +503,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //홈뷰 - 기능성 원료 통신
     private fun getHomeFunctionalResponse() {
         val call: Call<HomeFunctionalData> =
-            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGlsZHVzZXJfaWR4Ijo0fQ.J6rwFP6n8HSmw8YWznkZri5eOpj-sNuzpFKuUY8zlBc")
+            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
         call.enqueue(
             object : Callback<HomeFunctionalData> {
                 override fun onFailure(call: Call<HomeFunctionalData>, t: Throwable) {
