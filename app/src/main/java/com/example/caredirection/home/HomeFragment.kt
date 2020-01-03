@@ -562,7 +562,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val call: Call<HomCareProductData> =
             RequestURL.service.getCareProductList(
                 token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",
-                date = "2020-01-02"
+                date = "2020-01-04"
             )
         call.enqueue(object : Callback<HomCareProductData> {
             override fun onFailure(call: Call<HomCareProductData>, t: Throwable) {
