@@ -6,9 +6,13 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
+import com.example.caredirection.data.RvEssentialGraphData
 import com.example.caredirection.data.network.HomeGraphData
+import com.example.caredirection.data.network.HomeGraphDetailData
+import com.example.caredirection.home.essential.EssentialGraphAdapter
 import com.example.caredirection.network.RequestURL
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.LimitLine
@@ -20,8 +24,6 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.activity_graph_detail.*
 import kotlinx.android.synthetic.main.activity_graph_detail.top_bar
 import kotlinx.android.synthetic.main.activity_graph_detail.view.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.menu_top_plain_text.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,9 +33,12 @@ class GraphDetailsActivity : AppCompatActivity() {
 
     val listData = ArrayList<BarEntry>()
     val listData2 = ArrayList<BarEntry>()
+    val listData3 = ArrayList<BarEntry>()
     private lateinit var barEntry: Array<Float>
     private lateinit var xLabelIngredients2: Array<String>
     private lateinit var xLabelIngredients1: Array<String>
+    private lateinit var xLabelIngredients3: Array<String>
+    private lateinit var rvEssentialGraphAdapter: EssentialGraphAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -147,6 +152,13 @@ class GraphDetailsActivity : AppCompatActivity() {
 
             }
 
+        rv_graph_detail_view.layoutManager = LinearLayoutManager(this)
+        rvEssentialGraphAdapter = EssentialGraphAdapter(this)
+        rv_graph_detail_view.adapter = rvEssentialGraphAdapter
+        //rvEssentialGraphAdapter.initLineChart()
+        //rvEssentialGraphAdapter.setChart(listData,xLabelIngredients1)
+        initLineBar()
+        getGraphDetailedResponse()
     }
     private fun setChart(listData: ArrayList<BarEntry>, xLabelIngredients: Array<String>) {
         val dataSet = BarDataSet(listData, "")
@@ -203,7 +215,7 @@ class GraphDetailsActivity : AppCompatActivity() {
 
         chart_home_detail.invalidate()
     }
-    private fun initLineChart() {
+    private fun initLineBar() {
 
         val xAxis = chart_home_detail.xAxis
 //        xAxis.setDrawLabels(false) 이것이 바로 라벨을 지워주는 친구였다 ex) 비타민 D 같은 것들
@@ -288,12 +300,54 @@ class GraphDetailsActivity : AppCompatActivity() {
                         xLabelIngredients2[i] = graphResponse.data[i].nutrient_name
                         xLabelIngredients1[i] = graphResponse.data[i].nutrient_name
                     }
-                    initLineChart()
-                    //  setChart(listData,xLabelIngredients)
+
+                    setChart(listData,xLabelIngredients1)
 
                 }
 
             }
         )
+    }
+
+    private fun getGraphDetailedResponse(){
+        val call: Call<HomeGraphDetailData> =
+            RequestURL.service.getGreaphDetailed("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
+        call.enqueue(
+            object:Callback<HomeGraphDetailData>{
+                override fun onFailure(call: Call<HomeGraphDetailData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+
+                override fun onResponse(
+                    call: Call<HomeGraphDetailData>,
+                    response: Response<HomeGraphDetailData>
+                ) {
+                    val details = mutableListOf<RvEssentialGraphData>()
+                    if(response.isSuccessful) {
+                        val detailedGraphRepos = response.body()!!.data
+                        for (item in detailedGraphRepos) {
+                            details.add(
+                                RvEssentialGraphData(
+                                    item.nutrient_name,
+                                    item.description,
+                                    item.my_change_value_description,
+                                    item.my_current_value_percent.toFloat()
+
+                                )
+                            )
+                           // rvEssentialGraphAdapter.initLineChart()
+                            listData3.add(BarEntry(0f,item.my_current_value_percent.toFloat()))
+                            //rvEssentialGraphAdapter.setChart(listData3,xLabelIngredients1)
+                         }
+                    }
+                    rvEssentialGraphAdapter.data=details
+                    rvEssentialGraphAdapter.notifyDataSetChanged()
+                }
+
+
+            }
+        )
+
+
     }
 }
