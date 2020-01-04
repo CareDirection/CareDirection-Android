@@ -221,7 +221,7 @@ class ActivityProductDetail : AppCompatActivity() {
                         content_txt3 =
                             ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_cautions
 
-                        txt_activity_product_detail_content_price2
+
 
                         txt_activity_product_detail_content_ename.text =
                             ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_company_name

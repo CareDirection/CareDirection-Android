@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.caredirection.R
-import com.example.caredirection.care_product.Register.CareProductActivity
+import com.example.caredirection.care_product.register.CareProductActivity
 import com.example.caredirection.care_product.CareRegisterComplete
 import com.example.caredirection.home.HomeActivity
 import com.example.caredirection.research.DB.ResearchKeeper

@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.data.network.CareProductDoseData
 import com.example.caredirection.home.HomeFragment
+import com.example.caredirection.login.TokenController
 import com.example.caredirection.network.RequestURL
 import kotlinx.android.synthetic.main.dialog_care_product_check.*
 import retrofit2.Callback
@@ -80,7 +81,7 @@ class CustomDialogFragment(
 
     private fun postCareProductDoseResponse() {
         val call: Call<CareProductDoseData> = RequestURL.service.postCareProductDose(
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",
+            TokenController.getAccessToken(context!!)!!,
             idx
         )
         //todo 토큰값 집어넣기

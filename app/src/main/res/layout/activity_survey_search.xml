@@ -8,37 +8,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_activity_survey_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="44dp"
         android:layout_width="328dp"
         android:layout_height="47dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/white_border_square"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
             android:id="@+id/img_activity_survey_search"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/btn_search_unselected"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="13dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/btn_search_unselected"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/edt_activity_survey"
             android:layout_width="267dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/img_activity_survey_search"
             android:layout_marginLeft="4dp"
             android:hint="복용 제품 이름을 검색해보세요"
-            android:textSize="14sp"
-            android:textColor="#787878"
             android:lineSpacingExtra="6sp"
-            />
+            android:textColor="#787878"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/img_activity_survey_search" />
     </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:id="@+id/txt_activity_survey_number"

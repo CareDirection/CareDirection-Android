@@ -26,7 +26,9 @@ import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.home.care_product.CareProductAdapter
 import com.example.caredirection.home.functional.FunctionalActivity
 import com.example.caredirection.home.functional.FunctionalSelectedFeatureAdapter
+import com.example.caredirection.login.TokenController
 import com.example.caredirection.network.RequestURL
+import com.example.caredirection.research.DB.ResearchKeeper
 import com.github.mikephil.charting.components.AxisBase
 import com.orhanobut.dialogplus.DialogPlus
 import com.github.mikephil.charting.components.LimitLine
@@ -47,7 +49,6 @@ private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
-
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
@@ -56,6 +57,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var barEntry: Array<Float>
     private lateinit var xLabelIngredients2: Array<String>
     private lateinit var xLabelIngredients1: Array<String>
+    private lateinit var keeper: ResearchKeeper
+
 
     //private lateinit var
     private var rvCareProductData = listOf<RvCareProductData>()
@@ -70,6 +73,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        keeper = ResearchKeeper(context!!)
         //bottom navigation 설정 시작 - in onCreate
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
@@ -98,6 +102,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             ArrayAdapter(context!!, R.layout.spinner_home_essential, spinnerHomeEssentialArray)
 
 //
+        top_bar.btn_home_user_select.txt_child_user_name.text = keeper.name
 //        //TODO 통신으로 받은 데이터 넘겨주기
 //        //그래프 그려주기
 //        listData.add(BarEntry(0f,130f))
@@ -125,7 +130,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
 //        listData2.add(BarEntry(9f,80f))
 //        listData2.add(BarEntry(10f,120f))
 //
-//        initLineChart()
+//        initLineChart
+
         getHomeGraphResponse()
 
         //밑에 라벨 //TODO 네이밍 다시 하기
@@ -473,7 +479,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //홈뷰 - 그래프 통신
     private fun getHomeGraphResponse() {
         val call: Call<HomeGraphData> =
-            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
+            RequestURL.service.getHomeGraph(TokenController.getAccessToken(context!!)!!)
         call.enqueue(
             object : Callback<HomeGraphData> {
                 override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
@@ -507,7 +513,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     //홈뷰 - 기능성 원료 통신
     private fun getHomeFunctionalResponse() {
         val call: Call<HomeFunctionalData> =
-            RequestURL.service.getFunctional("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI")
+            RequestURL.service.getFunctional(TokenController.getAccessToken(context!!)!!)
         call.enqueue(
             object : Callback<HomeFunctionalData> {
                 override fun onFailure(call: Call<HomeFunctionalData>, t: Throwable) {
@@ -559,7 +565,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun getHomCareProductResponse() {
         val call: Call<HomCareProductData> =
             RequestURL.service.getCareProductList(
-                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",
+                token=TokenController.getAccessToken(context!!)!!,
                 date = "2020-01-04"
             )
         call.enqueue(object : Callback<HomCareProductData> {

@@ -9,54 +9,49 @@
         android:id="@+id/rv_item_graph_details_ingredient_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/notosanskr_bold"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView26"
+        app:layout_constraintBottom_toTopOf="@+id/rv_item_graph_short_comment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="상한 섭치량 조정"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_item_graph_details_ingredient_title" />
-
-    <TextView
-        android:id="@+id/rv_item_graph_details_ingredient_change"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView26"
-        app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toTopOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/rv_item_graph_details_ingredient_content"
         android:layout_width="247dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/barChart"
-        app:layout_constraintTop_toBottomOf="@+id/rv_item_graph_details_ingredient_change" />
+        app:layout_constraintStart_toEndOf="@+id/rv_chart"
+        app:layout_constraintTop_toBottomOf="@+id/rv_item_graph_short_comment" />
+
+    <TextView
+        android:id="@+id/rv_item_graph_short_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="상한 섭치량 조정"
+        app:layout_constraintBottom_toTopOf="@+id/rv_chart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_item_graph_details_ingredient_title" />
 
     <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
+        android:id="@+id/rv_chart"
         android:layout_width="80dp"
         android:layout_height="150dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rv_item_graph_details_ingredient_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26">
+        app:layout_constraintTop_toBottomOf="@+id/rv_item_graph_short_comment">
 
     </com.github.mikephil.charting.charts.BarChart>
 
