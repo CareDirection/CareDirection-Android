@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import com.example.caredirection.R
-import com.example.caredirection.care_product.Register.CareProductActivity
+import com.example.caredirection.care_product.register.CareProductActivity
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.data.network.LifeCycleData
 import com.example.caredirection.login.TokenController

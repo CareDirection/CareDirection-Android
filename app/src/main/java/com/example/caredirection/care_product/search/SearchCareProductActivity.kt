@@ -60,6 +60,7 @@ class SearchCareProductActivity :AppCompatActivity(){
                     val productRespo = response.body()!!
                     productRespo.toString().logDebug()
                     for (item in productRespo.data) {
+                        count++
                         careProducts.add(
                             RvSearchCareProductData(
                                 item.image_location,
@@ -75,7 +76,7 @@ class SearchCareProductActivity :AppCompatActivity(){
                     }
                     rv_servey_serach_adapter.data = careProducts
                     rv_servey_serach_adapter.notifyDataSetChanged()
-
+                    txt_activity_survey_number.text = "결과 "+count+"건"
                 }
             }
 

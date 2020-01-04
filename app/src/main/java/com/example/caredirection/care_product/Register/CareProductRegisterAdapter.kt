@@ -1,4 +1,4 @@
-package com.example.caredirection.care_product.Register
+package com.example.caredirection.care_product.register
 
 import android.content.Context
 import android.view.LayoutInflater
