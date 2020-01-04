@@ -13,6 +13,7 @@ import com.example.caredirection.data.RvEssentialGraphData
 import com.example.caredirection.data.network.HomeGraphData
 import com.example.caredirection.data.network.HomeGraphDetailData
 import com.example.caredirection.home.essential.EssentialGraphAdapter
+import com.example.caredirection.login.TokenController
 import com.example.caredirection.network.RequestURL
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.LimitLine
@@ -278,7 +279,7 @@ class GraphDetailsActivity : AppCompatActivity() {
     //홈뷰 - 그래프 통신
     private fun getHomeGraphResponse() {
         val call: Call<HomeGraphData> =
-            RequestURL.service.getHomeGraph("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
+            RequestURL.service.getHomeGraph(TokenController.getAccessToken(this)!!)
         call.enqueue(
             object : Callback<HomeGraphData> {
                 override fun onFailure(call: Call<HomeGraphData>, t: Throwable) {
@@ -311,7 +312,7 @@ class GraphDetailsActivity : AppCompatActivity() {
 
     private fun getGraphDetailedResponse(){
         val call: Call<HomeGraphDetailData> =
-            RequestURL.service.getGreaphDetailed("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
+            RequestURL.service.getGreaphDetailed(TokenController.getAccessToken(this)!!)
         call.enqueue(
             object:Callback<HomeGraphDetailData>{
                 override fun onFailure(call: Call<HomeGraphDetailData>, t: Throwable) {

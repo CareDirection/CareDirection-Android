@@ -10,7 +10,6 @@ import com.example.caredirection.research.ResearchActivity
 import com.example.caredirection.research.userInfo.ResearchNameActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.Exception
-
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
