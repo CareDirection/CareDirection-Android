@@ -12,7 +12,6 @@ import android.widget.Toast
 import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
-import com.example.caredirection.data.network.IdData
 import com.example.caredirection.data.network.LoginData
 import com.example.caredirection.network.RequestURL
 import com.example.caredirection.research.ResearchActivity
@@ -33,8 +32,9 @@ class ActivityLogin : AppCompatActivity() {
         cl_login.setPadding(0, statusBarHeight(this), 0, 0)
 
         // 자동로그인
-        val id = Login.getUser(this)
-        if(id.isNotEmpty()){
+        val id = LoginController.getID(this)
+        val pw = LoginController.getPW(this)
+        if(id.isNotEmpty()&&pw.isNotEmpty()){
             val intent = Intent(this, ResearchActivity::class.java)
             // id 함께 전달
             intent.putExtra("id", id)
@@ -100,7 +100,9 @@ class ActivityLogin : AppCompatActivity() {
                         val LoginRepos : LoginData = response.body()!!
                         val token = LoginRepos.data.token
                         Log.d("haeeul", "성공 ${response.body()}")
-                        Login.setUser(this@ActivityLogin,id)
+                        LoginController.setID(this@ActivityLogin,id)
+                        LoginController.setPW(this@ActivityLogin,pw)
+                        TokenController.setAccessToken(this@ActivityLogin,token)
                         val intent = Intent(this@ActivityLogin, ResearchActivity::class.java)
                         startActivity(intent)
                     } else {

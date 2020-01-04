@@ -98,7 +98,7 @@ class LifeStyleAlcoholFragment : Fragment() {
             keeper.cigarette = i
             radioGroup.checkedRadioButtonId.toString().logDebug()
             check1 = true
-            if(check1==true&& check2==true){
+            if(check1 && check2){
                 btn.isEnabled = true
                 btn.setTextColor(resources.getColor(R.color.colorPrimary))
             }
@@ -108,7 +108,7 @@ class LifeStyleAlcoholFragment : Fragment() {
             keeper.alcohol = radioGroup.checkedRadioButtonId
             Log.v("YGYG", radioGroup.checkedRadioButtonId.toString())
             check2 = true
-            if(check1==true&& check2==true){
+            if(check1 && check2){
                 btn.isEnabled = true
                 btn.setTextColor(resources.getColor(R.color.colorPrimary))
             }

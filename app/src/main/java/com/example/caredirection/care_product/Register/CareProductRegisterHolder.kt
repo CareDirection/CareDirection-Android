@@ -1,9 +1,10 @@
-package com.example.caredirection.care_product
+package com.example.caredirection.care_product.Register
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductRegisterData
 import org.w3c.dom.Text
@@ -23,15 +24,22 @@ class CareProductRegisterHolder(view: View) : RecyclerView.ViewHolder(view),View
 
     fun bind(data:RvCareProductRegisterData){
 
-        amount.text=data.amount
-        //image
-        image.setBackgroundResource(R.color.colorRed)
+        amount.text= data.amount.toString()+"회 남음"
+        Glide.with(image)
+            .load(data.img)
+            .centerCrop()
+            .into(image)
         company.text=data.company
-        whereBuy.text=data.whereBuy
+        if(data.whereBuy) {
+            whereBuy.text= "해외직구"
+        }
+        else{
+            whereBuy.text= ""
+        }
         productName.text=data.productName
-        priceView.text=data.price.toString()+"원"
-        priceADay.text="(1일 "+data.priceADay.toString()+"원)"
-        amountStandardPillsVIew.text=data.amountStandardPills.toString()+"정 기준"
+        priceView.text=data.price
+        priceADay.text=data.priceADay
+        amountStandardPillsVIew.text=data.amountStandardPills
 
     }
     override fun onClick(v: View?) {

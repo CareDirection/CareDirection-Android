@@ -119,12 +119,12 @@ class ActivityProductDetail : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    Log.d("test", "selected - postition : $position")
+
                     when (position) {
                         position -> {
-                            Log.d("test", categoryPrice[position])
-                            txt_activity_product_detail_content_price2.text =
-                                categoryPrice[position]
+                            Log.d("testest",categoryPrice[position])
+
+                            txt_activity_product_detail_content_price2.text = categoryPrice[position]
                         }
                     }
                 }
@@ -167,11 +167,15 @@ class ActivityProductDetail : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val productDetailDataList: ProductDetailData = response.body()!!
 
-                        (0 until productDetailDataList.data.size - 1!!).forEach {
+                        (0 until productDetailDataList.data.size-1!!).forEach {
                             //                        Log.d("잘대대대",ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
                             categoryPrice.add(productDetailDataList.data[it].count_price.product_quantity_price.toString())
                             category.add(productDetailDataList.data[it].count_price.product_quantity_count.toString())
+                            Log.d("category_test", productDetailDataList.data[it].count_price.product_quantity_count.toString())
+                            //스피너 함수 여기서 선언
+
                         }
+                        initList()
 
                         //region detailcontent
                         Glide.with(this@ActivityProductDetail)
@@ -223,6 +227,7 @@ class ActivityProductDetail : AppCompatActivity() {
                             productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
                         txt_product_detail_warning_content.text =
                             productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
+
 
                         getProductDetailLow(product_number)
                         getProductStandard(product_number.toInt())

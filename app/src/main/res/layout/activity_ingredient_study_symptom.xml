@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".study.ActivityStudySymptom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/layout_study_symptom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <include
                 android:id="@+id/top_study_symptom"
                 layout="@layout/menu_top_plain_text"/>
@@ -27,58 +29,69 @@
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
             android:background="@color/colorDarkGrey"
-            app:layout_constraintTop_toBottomOf="@+id/layout_study_symptom"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/layout_study_symptom" />
 
         <TextView
             android:id="@+id/txt_ingredient_study_symptom_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#2b2d2e"
-            android:lineSpacingExtra="9sp"
-            android:text="피로회복"
-            android:fontFamily="@font/notosanskr_medium"
-            android:includeFontPadding="false"
-            app:layout_constraintTop_toBottomOf="@+id/line_ingredient_study_symptom"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="20dp"
-            />
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="9sp"
+            android:text="피로회복"
+            android:textColor="#2b2d2e"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_ingredient_study_symptom" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredient_study_symptom"
             android:layout_width="match_parent"
             android:layout_height="29dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/txt_ingredient_study_symptom_title"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/txt_ingredient_study_symptom_title" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/empty"
-            android:layout_width="328dp"
-            android:layout_height="160dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_ingredient_study_symptom"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="27dp"
-            android:background="@color/colorDarkGrey"
-            />
-
-        <TextView
-            android:id="@+id/txt_ingredient_study_symptom_content"
-            android:layout_width="328dp"
-            android:layout_height="306dp"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="160dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/empty"
-            android:layout_marginTop="10dp"
-            android:textColor="#787878"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="6sp"
-            android:fontFamily="@font/notosanskr_regular"
-            android:includeFontPadding="false"
-            android:text=" 만성피로에 시달리는 현대인들.
+            app:layout_constraintTop_toBottomOf="@+id/rv_ingredient_study_symptom">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_ingredient_study_symptom">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/empty"
+                    android:layout_width="328dp"
+                    android:layout_height="160dp"
+                    android:background="@color/colorDarkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_study_symptom"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/txt_ingredient_study_symptom_content"
+                    android:layout_width="328dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:layout_marginBottom="20dp"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="6sp"
+                    android:text=" 만성피로에 시달리는 현대인들.
 비타민 C는 기본이고,\n
 온갖 종류의 영양제와\n
 함께 살고 있습니다.\n
@@ -88,10 +101,14 @@
 제 효과를 보지 못하거나\n
 독이 될 수도 있다는데요.\n
 "
-            />
+                    android:textColor="#787878"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/empty" />
 
 
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

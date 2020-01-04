@@ -1,5 +1,6 @@
 package com.example.caredirection.network
 
+import com.example.caredirection.data.EfficacyStudyResponse
 import com.example.caredirection.data.network.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -7,6 +8,7 @@ import java.util.logging.Filter
 
 interface RequestInterface {
 
+    // 로그인 뷰 - 로그인 - 명희
     @FormUrlEncoded
     @POST("/users/signin")
     fun postLogin(
@@ -14,6 +16,7 @@ interface RequestInterface {
         @Field("user_pw")user_pw : String
     ) : Call<LoginData>
 
+    // 로그인 뷰 - 회원가입 - 명희
     @FormUrlEncoded
     @POST("/users/signup")
     fun postSignUp(
@@ -21,13 +24,13 @@ interface RequestInterface {
         @Field("user_pw")user_pw : String
     ) : Call<SignUpData>
 
+    // 로그인 뷰 - 중복확인 - 명희
     @FormUrlEncoded
     @POST("/users/id")
     fun postIdCheck(
         @Field("user_id")user_id : String
     ) : Call<IdData>
 
-    //성분학습뷰 - 성분 통신 -은이
     // 설문조사 뷰 - 개인정보 - 명희
     @FormUrlEncoded
     @POST("/users/info")
@@ -40,8 +43,9 @@ interface RequestInterface {
 
     // 설문조사 뷰 - 라이프사이클 - 명희
     @FormUrlEncoded
-    @POST("/users/lifecycle")
+    @POST("/survey/lifecycle")
     fun postLifeCycle(
+        @Header("token")token: String,
         @Field("user_survey_item_value1")user_survey_item_value1 : String,
         @Field("user_survey_item_value2")user_survey_item_value2 : String,
         @Field("user_survey_item_value3")user_survey_item_value3 : String,
@@ -50,6 +54,14 @@ interface RequestInterface {
         @Field("user_survey_item_value6")user_survey_item_value6 : String,
         @Field("user_survey_item_value7")user_survey_item_value7 : String
     ) : Call<LifeCycleData>
+
+    // 제품등록 뷰 - 상품 검색 - 명희
+    @GET("/search/dose/product")
+    fun getCareProductSearchList(
+        @Header("Content-Type")content_type:String="application/json",
+        @Header("token")token:String,
+        @Query("query")date:String
+    ):Call<CareProductSearchData>
 
     @GET("/nutrient/{nutrient_idx}")
     fun getIngredientInfo(
@@ -139,6 +151,16 @@ interface RequestInterface {
         @Path("product_idx")product_idx:Int
     ):Call<HomeGraphData>
 
+    //home - 그래프 상세보기 - 은이
+    @GET("/graph/detailed")
+    fun getGreaphDetailed(
+        @Header("token")token:String
+    ):Call<HomeGraphDetailData>
 //    asdf.getProductStandard( product_idx = "asdf").enqeuue
 
+
+    @GET("/efficacy/nutrients")
+    fun getEfficacyStudyList(
+        @Query("query") query: String
+    ): Call<EfficacyStudyResponse>
 }
