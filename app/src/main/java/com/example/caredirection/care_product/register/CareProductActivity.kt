@@ -1,4 +1,4 @@
-package com.example.caredirection.care_product.Register
+package com.example.caredirection.care_product.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

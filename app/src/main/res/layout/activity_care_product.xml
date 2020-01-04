@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".care_product.Register.CareProductActivity">
+    tools:context=".care_product.register.CareProductActivity">
 
     <LinearLayout
         android:id="@+id/top_bar"
@@ -35,9 +35,9 @@
         android:id="@+id/nestedScrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginTop="15dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/btn_care_register_product_next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -64,7 +64,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="100dp"
                 android:background="@drawable/gray_border_view_18"
                 android:elevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -42,7 +42,7 @@
         <activity android:name=".product.detail.ActivityProductDetail" />
         <activity android:name=".product.standard.ActivityProductStandard" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".care_product.Register.CareProductActivity" />
+        <activity android:name=".care_product.register.CareProductActivity" />
         <activity android:name=".research.ResearchChangeActivity" />
         <activity android:name=".research.userInfo.ResearchSymptomActivity" />
         <activity android:name=".research.userInfo.ResearchDiseaseActivity" />

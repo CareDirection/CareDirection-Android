@@ -1,4 +1,4 @@
-package com.example.caredirection.care_product.Register
+package com.example.caredirection.care_product.register
 
 import android.view.View
 import android.widget.ImageView
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.data.RvCareProductRegisterData
-
 
 class CareProductRegisterHolder(view: View) : RecyclerView.ViewHolder(view),View.OnClickListener{
 

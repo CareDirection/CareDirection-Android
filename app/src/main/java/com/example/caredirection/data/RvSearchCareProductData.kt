@@ -8,5 +8,6 @@ data class RvSearchCareProductData(
     val price: String,
     val priceADay:String,
     val amountStandardPills:String,
-    val managed:Boolean
+    val managed:Boolean,
+    val productidx:Int
 )
