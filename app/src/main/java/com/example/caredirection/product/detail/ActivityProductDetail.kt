@@ -145,169 +145,93 @@ class ActivityProductDetail : AppCompatActivity() {
     }
 
     private fun getProductDailData(product_number: String) {
-//        val call: Call<ProductDetailData> = RequestURL.run {
-//            service.getProductDetailData(
-//                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6MjQsImlhdCI6MTU3Nzg3NzY1NiwiZXhwIjo4Nzk3Nzg3NzY1NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.WysKIH3-qDf3GTR-RKKl23hp_9byodzDm7TdISMTkmk",
-//                product_idx = product_number
-//            )
-//        }
+        val call: Call<ProductDetailData> = RequestURL.run {
+            service.getProductDetailData(
+                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6MjQsImlhdCI6MTU3Nzg3NzY1NiwiZXhwIjo4Nzk3Nzg3NzY1NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.WysKIH3-qDf3GTR-RKKl23hp_9byodzDm7TdISMTkmk",
+                product_idx = product_number
+            )
+        }
 
-        RequestURL.service.getProductDetailData(
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6MjQsImlhdCI6MTU3Nzg3NzY1NiwiZXhwIjo4Nzk3Nzg3NzY1NiwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.WysKIH3-qDf3GTR-RKKl23hp_9byodzDm7TdISMTkmk",
-            product_number
-        ).enqueue(object : Callback<ProductDetailData> {
-            override fun onFailure(call: Call<ProductDetailData>, t: Throwable) {
 
-            }
 
-            override fun onResponse(
-                call: Call<ProductDetailData>,
-                response: Response<ProductDetailData>
-            ) {
-                if (response.isSuccessful) {
-                    val productDetailDataList: ProductDetailData = response.body()!!
+        call.enqueue(
+            object : Callback<ProductDetailData> {
+                override fun onFailure(call: Call<ProductDetailData>, t: Throwable) {
 
-                    (0 until productDetailDataList.data.size - 1).forEach {
-                        categoryPrice.add(productDetailDataList.data[it].count_price.product_quantity_price.toString())
-                        category.add(productDetailDataList.data[it].count_price.product_quantity_count.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<ProductDetailData>,
+                    response: Response<ProductDetailData>
+                ) {
+                    if (response.isSuccessful) {
+                        val productDetailDataList: ProductDetailData = response.body()!!
+
+                        (0 until productDetailDataList.data.size - 1!!).forEach {
+                            //                        Log.d("잘대대대",ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
+                            categoryPrice.add(productDetailDataList.data[it].count_price.product_quantity_price.toString())
+                            category.add(productDetailDataList.data[it].count_price.product_quantity_count.toString())
+                        }
+
+                        //region detailcontent
+                        Glide.with(this@ActivityProductDetail)
+                            .load(productDetailDataList.data[productDetailDataList.data.size - 1].common_data.image_key)
+                            .centerCrop()
+                            .into(img_activity_product_detail)
+
+                        content_title1 =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
+                        content_txt1 =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
+
+                        content_title2 =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
+                        content_txt2 =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
+
+                        content_title3 =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
+                        content_txt3 =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
+
+
+                        txt_activity_product_detail_content_ename.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_company_name
+                        txt_activity_product_detail_content_kname.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_name
+                        txt_activity_product_detail_content2.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
+                        txt_activity_product_detail_absorption2.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
+                        txt_activity_product_detail_citation1.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
+                        txt_activity_product_detail_content1.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1_value
+                        txt_activity_product_detail_absorption1.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2_value
+                        txt_activity_product_detail_citation1.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3_value
+                        txt_product_detail_character_content.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
+                        txt_product_detail_intake_content.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_daily_dose
+                        txt_product_detail_per_intake_content1.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_name
+                        txt_product_detail_per_intake_content2.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_value
+                        txt_product_detail_content_content.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
+                        txt_product_detail_warning_content.text =
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
+
+                        getProductDetailLow(product_number)
+                        getProductStandard(product_number.toInt())
+                        //endregion detailcontent
+                        dialogShow()
                     }
-
-                    //region detailcontent
-                    Glide.with(this@ActivityProductDetail)
-                        .load(productDetailDataList.data[productDetailDataList.data.size - 1].common_data.image_key)
-                        .centerCrop()
-                        .into(img_activity_product_detail)
-
-                    content_title1 =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
-                    content_txt1 =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
-
-                    content_title2 =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
-                    content_txt2 =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
-
-                    content_title3 =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
-                    content_txt3 =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
-
-                    //txt_activity_product_detail_content_price2
-
-                    txt_activity_product_detail_content_ename.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_company_name
-                    txt_activity_product_detail_content_kname.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_name
-                    txt_activity_product_detail_content2.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
-                    txt_activity_product_detail_absorption2.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
-                    txt_activity_product_detail_citation1.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
-                    txt_activity_product_detail_content1.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1_value
-                    txt_activity_product_detail_absorption1.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2_value
-                    txt_activity_product_detail_citation1.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3_value
-                    txt_product_detail_character_content.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
-                    txt_product_detail_intake_content.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_daily_dose
-                    txt_product_detail_per_intake_content1.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_name
-                    txt_product_detail_per_intake_content2.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_value
-                    txt_product_detail_content_content.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
-                    txt_product_detail_warning_content.text =
-                        productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
-
-                    getProductDetailLow(product_number)
-                    getProductStandard(product_number.toInt())
-                    dialogShow()
                 }
             }
-
-        })
-//        call.enqueue(
-//            object : Callback<ProductDetailData> {
-//                override fun onFailure(call: Call<ProductDetailData>, t: Throwable) {
-//
-//                }
-//
-//                override fun onResponse(
-//                    call: Call<ProductDetailData>,
-//                    response: Response<ProductDetailData>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        val productDetailDataList: ProductDetailData = response.body()!!
-//
-//                        (0 until productDetailDataList.data.size - 1).forEach {
-//                            categoryPrice.add(productDetailDataList.data[it].count_price.product_quantity_price.toString())
-//                            category.add(productDetailDataList.data[it].count_price.product_quantity_count.toString())
-//                        }
-//
-//                        //region detailcontent
-//                        Glide.with(this@ActivityProductDetail)
-//                            .load(productDetailDataList.data[productDetailDataList.data.size - 1].common_data.image_key)
-//                            .centerCrop()
-//                            .into(img_activity_product_detail)
-//
-//                        content_title1 =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
-//                        content_txt1 =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
-//
-//                        content_title2 =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
-//                        content_txt2 =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
-//
-//                        content_title3 =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
-//                        content_txt3 =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
-//
-//                        txt_activity_product_detail_content_price2
-//
-//                        txt_activity_product_detail_content_ename.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_company_name
-//                        txt_activity_product_detail_content_kname.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_name
-//                        txt_activity_product_detail_content2.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
-//                        txt_activity_product_detail_absorption2.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
-//                        txt_activity_product_detail_citation1.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
-//                        txt_activity_product_detail_content1.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1_value
-//                        txt_activity_product_detail_absorption1.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2_value
-//                        txt_activity_product_detail_citation1.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3_value
-//                        txt_product_detail_character_content.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
-//                        txt_product_detail_intake_content.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_daily_dose
-//                        txt_product_detail_per_intake_content1.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_name
-//                        txt_product_detail_per_intake_content2.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_value
-//                        txt_product_detail_content_content.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
-//                        txt_product_detail_warning_content.text =
-//                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
-//
-//                        getProductDetailLow(product_number)
-//                        getProductStandard(product_number.toInt())
-//                        dialogShow()
-//                    }
-//                }
-//            }
-//        )
+        )
     }
 
     private fun getProductStandard(position: Int) {
