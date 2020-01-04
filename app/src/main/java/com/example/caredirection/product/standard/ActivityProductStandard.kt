@@ -58,12 +58,12 @@ class ActivityProductStandard : AppCompatActivity() {
             getProductStandardItem(txt_activity_product_top_title.text.toString())
 
         }catch(e : Exception){
-            Toast.makeText(this@ActivityProductStandard,"안돼", Toast.LENGTH_SHORT).show()
+
         }
 
 
         img_activity_product_top_filter.setOnClickListener {
-            filterDialog()
+            //filterDialog()
         }
 
         img_activity_product_top_search.setOnClickListener {
@@ -71,19 +71,6 @@ class ActivityProductStandard : AppCompatActivity() {
 
             startActivity(intent)
         }
-    }
-
-    private fun filterDialog(){
-        val builder = AlertDialog.Builder(this)
-        val dialogView = layoutInflater.inflate(R.layout.dialog_txt_test, null)
-
-        //endregion
-
-        builder.setView(dialogView)
-            .setPositiveButton("OK") { dialogInterface, i ->
-
-            } .show()
-
     }
 
     private fun initList() {
@@ -116,7 +103,6 @@ class ActivityProductStandard : AppCompatActivity() {
 
     }
 
-
     private fun contentDialog(content_title : String, content_txt : String) {
         val builder = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_product_standard_explation, null)
@@ -133,74 +119,6 @@ class ActivityProductStandard : AppCompatActivity() {
             dialog.dismiss()
         }
     }
-
-   /* private fun filterDialog() {
-        val builder = AlertDialog.Builder(this)
-        val dialogView = layoutInflater.inflate(R.layout.dialog_product_standard_filter, null)
-
-        //region 체크박스 흡수
-        dialogView.checked_dialog_product_standard_absorption_left.setOnClickListener {
-            dialogView.checked_dialog_product_standard_absorption_left.isChecked = true
-            dialogView.checked_dialog_product_standard_absorption_right.isChecked = false
-            dialog_absorption = "EE"
-        }
-        dialogView.checked_dialog_product_standard_absorption_right.setOnClickListener {
-            dialogView.checked_dialog_product_standard_absorption_right.isChecked = true
-            dialogView.checked_dialog_product_standard_absorption_left.isChecked = false
-            dialog_absorption = "rtg"
-        }
-        //endregion 체크박스 흡수
-
-        //region 인증마크
-        dialogView.checked_dialog_product_standard_citation_left.setOnClickListener {
-            dialogView.checked_dialog_product_standard_citation_left.isChecked = true
-            dialogView.checked_dialog_product_standard_citation_right.isChecked = false
-            dialog_citation = "O"
-        }
-        dialogView.checked_dialog_product_standard_citation_right.setOnClickListener {
-            dialogView.checked_dialog_product_standard_citation_left.isChecked = false
-            dialogView.checked_dialog_product_standard_citation_right.isChecked = true
-            dialog_citation = "X"
-        }
-        //endregion 인증마크
-
-        //region 함량
-        val category = arrayOf("10000mg ~ 1000mg", "20000mg ~ 3000mg", "40000mg ~ 5000mg")
-        val categoryAdapter = ArrayAdapter(
-            this@ActivityProductStandard,
-            R.layout.spinner_product_search_item,
-            category
-        )
-        //categoryAdapter.setDropDownViewResource(R.layout.fragment_product_search)
-        dialogView.spinner_dialog_product_standard.adapter = categoryAdapter
-
-        dialogView.spinner_dialog_product_standard.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    dialog_content = category[position]
-                }
-            }
-        //endregion
-
-        builder.setView(dialogView)
-            .setPositiveButton("확인") { dialogInterface, i ->
-                activity_product_detail_standard1.text = dialog_content
-                txt_activity_product_detail_standard2.text = dialog_absorption
-                activity_product_cardview_standard3.text = dialog_citation
-            }
-            .setNegativeButton("취소") { dialogInterface, i ->
-            }
-            .show()
-    }*/
 
     var check = mutableListOf<Boolean>()
 
@@ -260,7 +178,7 @@ class ActivityProductStandard : AppCompatActivity() {
                     if(response.isSuccessful){
                         val productSearchList: ProductSearchContentData = response.body()!!
 
-                        //Toast.makeText(context,  productSearchList.data[0].tab_name,Toast.LENGTH_SHORT).show()
+
                         //어뎁터에 데이터 search객체 List로 추가
                         (0 until productSearchList.data.searchList.size!!).forEach {
                             rv_main_product_adapter.data.add(productSearchList.data.searchList[it])

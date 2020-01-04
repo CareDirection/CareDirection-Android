@@ -1,22 +1,19 @@
 package com.example.caredirection.product.detail
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
-import com.example.caredirection.data.network.HomeGraphData
-import com.example.caredirection.data.network.ProductDetailData
-import com.example.caredirection.data.network.ProductDetailLowest
-import com.example.caredirection.data.network.ProductStandardData
+import com.example.caredirection.data.network.*
 import com.example.caredirection.network.RequestURL
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.LimitLine
@@ -30,6 +27,7 @@ import kotlinx.android.synthetic.main.dialog_product_standard_explation.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class ActivityProductDetail : AppCompatActivity() {
 
@@ -150,12 +148,12 @@ class ActivityProductDetail : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    Log.d("test", "selected - postition : $position")
+
                     when (position) {
                         position -> {
-                            Log.d("test", categoryPrice[position])
-                            txt_activity_product_detail_content_price2.text =
-                                categoryPrice[position]
+
+
+                            txt_activity_product_detail_content_price2.text = categoryPrice[position]
                         }
                     }
                 }
@@ -183,8 +181,6 @@ class ActivityProductDetail : AppCompatActivity() {
             )
         }
 
-
-
         call.enqueue(
             object : Callback<ProductDetailData> {
                 override fun onFailure(call: Call<ProductDetailData>, t: Throwable) {
@@ -196,64 +192,65 @@ class ActivityProductDetail : AppCompatActivity() {
                     response: Response<ProductDetailData>
                 ) {
                     if (response.isSuccessful) {
-                        val productDetailDataList: ProductDetailData = response.body()!!
+                        val ProductDetailDataList: ProductDetailData = response.body()!!
 
-                        (0 until productDetailDataList.data.size - 1!!).forEach {
+                        (0 until ProductDetailDataList.data.size - 1!!).forEach {
                             //                        Log.d("잘대대대",ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
-                            categoryPrice.add(productDetailDataList.data[it].count_price.product_quantity_price.toString())
-                            category.add(productDetailDataList.data[it].count_price.product_quantity_count.toString())
+                            categoryPrice.add(ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
+                            category.add(ProductDetailDataList.data[it].count_price.product_quantity_count.toString())
                         }
 
                         //region detailcontent
                         Glide.with(this@ActivityProductDetail)
-                            .load(productDetailDataList.data[productDetailDataList.data.size - 1].common_data.image_key)
+                            .load(ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.image_key)
                             .centerCrop()
                             .into(img_activity_product_detail)
 
                         content_title1 =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard1
                         content_txt1 =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_features_name
 
                         content_title2 =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard2
                         content_txt2 =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_additives
 
                         content_title3 =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard3
                         content_txt3 =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_cautions
 
+                        txt_activity_product_detail_content_price2
 
                         txt_activity_product_detail_content_ename.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_company_name
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_company_name
                         txt_activity_product_detail_content_kname.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_name
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_name
                         txt_activity_product_detail_content2.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard1
                         txt_activity_product_detail_absorption2.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard2
                         txt_activity_product_detail_citation1.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard3
                         txt_activity_product_detail_content1.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1_value
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard1_value
                         txt_activity_product_detail_absorption1.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2_value
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard2_value
                         txt_activity_product_detail_citation1.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3_value
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard3_value
                         txt_product_detail_character_content.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_features_name
                         txt_product_detail_intake_content.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_daily_dose
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_daily_dose
                         txt_product_detail_per_intake_content1.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_name
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_detail_name
                         txt_product_detail_per_intake_content2.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_value
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_detail_value
                         txt_product_detail_content_content.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_additives
                         txt_product_detail_warning_content.text =
-                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
+                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_cautions
 
                         getProductDetailLow(product_number)
                         getProductStandard(product_number.toInt())
@@ -279,12 +276,12 @@ class ActivityProductDetail : AppCompatActivity() {
                     response: Response<ProductStandardData>
                 ) {
                     if (response.isSuccessful) {
-                        val productStandardnutrient: ProductStandardData = response.body()!!
+                        val ProductStandardnutrient: ProductStandardData = response.body()!!
 
 
-                        content_txt1 = productStandardnutrient.data[0].standard_description
-                        content_txt2 = productStandardnutrient.data[1].standard_description
-                        content_txt3 = productStandardnutrient.data[2].standard_description
+                        content_txt1 = ProductStandardnutrient.data[0].standard_description
+                        content_txt2 = ProductStandardnutrient.data[1].standard_description
+                        content_txt3 = ProductStandardnutrient.data[2].standard_description
                         dialogShow()
                     }
                 }
@@ -374,8 +371,6 @@ class ActivityProductDetail : AppCompatActivity() {
         val dataSet = BarDataSet(listData, "")
 
         val listColor = ArrayList<Int>()
-//        listColor.add(ContextCompat.getColor(context!!, R.color.colorBlueGraph))
-//        listColor.add(ContextCompat.getColor(context!!, R.color.colorRedGraph))
 
         val formatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
@@ -409,15 +404,11 @@ class ActivityProductDetail : AppCompatActivity() {
         chart_product_detail.setFitBars(true)
         chart_product_detail.setTouchEnabled(true)//됨
         chart_product_detail.isHorizontalScrollBarEnabled = true
-        //chart.isDragXEnabled=true
         chart_product_detail.isDragDecelerationEnabled = true
-        // chart.setDragXEnabled(true)
-        //chart.setHorizontalScrollBarEnabled(true)
         chart_product_detail.isDoubleTapToZoomEnabled = false//두번터치하고 스크롤은 됨
         chart_product_detail.isDragXEnabled = true
         chart_product_detail.setVisibleXRange(3f, 6f) // X에 그려줄 최소, 최대 단위 정하기
         chart_product_detail.animateY(1000) //세로축 에니메이션
-        // chart.data = lineData
 
         val xAxis = chart_product_detail.xAxis
         xAxis.valueFormatter = formatter
@@ -425,7 +416,6 @@ class ActivityProductDetail : AppCompatActivity() {
         chart_product_detail.invalidate()
     }
 
-    //홈뷰 - 그래프 통신
     private fun getProductGraphResponse(product_position: Int) {
         val call: Call<HomeGraphData> =
             RequestURL.service.getProductDetailGraph(

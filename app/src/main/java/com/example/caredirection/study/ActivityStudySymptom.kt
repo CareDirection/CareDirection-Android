@@ -10,10 +10,18 @@ import android.widget.CheckedTextView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.caredirection.R
+import com.example.caredirection.data.EfficacyStudyResponse
+import com.example.caredirection.network.RequestURL
+import kotlinx.android.synthetic.main.activity_ingredient_study_symptom.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class ActivityStudySymptom : AppCompatActivity() {
-
+    var text = ""
     private lateinit var rv_study_symptom: RecyclerView
     private lateinit var rv_study_symptom_adapter : StudySymptomAdapter
 
@@ -21,35 +29,24 @@ class ActivityStudySymptom : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingredient_study_symptom)
 
-
+        text = intent.getStringExtra("efficacy")
+        txt_ingredient_study_symptom_title.setText(text)
 
         rv_study_symptom_adapter = StudySymptomAdapter(this@ActivityStudySymptom)
         rv_study_symptom = findViewById(R.id.rv_ingredient_study_symptom)
 
-
         rv_study_symptom.layoutManager = LinearLayoutManager(this@ActivityStudySymptom, LinearLayoutManager.HORIZONTAL,false)
 
-        data = mutableListOf(
-            StudySymptomitem("오메가3", true),
-            StudySymptomitem("종합비타민"),
-            StudySymptomitem("홍삼"),
-            StudySymptomitem("로얄젤리"),
-            StudySymptomitem("비타민A"),
-            StudySymptomitem("비타민D")
-        )
-
+        getEfficacyStudyList(text)
         rv_study_symptom.adapter = rv_study_symptom_adapter
+
     }
 
-
-
-
-
-    private var data = mutableListOf<StudySymptomitem>()
 
     inner class StudySymptomAdapter(private val context: Context) :
         RecyclerView.Adapter<StudySymptomAdapter.StudySymptomHolder>() {
 
+        var data = mutableListOf<StudySymptomitem>()
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudySymptomHolder {
             val view =
@@ -86,6 +83,11 @@ class ActivityStudySymptom : AppCompatActivity() {
                     }
                     data[position] = data[position].copy(check = true)
                     rv_study_symptom_adapter.notifyDataSetChanged()
+
+
+                    getEfficacyStudyList(text,position)
+
+
                 }
             }
         }
@@ -95,4 +97,56 @@ class ActivityStudySymptom : AppCompatActivity() {
         val Symptomitem: String,
         val check: Boolean = false
     )
+
+    private fun getEfficacyStudyList(search_word: String){
+        val call: Call<EfficacyStudyResponse> = RequestURL.service.getEfficacyStudyList(search_word)
+
+        call.enqueue(
+            object : Callback<EfficacyStudyResponse> {
+                override fun onFailure(call: Call<EfficacyStudyResponse>, t: Throwable) {
+
+                }
+
+                override fun onResponse(
+                    call: Call<EfficacyStudyResponse>,
+                    response: Response<EfficacyStudyResponse>
+                ) {
+                    val efficacyResponseDataList = response.body()!!.data
+
+                    (0 until efficacyResponseDataList.size!!).forEach {
+                        if (it == 0){
+                            rv_study_symptom_adapter.data.add(StudySymptomitem(efficacyResponseDataList[it].nutrientName,true))
+                        }else{
+                            rv_study_symptom_adapter.data.add(StudySymptomitem(efficacyResponseDataList[it].nutrientName,false))
+                        }
+                        rv_study_symptom_adapter.notifyDataSetChanged()
+                    }
+
+                    Glide.with(applicationContext).load(efficacyResponseDataList[0].imageLocation).into(iv_study_symptom)
+                    txt_ingredient_study_symptom_content.text = efficacyResponseDataList[0].nutrientEfficacyComment
+                }
+            })
+    }
+
+    private fun getEfficacyStudyList(search_word: String, position: Int){
+        val call: Call<EfficacyStudyResponse> = RequestURL.service.getEfficacyStudyList(search_word)
+
+        call.enqueue(
+            object : Callback<EfficacyStudyResponse> {
+                override fun onFailure(call: Call<EfficacyStudyResponse>, t: Throwable) {
+
+                }
+
+                override fun onResponse(
+                    call: Call<EfficacyStudyResponse>,
+                    response: Response<EfficacyStudyResponse>
+                ) {
+                    val efficacyResponseDataList = response.body()!!.data
+
+                    Glide.with(applicationContext).load(efficacyResponseDataList[position].imageLocation).into(iv_study_symptom)
+                    txt_ingredient_study_symptom_content.text = efficacyResponseDataList[position].nutrientEfficacyComment
+
+                }
+            })
+    }
 }
