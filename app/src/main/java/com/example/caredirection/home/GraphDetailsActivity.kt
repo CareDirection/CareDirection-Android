@@ -6,9 +6,13 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
+import com.example.caredirection.data.RvEssentialGraphData
 import com.example.caredirection.data.network.HomeGraphData
+import com.example.caredirection.data.network.HomeGraphDetailData
+import com.example.caredirection.home.essential.EssentialGraphAdapter
 import com.example.caredirection.network.RequestURL
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.LimitLine
@@ -34,6 +38,7 @@ class GraphDetailsActivity : AppCompatActivity() {
     private lateinit var barEntry: Array<Float>
     private lateinit var xLabelIngredients2: Array<String>
     private lateinit var xLabelIngredients1: Array<String>
+    private lateinit var rvEssentialGraphAdapter: EssentialGraphAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -147,6 +152,10 @@ class GraphDetailsActivity : AppCompatActivity() {
 
             }
 
+        rv_graph_detail_view.layoutManager = LinearLayoutManager(this)
+        rvEssentialGraphAdapter = EssentialGraphAdapter(this)
+        rv_graph_detail_view.adapter = rvEssentialGraphAdapter
+        getGraphDetailedResponse()
     }
     private fun setChart(listData: ArrayList<BarEntry>, xLabelIngredients: Array<String>) {
         val dataSet = BarDataSet(listData, "")
@@ -289,11 +298,41 @@ class GraphDetailsActivity : AppCompatActivity() {
                         xLabelIngredients1[i] = graphResponse.data[i].nutrient_name
                     }
                     initLineChart()
-                    //  setChart(listData,xLabelIngredients)
+                    setChart(listData,xLabelIngredients1)
 
                 }
 
             }
         )
+    }
+
+    private fun getGraphDetailedResponse(){
+        val call: Call<HomeGraphDetailData> =
+            RequestURL.service.getGreaphDetailed("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjMsImlhdCI6MTU3ODAyODU0OSwiZXhwIjo4Nzk3ODAyODU0OSwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.55DCPnT20acoLi7D9ajK9SRWdF3HxsxFlKx-quHS3oU")
+        call.enqueue(
+            object:Callback<HomeGraphDetailData>{
+                override fun onFailure(call: Call<HomeGraphDetailData>, t: Throwable) {
+                    t.toString().logDebug()
+                }
+
+                override fun onResponse(
+                    call: Call<HomeGraphDetailData>,
+                    response: Response<HomeGraphDetailData>
+                ) {
+                    val details = mutableListOf<RvEssentialGraphData>()
+                    if(response.isSuccessful) {
+                        val detailedGraphRepos = response.body()!!.data
+                        for (item in detailedGraphRepos)
+                            details.add(RvEssentialGraphData(item.nutrient_name,item.description,item.my_change_value_description,item.my_current_value_percent.toFloat()))
+                    }
+                    rvEssentialGraphAdapter.data=details
+                    rvEssentialGraphAdapter.notifyDataSetChanged()
+                }
+
+
+            }
+        )
+
+
     }
 }
