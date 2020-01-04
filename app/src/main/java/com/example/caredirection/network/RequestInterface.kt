@@ -1,5 +1,6 @@
 package com.example.caredirection.network
 
+import com.example.caredirection.data.EfficacyStudyResponse
 import com.example.caredirection.data.network.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -175,4 +176,9 @@ interface RequestInterface {
     ):Call<HomeGraphDetailData>
 //    asdf.getProductStandard( product_idx = "asdf").enqeuue
 
+
+    @GET("/efficacy/nutrients")
+    fun getEfficacyStudyList(
+        @Query("query") query: String
+    ): Call<EfficacyStudyResponse>
 }
