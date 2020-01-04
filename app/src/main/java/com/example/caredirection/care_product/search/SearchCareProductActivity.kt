@@ -70,7 +70,8 @@ class SearchCareProductActivity :AppCompatActivity(){
                                 item.product_price,
                                 item.product_price_per_unit,
                                 item.product_quantity,
-                                item.product_is_already_managed
+                                item.product_is_already_managed,
+                                item.product_idx
                             )
                         )
                     }

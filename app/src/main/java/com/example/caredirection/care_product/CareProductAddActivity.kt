@@ -6,9 +6,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.bumptech.glide.Glide
 import com.example.caredirection.R
+import com.example.caredirection.common.logDebug
+import com.example.caredirection.common.toast
+import com.example.caredirection.data.network.CareProductDialogData
+import com.example.caredirection.network.RequestURL
 import com.example.caredirection.research.userInfo.NumberPicker
 import kotlinx.android.synthetic.main.activity_care_product_add.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CareProductAddActivity : AppCompatActivity() {
 
@@ -18,6 +26,10 @@ class CareProductAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_care_product_add)
 
+        val idx = intent.getIntExtra("index",1)
+        idx.toString().logDebug()
+
+        getCareProductDialog(idx)
         makeController()
     }
 
@@ -86,5 +98,43 @@ class CareProductAddActivity : AppCompatActivity() {
         btn_care_product_add.setOnClickListener{
             finish()
         }
+    }
+
+    private fun getCareProductDialog(idx:Int) {
+        val call: Call<CareProductDialogData> =
+            RequestURL.service.getCareProductDialog(
+                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NjQsImlhdCI6MTU3ODAyODgxOCwiZXhwIjo4Nzk3ODAyODgxOCwiaXNzIjoiY2FyZS1kaXJlY3Rpb24ifQ.eR-912HpB7B9JCaYwUlkaGBEphLywOoRCyT4ZZB1DMI",
+                product_idx = idx
+            )
+        call.enqueue(object : Callback<CareProductDialogData> {
+            override fun onFailure(call: Call<CareProductDialogData>, t: Throwable) {
+                t.toString().logDebug()
+            }
+
+            override fun onResponse(
+                call: Call<CareProductDialogData>,
+                response: Response<CareProductDialogData>
+            ) {
+                if (response.isSuccessful) {
+                    response.message()
+                    val diaRespo = response.body()!!
+                    val ingredient_image_uri = diaRespo.data[0].image_key
+                    txt_product_add_name.text  = diaRespo.data[0].product_name
+                    txt_product_add_way.text  = diaRespo.data[0].product_daily_dose
+
+                    Glide.with(this@CareProductAddActivity)
+                        .load(ingredient_image_uri)
+                        .centerCrop()
+                        .into(img_product_add)
+                    toast("성공")
+                }
+                else{
+                    toast("실패")
+                }
+            }
+
+        })
+
+
     }
 }

@@ -62,6 +62,13 @@ interface RequestInterface {
         @Query("query")date:String
     ):Call<CareProductSearchData>
 
+    // 제품등록 뷰 - 상품 등록 정보 - 명희
+    @GET("/product/{product_idx}")
+    fun getCareProductDialog(
+        @Header("token")token:String,
+        @Path("product_idx")product_idx:Int
+    ):Call<CareProductDialogData>
+
     @GET("/nutrient/{nutrient_idx}")
     fun getIngredientInfo(
         @Header("token")token: String,
