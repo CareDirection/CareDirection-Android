@@ -69,6 +69,17 @@ interface RequestInterface {
         @Path("product_idx")product_idx:Int
     ):Call<CareProductDialogData>
 
+    // 제품등록 뷰 - 등록 - 명희
+    @FormUrlEncoded
+    @POST("/product/{product_idx}/dose")
+    fun postRegister(
+        @Path("product_idx")product_idx:Int,
+        @Header("token")token:String,
+        @Field("dose_daily_quantity")dose_daily_quantity : Int,
+        @Field("dose_start_date")dose_start_date : String,
+        @Field("dose_alarm")dose_alarm : String
+    ) : Call<RegisterData>
+
     @GET("/nutrient/{nutrient_idx}")
     fun getIngredientInfo(
         @Header("token")token: String,
@@ -99,7 +110,7 @@ interface RequestInterface {
         @Path("product_idx")product_idx:Int
     ):Call<CareProductDoseData>
 
-    @GET("\t/article/{article_idx}")
+    @GET("/article/{article_idx}")
     fun getArticleDetails(
         @Header("Content-Type") content_Type:String="application/json",
         @Path("article_idx")article_idx:Int

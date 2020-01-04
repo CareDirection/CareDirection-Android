@@ -40,7 +40,7 @@
                 android:layout_marginHorizontal="20dp"
                 app:np_max="2020"
                 app:np_min="2000"
-                app:np_value="2019"
+                app:np_value="2020"
                 app:np_selectedTextColor="@color/colorPrimaryDark"
                 app:np_dividerColor="@color/colorPrimaryLight"
                 app:np_textColor="@color/colorPrimary"/>
@@ -53,7 +53,7 @@
                 android:layout_marginHorizontal="20dp"
                 app:np_max="12"
                 app:np_min="1"
-                app:np_value="10"
+                app:np_value="1"
                 app:np_selectedTextColor="@color/colorPrimaryDark"
                 app:np_dividerColor="@color/colorPrimaryLight"
                 app:np_textColor="@color/colorPrimary"/>
@@ -66,7 +66,7 @@
                 android:layout_marginHorizontal="20dp"
                 app:np_max="31"
                 app:np_min="1"
-                app:np_value="1"
+                app:np_value="4"
                 app:np_selectedTextColor="@color/colorPrimaryDark"
                 app:np_dividerColor="@color/colorPrimaryLight"
                 app:np_textColor="@color/colorPrimary"/>
