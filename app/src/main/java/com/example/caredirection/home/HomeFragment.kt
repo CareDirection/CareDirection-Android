@@ -225,15 +225,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 }
 
             }
+
 //        setChart(listData, xLabelIngredients)
 
         essential_details.setOnClickListener {
             //필수 비타민 & 미네랄 상세보기로 이동
-            //todo 커스텀 다이얼로그 띄워주는 위치 변경
-            //프래그먼트 다이얼로그 생성
-//            val fm = fragmentManager!!
-//            val myfrag = CustomDialogFragment(callback)
-//            myfrag.show(fm, "demo")
+            val essentialIntent=Intent(context,GraphDetailsActivity::class.java)
+            startActivity(essentialIntent)
         }
 
 

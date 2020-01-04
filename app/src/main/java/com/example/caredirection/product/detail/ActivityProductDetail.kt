@@ -1,19 +1,22 @@
 package com.example.caredirection.product.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caredirection.R
 import com.example.caredirection.common.logDebug
-import com.example.caredirection.data.network.*
+import com.example.caredirection.data.network.HomeGraphData
+import com.example.caredirection.data.network.ProductDetailData
+import com.example.caredirection.data.network.ProductDetailLowest
+import com.example.caredirection.data.network.ProductStandardData
 import com.example.caredirection.network.RequestURL
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.LimitLine
@@ -27,7 +30,6 @@ import kotlinx.android.synthetic.main.dialog_product_standard_explation.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
 class ActivityProductDetail : AppCompatActivity() {
 
@@ -181,6 +183,8 @@ class ActivityProductDetail : AppCompatActivity() {
             )
         }
 
+
+
         call.enqueue(
             object : Callback<ProductDetailData> {
                 override fun onFailure(call: Call<ProductDetailData>, t: Throwable) {
@@ -192,65 +196,65 @@ class ActivityProductDetail : AppCompatActivity() {
                     response: Response<ProductDetailData>
                 ) {
                     if (response.isSuccessful) {
-                        val ProductDetailDataList: ProductDetailData = response.body()!!
+                        val productDetailDataList: ProductDetailData = response.body()!!
 
-                        (0 until ProductDetailDataList.data.size - 1!!).forEach {
+                        (0 until productDetailDataList.data.size - 1!!).forEach {
                             //                        Log.d("잘대대대",ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
-                            categoryPrice.add(ProductDetailDataList.data[it].count_price.product_quantity_price.toString())
-                            category.add(ProductDetailDataList.data[it].count_price.product_quantity_count.toString())
+                            categoryPrice.add(productDetailDataList.data[it].count_price.product_quantity_price.toString())
+                            category.add(productDetailDataList.data[it].count_price.product_quantity_count.toString())
                         }
 
                         //region detailcontent
                         Glide.with(this@ActivityProductDetail)
-                            .load(ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.image_key)
+                            .load(productDetailDataList.data[productDetailDataList.data.size - 1].common_data.image_key)
                             .centerCrop()
                             .into(img_activity_product_detail)
 
                         content_title1 =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard1
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
                         content_txt1 =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_features_name
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
 
                         content_title2 =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard2
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
                         content_txt2 =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_additives
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
 
                         content_title3 =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard3
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
                         content_txt3 =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_cautions
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
 
                         txt_activity_product_detail_content_price2
 
                         txt_activity_product_detail_content_ename.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_company_name
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_company_name
                         txt_activity_product_detail_content_kname.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_name
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_name
                         txt_activity_product_detail_content2.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard1
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1
                         txt_activity_product_detail_absorption2.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard2
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2
                         txt_activity_product_detail_citation1.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard3
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3
                         txt_activity_product_detail_content1.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard1_value
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard1_value
                         txt_activity_product_detail_absorption1.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard2_value
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard2_value
                         txt_activity_product_detail_citation1.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_standard3_value
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_standard3_value
                         txt_product_detail_character_content.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_features_name
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_features_name
                         txt_product_detail_intake_content.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_daily_dose
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_daily_dose
                         txt_product_detail_per_intake_content1.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_detail_name
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_name
                         txt_product_detail_per_intake_content2.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_detail_value
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_detail_value
                         txt_product_detail_content_content.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_additives
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_additives
                         txt_product_detail_warning_content.text =
-                            ProductDetailDataList.data[ProductDetailDataList.data.size - 1].common_data.product_cautions
+                            productDetailDataList.data[productDetailDataList.data.size - 1].common_data.product_cautions
 
                         getProductDetailLow(product_number)
                         getProductStandard(product_number.toInt())
@@ -276,12 +280,12 @@ class ActivityProductDetail : AppCompatActivity() {
                     response: Response<ProductStandardData>
                 ) {
                     if (response.isSuccessful) {
-                        val ProductStandardnutrient: ProductStandardData = response.body()!!
+                        val productStandardnutrient: ProductStandardData = response.body()!!
 
 
-                        content_txt1 = ProductStandardnutrient.data[0].standard_description
-                        content_txt2 = ProductStandardnutrient.data[1].standard_description
-                        content_txt3 = ProductStandardnutrient.data[2].standard_description
+                        content_txt1 = productStandardnutrient.data[0].standard_description
+                        content_txt2 = productStandardnutrient.data[1].standard_description
+                        content_txt3 = productStandardnutrient.data[2].standard_description
                         dialogShow()
                     }
                 }
