@@ -63,7 +63,7 @@ class ActivityProductStandard : AppCompatActivity() {
 
 
         img_activity_product_top_filter.setOnClickListener {
-            filterDialog()
+            //filterDialog()
         }
 
         img_activity_product_top_search.setOnClickListener {
@@ -73,18 +73,18 @@ class ActivityProductStandard : AppCompatActivity() {
         }
     }
 
-    private fun filterDialog(){
-        val builder = AlertDialog.Builder(this)
-        val dialogView = layoutInflater.inflate(R.layout.dialog_txt_test, null)
-
-        //endregion
-
-        builder.setView(dialogView)
-            .setPositiveButton("OK") { dialogInterface, i ->
-
-            } .show()
-
-    }
+//    private fun filterDialog(){
+//        val builder = AlertDialog.Builder(this)
+//        val dialogView = layoutInflater.inflate(R.layout.dialog_txt_test, null)
+//
+//        //endregion
+//
+//        builder.setView(dialogView)
+//            .setPositiveButton("OK") { dialogInterface, i ->
+//
+//            } .show()
+//
+//    }
 
     private fun initList() {
 //1. 어뎁터 데이터에 에드시키기 , 2. 리사이클러뷰 가져오기 , 리사이클러뷰 리니얼 설정, 리사이클러뷰에,adapter에 어뎁터 넣기
