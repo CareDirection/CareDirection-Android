@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caredirection.R
-import com.example.caredirection.care_product.CareProductRegisterAdapter
 import com.example.caredirection.care_product.CareRegisterComplete
 import com.example.caredirection.care_product.search.SearchCareProductActivity
 import com.example.caredirection.common.logDebug
