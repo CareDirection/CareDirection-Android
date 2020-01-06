@@ -10,15 +10,10 @@ import android.text.SpannableStringBuilder
 import com.example.caredirection.R
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.WindowManager
-import android.widget.*
-import com.example.caredirection.common.logDebug
 import com.example.caredirection.common.toast
 import com.example.caredirection.research.DB.ResearchKeeper
 import kotlinx.android.synthetic.main.activity_research_gender.*
-import kotlinx.android.synthetic.main.dialog_yearpicker.*
-import java.util.*
 
 
 class ResearchGenderActivity : AppCompatActivity() {
@@ -51,8 +46,7 @@ class ResearchGenderActivity : AppCompatActivity() {
         }
 
         keeper.year?.let {
-            //TODO: 이거 피커로 변경해서 피커를 세팅
-            txt_year_picker.text = it.toString()
+            txt_year_picker.text = it
         }
 
         checkSelectButton()
@@ -76,21 +70,11 @@ class ResearchGenderActivity : AppCompatActivity() {
         txt_gender_namesubtitle?.text = name + "님만의"
 
         btn_gender_next?.setOnClickListener{
-            val year = txt_year_picker?.text
+            keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
+            keeper.year = txt_year_picker.text.toString()
 
-            if(!gender_selec || year?.isEmpty()!!){
-                toast("아직 체크하지 않은 사항이 있습니다.")
-            }
-            else {
-                keeper.gender = if (chtxt_gender_women.isChecked) ResearchKeeper.FEMALE else ResearchKeeper.MALE
-                //TODO: 이거 피커 값으로 세팅해주어야 함.
-                keeper.year = 1999
-
-                val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
-                disease_intent.putExtra("username", name)
-
-                startActivity(disease_intent)
-            }
+            val disease_intent = Intent(this, ResearchDiseaseActivity::class.java)
+            startActivity(disease_intent)
         }
 
         chtxt_gender_women?.setOnClickListener{
@@ -109,34 +93,28 @@ class ResearchGenderActivity : AppCompatActivity() {
 
         txt_year_picker?.setOnClickListener{
             val builder = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.dialog_yearpicker, null)
-
-            //number_picker.formatter = String.format()
-//            number_picker.setOnValueChangedListener(object : NumberPicker.OnValueChangeListener() {
-//                override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
-//                    String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal).logDebug()
-//                }
-//            })
+            val dialogView = layoutInflater.inflate(R.layout.dialog_year_picker, null)
 
             builder.setView(dialogView)
                 .setPositiveButton("확인") { dialogInterface, i ->
-                    //txt_year_picker?.text = number_picker.value.toString()
-                    /* 확인일 때 main의 View의 값에 dialog View에 있는 값을 적용 */
+                    val picker = dialogView.findViewById<NumberPicker>(R.id.number_picker)
+                    txt_year_picker?.text = picker.value.toString()
+                    checkSelectButton()
                 }
                 .setNegativeButton("취소") { dialogInterface, i ->
-                    txt_year_picker?.text = ""
+                    checkSelectButton()
                 }
                 .show()
-
-            checkSelectButton()
         }
     }
 
-    private fun checkSelectButton(): Boolean{
-        if(gender_selec || txt_year_picker.text.isNotEmpty()){
-            return true
+    private fun checkSelectButton(){
+        if(gender_selec && txt_year_picker.text.isNotBlank()){
+            btn_gender_next.isEnabled = true
         }
-        return false
+        else{
+            btn_gender_next.isEnabled = false
+        }
     }
 
     // 강조타이틀 설정

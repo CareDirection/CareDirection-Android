@@ -4,7 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.caredirection.R
+import com.example.caredirection.care_product.register.CareProductActivity
+import com.example.caredirection.care_product.CareRegisterComplete
+import com.example.caredirection.home.HomeActivity
 import com.example.caredirection.research.DB.ResearchKeeper
+import com.example.caredirection.research.lifestyle.LifeStyleActivity
 import com.example.caredirection.research.userInfo.ResearchDiseaseActivity
 import com.example.caredirection.research.userInfo.ResearchGenderActivity
 import com.example.caredirection.research.userInfo.ResearchNameActivity
@@ -32,6 +36,23 @@ class ResearchActivity : AppCompatActivity() {
 
             intents.add(Intent(this@ResearchActivity, ResearchSymptomActivity::class.java))
             if (symptom == null) return@run
+
+            intents.add(Intent(this@ResearchActivity, ResearchChangeActivity::class.java))
+            if (lifeCycle == null) return@run
+
+            intents.add(Intent(this@ResearchActivity, LifeStyleActivity::class.java))
+            if(alcohol == null || cigarette == null || vegetable == null || exercise == null || activity == null) return@run
+
+            intents.add(Intent(this@ResearchActivity, ResearchFinishActivity::class.java))
+            if(researchFinish == null) return@run
+
+            intents.add(Intent(this@ResearchActivity, CareProductActivity::class.java))
+            if(careProductAdd == null) return@run
+
+            intents.add(Intent(this@ResearchActivity, CareRegisterComplete::class.java))
+            if(careProductComplete == null) return@run
+
+            intents.add(Intent(this@ResearchActivity, HomeActivity::class.java))
         }
 
         startActivities(intents.toTypedArray())

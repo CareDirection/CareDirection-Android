@@ -13,7 +13,8 @@ class FunctionalAllFeatureAdapter(private val context: Context) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FunctionalAllFeatureHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_item_functional_all,parent,false)
-        return FunctionalAllFeatureHolder(view)
+
+        return FunctionalAllFeatureHolder(view, context)
     }
 
     override fun getItemCount(): Int {

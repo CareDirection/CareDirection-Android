@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".product.result.ProductSearchResult">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +14,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/line_activity_product_search2"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:background="#AAAAAA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/activity_product_search_result_title"
@@ -31,29 +41,97 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_activity_product_search_result"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="79dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_product_search_result_top">
 
-        <Spinner
-            android:id="@+id/spinner_activity_product_search_result"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
             android:layout_width="wrap_content"
-            android:layout_height="47dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/edt_activity_product_search_result"
-            android:layout_width="251dp"
-            android:layout_height="47dp"
-            android:layout_marginLeft="9dp"
-            android:layout_marginTop="15dp"
-            android:hint="제품을 검색해주세요"
-            app:layout_constraintStart_toEndOf="@id/spinner_activity_product_search_result"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <Spinner
+                    android:id="@+id/spinner_activity_product_search_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/edt_activity_product_search_result"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="13dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img_activity_product_search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/img_activity_product_search"
+                    android:layout_width="46dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/btn_search_selected" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -61,8 +139,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:lineSpacingExtra="6sp"
-        android:text="결과"
+        android:text="결과 "
         android:textColor="#2b2d2e"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,11 +151,27 @@
         android:id="@+id/txt_activity_product_search_result_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 0건"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:text="0"
         android:textColor="#2b2d2e"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_activity_product_search_result"
         app:layout_constraintStart_toEndOf="@+id/txt_activity_product_search_result"
         app:layout_constraintTop_toTopOf="@+id/txt_activity_product_search_result" />
+
+    <TextView
+        android:id="@+id/txt_activity_product_search_result_number2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:text="건"
+        android:textColor="#2b2d2e"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_activity_product_search_result_number"
+        app:layout_constraintStart_toEndOf="@+id/txt_activity_product_search_result_number"
+        app:layout_constraintTop_toTopOf="@+id/txt_activity_product_search_result_number" />
 
     <TextView
         android:id="@+id/line_activity_product_search"
@@ -84,6 +179,8 @@
         android:layout_height="0.5dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorDarkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_activity_product_search_result" />
 
     <TextView
@@ -101,17 +198,14 @@
         app:layout_constraintTop_toBottomOf="@+id/line_activity_product_search" />
 
 
-
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_activity_product_search_result"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line_activity_product_search"
-                android:layout_width="match_parent"
-                android:layout_height="442dp"/>
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_activity_product_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_activity_product_search" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

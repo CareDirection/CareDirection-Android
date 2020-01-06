@@ -5,6 +5,8 @@
     <color name="colorPrimary">#00A5A8</color>
     <color name="colorPrimaryDark">#00a5a8</color>
     <color name="colorRed">#ff7474</color>
+    <color name="colorRedGraph">#ffabab</color>
+    <color name="colorBlueGraph">#b5e0e4</color>
 
     <color name="colorTranslucence">#66e4e4e4</color>
     <color name="colorTranslucenceLight">#66e4e4e4</color>
@@ -15,6 +17,10 @@
     <color name="colorLightGrey">#f5f5f5</color>
     <color name="colorGrey">#CDCDCD</color>
     <color name="colorDarkGrey">#787878</color>
+    <color name="colorDarkGreyOpacity">#99787878</color>
+
+
+
 
     <color name="colorIngredient1">#f0a5a5</color>
     <color name="colorIngredient2">#83ccd2</color>
@@ -24,5 +30,8 @@
     <color name="colorIngredient6">#fdd477</color>
 
     <color name="colorYellow">#EBF0B0</color>
+
+
+
 </resources>
 

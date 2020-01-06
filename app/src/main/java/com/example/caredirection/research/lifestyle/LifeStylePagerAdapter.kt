@@ -9,9 +9,9 @@ class LifeStylePagerAdapter (fm:FragmentManager, private val num_fragment: Int):
     override fun getItem(position: Int): Fragment {
          return when(position){
             0 -> LifeStyleAlcoholFragment()
-            1 -> LifeStyleVegetableFragment()
-            2 -> LifeStyleActivityFragment()
-             3 -> LifeStyleActivityFragment()
+            1 -> LifeStyleActivityFragment()
+            2 -> LifeStyleVegetableFragment()
+             3 -> LifeStyleExerciseFragment()
             else -> LifeStyleActivityFragment()
         }
     }

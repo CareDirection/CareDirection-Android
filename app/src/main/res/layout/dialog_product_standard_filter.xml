@@ -18,6 +18,7 @@
         android:textColor="@color/colorBlack"
         android:fontFamily="@font/notosanskr_medium"
         android:lineSpacingExtra="9sp"
+        android:includeFontPadding="false"
         android:text="필터"
         />
     <TextView
@@ -33,6 +34,7 @@
         android:lineSpacingExtra="8sp"
         android:gravity="center_horizontal"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="함량"/>
 
     <Spinner
@@ -57,6 +59,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
         android:text="흡수율"
         />
     <CheckedTextView
@@ -69,6 +72,10 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="11dp"
         android:checked="false"
+        android:shadowColor="#33000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="6"
         />
     <CheckedTextView
         android:id="@+id/checked_dialog_product_standard_absorption_right"
@@ -80,6 +87,10 @@
         android:layout_marginLeft="10dp"
         android:background="@drawable/selector_product_standard_bar"
         android:checked="false"
+        android:shadowColor="#33000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="6"
         />
     <TextView
         android:id="@+id/txt_dialog_product_standard_citation"
@@ -93,6 +104,7 @@
         android:textColor="#787878"
         android:lineSpacingExtra="8sp"
         android:text="인증마크"
+        android:includeFontPadding="false"
         />
     <CheckedTextView
         android:id="@+id/checked_dialog_product_standard_citation_left"
@@ -104,6 +116,10 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="11dp"
         android:checked="false"
+        android:shadowColor="#33000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="6"
         />
 
     <CheckedTextView
@@ -116,5 +132,9 @@
         android:layout_marginTop="11dp"
         android:layout_marginLeft="10dp"
         android:checked="false"
+        android:shadowColor="#33000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="6"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

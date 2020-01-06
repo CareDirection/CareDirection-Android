@@ -31,7 +31,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="16dp"
-        android:src="@color/colorRed"
+        android:src="@drawable/btn_delete"
         app:layout_constraintBottom_toBottomOf="@id/txt_home_top_down_child_user_name"
         app:layout_constraintEnd_toEndOf="@id/txt_home_top_down_child_user_name"
         app:layout_constraintTop_toTopOf="@id/txt_home_top_down_child_user_name" />

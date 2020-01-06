@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinner_home_essential_items">
+        <item>이름 순</item>
         <item>낮은 순</item>
         <item>높은 순</item>
     </string-array>
